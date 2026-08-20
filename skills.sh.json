@@ -1,0 +1,11 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Patternbook",
+      "description": "Skills for digital design and presentation: design systems, branding, typography, colour, composition, and interface patterns.",
+      "skills": ["patternbook"]
+    }
+  ]
+}
