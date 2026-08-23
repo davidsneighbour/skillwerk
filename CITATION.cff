@@ -10,6 +10,7 @@ date-released: 2026-08-22
 url: "https://github.com/davidsneighbour/gallimaufry"
 repository-code: "https://github.com/davidsneighbour/gallimaufry"
 license: "MIT"
+commit: fd25cf7993e9604afd56d49d5bfda509caaff193
 keywords:
   - ai
   - skills
