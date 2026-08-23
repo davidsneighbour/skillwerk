@@ -577,6 +577,13 @@ or the posted-log dedup checks described above. Only start this flow when the
 user explicitly names Twitter or X, for example "post this to twitter" or
 "post to x" — never offer it as part of the default network list.
 
+Prerequisite: `resources/post-twitter-intent.ts` needs the `twitter-text`
+package to validate message length with X's weighted-character algorithm. If
+it is not already installed in the current project, run
+`npm install --save-dev twitter-text` before step 2 below; otherwise step 2
+exits with a one-line message asking for the same install rather than
+proceeding.
+
 1. Check whether the existing draft (`<slug>.md`) already fits in 280
    characters including the URL and hashtags. If it does not, write a short
    variant to:

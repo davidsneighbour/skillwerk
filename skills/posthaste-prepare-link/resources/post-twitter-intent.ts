@@ -3,14 +3,12 @@
 import { spawn } from "node:child_process";
 import { platform } from "node:os";
 import { resolve } from "node:path";
-import twitterTextPkg from "twitter-text";
+import type twitterText from "twitter-text";
 import {
   expandHomePath,
   printJson,
   readOptionalFile,
 } from "./direct-api-utils.ts";
-
-const { parseTweet, extractUrlsWithIndices } = twitterTextPkg;
 
 const DEFAULT_MAX_CHARS = 280;
 const INTENT_BASE_URL = "https://x.com/intent/post";
@@ -53,6 +51,23 @@ Options:
 Output:
   JSON on stdout: { network, intentUrl, characters, weightedLength, maxChars, detectedUrls, opened }
 `);
+}
+
+async function loadTwitterText(): Promise<typeof twitterText> {
+  try {
+    const mod = await import("twitter-text");
+    return mod.default;
+  } catch (error) {
+    const code = (error as NodeJS.ErrnoException | undefined)?.code;
+
+    if (code === "ERR_MODULE_NOT_FOUND" || code === "MODULE_NOT_FOUND") {
+      throw new Error(
+        "twitter-text is not installed in this project. Run `npm install --save-dev twitter-text` here, then rerun this command.",
+      );
+    }
+
+    throw error;
+  }
 }
 
 function requireArg(argv: string[], index: number, flag: string): string {
@@ -176,6 +191,7 @@ async function tryOpen(url: string): Promise<boolean> {
 async function main(): Promise<void> {
   const config = parseArgs(process.argv.slice(2));
   const message = await readMessageText(config);
+  const { parseTweet, extractUrlsWithIndices } = await loadTwitterText();
   const parsed = parseTweet(message);
   const detectedUrls = extractUrlsWithIndices(message).map(
     (entity) => entity.url,
