@@ -2,14 +2,14 @@
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "version": "1.2.0",
   "name": "posthaste",
-  "description": "Posthaste! social publishing skills for drafting, adapting, reviewing, configuring, and publishing social media content.",
+  "description": "Posthaste social publishing skills for drafting, adapting, reviewing, configuring, and publishing social media content.",
   "owner": {
     "name": "David's Neighbour"
   },
   "plugins": [
     {
       "name": "posthaste",
-      "description": "Collection of Posthaste! skills for social publishing workflows and credential setup.",
+      "description": "Collection of Posthaste skills for social publishing workflows and credential setup.",
       "source": "./",
       "strict": false,
       "skills": [

@@ -2,7 +2,7 @@
 
 ## AI-assisted social publishing, posthaste
 
-Posthaste! is a collection of reusable AI skills for drafting, adapting, reviewing, and publishing social media content. Let's keep social publishing workflows focused, portable, and easy to use across projects and AI assistants.
+Posthaste is a collection of reusable AI skills for drafting, adapting, reviewing, and publishing social media content. Let's keep social publishing workflows focused, portable, and easy to use across projects and AI assistants.
 
 * [AI-assisted social publishing, posthaste](#ai-assisted-social-publishing-posthaste)
 * [Install](#install)
@@ -17,7 +17,7 @@ Posthaste! is a collection of reusable AI skills for drafting, adapting, reviewi
 
 ## Install
 
-Install the current Posthaste! skill set with:
+Install the current Posthaste skill set with:
 
 ```bash
 npx skills add davidsneighbour/posthaste --yes
@@ -39,7 +39,7 @@ Use `--global` when the skills should be available outside the current project.
 
 ## Configuration
 
-Posthaste! can use layered TOML configuration for persistent, non-secret defaults:
+Posthaste can use layered TOML configuration for persistent, non-secret defaults:
 
 | path | notes |
 | --- | --- |
@@ -61,7 +61,7 @@ flowchart TD
   explicitFile("Explicit config file<br/>when provided")
   environment("Environment layer<br/>process variables, dotenv values,<br/>CROSSPOST_DOTENV")
   request("Explicit runtime request<br/>CLI flags, command arguments,<br/>chat instructions")
-  effective("Effective Posthaste! settings")
+  effective("Effective Posthaste settings")
 
   defaults --> global --> project --> explicitFile --> environment --> request --> effective
 ```
@@ -98,7 +98,7 @@ Do not store passwords, access tokens, refresh tokens, client secrets, private k
 
 ## Networks
 
-Posthaste! separates networks by how much setup and automation they can safely support. Configure the easy Crosspost-backed networks first, keep X/Twitter manual, then add the direct API networks that need a token helper flow.
+Posthaste separates networks by how much setup and automation they can safely support. Configure the easy Crosspost-backed networks first, keep X/Twitter manual, then add the direct API networks that need a token helper flow.
 
 ### Crosspost networks
 
@@ -132,7 +132,7 @@ Reddit, Threads, and Tumblr use direct API integrations instead of Crosspost. Ea
 * Threads uses `posthaste-threads-refresh-token` to create or refresh a long-lived access token. Posting needs `THREADS_ACCESS_TOKEN` and `THREADS_USER_ID`; app setup also uses `THREADS_APP_ID` and `THREADS_APP_SECRET`.
 * Tumblr uses `posthaste-tumblr-refresh-token` to create or refresh OAuth2 credentials. Posting needs `TUMBLR_ACCESS_TOKEN` and `TUMBLR_BLOG_IDENTIFIER`; app setup also uses `TUMBLR_CONSUMER_KEY`, `TUMBLR_CONSUMER_SECRET`, and often `TUMBLR_REFRESH_TOKEN`.
 
-After setting up any of these networks, verify what Posthaste! can see:
+After setting up any of these networks, verify what Posthaste can see:
 
 ```bash
 node skills/posthaste-prepare-link/resources/post-crosspost.ts --info
