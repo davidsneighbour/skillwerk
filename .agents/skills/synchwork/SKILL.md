@@ -1,513 +1,92 @@
 ---
 name: synchwork
-description: Synchronize, compare, and maintain shared project state across the local Posthaste, Clerkwork, Idiolect, Gazetteer, and Patternbook projects. Supports full synchronization, individual synchronization targets, arbitrary shared files or sections, and read-only status comparisons.
+description: Synchronize shared maintenance state across the local project set defined in .agents/skills/synchwork/config.json.
 ---
 
 # Synchwork
 
-Use this skill when asked to synchronize, compare, inspect, or maintain shared
-project state across these five local repositories:
+Use this skill when asked to synchronize, compare, or maintain shared project
+state across the local repositories defined in
+`.agents/skills/synchwork/config.json`. This covers full checklist runs (see
+[Checklist](#checklist)) and ad hoc syncs of a single file or folder from the
+current repository to the rest of the project set (see
+[Ad Hoc Path Sync](#ad-hoc-path-sync)).
 
-```text
-~/github.com/davidsneighbour/clerkwork
-~/github.com/davidsneighbour/gazetteer
-~/github.com/davidsneighbour/idiolect
-~/github.com/davidsneighbour/patternbook
-~/github.com/davidsneighbour/posthaste
-```
+## Project Set
 
-Keep these paths as the project set for now. Do not infer additional
-repositories unless the user explicitly adds them. Do not drop a repository
-from this list just because it is currently empty or mid-bootstrap; report it
-as not-yet-ready instead of removing it.
+The project set lives in `.agents/skills/synchwork/config.json`, under the
+`repositories` key, as a list of local paths (`~` denotes the home
+directory). Read this file at the start of every run to determine which
+repositories are in scope — do not hardcode or assume the project set.
 
-## Invocation Modes
+Keep the project set exactly as configured. Do not infer additional
+repositories beyond what `config.json` lists, and do not drop a repository
+from it just because it is currently empty or mid-bootstrap; report it as
+not-yet-ready instead of removing it. If the user wants a repository added or
+removed, update `config.json` and confirm the change with the user rather
+than editing this file.
 
-Determine the scope from the user's request before doing any synchronization.
-
-Supported modes are:
-
-### Full synchronization
-
-Examples:
-
-```text
-/synchwork
-/synchwork sync
-/synchwork all
-```
-
-Inspect all relevant shared state, determine the intended current state for
-each synchronization target, then run the full applicable checklist.
-
-Do not assume that the repository containing the skill invocation has the
-authoritative version.
-
-A full synchronization must first compare all five repositories and determine
-whether another repository contains newer or more complete shared state.
-
-### Single checklist item
-
-Examples:
-
-```text
-/synchwork cspell dictionaries
-/synchwork vscode settings
-/synchwork social poster image
-/synchwork README shared section
-```
-
-Run only the matching checklist item and the minimum prerequisite checks
-required to do it safely.
-
-Do not run unrelated checklist items.
-
-### Ad-hoc synchronization target
-
-The user may request synchronization of a shared item that is not a named
-checklist item.
-
-Examples:
-
-```text
-/synchwork the section `# Notes` in README.md across the repos
-/synchwork package.json#engines across the repos
-/synchwork `.github/FUNDING.yml`
-/synchwork the `## Development` section in AGENTS.md
-```
-
-For an ad-hoc target:
-
-1. Parse the request into:
-
-   * file path;
-   * optional section, key, field, block, or other sub-target;
-   * target repositories, defaulting to all five;
-   * any explicitly stated authoritative source.
-
-2. Inspect only the requested target plus the repository instructions and Git
-   metadata needed to determine its state.
-
-3. Determine the intended canonical state using
-   [Authority Resolution](#authority-resolution).
-
-4. Modify only that target.
-
-   * For a Markdown section, replace only that section.
-   * For a JSON/TOML/YAML key, modify only that key or subtree.
-   * For a complete file request, synchronize the complete file.
-   * Preserve unrelated content and formatting wherever possible.
-
-5. Verify that the requested target matches across all applicable repositories.
-
-Do not expand an ad-hoc request into a full synchronization run.
-
-### Status
-
-Examples:
-
-```text
-/synchwork status
-/synchwork st
-```
-
-Status is strictly read-only.
-
-Compare shared project state across all five repositories and report drift.
-Do not modify any file.
-
-Status should concentrate on material that is intended to be shared between
-repositories.
-
-Exclude repository-specific content from generic drift reporting, including:
-
-* `skills/`;
-* `skills.sh.json`;
-* repository-specific project content;
-* repository-specific README prose;
-* repository-specific images except assets intentionally replicated across
-  the project set;
-* `workbench.colorCustomizations`;
-* `peacock.color`;
-* generated output that is intentionally repository-specific;
-* any other item explicitly documented as local to one repository.
-
-Status should include known synchronization targets from this skill and may
-also identify other obviously shared files or sections when there is strong
-evidence that they are intended to match.
-
-Do not classify files as shared merely because the same pathname exists in
-multiple repositories.
+Each repository's slug is the basename of its path in `repositories` (for
+example, `~/github.com/davidsneighbour/clerkwork` has the slug `clerkwork`).
+Checklist items that reference a repository by slug — such as Social Poster
+Image and Package Scripts below — mean this basename.
 
 ## Operating Rules
 
-* Treat the five repositories as separate working trees.
-* Start every run by checking each applicable repository's `AGENTS.md` and
-  project-root `RESUME.md` if present.
-* Preserve unrelated dirty worktree changes in every repository.
-* Touch only the files or sub-targets needed for the requested synchronization
-  task.
-* Do not commit, push, publish, or run mutating external commands unless the
+- Treat every repository in the project set as a separate working tree.
+- Start every run by reading `config.json`, then checking each repository's
+  `AGENTS.md` and project-root `RESUME.md` if present.
+- Preserve unrelated dirty worktree changes in every repository.
+- Touch only the files needed for the requested synchronization task.
+- Do not commit, push, publish, or run mutating external commands unless the
   user explicitly asks for that action.
-* Report skipped steps, blockers, and pre-existing unrelated dirty files.
-* Never use one repository as the default source merely because the command
-  was invoked from that repository.
-* Never resolve conflicting shared state by repository ordering.
-* Prefer evidence over assumptions.
-* A synchronization request means "make the requested shared state agree",
-  not "copy the current repository over the others".
-
-## Scope Resolution
-
-Before inspecting content, classify the request as exactly one of:
-
-```text
-full
-checklist-item
-ad-hoc-target
-status
-```
-
-Then determine the allowed mutation scope.
-
-For example:
-
-```text
-/synchwork the section `# Notes` in README.md across the repos
-```
-
-has the scope:
-
-```text
-mode: ad-hoc-target
-file: README.md
-target: Markdown section "# Notes"
-repositories: all five
-mutation scope: that section only
-```
-
-Do not modify another README section even if drift is discovered there.
-Mention unrelated drift in the report only when useful.
-
-## Authority Resolution
-
-Synchronization frequently involves multiple different versions of the same
-shared state. Determine the canonical state before making changes.
-
-### Explicit authority wins
-
-If the user identifies the desired source or content, use it.
-
-Examples:
-
-```text
-use the Patternbook version
-Posthaste has the correct version
-set all five to this value: ...
-```
-
-No further authority inference is needed unless the specified state cannot be
-used safely.
-
-### Do not use modification time as authority
-
-Filesystem modification times are weak evidence and may result from clones,
-rebases, checkouts, formatting tools, or unrelated filesystem operations.
-
-Do not select a canonical state solely from `mtime`.
-
-### Inspect Git history
-
-For each differing candidate, inspect relevant Git history where available.
-
-Useful evidence includes:
-
-```bash
-git log -n 10 --follow -- PATH
-git log -n 10 -p -- PATH
-git blame PATH
-```
-
-For a subsection or structured key, inspect commits affecting the containing
-file and determine which changes affected the requested target.
-
-Consider:
-
-* commit timestamp;
-* commit topology;
-* commit message;
-* whether the commit intentionally updated the shared state;
-* whether later commits reverted or superseded it;
-* whether equivalent changes appear in several repositories.
-
-The newest commit is useful evidence, but not automatically authoritative.
-
-### Prefer clearly newer intentional changes
-
-If one candidate can be shown to contain a later intentional update to the
-shared item and the others contain older versions, treat the newer state as
-canonical unless contradictory evidence exists.
-
-Example:
-
-```text
-Patternbook:
-  commit A — "add Node 26 to supported versions"
-
-Other repositories:
-  older content without Node 26
-```
-
-Patternbook is probably authoritative for that target.
-
-### Prefer supersets for additive shared state
-
-For additive data where merging is semantically valid, canonical state may be
-a union instead of any repository's exact version.
-
-Examples:
-
-* spelling dictionaries;
-* lists of replicated project assets;
-* sets of shared references.
-
-Do not use union semantics for prose, configuration values, or other content
-where combining versions could change meaning.
-
-### Use consensus as supporting evidence
-
-If four repositories contain identical state and one differs, treat the
-four-way consensus as strong evidence, but inspect Git history before
-overwriting a plausible newer change in the outlier.
-
-A minority version may be the newest intended state waiting to be propagated.
-
-### Prefer completeness when versions are compatible
-
-If candidates express compatible information but one is clearly more
-complete, prefer the complete version when Git history supports it.
-
-Do not silently merge competing prose versions merely because one is longer.
-
-### Detect unresolved conflicts
-
-Authority is unresolved when, for example:
-
-* two repositories contain independently changed prose;
-* two different configuration values were introduced intentionally;
-* Git history does not establish which state supersedes the other;
-* merging the states would require a semantic decision.
-
-In that case:
-
-1. Do not overwrite any candidate.
-2. Report the competing states.
-3. Identify which repositories contain each state.
-4. Show relevant Git evidence.
-5. Ask the user to choose the intended state.
-
-Only ask when a genuine semantic decision remains after inspecting available
-evidence.
-
-### Record the decision
-
-Every synchronization report involving differing states should state how the
-canonical state was selected.
-
-Examples:
-
-```text
-Canonical state: Gazetteer version
-Reason: updated in commit abc123 on 2026-08-19 after the version present in
-the other four repositories.
-```
-
-or:
-
-```text
-Canonical state: merged union
-Reason: dictionary entries are additive; all unique entries from the five
-repositories were retained.
-```
+- Report skipped steps, blockers, and pre-existing unrelated dirty files.
 
 ## Step-Based Workflow
 
-### 1. Resolve scope
+1. Confirm the project set.
+   - Read `.agents/skills/synchwork/config.json` and expand `~` in each path.
+   - Verify that every configured path exists.
+   - Verify `scripts` and `repositories` agree: every slug used in `scripts`
+     has a matching `repositories` entry, and every `repositories` entry has
+     a corresponding `synchwork:<slug>` tuple in `scripts`. Report any
+     mismatch and ask before proceeding with a task that depends on the
+     mismatched side.
+   - Read each repository's local instructions before changing files.
+   - Stop and ask if a repository is missing or a `RESUME.md` describes work
+     that conflicts with the requested synchronization.
 
-Determine whether this is:
+2. Inspect current state.
+   - Run `git status --short` in each repository.
+   - Identify existing user changes before editing.
+   - Note which files the requested task is allowed to modify.
 
-* full synchronization;
-* one checklist item;
-* an ad-hoc target;
-* status.
+3. Run the synchronization checklist.
+   - Complete each relevant task in [Checklist](#checklist).
+   - Keep every task narrow: inspect, compute the intended common state, apply
+     only that state, then verify it.
+   - If a task would require editing outside its stated files, stop and report
+     the reason before making that broader change.
 
-Define exactly which files or sub-targets may be modified.
+4. Verify the result.
+   - Re-run the task-specific checks.
+   - Re-run `git status --short` in each repository and distinguish new edits
+     from pre-existing dirty state.
+   - Confirm that synchronized files are byte-for-byte identical when the task
+     requires identical output.
 
-### 2. Confirm the project set
-
-* Verify that all applicable paths exist after expanding `~`.
-* Read each repository's local instructions before changing files.
-* Read project-root `RESUME.md` where present.
-* If a repository is missing, report it.
-* If a `RESUME.md` describes work that conflicts with the requested
-  synchronization, report the conflict before modifying that repository.
-
-Do not remove missing or incomplete repositories from the configured project
-set.
-
-### 3. Inspect working trees
-
-Run:
-
-```bash
-git status --short
-```
-
-in each applicable repository.
-
-Identify pre-existing user changes before editing.
-
-Pay particular attention to requested target files. If a requested target
-already contains uncommitted changes, inspect them before determining
-authority.
-
-Uncommitted changes may represent the newest intended state and must not be
-silently overwritten.
-
-### 4. Inspect requested state
-
-Read only:
-
-* the requested synchronization targets;
-* metadata necessary to establish authority;
-* prerequisite files required by repository instructions.
-
-For a full synchronization, inspect all relevant checklist items.
-
-For status, inspect all known shared targets without changing them.
-
-### 5. Determine canonical state
-
-Apply [Authority Resolution](#authority-resolution).
-
-For each differing target classify the result as one of:
-
-```text
-identical
-canonical-state-determined
-mergeable
-conflict-needs-decision
-missing
-not-applicable
-```
-
-### 6. Apply changes
-
-Skip this step entirely for status mode.
-
-For synchronization modes:
-
-* change only requested targets;
-* preserve unrelated dirty state;
-* preserve repository-specific exceptions;
-* do not broaden scope merely because additional drift was found.
-
-### 7. Verify
-
-Run task-specific validation.
-
-Where exact identity is expected, compare the relevant extracted target, not
-necessarily the complete containing file.
-
-Examples:
-
-* complete files: compare file hashes;
-* Markdown sections: extract sections and compare hashes;
-* JSON keys: normalize/extract the requested subtree and compare values;
-* assets: compare byte hashes.
-
-Then re-run:
-
-```bash
-git status --short
-```
-
-and distinguish new changes from pre-existing changes.
-
-### 8. Report
-
-Report:
-
-* requested scope;
-* state before synchronization;
-* canonical state and why it was selected;
-* repositories changed;
-* repositories already correct;
-* unresolved conflicts;
-* validation evidence;
-* pre-existing dirty state relevant to the operation.
-
-For a narrow synchronization, keep the report narrow as well.
-
-## Status Workflow
-
-`/synchwork status` is a comparison operation, not a synchronization
-operation.
-
-For each known shared target report one of:
-
-```text
-OK
-DRIFT
-MISSING
-CONFLICT
-NOT READY
-```
-
-Suggested report shape:
-
-```text
-Shared state
-------------
-
-CSpell dictionary           OK
-Social poster collection    DRIFT
-VS Code shared settings     OK
-synchwork package script    DRIFT
-README shared section       OK
-synchwork skill             DRIFT
-
-Repositories
-------------
-
-clerkwork    clean
-gazetteer    dirty: README.md
-idiolect     clean
-patternbook  clean
-posthaste    dirty: unrelated-file.md
-```
-
-For drift, identify the differing repositories and, when reasonably cheap,
-which version appears newer.
-
-Do not report expected differences in repository-specific material as drift.
-
-Status must not:
-
-* modify files;
-* normalize formatting;
-* regenerate files;
-* copy assets;
-* update dictionaries;
-* repair configuration.
+5. Report the outcome.
+   - List the task results by repository.
+   - Include counts, hashes, duplicate names, or other concrete evidence from
+     the checks.
+   - Mention validation commands run and any commands that could not be run.
 
 ## Checklist
 
 ### CSpell Dictionaries
 
-Synchronize `.vscode/dictionary.txt` across all five repositories.
-
-This target uses union semantics.
+Synchronize `.vscode/dictionary.txt` across every repository in the project
+set.
 
 1. Read each repository's `.vscode/dictionary.txt`.
 2. Merge all entries into one wordlist.
@@ -515,18 +94,17 @@ This target uses union semantics.
 4. Preserve distinct case variants when they exist.
 5. Sort case-insensitively, with a stable case-sensitive tie-breaker for case
    variants.
-6. Write the exact same newline-terminated wordlist back to each
+6. Write the exact same newline-terminated wordlist back to each repository's
    `.vscode/dictionary.txt`.
-7. Verify that all five dictionary files have identical hashes.
+7. Verify that every dictionary file in the project set has an identical
+   hash.
 8. Run `git diff --check -- .vscode/dictionary.txt` in each repository.
 9. Report the final word count and dictionary hash for each repository.
 
 ### Skill Names
 
-This is a comparison-only namespace check, not shared synchronized content.
-
-Ensure no skill folder under `skills/` has the same name across the five
-repositories.
+Ensure no skill folder under `skills/` has the same name across the project
+set.
 
 1. List direct child directories under each repository's `skills/` directory.
 2. Compare directory basenames across the full project set.
@@ -535,235 +113,183 @@ repositories.
    for a rename plan or implementation.
 5. If no duplicates exist, report that the skill namespace is clear.
 
-Do not include this check in generic `/synchwork status`, because `skills/`
-content is repository-specific.
-
-Run it during a full synchronization because it is an explicit cross-project
-integrity check.
-
 ### Social Poster Image
 
-Synchronize each repository's social poster image:
-
-```text
-.github/assets/images/SKILLNAME.png
-```
-
-where `SKILLNAME` is that repository's own project name:
-
-```text
-posthaste
-clerkwork
-idiolect
-gazetteer
-patternbook
-```
-
-Also synchronize its `-thumb` variant and generated size variants to the other
-four repositories.
-
-Each project's own repository is authoritative for that project's poster
-assets unless Git history gives strong evidence that an unpropagated newer
-copy exists elsewhere.
+Synchronize each repository's social poster image,
+`.github/assets/images/SKILLNAME.png` (`SKILLNAME` is that repository's own
+project name, matching its folder name as configured in `config.json`), plus
+its `-thumb` variant and any generated size variants, to every other
+repository in the project set.
 
 1. Locate the current poster image, thumb image, and size-variant assets for
    each repository under `.github/assets/images/`.
-2. Compare same-project copies across the five repositories.
-3. Determine the canonical poster set for each project using authority
-   resolution.
-4. Copy each canonical poster set into the corresponding location in all five
-   repositories.
-5. Verify that each repository now holds all five projects' poster images with
-   matching byte content, for every project that has published a poster set so
-   far.
-6. Report which images were copied, skipped as already identical, missing, or
-   involved an authority conflict.
+2. Copy each repository's own poster set into the corresponding location in
+   every other repository in the project set, without altering the source
+   repository's own image files.
+3. Verify that each repository now holds every project's poster images with
+   matching byte content (compare hashes), for every project that has
+   published a poster set so far.
+4. Report which images were copied, skipped as already identical, or
+   flagged because a source image was missing.
 
 ### VS Code Settings
 
-Synchronize shared options in `.vscode/settings.json` across all five
-repositories, without touching per-repository theming.
+Synchronize shared options in `.vscode/settings.json` across the project set,
+without touching per-repository theming.
 
 1. Read each repository's `.vscode/settings.json`.
-2. Treat these keys as repository-specific:
+2. Treat `workbench.colorCustomizations` and `peacock.color` as
+   repository-specific theming settings; never modify, remove, or
+   synchronize these two keys.
+3. Compare all remaining keys across the project set.
+4. Where values differ, stop and ask which value is authoritative before
+   applying it, unless the user has already specified the intended value.
+5. Apply the agreed common values to every repository, preserving each
+   repository's `workbench.colorCustomizations` and `peacock.color`
+   untouched.
+6. Verify that all keys other than the two excluded theming keys are
+   identical across the project set.
+7. Report which keys were synchronized, which were left as
+   repository-specific theming, and any conflicts that required a decision.
 
-```text
-workbench.colorCustomizations
-peacock.color
-```
+### `synchwork` Package Scripts
 
-3. Never modify, remove, or synchronize those keys.
-4. Compare all remaining keys across the five files.
-5. Use authority resolution for differing values.
-6. If Git history clearly identifies a later intended shared value, propagate
-   it.
-7. If competing values remain semantically ambiguous, report the conflict and
-   request a decision.
-8. Apply the determined common values to all five files while preserving
-   repository-specific theming.
-9. Verify that all non-excluded keys are identical across the five files.
-10. Report synchronized keys, untouched theming keys, and unresolved
-    conflicts.
+Derive each `synchwork:<slug>` script from the `scripts` array in
+`.agents/skills/synchwork/config.json` rather than from any fixed list in
+this file. Each entry in that array is a `[slug, [member1, member2, member3]]`
+tuple: `slug` names the script (`synchwork:<slug>`), and the three members
+are the ordered `meld` arguments, each resolved to its full path via the
+`repositories` list in the same file.
 
-### `synchwork` Package Script
+This task only adds or overwrites the `synchwork:<slug>` keys it derives. It
+must never remove, reorder, or otherwise touch any other script already
+defined in a repository's `package.json`.
 
-Ensure `package.json` in each repository defines:
-
-```json
-"synchwork": "meld ~/github.com/davidsneighbour/clerkwork ~/github.com/davidsneighbour/idiolect ~/github.com/davidsneighbour/posthaste ~/github.com/davidsneighbour/gazetteer ~/github.com/davidsneighbour/patternbook"
-```
-
-1. Read the `scripts` block in each repository's `package.json`.
-2. The exact command documented above is canonical.
-3. Add or correct the `synchwork` entry in all five repositories.
-4. Preserve the existing key order and formatting conventions of each
-   `package.json`.
-5. Report whether the script was added, corrected, or already correct in each
-   repository.
+1. Read the `scripts` array and the `repositories` list from `config.json`.
+2. For each `[slug, [a, b, c]]` tuple, resolve `a`, `b`, and `c` against
+   `repositories` and build the entry:
+   `"synchwork:<slug>": "meld <path-of-a> <path-of-b> <path-of-c>"`.
+3. Read the existing `scripts` block in each repository's `package.json`.
+4. Merge the derived entries into that block: add any `synchwork:<slug>` key
+   that is missing, and overwrite a `synchwork:<slug>` key only when its
+   value differs from the derived one. Leave every other key in `scripts`
+   untouched, including any script whose name does not match
+   `synchwork:<slug>` for a slug in `config.json`.
+5. Preserve the existing key order and formatting conventions of each
+   `package.json`; append genuinely new `synchwork:<slug>` entries in the
+   order their tuples appear in `config.json`.
+6. After editing, confirm each modified `package.json` still parses (for
+   example, `jq . package.json` or `node -e "require('./package.json')"`)
+   before moving to the next repository.
+7. Report, per repository, which `synchwork:<slug>` scripts were added,
+   corrected, or already present and correct, and confirm no unrelated
+   script was modified.
 
 ### `skills.sh.json`
 
 Keep `skills.sh.json` accurate in each repository.
 
-This is repository-local maintenance, not synchronized shared state.
-
 1. Read each repository's `skills.sh.json` and its `skills/` directory
    listing.
 2. Confirm every skill folder present in the repository is represented in a
-   grouping.
-3. Confirm no grouping references a skill folder that no longer exists.
-4. Report additions, removals, or grouping fixes needed per repository.
-5. Do not invent new groupings or reorder existing ones unless the user
+   grouping, and that no grouping references a skill folder that no longer
+   exists.
+3. Report additions, removals, or grouping fixes needed per repository. Do
+   not invent new groupings or reorder existing ones unless the user
    explicitly asks for that.
-6. Apply only corrections needed to keep that repository's file accurate.
-
-Do not compare the contents of `skills.sh.json` between repositories as if
-they should be identical.
-
-Do not include this item in generic `/synchwork status`.
+4. Apply only the corrections needed to keep the file accurate; leave
+   unrelated structure untouched.
 
 ### README Structure and Shared Section
 
-Keep each repository's `README.md` following the same intended overall
-structure, while synchronizing only explicitly shared sections.
-
-The currently defined shared section is:
-
-```text
-## The cabinet of @davidsneighbour's skills
-```
-
-Its heading and contents must be byte-for-byte identical across all five
-repositories.
+Keep each repository's `README.md` following the same overall structure, and
+keep the `## The cabinet of @davidsneighbour's skills` section, including its
+heading, byte-for-byte identical in content across the project set.
 
 1. Read each repository's `README.md`.
-2. Compare heading structure across the five files and report structural drift
-   where the structures are intended to correspond.
-3. Do not treat repository-specific prose as synchronization drift.
-4. Extract the shared cabinet section from its heading up to the next heading
-   of the same or higher level, or end of file.
-5. Compare candidate versions and inspect Git history.
-6. Determine the canonical section using authority resolution.
-7. Ensure it contains an entry for every repository that has a poster image
-   ready.
-8. If compatible additions exist across candidates, merge them rather than
-   discarding newer entries.
-9. Write the identical canonical section into all five README files.
-10. Verify the extracted section is byte-for-byte identical across all five
-    repositories.
-11. Report structural differences separately from synchronized shared
-    content.
-
-An ad-hoc request for another README section overrides this checklist scope.
-
-For example:
-
-```text
-/synchwork the section `# Notes` in README.md across the repos
-```
-
-must synchronize only that requested section and must not automatically update
-the cabinet section.
+2. Compare top-level heading structure across the project set and report
+   structural drift (missing, reordered, or renamed sections), without
+   rewriting unrelated prose unless the user asks for that.
+3. Extract the `## The cabinet of @davidsneighbour's skills` section from
+   each `README.md`, from its heading up to the next top-level heading or end
+   of file.
+4. Merge into one canonical version of that section, including an entry for
+   every repository that has a poster image ready, and write the identical
+   result back into every repository's `README.md`.
+5. Verify the extracted section is byte-for-byte identical across the
+   project set.
+6. Report structural differences found outside the shared section, and
+   confirm the shared section now matches.
 
 ### `synchwork` Skill Definition
 
-Keep this skill's own definition:
+Keep this skill's own definition, `.agents/skills/synchwork/`, identical
+across the project set.
 
-```text
-.agents/skills/synchwork/
-```
+1. Read `.agents/skills/synchwork/SKILL.md` (and any supporting files in that
+   directory, including `config.json`) from each repository.
+2. Compare content across the project set.
+3. If they differ, ask which version is authoritative unless the user has
+   already indicated the source of truth, then write the identical content
+   back to the other repositories.
+4. Verify every copy is byte-for-byte identical, including confirming each
+   `config.json` still parses (for example, `jq . config.json`) after being
+   written.
+5. Report which repositories were updated.
 
-identical across all five repositories.
+## Ad Hoc Path Sync
 
-Because this skill controls synchronization itself, authority must be
-determined carefully.
+Use this mode when the user asks to sync one specific file or folder from the
+current repository to the rest of the project set, rather than running the
+full checklist. Recognize it from an invocation of the form `sync <path>`
+(for example, `/synchwork sync .agents/skills/synchwork` or
+`/synchwork sync .vscode/dictionary.txt`) or an equivalent natural-language
+request such as "sync `<path>` from here to the other projects" or "push
+`<path>` to everyone else." `<path>` is a single file or folder, relative to
+a repository root.
 
-1. Read `.agents/skills/synchwork/SKILL.md` and any supporting files in that
-   directory from each repository.
-2. Compare content across the five repositories.
-3. Inspect Git history for differing copies.
-4. Prefer the demonstrably latest intentional revision, even if it exists in
-   only one repository.
-5. Do not use majority state to overwrite a clearly newer revision.
-6. If multiple repositories contain independent, incompatible changes that
-   cannot safely be merged, report the conflict and request a decision.
-7. Write the canonical definition back to the other repositories.
-8. Verify all five copies are byte-for-byte identical.
-9. Report which repository supplied the canonical state and which repositories
-   were updated.
+This mode touches only the given path in the source and target repositories.
+It does not run the full [Checklist](#checklist) and is not a substitute for
+it.
 
-## Arbitrary Section Synchronization
+### Resolving Source and Targets
 
-Markdown section synchronization is a first-class operation.
+1. Determine the source repository: the entry in `repositories` whose path
+   contains the current working directory. If none matches, or the match is
+   ambiguous, stop and ask which repository is the source.
+2. Determine the target repositories: every other entry in `repositories`.
+3. Resolve `<path>` against the source repository's root. If it does not
+   exist there, stop and report that there is nothing to sync.
 
-Given:
+### Procedure
 
-```text
-/synchwork the section `# Notes` in README.md across the repos
-```
-
-perform this procedure:
-
-1. Locate `# Notes` in every `README.md`.
-2. Treat its content as extending from that heading through the line before
-   the next heading of the same or higher level, or EOF.
-3. Record repositories where the section is missing.
-4. Compare the extracted sections.
-5. Inspect Git history for the section's containing file.
-6. Determine which candidate is the intended current state.
-7. If one candidate is demonstrably newer, use it.
-8. If compatible candidates contain independently added information, merge
-   only when doing so is semantically safe.
-9. If authority remains ambiguous, do not modify the section.
-10. Otherwise replace only that section in each applicable repository.
-11. Verify hashes of the extracted sections after synchronization.
-
-The same narrow-scope principle applies to other structured content.
+1. Read the source's copy of `<path>` — file contents, or the full file tree
+   if it is a folder.
+2. For each target repository, resolve the same relative path.
+   - If `<path>` does not yet exist in the target, it will be created; no
+     permission is needed.
+   - If it exists and its content differs from the source, run
+     `git status --short -- <path>` in the target first. If the target
+     already has uncommitted changes touching `<path>`, stop and ask for
+     permission before overwriting it — never overwrite dirty target content
+     silently.
+3. Once clear to proceed (clean target, or the user has given permission),
+   copy the source's content over:
+   - For a file: overwrite the target file with the source file.
+   - For a folder: copy every file from the source tree into the
+     corresponding location in the target tree, creating missing
+     directories and overwriting files that exist at the same relative
+     path. Do not delete a file that exists only in the target and not in
+     the source — this is a merge, not a mirror — unless the user
+     explicitly asks for mirroring instead.
+4. Verify each updated target path matches the source byte-for-byte (per
+   file, when `<path>` is a folder).
+5. Report, per target repository, what was created, overwritten, skipped as
+   already identical, or held back pending permission.
 
 ## Completion Standard
 
-A synchwork run is complete when every requested target has either:
-
-* passed with concrete evidence;
-* been synchronized and verified;
-* been identified as already identical;
-* been reported as missing or not applicable; or
-* been left unchanged because of a clearly reported unresolved conflict.
-
-A full synchronization must additionally establish the canonical state of each
-shared target from the complete five-repository state before propagating
-changes.
-
-A narrow synchronization must not broaden into unrelated maintenance.
-
-A status run must not make any changes.
-
-The final report should make it obvious:
-
-* what scope was requested;
-* what state differed;
-* how canonical state was determined;
-* which repositories changed;
-* which repositories were already correct;
-* what remains unresolved;
-* which dirty worktree entries existed before the run.
+A synchwork run is complete when every requested checklist item has either
+passed with concrete evidence or has a clearly reported blocker. The final
+report should make it obvious which repository changed, which checks passed,
+and which dirty worktree entries were already present before the run.

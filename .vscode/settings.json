@@ -7,7 +7,9 @@
       "scope": "workspace"
     }
   },
-  "cSpell.dictionaries": ["workspace-dictionary"],
+  "cSpell.dictionaries": [
+    "workspace-dictionary"
+  ],
   "cSpell.language": "en-GB",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#cfb0e0",
@@ -22,6 +24,7 @@
     "activityBarTop.inactiveForeground": "#15202b99",
     "commandCenter.border": "#15202b99",
     "commandCenter.foreground": "#15202b",
+    "commandCenter.background": "#cfb0e0",
     "sash.hoverBorder": "#cfb0e0",
     "statusBar.background": "#b98cd1",
     "statusBar.debuggingBackground": "#b98cd1",
