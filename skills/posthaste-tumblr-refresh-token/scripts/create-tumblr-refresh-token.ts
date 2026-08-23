@@ -561,7 +561,11 @@ function startAuthorizationServer(
               "State mismatch",
               "The OAuth state did not match. You can close this tab.",
             );
-            finish(new Error("OAuth state mismatch. Refusing to continue."));
+            finish(
+              new Error(
+                "OAuth state mismatch — this callback doesn't match the authorization request from this run. This usually happens when a browser tab from a different/earlier run hits this callback server. Restart this command and use the authorization URL it prints this time, not a previously opened browser tab.",
+              ),
+            );
             return;
           }
 
@@ -946,7 +950,9 @@ async function promptForHostedCallbackCode(
     const state = callbackUrl.searchParams.get("state");
 
     if (state !== expectedState) {
-      throw new Error("OAuth state mismatch. Refusing to continue.");
+      throw new Error(
+        "OAuth state mismatch — the pasted callback doesn't match this run's authorization request. This usually means the callback is from a different/earlier run. Restart this command and use the authorization URL it prints this time, not a previously opened browser tab.",
+      );
     }
 
     const code = callbackUrl.searchParams.get("code");

@@ -109,6 +109,48 @@ posthaste-prepare-link/1.0 by u/<reddit-username>
 Do not include the refresh token in the final answer. If setup succeeds, say
 that `REDDIT_REFRESH_TOKEN` is stored and Reddit is configured.
 
+## Non-interactive / agent-driven invocation
+
+This script never reads `process.stdin` — it only waits for the browser to
+hit the local loopback callback server. Do not redirect stdin from a named
+pipe (`< fifo`) for this script: a plain read-only `open()` on a fifo blocks
+in the shell before Node even starts, which would delay or hide the printed
+authorization URL for no benefit, since nothing in this script ever consumes
+that input.
+
+Run it in the background instead, capture its output to a log file, and read
+the authorization URL from that log as soon as it appears:
+
+```bash
+LOG=/path/to/scratch/reddit_oauth.log
+rm -f "$LOG"
+node skills/posthaste-reddit-refresh-token/scripts/create-reddit-refresh-token.ts \
+  --write-env --no-open \
+  --user-agent "posthaste-prepare-link/1.0 by u/<reddit-username>" \
+  --subreddit "<subreddit-name>" \
+  > "$LOG" 2>&1 &
+```
+
+Then read `$LOG` for the "Open this Reddit authorization URL in your
+browser:" line and hand that URL to the user. Once they authorize in a real
+browser, Reddit redirects straight to the loopback server on its own — no
+further input from the agent is needed. Poll `$LOG` (or wait on the
+background job) for the final "Stored Reddit OAuth values in" line or an
+`Error:` line to know when it's done.
+
+If `$LOG` ever shows the state-mismatch error below, it means a stale browser
+tab from an earlier run hit this run's callback server before the real
+authorization happened — rerun the command above and use the fresh URL it
+prints, not an old tab:
+
+```text
+OAuth state mismatch — this callback doesn't match the authorization request
+from this run. This usually happens when a browser tab from a
+different/earlier run hits this callback server. Restart this command and
+use the authorization URL it prints this time, not a previously opened
+browser tab.
+```
+
 ## Options
 
 Use these when defaults do not match the Reddit app:

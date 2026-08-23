@@ -127,6 +127,59 @@ Do not include any token in the final answer. If setup succeeds, say that
 `THREADS_ACCESS_TOKEN` and `THREADS_USER_ID` are stored and Threads is
 configured.
 
+## Non-interactive / agent-driven invocation
+
+This script's hosted-flow path prompts on `process.stdin` for the pasted
+callback URL or code (see [Required threads app setup](#required-threads-app-setup)).
+Do not drive it with plain `< fifo` redirection: a read-only `open()` on a
+named pipe blocks in the shell before Node even starts, which also blocks the
+script's own printed authorization URL from ever appearing. An agent that
+doesn't know this can end up feeding a stale callback into the pipe just to
+unblock it, which the script then reads immediately on startup — producing a
+confusing state-mismatch error instead of a real prompt.
+
+Open the fifo for both reading and writing instead, so the shell's `open()`
+returns immediately without waiting for a peer:
+
+```bash
+FIFO=/path/to/scratch/threads_stdin
+LOG=/path/to/scratch/threads_oauth.log
+rm -f "$FIFO" "$LOG"
+mkfifo "$FIFO"
+exec 3<>"$FIFO"          # non-blocking: opens read+write, doesn't wait for a peer
+node skills/posthaste-threads-refresh-token/scripts/create-threads-refresh-token.ts \
+    --write-env --no-open \
+    --redirect-uri "https://cute-starlight-2d4b0e.netlify.app/callback" \
+    0<&3 > "$LOG" 2>&1 &   # run in background; script starts immediately
+```
+
+The script starts immediately, prints its authorization URL, and only then
+blocks on `read()` waiting for a line — which can be supplied later, once the
+real callback URL has actually been used:
+
+```bash
+echo "<pasted callback URL or code>" >&3
+```
+
+Read `$LOG` for the printed authorization URL first, hand it to the user, and
+wait for them to confirm they authorized before writing to the fifo — never
+write a previous run's callback into a new run's fifo. Prefer `--no-open`
+plus the printed URL over the default browser auto-open when driving this
+non-interactively, since auto-open gives the agent no way to confirm which
+URL/state the human actually authorized against. Close the fifo when done
+with `exec 3>&-`.
+
+If `$LOG` ever shows the state-mismatch error below, the pasted callback came
+from a different/earlier run — rerun the command above for a fresh `state`
+and use the authorization URL it prints this time:
+
+```text
+OAuth state mismatch — the pasted callback doesn't match this run's
+authorization request. This usually means the callback is from a
+different/earlier run. Restart this command and use the authorization URL it
+prints this time, not a previously opened browser tab.
+```
+
 ## Refreshing an existing long-lived token
 
 If `THREADS_ACCESS_TOKEN` already exists and has not fully expired, refresh it

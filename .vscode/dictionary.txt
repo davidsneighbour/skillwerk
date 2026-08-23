@@ -23,6 +23,7 @@ lede
 Listicle
 listy
 metas
+mkfifo
 negotiables
 Neue
 noindex
