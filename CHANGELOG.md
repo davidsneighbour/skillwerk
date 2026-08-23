@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.2.1](https://github.com/davidsneighbour/posthaste/compare/v1.2.0...v1.2.1) (2026-08-23)
+
+### Fix
+
+* rename from Posthaste! to Posthaste ([95e1a88](https://github.com/davidsneighbour/posthaste/commit/95e1a88cdd8e8f508009a3a7ff5cd77d36c6f635))
+* update cabinet imagery ([38b137d](https://github.com/davidsneighbour/posthaste/commit/38b137dd931a6cdf35b273e4e1de6becef3bebb3))
+
+### Docs
+
+* update cabinet ([fbce69a](https://github.com/davidsneighbour/posthaste/commit/fbce69aa1ff5164f55b016f0331b2065443e5d30))
+* update skills.index.md ([2df3cf2](https://github.com/davidsneighbour/posthaste/commit/2df3cf243a2decae3934d1f312fe4046473d3cde))
+
+### Build
+
+* **deps:** update dependencies ([1fe3e24](https://github.com/davidsneighbour/posthaste/commit/1fe3e242dcd236c0563d9244487eeebb6d9f634b))
+* **vscode:** update workspace configuration ([b4819fe](https://github.com/davidsneighbour/posthaste/commit/b4819febc7aa72fcc1df6d70013a0488245d117b))
+
 ## [1.2.0](https://github.com/davidsneighbour/posthaste/compare/v1.1.0...v1.2.0) (2026-08-19)
 
 ### Feat
