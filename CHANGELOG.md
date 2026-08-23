@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.2.2](https://github.com/davidsneighbour/posthaste/compare/v1.2.1...v1.2.2) (2026-08-23)
+
+### Fix
+
+* cleanup CITATION.cff ([021dda9](https://github.com/davidsneighbour/posthaste/commit/021dda99c29df0640a16b382c9b8499d164d7913))
+* **posthaste-prepare-link:** default Reddit title to the page's own title ([d9110e4](https://github.com/davidsneighbour/posthaste/commit/d9110e408c182105a6bd527f4ebd96c96859c0f1))
+* **posthaste-prepare-link:** report missing twitter-text instead of crashing ([b5499e1](https://github.com/davidsneighbour/posthaste/commit/b5499e14dd7e9feb2eb7c0d59fe6a2de63e2e192))
+* **posthaste-refresh-tokens:** document safe non-interactive invocation ([aee0796](https://github.com/davidsneighbour/posthaste/commit/aee0796f4ee620ae07b37d0754f7f4213b53c71a))
+
+### Docs
+
+* **posthaste-prepare-link:** target ~850-950 chars, not the 1000 ceiling ([c5d1d30](https://github.com/davidsneighbour/posthaste/commit/c5d1d307e3d48a316c6e87bd413b87e3f6c8b288))
+
+### Chore
+
+* remove skills.index.md ([30807d0](https://github.com/davidsneighbour/posthaste/commit/30807d05c524cc5ddc82ddadffa22fd1bbf1729f))
+
 ## [1.2.1](https://github.com/davidsneighbour/posthaste/compare/v1.2.0...v1.2.1) (2026-08-23)
 
 ### Fix
