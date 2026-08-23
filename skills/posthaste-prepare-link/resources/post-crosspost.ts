@@ -938,6 +938,37 @@ function validateMessageLengths(messages: PreparedMessage[]): void {
   );
 }
 
+function sidecarPathForMessageFile(messageFile: string): string {
+  const resolved = resolve(expandHomePath(messageFile));
+  const extension = extname(resolved);
+  const stem = extension ? basename(resolved, extension) : basename(resolved);
+
+  return join(dirname(resolved), `${stem}.meta.json`);
+}
+
+async function resolveRedditTitleFromSidecar(
+  config: CliConfig,
+): Promise<string | undefined> {
+  if (!config.messageFile) {
+    return undefined;
+  }
+
+  const sidecarPath = sidecarPathForMessageFile(config.messageFile);
+  const content = await readOptionalFile(sidecarPath);
+
+  if (!content) {
+    return undefined;
+  }
+
+  try {
+    const parsed = JSON.parse(content) as { title?: unknown };
+    const title = typeof parsed.title === "string" ? parsed.title.trim() : "";
+    return title.length > 0 ? title : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 async function validateImage(config: CliConfig): Promise<void> {
   if (!config.image) {
     return;
@@ -1292,6 +1323,10 @@ async function main(): Promise<void> {
 
   const preparedMessages = await prepareMessages(config, networksToPost);
   validateMessageLengths(preparedMessages);
+
+  if (!config.title && networksToPost.includes("reddit")) {
+    config.title = await resolveRedditTitleFromSidecar(config);
+  }
 
   const env: NodeJS.ProcessEnv = {
     ...process.env,

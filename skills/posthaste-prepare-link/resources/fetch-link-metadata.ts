@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
+import { writeFile } from "node:fs/promises";
+
 interface CliConfig {
   url?: string;
   timeoutMs: number;
+  sidecarPath?: string;
 }
 
 interface MetaTag {
@@ -36,6 +39,10 @@ Usage:
 Options:
   --url <url>            Page to fetch. Required.
   --timeout-ms <number>  Request timeout in milliseconds. Default: ${DEFAULT_TIMEOUT_MS}.
+  --sidecar <path>       Also write the result JSON to this path, e.g.
+                         scratch/posthaste-prepare-link/<slug>.meta.json. Callers
+                         that default a Reddit title to the page's own title
+                         read the "title" field back from this file.
   --help                 Show this help text.
 
 Output:
@@ -62,6 +69,10 @@ function parseArgs(argv: string[]): CliConfig {
 
       case "--timeout-ms":
         config.timeoutMs = Number.parseInt(argv[++index] ?? "", 10);
+        break;
+
+      case "--sidecar":
+        config.sidecarPath = argv[++index];
         break;
 
       default:
@@ -220,6 +231,14 @@ async function main(): Promise<void> {
     };
 
     console.log(JSON.stringify(result, null, 2));
+
+    if (config.sidecarPath) {
+      await writeFile(
+        config.sidecarPath,
+        `${JSON.stringify(result, null, 2)}\n`,
+        "utf8",
+      );
+    }
   } finally {
     clearTimeout(timeout);
   }

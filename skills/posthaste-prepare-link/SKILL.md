@@ -137,6 +137,7 @@ these files:
 ```text
 scratch/posthaste-prepare-link/<slug>.md
 scratch/posthaste-prepare-link/<slug>.png
+scratch/posthaste-prepare-link/<slug>.meta.json
 ```
 
 The Markdown file is the source of truth for the exact post text after it
@@ -160,14 +161,19 @@ Reject non-`http(s)` URLs and ask for a corrected one.
 1. **Fetch page metadata.**
 
    ```bash
-   node skills/posthaste-prepare-link/resources/fetch-link-metadata.ts --url "<url>"
+   node skills/posthaste-prepare-link/resources/fetch-link-metadata.ts \
+     --url "<url>" \
+     --sidecar scratch/posthaste-prepare-link/<slug>.meta.json
    ```
 
    This returns JSON with `title`, `description`, `siteName`, `canonicalUrl`,
    `finalUrl`, `ogImage`, and `tags` (from the page's own `keywords` meta tag
    and any `article:tag` entries). Use `canonicalUrl` (falling back to
    `finalUrl`) as the stable identifier for dedup and logging in the next
-   step.
+   step. Always pass `--sidecar` using the same `<slug>` as the draft file, so
+   `post-crosspost.ts` can default the Reddit title to this page's own
+   `title` instead of the draft's first line (see
+   [Network length handling](#network-length-handling)).
 
    If the fetch fails (network error, non-2xx status, timeout), report the
    failure and ask the user how to proceed. Do not fabricate metadata to
@@ -552,8 +558,16 @@ Use these default limits when preparing and checking drafts:
 
 The helper enforces these limits before publishing. If the main draft is too
 long for Bluesky, Nostr, Threads, or Tumblr, create or ask the user to edit the
-matching network-specific file before posting there. If Reddit needs a better
-title than the first line of the post, pass `--title` when publishing.
+matching network-specific file before posting there.
+
+For Reddit's title, `post-crosspost.ts` defaults `--title` to the `title`
+field in the `<slug>.meta.json` sidecar written in step 1 (the page's own
+fetched title), not the draft's first line. That sidecar is only consulted
+when no explicit `--title` is passed. Pass `--title` explicitly to override it
+— for example when the page's title is missing, generic (e.g. "Home"), or the
+user asks for something else — or when publishing straight to
+`resources/post-reddit.ts` without going through `post-crosspost.ts` and
+therefore without sidecar lookup.
 
 ## X (twitter) manual posting
 
