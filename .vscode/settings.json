@@ -24,6 +24,7 @@
     "activityBarTop.inactiveForeground": "#15202b99",
     "commandCenter.border": "#15202b99",
     "commandCenter.foreground": "#15202b",
+    "commandCenter.background": "#eed4af",
     "sash.hoverBorder": "#eed4af",
     "statusBar.background": "#e5be85",
     "statusBar.debuggingBackground": "#e5be85",
