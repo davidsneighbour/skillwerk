@@ -255,15 +255,19 @@ Reject non-`http(s)` URLs and ask for a corrected one.
 
    ```text
    min: 600 characters
-   max: 1000 characters
+   target: 850-950 characters on the first draft
+   hard ceiling: 1000 characters (Mastodon)
    ```
 
-   Mastodon allows 1000 characters for this account and LinkedIn allows more.
-   This is intentionally long-form — use at least 600 characters when there is
-   enough substance, and use more of the available Mastodon room when the link
-   benefits from context, caveats, or a point of view. Do not pad a thin link
-   just to hit the maximum. Use shorter network-specific variants for networks
-   with tighter limits.
+   Mastodon's 1000-character limit for this account is a hard ceiling, not a
+   target — aim for the first draft to land around 850-950 characters so
+   there is headroom for "actually let me add one more clause" without
+   forcing a trim-and-recount rewrite cycle. LinkedIn allows more than
+   Mastodon, but Mastodon is always the binding constraint since the same
+   default draft targets both. This is intentionally long-form — use at
+   least 600 characters when there is enough substance. Do not pad a thin
+   link just to hit the target. Use shorter network-specific variants for
+   networks with tighter limits.
 
    Write the exact draft, including URL and hashtags, to:
 
