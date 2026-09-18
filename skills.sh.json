@@ -1,0 +1,11 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Browser Capture",
+      "description": "Deterministic browser screenshot capture.",
+      "skills": ["web-screenshot"]
+    }
+  ]
+}

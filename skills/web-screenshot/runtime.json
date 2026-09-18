@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "runtime": "browser",
+  "node": ">=26",
+  "packages": {
+    "playwright": "^1.55.0",
+    "sharp": "^0.34.0",
+    "tsx": "^4.20.0",
+    "yargs": "^18.0.0"
+  },
+  "playwright": {
+    "browsers": ["chromium"]
+  }
+}

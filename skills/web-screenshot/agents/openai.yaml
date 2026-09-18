@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web screenshot"
+  short_description: "Deterministic browser screenshot capture"
+  default_prompt: "Use $web-screenshot to capture a screenshot of a web page with the requested viewport, colour scheme, and format."
