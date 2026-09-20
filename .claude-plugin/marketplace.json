@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "name": "gallimaufry",
   "description": "Gallimaufry skills for miscellaneous AI asset maintenance and small specialised workflows.",
   "owner": {
@@ -12,7 +12,10 @@
       "description": "Collection of Gallimaufry skills for AI asset references and specialised workflows.",
       "source": "./",
       "strict": false,
-      "skills": ["./skills/dnb-reference", "./skills/interrogate-source"]
+      "skills": [
+        "./skills/dnb-reference",
+        "./skills/interrogate-source"
+      ]
     }
   ]
 }
