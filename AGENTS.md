@@ -91,6 +91,11 @@ Before starting repository work, agents must check for project-root
 `RESUME.md`. If it exists, read it first, resolve or explicitly abandon the
 unfinished work, and remove `RESUME.md` before starting unrelated work.
 
+When inspecting repository changes, also check `git stash list` for saved draft
+work that may explain missing or hidden changes. Treat stashes as local context
+to inspect when relevant, not as part of the active working tree unless the user
+explicitly asks to restore one.
+
 Keep edits scoped to the requested skill or document. Preserve existing user
 changes in this dirty worktree unless the user explicitly asks to include,
 replace, or remove them.
