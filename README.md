@@ -36,6 +36,8 @@ Use `--global` when the skills should be available outside the current project.
 
 * `dnb-reference` adds or updates strict references frontmatter on AI asset
   files from supplied HTTP or HTTPS URLs.
+* `interrogate-source` analyses external source material by keeping faithful
+  transcription, critical scrutiny, and reusable knowledge extraction separate.
 
 ## The cabinet of @davidsneighbour's skills
 
