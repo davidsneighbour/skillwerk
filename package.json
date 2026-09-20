@@ -29,6 +29,7 @@
     "validate:skills": "node scripts/validate-skills.ts",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "synchwork": "npm run synchwork:gallimaufry",
+    "synchwork:apparatus": "meld ~/github.com/davidsneighbour/clerkwork ~/github.com/davidsneighbour/posthaste ~/github.com/davidsneighbour/apparatus",
     "synchwork:clerkwork": "meld ~/github.com/davidsneighbour/patternbook ~/github.com/davidsneighbour/posthaste ~/github.com/davidsneighbour/clerkwork",
     "synchwork:gallimaufry": "meld ~/github.com/davidsneighbour/clerkwork ~/github.com/davidsneighbour/posthaste ~/github.com/davidsneighbour/gallimaufry",
     "synchwork:gazetteer": "meld ~/github.com/davidsneighbour/clerkwork ~/github.com/davidsneighbour/posthaste ~/github.com/davidsneighbour/gazetteer",
