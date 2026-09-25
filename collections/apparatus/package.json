@@ -20,7 +20,7 @@
     "cspell": "10.1.0",
     "playwright": "1.55.1",
     "release-it": "21.0.2",
-    "sharp": "0.34.4",
+    "sharp": "0.35.4",
     "typescript": "7.0.2",
     "yargs": "18.0.0"
   },
