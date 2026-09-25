@@ -1,0 +1,16 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Gazetteer",
+      "description": "Describe it. Place it. Make it findable.",
+      "skills": ["gazetteer"]
+    },
+    {
+      "title": "Audit",
+      "description": "Evidence-backed website and Lighthouse audit skills.",
+      "skills": ["gazetteer-audit", "gazetteer-lighthouse-audit"]
+    }
+  ]
+}

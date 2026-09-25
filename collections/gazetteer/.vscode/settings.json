@@ -1,0 +1,42 @@
+{
+  "cSpell.customDictionaries": {
+    "workspace-dictionary": {
+      "addWords": true,
+      "name": "workspace-dictionary",
+      "path": "${workspaceFolder}/.vscode/dictionary.txt",
+      "scope": "workspace"
+    }
+  },
+  "cSpell.dictionaries": [
+    "workspace-dictionary"
+  ],
+  "cSpell.language": "en-GB",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#82c3bd",
+    "activityBar.background": "#82c3bd",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#a453ac",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "activityBarTop.activeBackground": "#82c3bd",
+    "activityBarTop.background": "#82c3bd",
+    "activityBarTop.foreground": "#15202b",
+    "activityBarTop.inactiveForeground": "#15202b99",
+    "commandCenter.border": "#15202b99",
+    "commandCenter.foreground": "#15202b",
+    "commandCenter.background": "#82c3bd",
+    "sash.hoverBorder": "#82c3bd",
+    "statusBar.background": "#5fb3ab",
+    "statusBar.debuggingBackground": "#5fb3ab",
+    "statusBar.debuggingForeground": "#15202b",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#489790",
+    "statusBarItem.remoteBackground": "#f4e9f5",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#5fb3ab",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#5fb3ab99",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#5fb3ab"
+}

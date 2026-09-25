@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gazetteer Site Audit"
+  short_description: "Evidence-backed website audit reports"
+  default_prompt: "Use $gazetteer-audit for launch readiness, technical SEO, accessibility, security, performance, privacy, resilience, internationalisation, and agent-readiness audits."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gazetteer"
+  short_description: "Search visibility and content discovery skills"
+  default_prompt: "Use $gazetteer for search visibility and content discovery tasks."

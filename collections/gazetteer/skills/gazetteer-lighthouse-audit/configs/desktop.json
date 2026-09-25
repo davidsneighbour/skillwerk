@@ -1,0 +1,5 @@
+{
+  "preset": "desktop",
+  "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+  "chromeFlags": "--headless"
+}

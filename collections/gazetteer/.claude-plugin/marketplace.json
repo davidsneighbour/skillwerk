@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "version": "1.0.0",
+  "name": "gazetteer",
+  "description": "Gazetteer skills for search visibility and content discovery.",
+  "owner": {
+    "name": "David's Neighbour"
+  },
+  "plugins": [
+    {
+      "name": "gazetteer",
+      "description": "Collection of Gazetteer skills for technical SEO, local SEO, content optimisation, and search-result presentation.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/gazetteer",
+        "./skills/gazetteer-audit",
+        "./skills/gazetteer-lighthouse-audit"
+      ]
+    }
+  ]
+}

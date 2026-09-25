@@ -1,0 +1,1486 @@
+{
+  "name": "Website Specification audit checklist",
+  "source": "https://specification.website/checklist/",
+  "snapshot_date": "2026-07-12",
+  "item_count": 162,
+  "categories": {
+    "Foundations": 18,
+    "SEO": 14,
+    "Accessibility": 28,
+    "Security": 18,
+    "Well-Known URIs": 12,
+    "Agent Readiness": 20,
+    "Performance": 25,
+    "Privacy": 7,
+    "Resilience": 7,
+    "Internationalisation": 13
+  },
+  "result_states": [
+    "Pass",
+    "Fail",
+    "Partial",
+    "Manual review",
+    "Not applicable",
+    "Blocked"
+  ],
+  "items": [
+    {
+      "id": "FND-001",
+      "path": "checks/foundations/FND-001.md",
+      "category": "Foundations",
+      "status": "Required",
+      "title": "The HTML doctype",
+      "methods": "html,repo",
+      "applicability": "All HTML pages"
+    },
+    {
+      "id": "FND-002",
+      "path": "checks/foundations/FND-002.md",
+      "category": "Foundations",
+      "status": "Required",
+      "title": "The lang attribute on <html>",
+      "methods": "html,browser,repo",
+      "applicability": "All HTML pages"
+    },
+    {
+      "id": "FND-003",
+      "path": "checks/foundations/FND-003.md",
+      "category": "Foundations",
+      "status": "Required",
+      "title": "<meta charset>",
+      "methods": "html,repo",
+      "applicability": "All HTML pages"
+    },
+    {
+      "id": "FND-004",
+      "path": "checks/foundations/FND-004.md",
+      "category": "Foundations",
+      "status": "Required",
+      "title": "<meta viewport>",
+      "methods": "html,repo",
+      "applicability": "Pages intended for mobile or responsive use"
+    },
+    {
+      "id": "FND-005",
+      "path": "checks/foundations/FND-005.md",
+      "category": "Foundations",
+      "status": "Required",
+      "title": "The <title> element",
+      "methods": "html,crawl,repo",
+      "applicability": "All indexable HTML pages"
+    },
+    {
+      "id": "FND-006",
+      "path": "checks/foundations/FND-006.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "<meta name=\"description\">",
+      "methods": "html,crawl,repo",
+      "applicability": "All indexable HTML pages"
+    },
+    {
+      "id": "FND-007",
+      "path": "checks/foundations/FND-007.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "Canonical URL (rel=\"canonical\")",
+      "methods": "html,crawl,headers,repo",
+      "applicability": "Public pages with a preferred canonical URL"
+    },
+    {
+      "id": "FND-008",
+      "path": "checks/foundations/FND-008.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "Favicons and app icons",
+      "methods": "html,endpoint,repo",
+      "applicability": "Public sites"
+    },
+    {
+      "id": "FND-009",
+      "path": "checks/foundations/FND-009.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "<meta name=\"theme-color\">",
+      "methods": "html,browser,repo",
+      "applicability": "Sites with branded browser chrome or installable surfaces"
+    },
+    {
+      "id": "FND-010",
+      "path": "checks/foundations/FND-010.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "<meta name=\"color-scheme\">",
+      "methods": "html,css,browser,repo",
+      "applicability": "Sites supporting light or dark colour schemes"
+    },
+    {
+      "id": "FND-011",
+      "path": "checks/foundations/FND-011.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "Open Graph protocol",
+      "methods": "html,crawl,repo",
+      "applicability": "Pages intended to be shared"
+    },
+    {
+      "id": "FND-012",
+      "path": "checks/foundations/FND-012.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "Feed discovery with rel=\"alternate\"",
+      "methods": "html,endpoint,repo",
+      "applicability": "Only when the site publishes RSS, Atom, or JSON Feed"
+    },
+    {
+      "id": "FND-013",
+      "path": "checks/foundations/FND-013.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "Feed content hygiene",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Only when the site publishes a feed"
+    },
+    {
+      "id": "FND-014",
+      "path": "checks/foundations/FND-014.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "Popover API",
+      "methods": "browser,repo,manual",
+      "applicability": "Only when the UI contains popovers, menus, tooltips, or similar overlays"
+    },
+    {
+      "id": "FND-015",
+      "path": "checks/foundations/FND-015.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "CSS anchor positioning",
+      "methods": "css,browser,repo,manual",
+      "applicability": "Only when anchored floating UI is present and browser support fits the project"
+    },
+    {
+      "id": "FND-016",
+      "path": "checks/foundations/FND-016.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "Balanced text wrapping",
+      "methods": "css,browser,repo,manual",
+      "applicability": "Where headings or prose would benefit without harming readability"
+    },
+    {
+      "id": "FND-017",
+      "path": "checks/foundations/FND-017.md",
+      "category": "Foundations",
+      "status": "Recommended",
+      "title": "CSS container queries",
+      "methods": "css,repo,manual",
+      "applicability": "Component layouts that must respond to container size"
+    },
+    {
+      "id": "FND-018",
+      "path": "checks/foundations/FND-018.md",
+      "category": "Foundations",
+      "status": "Optional",
+      "title": "Invoker commands",
+      "methods": "html,browser,repo,manual",
+      "applicability": "Only when supported declarative commands fit existing controls"
+    },
+    {
+      "id": "SEO-001",
+      "path": "checks/seo/SEO-001.md",
+      "category": "SEO",
+      "status": "Recommended",
+      "title": "robots.txt",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Public websites and non-production environments"
+    },
+    {
+      "id": "SEO-002",
+      "path": "checks/seo/SEO-002.md",
+      "category": "SEO",
+      "status": "Recommended",
+      "title": "XML sitemaps",
+      "methods": "endpoint,validator,crawl,repo",
+      "applicability": "Public sites with indexable URLs"
+    },
+    {
+      "id": "SEO-003",
+      "path": "checks/seo/SEO-003.md",
+      "category": "SEO",
+      "status": "Recommended",
+      "title": "Sitemap index files",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Large sites or sites split into multiple sitemaps"
+    },
+    {
+      "id": "SEO-004",
+      "path": "checks/seo/SEO-004.md",
+      "category": "SEO",
+      "status": "Optional",
+      "title": "Image and video sitemap extensions",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Sites where important media is hard for crawlers to discover"
+    },
+    {
+      "id": "SEO-005",
+      "path": "checks/seo/SEO-005.md",
+      "category": "SEO",
+      "status": "Recommended",
+      "title": "URL structure",
+      "methods": "crawl,repo,manual",
+      "applicability": "Public URLs"
+    },
+    {
+      "id": "SEO-006",
+      "path": "checks/seo/SEO-006.md",
+      "category": "SEO",
+      "status": "Required",
+      "title": "Redirects (301/302/307/308)",
+      "methods": "headers,crawl,repo",
+      "applicability": "Redirecting or migrated URLs"
+    },
+    {
+      "id": "SEO-007",
+      "path": "checks/seo/SEO-007.md",
+      "category": "SEO",
+      "status": "Recommended",
+      "title": "Server-side rendering",
+      "methods": "html,headers,browser,repo",
+      "applicability": "Primary content and metadata"
+    },
+    {
+      "id": "SEO-008",
+      "path": "checks/seo/SEO-008.md",
+      "category": "SEO",
+      "status": "Avoid",
+      "title": "Soft 404s",
+      "methods": "headers,browser,crawl",
+      "applicability": "Unknown or removed URLs"
+    },
+    {
+      "id": "SEO-009",
+      "path": "checks/seo/SEO-009.md",
+      "category": "SEO",
+      "status": "Required",
+      "title": "Meta robots and X-Robots-Tag",
+      "methods": "html,headers,crawl,repo",
+      "applicability": "All public, private, staging, admin, and thin-content routes"
+    },
+    {
+      "id": "SEO-010",
+      "path": "checks/seo/SEO-010.md",
+      "category": "SEO",
+      "status": "Required",
+      "title": "Heading hierarchy",
+      "methods": "html,browser,crawl,repo,manual",
+      "applicability": "Content pages"
+    },
+    {
+      "id": "SEO-011",
+      "path": "checks/seo/SEO-011.md",
+      "category": "SEO",
+      "status": "Recommended",
+      "title": "Internal linking",
+      "methods": "crawl,html,repo,manual",
+      "applicability": "Multi-page sites"
+    },
+    {
+      "id": "SEO-012",
+      "path": "checks/seo/SEO-012.md",
+      "category": "SEO",
+      "status": "Recommended",
+      "title": "Structured data (JSON-LD)",
+      "methods": "html,validator,repo,manual",
+      "applicability": "Pages with entities or content types supported by schema.org"
+    },
+    {
+      "id": "SEO-013",
+      "path": "checks/seo/SEO-013.md",
+      "category": "SEO",
+      "status": "Recommended",
+      "title": "Breadcrumbs",
+      "methods": "html,validator,repo,manual",
+      "applicability": "Hierarchical sites"
+    },
+    {
+      "id": "SEO-014",
+      "path": "checks/seo/SEO-014.md",
+      "category": "SEO",
+      "status": "Optional",
+      "title": "IndexNow",
+      "methods": "endpoint,repo,manual",
+      "applicability": "Sites targeting participating search engines and needing rapid recrawling"
+    },
+    {
+      "id": "A11Y-001",
+      "path": "checks/accessibility/A11Y-001.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Colour contrast",
+      "methods": "browser,css,manual,validator",
+      "applicability": "All visual interfaces"
+    },
+    {
+      "id": "A11Y-002",
+      "path": "checks/accessibility/A11Y-002.md",
+      "category": "Accessibility",
+      "status": "Optional",
+      "title": "Automatic contrasting colour",
+      "methods": "css,browser,repo,manual",
+      "applicability": "Dynamic backgrounds where browser support is acceptable"
+    },
+    {
+      "id": "A11Y-003",
+      "path": "checks/accessibility/A11Y-003.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "Forced colours mode",
+      "methods": "browser,css,manual,repo",
+      "applicability": "All visual interfaces, especially custom controls"
+    },
+    {
+      "id": "A11Y-004",
+      "path": "checks/accessibility/A11Y-004.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Image alt text",
+      "methods": "html,crawl,repo,manual",
+      "applicability": "All images; decorative images require empty alternative text"
+    },
+    {
+      "id": "A11Y-005",
+      "path": "checks/accessibility/A11Y-005.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Form labels",
+      "methods": "html,browser,validator,repo,manual",
+      "applicability": "All form controls"
+    },
+    {
+      "id": "A11Y-006",
+      "path": "checks/accessibility/A11Y-006.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Keyboard navigation",
+      "methods": "browser,manual",
+      "applicability": "All interactive interfaces"
+    },
+    {
+      "id": "A11Y-007",
+      "path": "checks/accessibility/A11Y-007.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Visible focus indicators",
+      "methods": "browser,css,manual,repo",
+      "applicability": "All focusable controls"
+    },
+    {
+      "id": "A11Y-008",
+      "path": "checks/accessibility/A11Y-008.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Skip links",
+      "methods": "html,browser,repo,manual",
+      "applicability": "Pages with repeated navigation before main content"
+    },
+    {
+      "id": "A11Y-009",
+      "path": "checks/accessibility/A11Y-009.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "The inert attribute",
+      "methods": "html,browser,repo,manual",
+      "applicability": "When modal or overlay content makes the background inactive"
+    },
+    {
+      "id": "A11Y-010",
+      "path": "checks/accessibility/A11Y-010.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Semantic HTML and landmarks",
+      "methods": "html,browser,validator,repo,manual",
+      "applicability": "All pages"
+    },
+    {
+      "id": "A11Y-011",
+      "path": "checks/accessibility/A11Y-011.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "ARIA — first rule of ARIA",
+      "methods": "html,browser,repo,manual",
+      "applicability": "Custom widgets or ARIA usage"
+    },
+    {
+      "id": "A11Y-012",
+      "path": "checks/accessibility/A11Y-012.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Descriptive link text",
+      "methods": "html,crawl,repo,manual",
+      "applicability": "All links"
+    },
+    {
+      "id": "A11Y-013",
+      "path": "checks/accessibility/A11Y-013.md",
+      "category": "Accessibility",
+      "status": "Avoid",
+      "title": "Empty links and buttons",
+      "methods": "html,browser,validator,repo",
+      "applicability": "All interactive elements"
+    },
+    {
+      "id": "A11Y-014",
+      "path": "checks/accessibility/A11Y-014.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Accessible form errors",
+      "methods": "browser,html,repo,manual",
+      "applicability": "Forms with validation or submission errors"
+    },
+    {
+      "id": "A11Y-015",
+      "path": "checks/accessibility/A11Y-015.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "Accessible authentication",
+      "methods": "browser,repo,manual,policy",
+      "applicability": "Sites with authentication"
+    },
+    {
+      "id": "A11Y-016",
+      "path": "checks/accessibility/A11Y-016.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "Redundant entry",
+      "methods": "browser,repo,manual",
+      "applicability": "Multi-step forms and repeated data collection"
+    },
+    {
+      "id": "A11Y-017",
+      "path": "checks/accessibility/A11Y-017.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "Consistent help",
+      "methods": "browser,crawl,repo,manual",
+      "applicability": "Sites offering help mechanisms across multiple pages"
+    },
+    {
+      "id": "A11Y-018",
+      "path": "checks/accessibility/A11Y-018.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Document and parts language",
+      "methods": "html,crawl,repo,manual",
+      "applicability": "All pages containing one or more languages"
+    },
+    {
+      "id": "A11Y-019",
+      "path": "checks/accessibility/A11Y-019.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Reduced motion",
+      "methods": "browser,css,repo,manual",
+      "applicability": "Sites with animation, autoplay, transitions, parallax, or motion effects"
+    },
+    {
+      "id": "A11Y-020",
+      "path": "checks/accessibility/A11Y-020.md",
+      "category": "Accessibility",
+      "status": "Avoid",
+      "title": "Accessibility overlays",
+      "methods": "html,network,repo,manual",
+      "applicability": "All sites"
+    },
+    {
+      "id": "A11Y-021",
+      "path": "checks/accessibility/A11Y-021.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Captions and transcripts",
+      "methods": "browser,crawl,repo,manual",
+      "applicability": "Audio, video, and meaningful visual media"
+    },
+    {
+      "id": "A11Y-022",
+      "path": "checks/accessibility/A11Y-022.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Accessible data tables",
+      "methods": "html,browser,repo,manual",
+      "applicability": "Tabular data"
+    },
+    {
+      "id": "A11Y-023",
+      "path": "checks/accessibility/A11Y-023.md",
+      "category": "Accessibility",
+      "status": "Required",
+      "title": "Touch target size",
+      "methods": "browser,css,manual",
+      "applicability": "Pointer and touch interfaces"
+    },
+    {
+      "id": "A11Y-024",
+      "path": "checks/accessibility/A11Y-024.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "Dragging movements",
+      "methods": "browser,repo,manual",
+      "applicability": "Interfaces requiring drag gestures"
+    },
+    {
+      "id": "A11Y-025",
+      "path": "checks/accessibility/A11Y-025.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "Hidden until found",
+      "methods": "html,browser,repo,manual",
+      "applicability": "Collapsible content that should remain searchable"
+    },
+    {
+      "id": "A11Y-026",
+      "path": "checks/accessibility/A11Y-026.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "Mobile-friendly form inputs",
+      "methods": "html,browser,repo,manual",
+      "applicability": "Forms used on mobile devices"
+    },
+    {
+      "id": "A11Y-027",
+      "path": "checks/accessibility/A11Y-027.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "Native interactive elements",
+      "methods": "html,browser,repo,manual",
+      "applicability": "Interactive controls"
+    },
+    {
+      "id": "A11Y-028",
+      "path": "checks/accessibility/A11Y-028.md",
+      "category": "Accessibility",
+      "status": "Recommended",
+      "title": "CSS state and relational selectors",
+      "methods": "css,repo,manual",
+      "applicability": "Form and component state that can be expressed safely in CSS"
+    },
+    {
+      "id": "SEC-001",
+      "path": "checks/security/SEC-001.md",
+      "category": "Security",
+      "status": "Required",
+      "title": "HTTPS and TLS",
+      "methods": "headers,tls,network",
+      "applicability": "All production hosts and subdomains in scope"
+    },
+    {
+      "id": "SEC-002",
+      "path": "checks/security/SEC-002.md",
+      "category": "Security",
+      "status": "Required",
+      "title": "HSTS (Strict-Transport-Security)",
+      "methods": "headers,network,repo",
+      "applicability": "HTTPS production hosts after confirming subdomain readiness"
+    },
+    {
+      "id": "SEC-003",
+      "path": "checks/security/SEC-003.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "Mixed content and upgrade-insecure-requests",
+      "methods": "html,headers,network,browser,repo",
+      "applicability": "HTTPS pages"
+    },
+    {
+      "id": "SEC-004",
+      "path": "checks/security/SEC-004.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "Content Security Policy (CSP)",
+      "methods": "headers,html,repo,manual",
+      "applicability": "All sites, with policy tailored to actual resources"
+    },
+    {
+      "id": "SEC-005",
+      "path": "checks/security/SEC-005.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "Reporting API (Reporting-Endpoints)",
+      "methods": "headers,repo,manual",
+      "applicability": "Sites operating browser-policy reporting"
+    },
+    {
+      "id": "SEC-006",
+      "path": "checks/security/SEC-006.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "/.well-known/security.txt",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Publicly operated domains"
+    },
+    {
+      "id": "SEC-007",
+      "path": "checks/security/SEC-007.md",
+      "category": "Security",
+      "status": "Required",
+      "title": "X-Content-Type-Options: nosniff",
+      "methods": "headers,repo",
+      "applicability": "All applicable HTTP responses"
+    },
+    {
+      "id": "SEC-008",
+      "path": "checks/security/SEC-008.md",
+      "category": "Security",
+      "status": "Required",
+      "title": "Clickjacking protection (frame-ancestors / X-Frame-Options)",
+      "methods": "headers,repo,manual",
+      "applicability": "HTML pages, with intended embedding documented"
+    },
+    {
+      "id": "SEC-009",
+      "path": "checks/security/SEC-009.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "Cross-origin isolation (COOP / COEP / CORP)",
+      "methods": "headers,repo,manual",
+      "applicability": "Applications benefiting from isolation; verify third-party compatibility"
+    },
+    {
+      "id": "SEC-010",
+      "path": "checks/security/SEC-010.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "Referrer-Policy",
+      "methods": "headers,html,repo",
+      "applicability": "All sites"
+    },
+    {
+      "id": "SEC-011",
+      "path": "checks/security/SEC-011.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "Permissions-Policy",
+      "methods": "headers,repo,manual",
+      "applicability": "Sites that can restrict powerful browser features"
+    },
+    {
+      "id": "SEC-012",
+      "path": "checks/security/SEC-012.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "Subresource Integrity (SRI)",
+      "methods": "html,repo,network",
+      "applicability": "Third-party scripts and styles loaded from stable URLs"
+    },
+    {
+      "id": "SEC-013",
+      "path": "checks/security/SEC-013.md",
+      "category": "Security",
+      "status": "Optional",
+      "title": "Digest Fields (Content-Digest and Repr-Digest)",
+      "methods": "headers,repo,manual",
+      "applicability": "APIs, downloads, and machine-readable resources needing integrity metadata"
+    },
+    {
+      "id": "SEC-014",
+      "path": "checks/security/SEC-014.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "Trusted Types",
+      "methods": "headers,repo,manual",
+      "applicability": "Script-heavy applications with DOM injection sinks and compatible code"
+    },
+    {
+      "id": "SEC-015",
+      "path": "checks/security/SEC-015.md",
+      "category": "Security",
+      "status": "Required",
+      "title": "Cookie attributes — Secure, HttpOnly, SameSite",
+      "methods": "headers,browser,network,repo,manual",
+      "applicability": "Sites setting cookies"
+    },
+    {
+      "id": "SEC-016",
+      "path": "checks/security/SEC-016.md",
+      "category": "Security",
+      "status": "Optional",
+      "title": "Clear-Site-Data",
+      "methods": "headers,repo,manual",
+      "applicability": "Logout, account removal, or device-clearing flows"
+    },
+    {
+      "id": "SEC-017",
+      "path": "checks/security/SEC-017.md",
+      "category": "Security",
+      "status": "Recommended",
+      "title": "DNS CAA records",
+      "methods": "dns,manual",
+      "applicability": "Domains using public certificate authorities"
+    },
+    {
+      "id": "SEC-018",
+      "path": "checks/security/SEC-018.md",
+      "category": "Security",
+      "status": "Optional",
+      "title": "DNSSEC",
+      "methods": "dns,manual",
+      "applicability": "Domains whose registrar, registry, and DNS provider support it end to end"
+    },
+    {
+      "id": "WKU-001",
+      "path": "checks/well-known-uris/WKU-001.md",
+      "category": "Well-Known URIs",
+      "status": "Recommended",
+      "title": "Well-known URIs",
+      "methods": "endpoint,repo,manual",
+      "applicability": "When publishing registered site-wide metadata"
+    },
+    {
+      "id": "WKU-002",
+      "path": "checks/well-known-uris/WKU-002.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/change-password",
+      "methods": "endpoint,headers,repo",
+      "applicability": "Sites with password-based accounts"
+    },
+    {
+      "id": "WKU-003",
+      "path": "checks/well-known-uris/WKU-003.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/webauthn",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Passkeys shared across related origins"
+    },
+    {
+      "id": "WKU-004",
+      "path": "checks/well-known-uris/WKU-004.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/openid-configuration",
+      "methods": "endpoint,validator,repo",
+      "applicability": "OpenID Connect providers"
+    },
+    {
+      "id": "WKU-005",
+      "path": "checks/well-known-uris/WKU-005.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/oauth-authorization-server",
+      "methods": "endpoint,validator,repo",
+      "applicability": "OAuth 2.0 authorisation servers that are not OIDC providers"
+    },
+    {
+      "id": "WKU-006",
+      "path": "checks/well-known-uris/WKU-006.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/oauth-protected-resource",
+      "methods": "endpoint,validator,repo",
+      "applicability": "OAuth-protected resource servers"
+    },
+    {
+      "id": "WKU-007",
+      "path": "checks/well-known-uris/WKU-007.md",
+      "category": "Well-Known URIs",
+      "status": "Recommended",
+      "title": "/.well-known/api-catalog",
+      "methods": "endpoint,validator,repo,manual",
+      "applicability": "Hosts exposing APIs or machine-readable resources"
+    },
+    {
+      "id": "WKU-008",
+      "path": "checks/well-known-uris/WKU-008.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/webfinger",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Fediverse or account-discovery implementations"
+    },
+    {
+      "id": "WKU-009",
+      "path": "checks/well-known-uris/WKU-009.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/apple-app-site-association",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Sites associated with Apple apps"
+    },
+    {
+      "id": "WKU-010",
+      "path": "checks/well-known-uris/WKU-010.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/assetlinks.json",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Sites associated with Android apps"
+    },
+    {
+      "id": "WKU-011",
+      "path": "checks/well-known-uris/WKU-011.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/nodeinfo",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Federated platforms exposing NodeInfo"
+    },
+    {
+      "id": "WKU-012",
+      "path": "checks/well-known-uris/WKU-012.md",
+      "category": "Well-Known URIs",
+      "status": "Optional",
+      "title": "/.well-known/traffic-advice",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Sites controlling private prefetch proxy traffic"
+    },
+    {
+      "id": "AGT-001",
+      "path": "checks/agent-readiness/AGT-001.md",
+      "category": "Agent Readiness",
+      "status": "Recommended",
+      "title": "Agent readiness",
+      "methods": "crawl,html,endpoint,repo,manual",
+      "applicability": "Public content intended to be consumed by agents or crawlers"
+    },
+    {
+      "id": "AGT-002",
+      "path": "checks/agent-readiness/AGT-002.md",
+      "category": "Agent Readiness",
+      "status": "Recommended",
+      "title": "/llms.txt",
+      "methods": "endpoint,validator,repo,manual",
+      "applicability": "Public sites with important content to curate for language models"
+    },
+    {
+      "id": "AGT-003",
+      "path": "checks/agent-readiness/AGT-003.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "/llms-full.txt",
+      "methods": "endpoint,validator,repo,manual",
+      "applicability": "Smaller sites where a consolidated full-text corpus is useful"
+    },
+    {
+      "id": "AGT-004",
+      "path": "checks/agent-readiness/AGT-004.md",
+      "category": "Agent Readiness",
+      "status": "Recommended",
+      "title": "Per-page Markdown source endpoints",
+      "methods": "endpoint,crawl,repo,manual",
+      "applicability": "Documentation or structured editorial sites"
+    },
+    {
+      "id": "AGT-005",
+      "path": "checks/agent-readiness/AGT-005.md",
+      "category": "Agent Readiness",
+      "status": "Recommended",
+      "title": "robots.txt for AI crawlers",
+      "methods": "endpoint,validator,policy,repo",
+      "applicability": "Sites that need explicit AI crawler policies"
+    },
+    {
+      "id": "AGT-006",
+      "path": "checks/agent-readiness/AGT-006.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "Content Signals in robots.txt",
+      "methods": "endpoint,validator,policy,repo",
+      "applicability": "Only when adopting the emerging content-signal convention"
+    },
+    {
+      "id": "AGT-007",
+      "path": "checks/agent-readiness/AGT-007.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "Web Bot Auth — verifiable bot identity",
+      "methods": "headers,network,repo,manual",
+      "applicability": "Sites implementing signed bot authentication"
+    },
+    {
+      "id": "AGT-008",
+      "path": "checks/agent-readiness/AGT-008.md",
+      "category": "Agent Readiness",
+      "status": "Required",
+      "title": "Stable URLs",
+      "methods": "crawl,repo,manual,history",
+      "applicability": "Published URLs"
+    },
+    {
+      "id": "AGT-009",
+      "path": "checks/agent-readiness/AGT-009.md",
+      "category": "Agent Readiness",
+      "status": "Recommended",
+      "title": "Structured data for agents",
+      "methods": "html,validator,repo,manual",
+      "applicability": "Pages containing useful typed facts"
+    },
+    {
+      "id": "AGT-010",
+      "path": "checks/agent-readiness/AGT-010.md",
+      "category": "Agent Readiness",
+      "status": "Recommended",
+      "title": "Machine-readable formats",
+      "methods": "endpoint,repo,manual",
+      "applicability": "Content naturally represented as JSON, feeds, or Markdown"
+    },
+    {
+      "id": "AGT-011",
+      "path": "checks/agent-readiness/AGT-011.md",
+      "category": "Agent Readiness",
+      "status": "Recommended",
+      "title": "HTTP Link headers for discovery",
+      "methods": "headers,endpoint,repo,manual",
+      "applicability": "Sites publishing machine-readable resources"
+    },
+    {
+      "id": "AGT-012",
+      "path": "checks/agent-readiness/AGT-012.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "MCP and tool discovery",
+      "methods": "endpoint,validator,repo,manual",
+      "applicability": "Sites exposing structured query or action capabilities"
+    },
+    {
+      "id": "AGT-013",
+      "path": "checks/agent-readiness/AGT-013.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "A2A agent cards",
+      "methods": "endpoint,validator,repo,manual",
+      "applicability": "Services exposing agent-to-agent capabilities"
+    },
+    {
+      "id": "AGT-014",
+      "path": "checks/agent-readiness/AGT-014.md",
+      "category": "Agent Readiness",
+      "status": "Recommended",
+      "title": "Agent Skills discovery",
+      "methods": "endpoint,validator,repo,manual",
+      "applicability": "Sites publishing reusable agent skills"
+    },
+    {
+      "id": "AGT-015",
+      "path": "checks/agent-readiness/AGT-015.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "DNS for AI Discovery (DNS-AID)",
+      "methods": "dns,endpoint,manual",
+      "applicability": "Services adopting DNS-based agent discovery"
+    },
+    {
+      "id": "AGT-016",
+      "path": "checks/agent-readiness/AGT-016.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "Agentic Resource Discovery (ARD)",
+      "methods": "endpoint,validator,repo,manual",
+      "applicability": "Sites publishing an AI capability catalogue"
+    },
+    {
+      "id": "AGT-017",
+      "path": "checks/agent-readiness/AGT-017.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "NLWeb — conversational interface discovery",
+      "methods": "endpoint,headers,repo,manual",
+      "applicability": "Sites exposing an NLWeb-compatible conversational endpoint"
+    },
+    {
+      "id": "AGT-018",
+      "path": "checks/agent-readiness/AGT-018.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "WebMCP — browser-native tools for agents",
+      "methods": "html,browser,repo,manual",
+      "applicability": "Sites adopting browser-native agent tools"
+    },
+    {
+      "id": "AGT-019",
+      "path": "checks/agent-readiness/AGT-019.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "Open Knowledge Format (OKF) bundle",
+      "methods": "endpoint,validator,repo,manual",
+      "applicability": "Knowledge bases suitable for bundled ingestion"
+    },
+    {
+      "id": "AGT-020",
+      "path": "checks/agent-readiness/AGT-020.md",
+      "category": "Agent Readiness",
+      "status": "Optional",
+      "title": "Schemamap — discoverable JSON-LD endpoints per resource",
+      "methods": "endpoint,validator,repo,manual",
+      "applicability": "Sites adopting this non-standard convention"
+    },
+    {
+      "id": "PERF-001",
+      "path": "checks/performance/PERF-001.md",
+      "category": "Performance",
+      "status": "Required",
+      "title": "Core Web Vitals (LCP, INP, CLS)",
+      "methods": "performance,rum,lab,browser,manual",
+      "applicability": "Representative production page types"
+    },
+    {
+      "id": "PERF-002",
+      "path": "checks/performance/PERF-002.md",
+      "category": "Performance",
+      "status": "Required",
+      "title": "Image optimisation",
+      "methods": "html,network,repo,performance,manual",
+      "applicability": "Sites serving images"
+    },
+    {
+      "id": "PERF-003",
+      "path": "checks/performance/PERF-003.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Lazy loading images, iframes, and video",
+      "methods": "html,browser,repo,performance,manual",
+      "applicability": "Off-screen media; exclude the LCP element"
+    },
+    {
+      "id": "PERF-004",
+      "path": "checks/performance/PERF-004.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Preload, prefetch, preconnect",
+      "methods": "html,headers,network,repo,performance",
+      "applicability": "Only for resources proven important by measurement"
+    },
+    {
+      "id": "PERF-005",
+      "path": "checks/performance/PERF-005.md",
+      "category": "Performance",
+      "status": "Optional",
+      "title": "103 Early Hints",
+      "methods": "headers,network,manual",
+      "applicability": "Servers and CDNs supporting early hints"
+    },
+    {
+      "id": "PERF-006",
+      "path": "checks/performance/PERF-006.md",
+      "category": "Performance",
+      "status": "Required",
+      "title": "Cache-Control headers",
+      "methods": "headers,network,repo",
+      "applicability": "HTML and static assets"
+    },
+    {
+      "id": "PERF-007",
+      "path": "checks/performance/PERF-007.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Conditional requests (ETag, Last-Modified, 304)",
+      "methods": "headers,network,manual",
+      "applicability": "Cacheable responses"
+    },
+    {
+      "id": "PERF-008",
+      "path": "checks/performance/PERF-008.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "No-Vary-Search response header",
+      "methods": "headers,network,repo,manual",
+      "applicability": "Resources where selected query parameters do not change content"
+    },
+    {
+      "id": "PERF-009",
+      "path": "checks/performance/PERF-009.md",
+      "category": "Performance",
+      "status": "Required",
+      "title": "Compression (gzip, brotli, zstd)",
+      "methods": "headers,network,performance",
+      "applicability": "Compressible text responses"
+    },
+    {
+      "id": "PERF-010",
+      "path": "checks/performance/PERF-010.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Web font loading",
+      "methods": "html,css,network,repo,performance,manual",
+      "applicability": "Sites loading web fonts"
+    },
+    {
+      "id": "PERF-011",
+      "path": "checks/performance/PERF-011.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Critical CSS and render-blocking resources",
+      "methods": "html,network,repo,performance,manual",
+      "applicability": "Pages with CSS or other render-blocking resources"
+    },
+    {
+      "id": "PERF-012",
+      "path": "checks/performance/PERF-012.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Script loading — defer, async, module",
+      "methods": "html,network,repo,performance,manual",
+      "applicability": "Pages loading JavaScript"
+    },
+    {
+      "id": "PERF-013",
+      "path": "checks/performance/PERF-013.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "HTTP/2 and HTTP/3",
+      "methods": "network,headers,manual",
+      "applicability": "Production delivery"
+    },
+    {
+      "id": "PERF-014",
+      "path": "checks/performance/PERF-014.md",
+      "category": "Performance",
+      "status": "Avoid",
+      "title": "HTTP/1.1 workarounds: sharding, sprites, and request-driven bundling",
+      "methods": "network,repo,manual",
+      "applicability": "Modern HTTP/2 or HTTP/3 deployments"
+    },
+    {
+      "id": "PERF-015",
+      "path": "checks/performance/PERF-015.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Speculation Rules",
+      "methods": "html,network,repo,performance,manual",
+      "applicability": "Sites where measured navigation patterns justify speculation"
+    },
+    {
+      "id": "PERF-016",
+      "path": "checks/performance/PERF-016.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Resource hints overview",
+      "methods": "html,headers,network,repo,manual",
+      "applicability": "Sites using resource hints"
+    },
+    {
+      "id": "PERF-017",
+      "path": "checks/performance/PERF-017.md",
+      "category": "Performance",
+      "status": "Optional",
+      "title": "View Transitions",
+      "methods": "css,browser,repo,manual",
+      "applicability": "Interfaces benefiting from transitions with acceptable support"
+    },
+    {
+      "id": "PERF-018",
+      "path": "checks/performance/PERF-018.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Back/forward cache (BFCache)",
+      "methods": "browser,performance,repo,manual",
+      "applicability": "Navigation-heavy pages"
+    },
+    {
+      "id": "PERF-019",
+      "path": "checks/performance/PERF-019.md",
+      "category": "Performance",
+      "status": "Optional",
+      "title": "Visibility-aware rendering",
+      "methods": "css,browser,repo,performance,manual",
+      "applicability": "Large pages with substantial off-screen content"
+    },
+    {
+      "id": "PERF-020",
+      "path": "checks/performance/PERF-020.md",
+      "category": "Performance",
+      "status": "Optional",
+      "title": "CSS containment",
+      "methods": "css,browser,repo,performance,manual",
+      "applicability": "Components whose rendering can be isolated safely"
+    },
+    {
+      "id": "PERF-021",
+      "path": "checks/performance/PERF-021.md",
+      "category": "Performance",
+      "status": "Optional",
+      "title": "Scroll-driven animations",
+      "methods": "css,browser,repo,performance,manual",
+      "applicability": "Scroll-linked effects with reduced-motion handling"
+    },
+    {
+      "id": "PERF-022",
+      "path": "checks/performance/PERF-022.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Scrollbar gutter",
+      "methods": "css,browser,repo,manual",
+      "applicability": "Layouts susceptible to width shifts when scrollbars appear"
+    },
+    {
+      "id": "PERF-023",
+      "path": "checks/performance/PERF-023.md",
+      "category": "Performance",
+      "status": "Recommended",
+      "title": "Dynamic viewport units (dvh, svh, lvh)",
+      "methods": "css,browser,repo,manual",
+      "applicability": "Full-height mobile layouts"
+    },
+    {
+      "id": "PERF-024",
+      "path": "checks/performance/PERF-024.md",
+      "category": "Performance",
+      "status": "Optional",
+      "title": "Compression Dictionary Transport",
+      "methods": "headers,network,repo,manual",
+      "applicability": "Deployments supporting shared compression dictionaries"
+    },
+    {
+      "id": "PERF-025",
+      "path": "checks/performance/PERF-025.md",
+      "category": "Performance",
+      "status": "Optional",
+      "title": "Server-Timing header",
+      "methods": "headers,network,repo,manual",
+      "applicability": "Sites measuring server-side latency without exposing sensitive details"
+    },
+    {
+      "id": "PRIV-001",
+      "path": "checks/privacy/PRIV-001.md",
+      "category": "Privacy",
+      "status": "Required",
+      "title": "Privacy policy",
+      "methods": "crawl,policy,repo,manual",
+      "applicability": "Sites collecting, processing, or sharing personal data"
+    },
+    {
+      "id": "PRIV-002",
+      "path": "checks/privacy/PRIV-002.md",
+      "category": "Privacy",
+      "status": "Required",
+      "title": "Cookie consent",
+      "methods": "browser,network,policy,repo,manual",
+      "applicability": "Jurisdictions and use cases requiring prior consent for non-essential storage"
+    },
+    {
+      "id": "PRIV-003",
+      "path": "checks/privacy/PRIV-003.md",
+      "category": "Privacy",
+      "status": "Recommended",
+      "title": "Global Privacy Control (GPC)",
+      "methods": "browser,network,policy,repo,manual",
+      "applicability": "Sites subject to or voluntarily honouring opt-out signals"
+    },
+    {
+      "id": "PRIV-004",
+      "path": "checks/privacy/PRIV-004.md",
+      "category": "Privacy",
+      "status": "Recommended",
+      "title": "Third-party scripts and privacy",
+      "methods": "html,network,policy,repo,manual",
+      "applicability": "Sites loading third-party code or embeds"
+    },
+    {
+      "id": "PRIV-005",
+      "path": "checks/privacy/PRIV-005.md",
+      "category": "Privacy",
+      "status": "Optional",
+      "title": "Storage Access API",
+      "methods": "browser,repo,manual",
+      "applicability": "Cross-site embeds needing partitioned-cookie access"
+    },
+    {
+      "id": "PRIV-006",
+      "path": "checks/privacy/PRIV-006.md",
+      "category": "Privacy",
+      "status": "Recommended",
+      "title": "Privacy-respecting analytics",
+      "methods": "network,policy,repo,manual",
+      "applicability": "Sites using analytics"
+    },
+    {
+      "id": "PRIV-007",
+      "path": "checks/privacy/PRIV-007.md",
+      "category": "Privacy",
+      "status": "Recommended",
+      "title": "Data minimisation",
+      "methods": "forms,network,policy,repo,manual",
+      "applicability": "Any collection or retention of personal data"
+    },
+    {
+      "id": "RES-001",
+      "path": "checks/resilience/RES-001.md",
+      "category": "Resilience",
+      "status": "Required",
+      "title": "Custom error pages (404, 500)",
+      "methods": "headers,browser,repo,manual",
+      "applicability": "All public sites"
+    },
+    {
+      "id": "RES-002",
+      "path": "checks/resilience/RES-002.md",
+      "category": "Resilience",
+      "status": "Recommended",
+      "title": "Maintenance pages and 503",
+      "methods": "headers,browser,repo,manual",
+      "applicability": "Sites with planned maintenance or temporary outages"
+    },
+    {
+      "id": "RES-003",
+      "path": "checks/resilience/RES-003.md",
+      "category": "Resilience",
+      "status": "Recommended",
+      "title": "Graceful degradation when JavaScript fails",
+      "methods": "browser,html,repo,manual",
+      "applicability": "Sites depending on client-side JavaScript"
+    },
+    {
+      "id": "RES-004",
+      "path": "checks/resilience/RES-004.md",
+      "category": "Resilience",
+      "status": "Optional",
+      "title": "Offline support and service workers",
+      "methods": "browser,network,repo,manual",
+      "applicability": "Applications benefiting from offline or poor-network support"
+    },
+    {
+      "id": "RES-005",
+      "path": "checks/resilience/RES-005.md",
+      "category": "Resilience",
+      "status": "Recommended",
+      "title": "Web app manifest",
+      "methods": "html,endpoint,validator,repo",
+      "applicability": "Installable or app-like sites"
+    },
+    {
+      "id": "RES-006",
+      "path": "checks/resilience/RES-006.md",
+      "category": "Resilience",
+      "status": "Recommended",
+      "title": "Monitoring and uptime",
+      "methods": "operations,policy,manual",
+      "applicability": "Production services"
+    },
+    {
+      "id": "RES-007",
+      "path": "checks/resilience/RES-007.md",
+      "category": "Resilience",
+      "status": "Optional",
+      "title": "Deprecation and Sunset",
+      "methods": "headers,repo,manual",
+      "applicability": "APIs or endpoints being retired"
+    },
+    {
+      "id": "I18N-001",
+      "path": "checks/internationalisation/I18N-001.md",
+      "category": "Internationalisation",
+      "status": "Recommended",
+      "title": "International URL structure",
+      "methods": "crawl,repo,manual",
+      "applicability": "Multilingual or multi-regional sites"
+    },
+    {
+      "id": "I18N-002",
+      "path": "checks/internationalisation/I18N-002.md",
+      "category": "Internationalisation",
+      "status": "Recommended",
+      "title": "hreflang for language and regional URLs",
+      "methods": "html,crawl,validator,repo",
+      "applicability": "Pages with language or regional alternates"
+    },
+    {
+      "id": "I18N-003",
+      "path": "checks/internationalisation/I18N-003.md",
+      "category": "Internationalisation",
+      "status": "Recommended",
+      "title": "Localised page metadata",
+      "methods": "html,crawl,repo,manual",
+      "applicability": "Translated or localised pages"
+    },
+    {
+      "id": "I18N-004",
+      "path": "checks/internationalisation/I18N-004.md",
+      "category": "Internationalisation",
+      "status": "Optional",
+      "title": "hreflang in XML sitemaps",
+      "methods": "endpoint,validator,repo",
+      "applicability": "Large multilingual sites managing alternates in sitemaps"
+    },
+    {
+      "id": "I18N-005",
+      "path": "checks/internationalisation/I18N-005.md",
+      "category": "Internationalisation",
+      "status": "Avoid",
+      "title": "Automatic IP-based language redirects",
+      "methods": "headers,browser,repo,manual",
+      "applicability": "Multilingual or multi-regional sites"
+    },
+    {
+      "id": "I18N-006",
+      "path": "checks/internationalisation/I18N-006.md",
+      "category": "Internationalisation",
+      "status": "Required",
+      "title": "lang attribute on inline content",
+      "methods": "html,crawl,repo,manual",
+      "applicability": "Pages containing text in a language different from the document language"
+    },
+    {
+      "id": "I18N-007",
+      "path": "checks/internationalisation/I18N-007.md",
+      "category": "Internationalisation",
+      "status": "Optional",
+      "title": "translate attribute for untranslatable content",
+      "methods": "html,repo,manual",
+      "applicability": "Brand names, identifiers, and code that translation systems should preserve"
+    },
+    {
+      "id": "I18N-008",
+      "path": "checks/internationalisation/I18N-008.md",
+      "category": "Internationalisation",
+      "status": "Recommended",
+      "title": "Language switcher",
+      "methods": "html,browser,repo,manual",
+      "applicability": "Multilingual sites"
+    },
+    {
+      "id": "I18N-009",
+      "path": "checks/internationalisation/I18N-009.md",
+      "category": "Internationalisation",
+      "status": "Recommended",
+      "title": "RTL and bidirectional text",
+      "methods": "html,css,browser,repo,manual",
+      "applicability": "Arabic, Hebrew, Persian, Urdu, or mixed-direction content"
+    },
+    {
+      "id": "I18N-010",
+      "path": "checks/internationalisation/I18N-010.md",
+      "category": "Internationalisation",
+      "status": "Optional",
+      "title": "Writing modes and CJK line breaking",
+      "methods": "css,browser,repo,manual",
+      "applicability": "Vertical writing or Chinese, Japanese, Korean, Thai, or Mongolian content"
+    },
+    {
+      "id": "I18N-011",
+      "path": "checks/internationalisation/I18N-011.md",
+      "category": "Internationalisation",
+      "status": "Recommended",
+      "title": "Locale-aware content",
+      "methods": "browser,repo,manual",
+      "applicability": "Localised dates, numbers, currencies, and units"
+    },
+    {
+      "id": "I18N-012",
+      "path": "checks/internationalisation/I18N-012.md",
+      "category": "Internationalisation",
+      "status": "Recommended",
+      "title": "Plural rules and grammatical number",
+      "methods": "browser,repo,manual",
+      "applicability": "Localised messages containing counts"
+    },
+    {
+      "id": "I18N-013",
+      "path": "checks/internationalisation/I18N-013.md",
+      "category": "Internationalisation",
+      "status": "Optional",
+      "title": "Internationalised Domain Names (IDN)",
+      "methods": "dns,browser,manual",
+      "applicability": "Domains using non-ASCII labels"
+    }
+  ]
+}

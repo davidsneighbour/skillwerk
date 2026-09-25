@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gazetteer Lighthouse Audit"
+  short_description: "Reproducible Lighthouse audit artifacts"
+  default_prompt: "Use $gazetteer-lighthouse-audit to run reproducible Lighthouse audits for a live HTTP or HTTPS URL and return the generated manifest and report artifacts."

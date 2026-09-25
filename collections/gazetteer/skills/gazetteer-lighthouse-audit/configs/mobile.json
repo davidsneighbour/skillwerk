@@ -1,0 +1,12 @@
+{
+  "formFactor": "mobile",
+  "screenEmulation": {
+    "mobile": true,
+    "width": 412,
+    "height": 823,
+    "deviceScaleFactor": 1.75
+  },
+  "throttlingMethod": "simulate",
+  "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+  "chromeFlags": "--headless"
+}
