@@ -223,6 +223,13 @@ const validateListedSlugs = (
     );
 };
 
+const collectionRoot = process.argv[2];
+if (!collectionRoot) {
+  console.error("Usage: node scripts/validate-skills.ts <collection-root>");
+  process.exit(2);
+}
+process.chdir(collectionRoot);
+
 const slugs = readdirSync("skills", { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
   .map((entry) => entry.name)
@@ -238,7 +245,9 @@ if (!repositoryPackageName) {
 }
 
 const validatorConfig = readOptionalJson<ValidatorConfig>(VALIDATOR_CONFIG);
-const explicitOnlySkills = validatorConfig?.explicitOnlySkills ?? [];
+const explicitOnlySkills = process.env.SKILLWERK_EXPLICIT_ONLY
+  ? process.env.SKILLWERK_EXPLICIT_ONLY.split(",").filter(Boolean)
+  : (validatorConfig?.explicitOnlySkills ?? []);
 if (!Array.isArray(explicitOnlySkills)) {
   fail(VALIDATOR_CONFIG, "`explicitOnlySkills` must be an array");
 }

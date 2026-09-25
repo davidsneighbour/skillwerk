@@ -12,11 +12,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 25
+          cache: npm
+      - run: npm ci
       - id: collection
         run: |
           echo "name=${GITHUB_REF_NAME%%/*}" >> "$GITHUB_OUTPUT"
           echo "version=${GITHUB_REF_NAME#*/}" >> "$GITHUB_OUTPUT"
-      - run: npm run check -- --collection ${{ steps.collection.outputs.name }}
+      - run: npm run check
       - run: npm run package -- --collection ${{ steps.collection.outputs.name }}
       - uses: softprops/action-gh-release@v2
         with:

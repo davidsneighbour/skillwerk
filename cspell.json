@@ -1,0 +1,29 @@
+{
+  "version": "0.2",
+  "language": "en-GB",
+  "files": ["**/*"],
+  "ignorePaths": [
+    ".git",
+    ".migration",
+    "dist",
+    "node_modules",
+    "package-lock.json",
+    "scratch",
+    "collections/*/.github/assets"
+  ],
+  "patterns": [
+    {
+      "name": "hashtags",
+      "pattern": "/#[\\p{L}\\p{N}_]+/gu"
+    }
+  ],
+  "ignoreRegExpList": ["hashtags"],
+  "dictionaryDefinitions": [
+    {
+      "name": "workspace-words",
+      "path": "./.vscode/dictionary.txt",
+      "addWords": true
+    }
+  ],
+  "dictionaries": ["workspace-words"]
+}

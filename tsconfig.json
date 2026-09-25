@@ -1,11 +1,13 @@
 {
+  "extends": "@dnbhq/tsconfig/cli",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "allowJs": true,
+    "allowUnreachableCode": true,
+    "exactOptionalPropertyTypes": false,
+    "lib": ["ES2024", "DOM"],
     "noEmit": true,
-    "strict": true,
-    "target": "ES2024"
+    "noPropertyAccessFromIndexSignature": false
   },
-  "include": ["scripts/**/*.ts"]
+  "include": ["collections/**/*.ts", "scripts/**/*.ts"]
 }

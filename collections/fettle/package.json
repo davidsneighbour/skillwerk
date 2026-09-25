@@ -4,6 +4,7 @@
 	"description": "Evidence-backed engineering for agent skill collections",
 	"type": "module",
 	"private": true,
+	"license": "MIT",
 	"engines": {
 		"node": ">=25"
 	},
@@ -11,18 +12,7 @@
 		"fettle": "./scripts/fettle.ts"
 	},
 	"scripts": {
-		"check": "npm run lint && npm run validate:types && npm test && npm run validate:plugins",
-		"lint": "biome check .",
-		"lint:fix": "biome check --write .",
-		"test": "node --test tests/*.test.ts",
-		"validate:types": "tsc --noEmit",
-		"validate:plugins": "claude plugin validate . && python3 /home/patrick/github.com/davidsneighbour/dotfiles/protected/ai-configs/codex/skills/.system/plugin-creator/scripts/validate_plugin.py .",
 		"fettle": "node scripts/fettle.ts"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^2.2.4",
-		"@types/node": "^24.5.2",
-		"typescript": "^5.9.2"
 	},
 	"repository": {
 		"type": "git",
