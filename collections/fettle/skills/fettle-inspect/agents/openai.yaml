@@ -1,4 +1,4 @@
 interface:
   display_name: "Fettle Inspector"
   short_description: "Audit agent skill construction"
-  default_prompt: "Inspect the specified agent skill or collection and report evidence-backed structural findings."
+  default_prompt: "Use $fettle-inspect to inspect the specified agent skill or collection and report evidence-backed structural findings."

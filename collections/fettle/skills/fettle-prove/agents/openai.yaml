@@ -1,4 +1,4 @@
 interface:
   display_name: "Fettle Prover"
   short_description: "Run skill regression scenarios"
-  default_prompt: "Test the specified agent skill with deterministic checks and clearly labelled behavioural scenarios."
+  default_prompt: "Use $fettle-prove to test the specified agent skill with deterministic checks and clearly labelled behavioural scenarios."

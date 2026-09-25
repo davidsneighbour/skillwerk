@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "version": "2.0.0",
+  "name": "fettle",
+  "description": "Fettle skills for inspecting, observing, improving, proving, and stewarding agent skills.",
+  "owner": {
+    "name": "David's Neighbour"
+  },
+  "plugins": [
+    {
+      "name": "fettle",
+      "description": "Collection of Fettle skills for evidence-backed engineering of agent skill collections.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/fettle-inspect",
+        "./skills/fettle-observe",
+        "./skills/fettle-engineer",
+        "./skills/fettle-prove",
+        "./skills/fettle-steward"
+      ]
+    }
+  ]
+}

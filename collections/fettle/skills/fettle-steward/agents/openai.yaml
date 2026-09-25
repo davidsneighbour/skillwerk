@@ -1,4 +1,4 @@
 interface:
   display_name: "Fettle Steward"
   short_description: "Audit skill collection health"
-  default_prompt: "Audit the configured agent skill collections for inventory, ownership, overlap, and consistency concerns."
+  default_prompt: "Use $fettle-steward to audit the configured agent skill collections for inventory, ownership, overlap, and consistency concerns."

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Fettle",
+      "description": "Skills for inspecting, observing, improving, proving, and stewarding agent skills with evidence-backed findings.",
+      "skills": [
+        "fettle-inspect",
+        "fettle-observe",
+        "fettle-engineer",
+        "fettle-prove",
+        "fettle-steward"
+      ]
+    }
+  ]
+}
