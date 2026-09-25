@@ -7,7 +7,7 @@ The repository owns development tooling, validation, maintenance automation, and
 - [Architecture](ARCHITECTURE.md)
 - [Migration plan](MIGRATION.md)
 
-> Migration status: all eight collections are imported locally with preserved ancestry and verified isolated packages. External publication and source-repository cutover are pending. See [Migration record](MIGRATION-RECORD.md).
+> Migration status: all eight collections are published at version 2.0.0 with preserved ancestry and verified isolated packages. Source-repository follow-up remains manual. See [Migration record](MIGRATION-RECORD.md).
 
 ## Install a collection
 

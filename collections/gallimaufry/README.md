@@ -19,7 +19,7 @@ cleanly in Clerkwork, Gazetteer, Idiolect, Patternbook, or Posthaste.
 Install the current Gallimaufry skill set with:
 
 ```bash
-npx skills add davidsneighbour/gallimaufry --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/gallimaufry/skills --yes
 ```
 
 ## Update
@@ -27,7 +27,7 @@ npx skills add davidsneighbour/gallimaufry --yes
 Re-run the install command to refresh an existing install:
 
 ```bash
-npx skills add davidsneighbour/gallimaufry --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/gallimaufry/skills --yes
 ```
 
 Use `--global` when the skills should be available outside the current project.

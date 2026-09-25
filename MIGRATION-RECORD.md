@@ -50,4 +50,4 @@ Every source head is an ancestor of the current repository history. Each importe
 
 Clerkwork's source `npm run check` had existing failures. Its skill metadata validator initially found nine missing or invalid entries; these were corrected after import, and TypeScript, metadata validation, and tests pass. Its Markdown lint step still reports 1,813 pre-existing findings under the current shared Markdown configuration. `npm ci` also reported three high-severity development dependency advisories. These are recorded debt, not hidden migration successes.
 
-The source repositories, releases, issues, and pull requests have not been changed. Publishing the Skillwerk branch, custom archival refs, release tags, or source-repository redirects is a separate external cutover action.
+The Skillwerk main branch, archival refs, and eight collection-specific 2.0.0 tags and releases are published. Each release includes its isolated collection archive. The source repositories, their releases, issues, and pull requests remain unchanged; source-repository redirects or archival decisions remain a manual follow-up.

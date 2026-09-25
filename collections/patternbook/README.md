@@ -17,7 +17,7 @@ Patternbook is a collection of reusable AI skills for digital design and present
 Install the current Patternbook skill set with:
 
 ```bash
-npx skills add davidsneighbour/patternbook --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/patternbook/skills --yes
 ```
 
 ## Update
@@ -25,7 +25,7 @@ npx skills add davidsneighbour/patternbook --yes
 Re-run the install command to refresh an existing install:
 
 ```bash
-npx skills add davidsneighbour/patternbook --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/patternbook/skills --yes
 ```
 
 Use `--global` when the skills should be available outside the current project.

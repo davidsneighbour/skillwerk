@@ -20,7 +20,7 @@ Posthaste is a collection of reusable AI skills for drafting, adapting, reviewin
 Install the current Posthaste skill set with:
 
 ```bash
-npx skills add davidsneighbour/posthaste --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/posthaste/skills --yes
 ```
 
 Install the full skill set together. The skills are intentionally
@@ -32,7 +32,7 @@ network token helpers depend on each other for the complete workflow.
 Re-run the install command to refresh an existing install:
 
 ```bash
-npx skills add davidsneighbour/posthaste --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/posthaste/skills --yes
 ```
 
 Use `--global` when the skills should be available outside the current project.

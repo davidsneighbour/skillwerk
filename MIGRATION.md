@@ -1,6 +1,6 @@
 # Skillwerk migration plan
 
-**Status:** migration implemented and verified; Skillwerk publication and 2.0.0 cutover in progress.
+**Status:** migration implemented, verified, and published at version 2.0.0; manual source-repository follow-up remains.
 
 **Goal:** consolidate eight existing skill-collection repositories into `davidsneighbour/skillwerk` while keeping all collections independently installable and preserving the full original Git history.
 
@@ -59,11 +59,11 @@
 
 ## Milestone 5 — Cutover and source repository preservation
 
-- [ ] Update the central README, collection READMEs, installation documentation, and external links.
+- [x] Update the central README, collection READMEs, installation documentation, and external links.
 - [ ] Decide whether each original repository should stay active temporarily, become a distribution mirror, or be archived with a clear pointer to Skillwerk. Do not delete source repositories.
-- [ ] Preserve GitHub issue/PR/release discussion access and record unresolved work in the consolidated issue tracker where appropriate.
-- [ ] Verify users of existing install URLs have an explicit migration path before deprecating those URLs.
-- [ ] Enable the final release and maintenance workflows only after end-to-end checks pass.
+- [x] Preserve GitHub issue/PR/release discussion access and record unresolved work in the consolidated issue tracker where appropriate.
+- [x] Verify users of existing install URLs have an explicit migration path before deprecating those URLs.
+- [x] Enable the final release and maintenance workflows only after end-to-end checks pass.
 
 **Gate G5:** no known installation regression or inaccessible historical record remains at cutover.
 

@@ -13,7 +13,7 @@ Gazetteer is a collection of reusable AI skills for search visibility and conten
 Install the current Gazetteer skill set with:
 
 ```bash
-npx skills add davidsneighbour/gazetteer --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/gazetteer/skills --yes
 ```
 
 ## Update
@@ -21,7 +21,7 @@ npx skills add davidsneighbour/gazetteer --yes
 Re-run the install command to refresh an existing install:
 
 ```bash
-npx skills add davidsneighbour/gazetteer --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/gazetteer/skills --yes
 ```
 
 Use `--global` when the skills should be available outside the current project.

@@ -17,7 +17,7 @@ Clerkwork is a collection of reusable AI skills reflecting Patrick's engineering
 Install the current Clerkwork skill set with:
 
 ```bash
-npx skills add davidsneighbour/clerkwork --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/clerkwork/skills --yes
 ```
 
 ## Update
@@ -25,7 +25,7 @@ npx skills add davidsneighbour/clerkwork --yes
 Re-run the install command to refresh an existing install:
 
 ```bash
-npx skills add davidsneighbour/clerkwork --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/clerkwork/skills --yes
 ```
 
 Use `--global` when the skills should be available outside the current project.

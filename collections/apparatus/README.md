@@ -13,7 +13,7 @@ Apparatus is a collection of practical, tool-driven skills for operating browser
 Install the current Apparatus skill set with:
 
 ```bash
-npx skills add davidsneighbour/apparatus --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/apparatus/skills --yes
 ```
 
 ## Update
@@ -21,7 +21,7 @@ npx skills add davidsneighbour/apparatus --yes
 Re-run the install command to refresh an existing install:
 
 ```bash
-npx skills add davidsneighbour/apparatus --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/apparatus/skills --yes
 ```
 
 Use `--global` when the skills should be available outside the current project.

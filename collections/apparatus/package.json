@@ -6,7 +6,8 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidsneighbour/apparatus.git"
+    "url": "git+https://github.com/davidsneighbour/skillwerk.git",
+    "directory": "collections/apparatus"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.10",

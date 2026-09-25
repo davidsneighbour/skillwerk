@@ -15,7 +15,7 @@ Idiolect is a collection of reusable AI skills for capturing, checking, and appl
 Install the current Idiolect skill set with:
 
 ```bash
-npx skills add davidsneighbour/idiolect --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/idiolect/skills --yes
 ```
 
 ## Update
@@ -23,7 +23,7 @@ npx skills add davidsneighbour/idiolect --yes
 Re-run the install command to refresh an existing install:
 
 ```bash
-npx skills add davidsneighbour/idiolect --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/idiolect/skills --yes
 ```
 
 Use `--global` when the skills should be available outside the current project.
