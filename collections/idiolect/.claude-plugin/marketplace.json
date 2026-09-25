@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "version": "1.0.1",
+  "name": "idiolect",
+  "description": "Idiolect skills for capturing, checking, and applying a person's distinctive writing voice.",
+  "owner": {
+    "name": "David's Neighbour"
+  },
+  "plugins": [
+    {
+      "name": "idiolect",
+      "description": "Collection of Idiolect skills for building and applying a personal writing-voice profile.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/idiolect"
+      ]
+    }
+  ]
+}

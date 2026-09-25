@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use code or cite this website, please cite it as below."
+authors:
+  - family-names: "Kollitsch"
+    given-names: "Patrick"
+    orcid: "https://orcid.org/0000-0001-6250-2135"
+title: "Idiolect"
+version: v1.0.1
+date-released: 2026-08-23
+url: "https://github.com/davidsneighbour/idiolect"
+repository-code: "https://github.com/davidsneighbour/idiolect"
+license: "MIT"
+commit: fd25cf7993e9604afd56d49d5bfda509caaff193
+keywords:
+  - ai
+  - skills
+  - writing
+  - voice

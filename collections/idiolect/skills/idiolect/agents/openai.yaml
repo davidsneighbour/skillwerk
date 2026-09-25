@@ -1,0 +1,4 @@
+interface:
+  display_name: "Idiolect"
+  short_description: "Capture and apply a personal writing voice"
+  default_prompt: "Use $idiolect to build a voice profile, check a draft against it, or rewrite a draft in the author's voice."

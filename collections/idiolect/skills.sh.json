@@ -1,0 +1,13 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Idiolect",
+      "description": "Skills for capturing, checking, and applying a person's distinctive writing voice.",
+      "skills": [
+        "idiolect"
+      ]
+    }
+  ]
+}
