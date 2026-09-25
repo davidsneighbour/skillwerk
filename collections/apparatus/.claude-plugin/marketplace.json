@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "version": "0.0.0",
+  "name": "apparatus",
+  "description": "Apparatus skills for operating browsers, diagnostics, media utilities, and other reusable technical machinery.",
+  "owner": {
+    "name": "David's Neighbour"
+  },
+  "plugins": [
+    {
+      "name": "apparatus",
+      "description": "Collection of practical, tool-driven skills for operating browsers, diagnostics, media utilities, and other reusable technical machinery.",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/web-screenshot"]
+    }
+  ]
+}

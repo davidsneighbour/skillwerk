@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+show_help() {
+  cat <<'EOF'
+Usage:
+  web-screenshot [screenshot options]
+
+Description:
+  Run the bundled screenshot helper through the shared Apparatus browser runtime.
+  The first run installs the declared runtime dependencies and Chromium once for the
+  current machine. Later runs reuse that runtime across projects.
+
+Environment:
+  APPARATUS_RUNTIME_ROOT
+      Override the shared runtime root.
+
+Examples:
+  web-screenshot --url="https://example.com" --width=1200 --full-page --scheme=dark
+  web-screenshot --url="http://localhost:4321" --width=1440 --height=900 --format=webp
+EOF
+}
+
+main() {
+  local script_dir
+  local skill_dir
+
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  skill_dir="$(cd "${script_dir}/.." && pwd)"
+
+  if [[ "${1:-}" == "--help" && "$#" -eq 1 ]]; then
+    show_help
+    printf '\nScreenshot helper options:\n\n'
+  fi
+
+  node "${script_dir}/runtime.mjs" \
+    --action=exec \
+    --manifest="${skill_dir}/runtime.json" \
+    --script="${script_dir}/screenshot.ts" \
+    -- "$@"
+}
+
+main "$@"
