@@ -4,7 +4,7 @@ import { spawn } from "node:child_process";
 import { constants as fsConstants } from "node:fs";
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
-import { dirname, join, resolve } from "node:path";
+import { join, resolve } from "node:path";
 import process from "node:process";
 
 const APP_NAME = "apparatus-runtime";

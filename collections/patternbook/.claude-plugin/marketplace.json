@@ -12,9 +12,7 @@
       "description": "Collection of Patternbook skills for digital design and presentation work.",
       "source": "./",
       "strict": false,
-      "skills": [
-        "./skills/patternbook"
-      ]
+      "skills": ["./skills/patternbook"]
     }
   ]
 }

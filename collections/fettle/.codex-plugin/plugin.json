@@ -1,21 +1,21 @@
 {
-	"name": "fettle",
-	"version": "2.0.0",
-	"description": "Inspect, observe, improve, prove, and steward agent skills with evidence-backed findings.",
-	"author": {
-		"name": "David’s Neighbour"
-	},
-	"interface": {
-		"displayName": "Fettle",
-		"shortDescription": "Engineer reliable agent skills",
-		"longDescription": "Inspect skill construction, observe runtime evidence, propose focused improvements, prove regressions, and audit collection health.",
-		"developerName": "David’s Neighbour",
-		"category": "Developer Tools",
-		"capabilities": ["Analysis", "Local reports"],
-		"defaultPrompt": [
-			"Inspect this agent skill for evidence-backed problems.",
-			"Analyse recent agent execution failures.",
-			"Audit the health of my skill collections."
-		]
-	}
+  "name": "fettle",
+  "version": "2.0.0",
+  "description": "Inspect, observe, improve, prove, and steward agent skills with evidence-backed findings.",
+  "author": {
+    "name": "David’s Neighbour"
+  },
+  "interface": {
+    "displayName": "Fettle",
+    "shortDescription": "Engineer reliable agent skills",
+    "longDescription": "Inspect skill construction, observe runtime evidence, propose focused improvements, prove regressions, and audit collection health.",
+    "developerName": "David’s Neighbour",
+    "category": "Developer Tools",
+    "capabilities": ["Analysis", "Local reports"],
+    "defaultPrompt": [
+      "Inspect this agent skill for evidence-backed problems.",
+      "Analyse recent agent execution failures.",
+      "Audit the health of my skill collections."
+    ]
+  }
 }

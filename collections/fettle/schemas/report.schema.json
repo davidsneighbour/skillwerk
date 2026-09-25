@@ -1,26 +1,26 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://fettle.local/schemas/report.schema.json",
-	"title": "Fettle report",
-	"type": "object",
-	"required": [
-		"version",
-		"generatedAt",
-		"persona",
-		"scope",
-		"summary",
-		"findings"
-	],
-	"properties": {
-		"version": { "const": 1 },
-		"generatedAt": { "type": "string", "format": "date-time" },
-		"persona": {
-			"enum": ["inspector", "observer", "engineer", "prover", "steward"]
-		},
-		"scope": { "type": "string" },
-		"summary": { "type": "object" },
-		"findings": { "type": "array", "items": { "$ref": "finding.schema.json" } },
-		"notes": { "type": "array", "items": { "type": "string" } }
-	},
-	"additionalProperties": false
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fettle.local/schemas/report.schema.json",
+  "title": "Fettle report",
+  "type": "object",
+  "required": [
+    "version",
+    "generatedAt",
+    "persona",
+    "scope",
+    "summary",
+    "findings"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "persona": {
+      "enum": ["inspector", "observer", "engineer", "prover", "steward"]
+    },
+    "scope": { "type": "string" },
+    "summary": { "type": "object" },
+    "findings": { "type": "array", "items": { "$ref": "finding.schema.json" } },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
 }

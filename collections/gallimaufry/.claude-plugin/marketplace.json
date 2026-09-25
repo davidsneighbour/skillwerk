@@ -12,10 +12,7 @@
       "description": "Collection of Gallimaufry skills for AI asset references and specialised workflows.",
       "source": "./",
       "strict": false,
-      "skills": [
-        "./skills/dnb-reference",
-        "./skills/interrogate-source"
-      ]
+      "skills": ["./skills/dnb-reference", "./skills/interrogate-source"]
     }
   ]
 }

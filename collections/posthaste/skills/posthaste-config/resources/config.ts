@@ -401,9 +401,7 @@ function validateNetworks(
   }
 
   if (!isPlainRecord(value)) {
-    throw new Error(
-      "Invalid Posthaste config key networks: expected a table.",
-    );
+    throw new Error("Invalid Posthaste config key networks: expected a table.");
   }
 
   const known = knownNetworks ? new Set(knownNetworks) : undefined;

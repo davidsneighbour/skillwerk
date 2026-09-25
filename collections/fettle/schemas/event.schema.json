@@ -1,35 +1,35 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://fettle.local/schemas/event.schema.json",
-	"title": "Fettle event",
-	"type": "object",
-	"required": [
-		"id",
-		"timestamp",
-		"host",
-		"executionId",
-		"kind",
-		"outcome",
-		"operation",
-		"data"
-	],
-	"properties": {
-		"id": { "type": "string", "minLength": 1 },
-		"timestamp": { "type": "string", "format": "date-time" },
-		"host": { "type": "string", "minLength": 1 },
-		"executionId": { "type": "string", "minLength": 1 },
-		"kind": { "type": "string", "minLength": 1 },
-		"outcome": { "enum": ["success", "failure", "unknown"] },
-		"operation": { "type": "string", "minLength": 1 },
-		"skill": { "type": "string" },
-		"error": { "type": "string" },
-		"tags": {
-			"type": "array",
-			"items": { "type": "string" },
-			"uniqueItems": true
-		},
-		"durationMs": { "type": "number", "minimum": 0 },
-		"data": { "type": "object" }
-	},
-	"additionalProperties": false
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fettle.local/schemas/event.schema.json",
+  "title": "Fettle event",
+  "type": "object",
+  "required": [
+    "id",
+    "timestamp",
+    "host",
+    "executionId",
+    "kind",
+    "outcome",
+    "operation",
+    "data"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "host": { "type": "string", "minLength": 1 },
+    "executionId": { "type": "string", "minLength": 1 },
+    "kind": { "type": "string", "minLength": 1 },
+    "outcome": { "enum": ["success", "failure", "unknown"] },
+    "operation": { "type": "string", "minLength": 1 },
+    "skill": { "type": "string" },
+    "error": { "type": "string" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "durationMs": { "type": "number", "minimum": 0 },
+    "data": { "type": "object" }
+  },
+  "additionalProperties": false
 }

@@ -1,60 +1,60 @@
 {
-	"description": "Capture lightweight lifecycle evidence for local Fettle analysis.",
-	"hooks": {
-		"SessionStart": [
-			{
-				"hooks": [
-					{
-						"type": "command",
-						"command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude session-start",
-						"timeout": 5
-					}
-				]
-			}
-		],
-		"PostToolUse": [
-			{
-				"hooks": [
-					{
-						"type": "command",
-						"command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude tool-result",
-						"timeout": 5
-					}
-				]
-			}
-		],
-		"PostToolUseFailure": [
-			{
-				"hooks": [
-					{
-						"type": "command",
-						"command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude tool-failure",
-						"timeout": 5
-					}
-				]
-			}
-		],
-		"UserPromptSubmit": [
-			{
-				"hooks": [
-					{
-						"type": "command",
-						"command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude user-prompt",
-						"timeout": 5
-					}
-				]
-			}
-		],
-		"Stop": [
-			{
-				"hooks": [
-					{
-						"type": "command",
-						"command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude execution-end",
-						"timeout": 5
-					}
-				]
-			}
-		]
-	}
+  "description": "Capture lightweight lifecycle evidence for local Fettle analysis.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude session-start",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude tool-result",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude tool-failure",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude user-prompt",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/fettle.ts\" capture claude execution-end",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
 }

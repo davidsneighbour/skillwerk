@@ -1,12 +1,25 @@
-import { mkdirSync, rmSync } from "node:fs";
 import { spawnSync } from "node:child_process";
+import { mkdirSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { selectedCollection } from "./collections.ts";
+
 const collection = selectedCollection(process.argv.slice(2));
 if (!collection) throw new Error("Use --collection <name>");
 mkdirSync("dist", { recursive: true });
 const output = join("dist", `${collection}.tar.gz`);
 rmSync(output, { force: true });
-const result = spawnSync("tar", ["--exclude=node_modules", "--exclude=.git", "-czf", output, "-C", "collections", collection], { stdio: "inherit" });
+const result = spawnSync(
+  "tar",
+  [
+    "--exclude=node_modules",
+    "--exclude=.git",
+    "-czf",
+    output,
+    "-C",
+    "collections",
+    collection,
+  ],
+  { stdio: "inherit" },
+);
 if (result.status !== 0) process.exit(result.status ?? 1);
 console.log(output);

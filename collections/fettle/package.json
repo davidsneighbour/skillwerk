@@ -1,22 +1,22 @@
 {
-	"name": "fettle",
-	"version": "2.0.0",
-	"description": "Evidence-backed engineering for agent skill collections",
-	"type": "module",
-	"private": true,
-	"license": "MIT",
-	"engines": {
-		"node": ">=25"
-	},
-	"bin": {
-		"fettle": "./scripts/fettle.ts"
-	},
-	"scripts": {
-		"fettle": "node scripts/fettle.ts"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/davidsneighbour/skillwerk.git",
-		"directory": "collections/fettle"
-	}
+  "name": "fettle",
+  "version": "2.0.0",
+  "description": "Evidence-backed engineering for agent skill collections",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=25"
+  },
+  "bin": {
+    "fettle": "./scripts/fettle.ts"
+  },
+  "scripts": {
+    "fettle": "node scripts/fettle.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidsneighbour/skillwerk.git",
+    "directory": "collections/fettle"
+  }
 }

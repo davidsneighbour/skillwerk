@@ -1,24 +1,24 @@
 {
-	"version": 1,
-	"collections": [
-		"../clerkwork/skills",
-		"../patternbook/skills",
-		"../gallimaufry/skills",
-		"./skills"
-	],
-	"reportsDirectory": "reports",
-	"observation": {
-		"enabled": true,
-		"rawLogRetentionDays": 7,
-		"maximumEvents": 10000,
-		"redactKeys": ["authorization", "cookie", "password", "secret", "token"]
-	},
-	"detection": {
-		"repetitionThreshold": 2,
-		"overheadToolCallThreshold": 30
-	},
-	"github": {
-		"publication": "propose"
-	},
-	"automaticSkillModification": false
+  "version": 1,
+  "collections": [
+    "../clerkwork/skills",
+    "../patternbook/skills",
+    "../gallimaufry/skills",
+    "./skills"
+  ],
+  "reportsDirectory": "reports",
+  "observation": {
+    "enabled": true,
+    "rawLogRetentionDays": 7,
+    "maximumEvents": 10000,
+    "redactKeys": ["authorization", "cookie", "password", "secret", "token"]
+  },
+  "detection": {
+    "repetitionThreshold": 2,
+    "overheadToolCallThreshold": 30
+  },
+  "github": {
+    "publication": "propose"
+  },
+  "automaticSkillModification": false
 }

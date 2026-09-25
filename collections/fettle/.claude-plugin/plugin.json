@@ -1,8 +1,8 @@
 {
-	"name": "fettle",
-	"version": "2.0.0",
-	"description": "Inspect, observe, improve, prove, and steward agent skills with evidence-backed findings.",
-	"author": {
-		"name": "David's Neighbour"
-	}
+  "name": "fettle",
+  "version": "2.0.0",
+  "description": "Inspect, observe, improve, prove, and steward agent skills with evidence-backed findings.",
+  "author": {
+    "name": "David's Neighbour"
+  }
 }

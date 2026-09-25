@@ -125,7 +125,7 @@
 </main>
 
 <script>
-(function () {
+(() => {
   "use strict";
 
   var params = new URLSearchParams(window.location.search);
@@ -140,7 +140,7 @@
     for (var key in attrs || {}) {
       node.setAttribute(key, attrs[key]);
     }
-    (children || []).forEach(function (child) {
+    (children || []).forEach((child) => {
       node.appendChild(typeof child === "string" ? document.createTextNode(child) : child);
     });
     return node;
@@ -152,13 +152,13 @@
     var input = el("input", { type: "text", readonly: "readonly", value: value });
     row.appendChild(input);
     var button = el("button", { type: "button" }, ["Copy"]);
-    button.addEventListener("click", function () {
+    button.addEventListener("click", () => {
       input.select();
       input.setSelectionRange(0, value.length);
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(value).then(function () {
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(value).then(() => {
           button.textContent = "Copied";
-          setTimeout(function () { button.textContent = "Copy"; }, 1500);
+          setTimeout(() => { button.textContent = "Copy"; }, 1500);
         });
       } else {
         document.execCommand("copy");
@@ -169,7 +169,7 @@
   }
 
   if (error) {
-    var errPanel = el("div", { class: "panel err" });
+    const errPanel = el("div", { class: "panel err" });
     errPanel.appendChild(el("h2", {}, ["Threads returned an error"]));
     errPanel.appendChild(copyField("error", error));
     if (errorDescription) {
@@ -180,7 +180,7 @@
   }
 
   if (code) {
-    var okPanel = el("div", { class: "panel ok" });
+    const okPanel = el("div", { class: "panel ok" });
     okPanel.appendChild(el("h2", {}, ["Authorization received"]));
     okPanel.appendChild(copyField("Full callback URL", window.location.href));
     okPanel.appendChild(copyField("code", code));
@@ -189,7 +189,7 @@
     }
     resultEl.appendChild(okPanel);
 
-    var steps = el("ol", { class: "steps" }, [
+    const steps = el("ol", { class: "steps" }, [
       el("li", {}, ["Go back to the terminal running create-threads-refresh-token.ts."]),
       el("li", {}, ["Paste the full callback URL above when it asks for it."]),
       el("li", {}, ["You can close this tab afterwards; nothing here needs to stay open."]),

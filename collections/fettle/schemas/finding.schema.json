@@ -1,48 +1,48 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://fettle.local/schemas/finding.schema.json",
-	"title": "Fettle finding",
-	"type": "object",
-	"required": [
-		"id",
-		"fingerprint",
-		"rule",
-		"title",
-		"status",
-		"causality",
-		"firstSeen",
-		"lastSeen",
-		"occurrences",
-		"evidence",
-		"summary",
-		"proposedInvestigation",
-		"acceptanceCriteria"
-	],
-	"properties": {
-		"id": { "type": "string", "pattern": "^FTL-[0-9]{4}$" },
-		"fingerprint": { "type": "string", "minLength": 1 },
-		"rule": { "pattern": "^FTL0[1-8]$" },
-		"title": { "type": "string", "minLength": 1 },
-		"status": { "enum": ["open", "resolved"] },
-		"causality": { "enum": ["established", "hypothesis", "unknown"] },
-		"affectedSkill": { "type": "string" },
-		"firstSeen": { "type": "string", "format": "date-time" },
-		"lastSeen": { "type": "string", "format": "date-time" },
-		"occurrences": { "type": "integer", "minimum": 1 },
-		"evidence": {
-			"type": "array",
-			"items": { "type": "string" },
-			"minItems": 1,
-			"uniqueItems": true
-		},
-		"summary": { "type": "string", "minLength": 1 },
-		"suspectedCause": { "type": "string" },
-		"proposedInvestigation": { "type": "string", "minLength": 1 },
-		"acceptanceCriteria": {
-			"type": "array",
-			"items": { "type": "string" },
-			"minItems": 1
-		}
-	},
-	"additionalProperties": false
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fettle.local/schemas/finding.schema.json",
+  "title": "Fettle finding",
+  "type": "object",
+  "required": [
+    "id",
+    "fingerprint",
+    "rule",
+    "title",
+    "status",
+    "causality",
+    "firstSeen",
+    "lastSeen",
+    "occurrences",
+    "evidence",
+    "summary",
+    "proposedInvestigation",
+    "acceptanceCriteria"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^FTL-[0-9]{4}$" },
+    "fingerprint": { "type": "string", "minLength": 1 },
+    "rule": { "pattern": "^FTL0[1-8]$" },
+    "title": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["open", "resolved"] },
+    "causality": { "enum": ["established", "hypothesis", "unknown"] },
+    "affectedSkill": { "type": "string" },
+    "firstSeen": { "type": "string", "format": "date-time" },
+    "lastSeen": { "type": "string", "format": "date-time" },
+    "occurrences": { "type": "integer", "minimum": 1 },
+    "evidence": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "summary": { "type": "string", "minLength": 1 },
+    "suspectedCause": { "type": "string" },
+    "proposedInvestigation": { "type": "string", "minLength": 1 },
+    "acceptanceCriteria": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
 }
