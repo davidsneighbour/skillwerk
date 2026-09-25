@@ -6,14 +6,14 @@ Recorded on 2026-09-25 from GitHub and verified full Git mirrors. Source reposit
 
 | Collection | Source head | Reachable commits across all refs | Import merge | Version | Licence | Open work |
 | --- | --- | ---: | --- | --- | --- | --- |
-| apparatus | `51785d30422c8f6c2095acf999c1d35eee1791c4` | 4 | `0067cb9ca812a7e39f7a604ab6d6caca71daf100` | 0.0.0 | No detected licence | PRs 2 and 3 |
-| clerkwork | `e5a87032d6df2a7cdb9e281e1a9d0f6b855d6d13` | 32 | `d4b201ea707850dbc54fdda4cc691225563f5f18` | 1.2.0 | MIT | None open |
-| fettle | `d7b9d918449b904bfc332ae716369ef80b34ef8b` | 3 | `4ed50240be59fbf4ca1fd629c25bf4f674e2b252` | 0.1.0 | No detected licence | PR 1 |
-| gallimaufry | `9ef19740f65c2083b89f83786bc9dd1a858aced0` | 6 | `811f67737d27428a736f720fb1383e3841da028f` | 0.2.0 | MIT | None open |
-| gazetteer | `78e0cb57a7fed047d26392eb4e052d0df33bf3f4` | 5 | `f4ecd35e471dd20ffff430038db7fa4672575f72` | 1.0.0 | MIT | None open |
-| idiolect | `bb10f22d8014921655455618434ffb81ed04e867` | 8 | `bff924f886fc5d1874654aa6b75fd8a30712d05b` | 1.0.1 | MIT | None open |
-| patternbook | `634341049447488d89db871e3bf8901c2224ac87` | 3 | `78ffdd9a372116374b5867ea16135133bce9abf8` | 1.0.1 | MIT | None open |
-| posthaste | `e374b30ac1bb477bf4d76d4a9a5178cfc50b0392` | 48 | `81ea17494a1771e76e3130fa1289668bd9329890` | 1.2.2 | MIT | None open |
+| apparatus | `51785d30422c8f6c2095acf999c1d35eee1791c4` | 4 | `0067cb9ca812a7e39f7a604ab6d6caca71daf100` | 2.0.0 | MIT | PRs 2 and 3 |
+| clerkwork | `e5a87032d6df2a7cdb9e281e1a9d0f6b855d6d13` | 32 | `d4b201ea707850dbc54fdda4cc691225563f5f18` | 2.0.0 | MIT | None open |
+| fettle | `d7b9d918449b904bfc332ae716369ef80b34ef8b` | 3 | `4ed50240be59fbf4ca1fd629c25bf4f674e2b252` | 2.0.0 | MIT | PR 1 |
+| gallimaufry | `9ef19740f65c2083b89f83786bc9dd1a858aced0` | 6 | `811f67737d27428a736f720fb1383e3841da028f` | 2.0.0 | MIT | None open |
+| gazetteer | `78e0cb57a7fed047d26392eb4e052d0df33bf3f4` | 5 | `f4ecd35e471dd20ffff430038db7fa4672575f72` | 2.0.0 | MIT | None open |
+| idiolect | `bb10f22d8014921655455618434ffb81ed04e867` | 8 | `bff924f886fc5d1874654aa6b75fd8a30712d05b` | 2.0.0 | MIT | None open |
+| patternbook | `634341049447488d89db871e3bf8901c2224ac87` | 3 | `78ffdd9a372116374b5867ea16135133bce9abf8` | 2.0.0 | MIT | None open |
+| posthaste | `e374b30ac1bb477bf4d76d4a9a5178cfc50b0392` | 48 | `81ea17494a1771e76e3130fa1289668bd9329890` | 2.0.0 | MIT | None open |
 
 All default branches are `main`. All repositories are public, have GitHub Issues enabled, and do not have Discussions enabled. No homepage or GitHub Pages URL was configured. Existing releases remain available in their source repositories.
 

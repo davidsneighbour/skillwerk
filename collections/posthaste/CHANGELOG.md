@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0 (2026-09-25)
+
+* Initial Skillwerk monorepo cutover.
+* Preserve the collection as an independently versioned and installable release.
+
+
 ## [1.2.2](https://github.com/davidsneighbour/posthaste/compare/v1.2.1...v1.2.2) (2026-08-23)
 
 ### Fix

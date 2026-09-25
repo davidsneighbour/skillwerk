@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "version": "0.2.0",
+  "version": "2.0.0",
   "name": "gallimaufry",
   "description": "Gallimaufry skills for miscellaneous AI asset maintenance and small specialised workflows.",
   "owner": {

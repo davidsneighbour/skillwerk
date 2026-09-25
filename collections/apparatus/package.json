@@ -1,7 +1,7 @@
 {
   "name": "@davidsneighbour/apparatus",
   "description": "A collection of practical, tool-driven skills for operating browsers, diagnostics, media utilities, and other reusable technical machinery.",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "private": true,
   "repository": {

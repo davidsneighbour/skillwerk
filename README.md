@@ -17,4 +17,4 @@ Replace `<collection>` with `apparatus`, `clerkwork`, `fettle`, `gallimaufry`, `
 npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/<collection>/skills --yes
 ```
 
-Each collection remains self-contained. Collection-specific versions use tags such as `clerkwork/v1.2.0`, and release archives contain one collection only.
+Each collection remains self-contained. Collection-specific versions use tags such as `clerkwork/v2.0.0`, and release archives contain one collection only.

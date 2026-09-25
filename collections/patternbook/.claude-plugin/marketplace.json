@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "name": "patternbook",
   "description": "Patternbook skills for design systems, branding, typography, colour, composition, and interface patterns.",
   "owner": {

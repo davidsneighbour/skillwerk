@@ -1,6 +1,6 @@
 # Skillwerk migration plan
 
-**Status:** local migration implemented and verified; external cutover pending.
+**Status:** migration implemented and verified; Skillwerk publication and 2.0.0 cutover in progress.
 
 **Goal:** consolidate eight existing skill-collection repositories into `davidsneighbour/skillwerk` while keeping all collections independently installable and preserving the full original Git history.
 

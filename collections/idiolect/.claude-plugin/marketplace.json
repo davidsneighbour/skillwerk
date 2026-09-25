@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "name": "idiolect",
   "description": "Idiolect skills for capturing, checking, and applying a person's distinctive writing voice.",
   "owner": {

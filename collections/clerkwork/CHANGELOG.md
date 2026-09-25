@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0 (2026-09-25)
+
+* Initial Skillwerk monorepo cutover.
+* Preserve the collection as an independently versioned and installable release.
+
+
 ## [1.2.0](https://github.com/davidsneighbour/clerkwork/compare/v1.1.0...v1.2.0) (2026-09-19)
 
 ### Feat

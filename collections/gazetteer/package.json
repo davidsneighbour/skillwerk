@@ -1,7 +1,7 @@
 {
   "name": "@davidsneighbour/gazetteer",
   "description": "Reusable AI skills for search visibility and content discovery: technical SEO, local SEO, content optimisation, metadata, structured data, and search-result presentation.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "private": true,
   "repository": {

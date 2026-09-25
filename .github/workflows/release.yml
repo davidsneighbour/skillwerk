@@ -13,9 +13,13 @@ jobs:
         with:
           node-version: 25
       - id: collection
-        run: echo "name=${GITHUB_REF_NAME%%/*}" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "name=${GITHUB_REF_NAME%%/*}" >> "$GITHUB_OUTPUT"
+          echo "version=${GITHUB_REF_NAME#*/}" >> "$GITHUB_OUTPUT"
       - run: npm run check -- --collection ${{ steps.collection.outputs.name }}
       - run: npm run package -- --collection ${{ steps.collection.outputs.name }}
       - uses: softprops/action-gh-release@v2
         with:
+          name: ${{ steps.collection.outputs.name }} ${{ steps.collection.outputs.version }}
+          generate_release_notes: true
           files: dist/${{ steps.collection.outputs.name }}.tar.gz

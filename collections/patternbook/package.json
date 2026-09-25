@@ -1,7 +1,7 @@
 {
   "name": "@davidsneighbour/patternbook",
   "description": "Reusable AI skills for digital design and presentation: design systems, branding, typography, colour, composition, interface patterns, and accessibility.",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "license": "MIT",
   "private": true,
   "repository": {
