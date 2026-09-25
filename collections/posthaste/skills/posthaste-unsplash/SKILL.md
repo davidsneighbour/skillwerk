@@ -19,10 +19,10 @@ Always preserve the requirements defined in `references/compliance.md`.
 
 Read the relevant reference before performing the associated operation:
 
-- `references/authentication.md` — credential discovery, validation, safe handling, and setup guidance.
-- `references/unsplash-api.md` — API parameters, rate limits, endpoint behaviour, and script interfaces.
-- `references/output-schema.md` — human table output, JSON output, and attribution fields.
-- `references/compliance.md` — mandatory Unsplash API usage rules.
+* `references/authentication.md` — credential discovery, validation, safe handling, and setup guidance.
+* `references/unsplash-api.md` — API parameters, rate limits, endpoint behaviour, and script interfaces.
+* `references/output-schema.md` — human table output, JSON output, and attribution fields.
+* `references/compliance.md` — mandatory Unsplash API usage rules.
 
 For any API request, read `references/authentication.md` and `references/compliance.md` first.
 
@@ -123,11 +123,11 @@ content-filter: low
 
 Explain:
 
-- `search` finds ranked photos matching a query.
-- `random` requests random photos, optionally constrained by a topic or orientation.
-- `--json` returns the structured format defined in `references/output-schema.md`.
-- `--table` returns a Markdown table with clickable image previews from the returned Unsplash thumbnail URLs.
-- `--preview-list` returns stacked Markdown results with each preview image outside a table for chat clients that do not render table-cell images reliably.
+* `search` finds ranked photos matching a query.
+* `random` requests random photos, optionally constrained by a topic or orientation.
+* `--json` returns the structured format defined in `references/output-schema.md`.
+* `--table` returns a Markdown table with clickable image previews from the returned Unsplash thumbnail URLs.
+* `--preview-list` returns stacked Markdown results with each preview image outside a table for chat clients that do not render table-cell images reliably.
 
 Do not present tracking as an option.
 
@@ -173,11 +173,11 @@ ask for the missing search query.
 
 Offer these optional settings when useful:
 
-- number of results;
-- orientation;
-- order;
-- colour;
-- content filter.
+* number of results;
+* orientation;
+* order;
+* colour;
+* content filter.
 
 Do not require the user to configure every optional setting.
 
@@ -227,10 +227,10 @@ ask for options before performing the request.
 
 Offer:
 
-- optional topic;
-- number of results;
-- optional orientation;
-- optional content filter.
+* optional topic;
+* number of results;
+* optional orientation;
+* optional content filter.
 
 If the user explicitly says that no filtering matters, use the defaults.
 
@@ -248,10 +248,10 @@ When the user manually invokes the skill:
 
 Allow the user to identify a result by:
 
-- row number;
-- photo ID;
-- photographer/photo combination;
-- another unambiguous reference.
+* row number;
+* photo ID;
+* photographer/photo combination;
+* another unambiguous reference.
 
 Do not track mere previews or rejected candidates.
 
@@ -335,10 +335,10 @@ Follow credential-specific handling in `references/authentication.md`.
 
 For other failures:
 
-- include the HTTP status when available;
-- include the safe Unsplash error message when available;
-- identify which operation failed;
-- never expose credentials or authorisation headers.
+* include the HTTP status when available;
+* include the safe Unsplash error message when available;
+* identify which operation failed;
+* never expose credentials or authorisation headers.
 
 For no results in human-facing output:
 
@@ -376,6 +376,6 @@ Do not silently replace invalid values unless the correction is unambiguous.
 
 ## References
 
-- Unsplash API documentation: https://unsplash.com/documentation
-- Unsplash developer applications: https://unsplash.com/developers
-- Unsplash API guidelines: https://help.unsplash.com/en/collections/1451694-api-guidelines
+* Unsplash API documentation: [https://unsplash.com/documentation](https://unsplash.com/documentation)
+* Unsplash developer applications: [https://unsplash.com/developers](https://unsplash.com/developers)
+* Unsplash API guidelines: [https://help.unsplash.com/en/collections/1451694-api-guidelines](https://help.unsplash.com/en/collections/1451694-api-guidelines)

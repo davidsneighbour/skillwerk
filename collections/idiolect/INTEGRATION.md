@@ -1,4 +1,6 @@
-To integrate `ideolect` into other skills add this paragraph to their `SKILL.md`:
+# Integrating Idiolect
+
+To integrate `idiolect` into other skills add this paragraph to their `SKILL.md`:
 
 ```markdown
 
@@ -13,7 +15,7 @@ content that must remain exact.
 
 ```
 
-To call `ideolect` in any agent related prose, add this to your `AGENTS.md`:
+To call `idiolect` in any agent related prose, add this to your `AGENTS.md`:
 
 ```markdown
 

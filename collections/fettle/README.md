@@ -4,10 +4,10 @@ Fettle is a plugin-first engineering system for agent skills. It captures lightw
 
 ## Requirements
 
-- Node.js 25 or later
-- npm
-- Claude Code 2.1.261 or later for native hook integration
-- Codex CLI 0.157.0 or later for plugin discovery
+* Node.js 25 or later
+* npm
+* Claude Code 2.1.261 or later for native hook integration
+* Codex CLI 0.157.0 or later for plugin discovery
 
 ## Set-up
 
@@ -33,11 +33,11 @@ Commands write generated data below `reports/`, which Git ignores. Observation n
 
 ## Documentation
 
-- [Host integration](plugin/README.md)
-- [Detection rules](resources/detection-rules.md)
-- [Governance and privacy](resources/governance.md)
-- [Event schema](schemas/event.schema.json)
-- [Finding schema](schemas/finding.schema.json)
-- [Report schema](schemas/report.schema.json)
+* [Host integration](plugin/README.md)
+* [Detection rules](resources/detection-rules.md)
+* [Governance and privacy](resources/governance.md)
+* [Event schema](schemas/event.schema.json)
+* [Finding schema](schemas/finding.schema.json)
+* [Report schema](schemas/report.schema.json)
 
 The original concept is retained in `scratch/PLAN.md`.

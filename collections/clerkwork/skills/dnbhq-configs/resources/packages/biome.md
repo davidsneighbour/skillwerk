@@ -10,14 +10,14 @@ Maintain the repository's Biome setup using the current supported DNBHQ shared c
 
 This skill supports:
 
-- initial onboarding
-- dependency updates
-- package migrations
-- ESLint and Prettier responsibility migration
-- configuration repair
-- duplication cleanup
-- periodic audit
-- validation
+* initial onboarding
+* dependency updates
+* package migrations
+* ESLint and Prettier responsibility migration
+* configuration repair
+* duplication cleanup
+* periodic audit
+* validation
 
 ## Authoritative sources
 
@@ -30,12 +30,12 @@ Before editing, inspect:
 
 The current package documentation is authoritative for:
 
-- package names
-- exported config paths
-- supported Biome versions
-- required direct dependencies
-- migration instructions
-- compatibility caveats
+* package names
+* exported config paths
+* supported Biome versions
+* required direct dependencies
+* migration instructions
+* compatibility caveats
 
 Do not hard-code volatile package facts when current documentation is available.
 
@@ -43,28 +43,28 @@ Do not hard-code volatile package facts when current documentation is available.
 
 Inspect:
 
-- Biome config files
-- `@dnbhq/biome-config`
-- `@biomejs/biome`
-- predecessor DNBHQ and davidsneighbour packages
-- ESLint and Prettier dependencies and configs
-- scripts, CI, hooks, lint-staged, and editor settings
-- source file types and generated output
-- ignore requirements
+* Biome config files
+* `@dnbhq/biome-config`
+* `@biomejs/biome`
+* predecessor DNBHQ and davidsneighbour packages
+* ESLint and Prettier dependencies and configs
+* scripts, CI, hooks, lint-staged, and editor settings
+* source file types and generated output
+* ignore requirements
 
 Classify the setup as missing, partial, current, outdated, legacy, duplicated, mixed, invalid, or migration-incomplete.
 
 ## Maintenance rules
 
-- Install Biome directly in the consuming repository.
-- Preserve required project-specific overrides.
-- Prefer a config that extends the shared package exactly as documented by the package README.
-- Use a commented extension of the shared config when local settings are required; every local setting should have a clear reason.
-- Remove duplicated inherited settings.
-- Do not remove ESLint or Prettier until their remaining responsibilities are identified.
-- Do not mass-format or mass-fix source files unless explicitly requested.
-- Update scripts and integrations conservatively.
-- Separate configuration failures from existing code violations.
+* Install Biome directly in the consuming repository.
+* Preserve required project-specific overrides.
+* Prefer a config that extends the shared package exactly as documented by the package README.
+* Use a commented extension of the shared config when local settings are required; every local setting should have a clear reason.
+* Remove duplicated inherited settings.
+* Do not remove ESLint or Prettier until their remaining responsibilities are identified.
+* Do not mass-format or mass-fix source files unless explicitly requested.
+* Update scripts and integrations conservatively.
+* Separate configuration failures from existing code violations.
 
 ## Config shape
 
@@ -74,11 +74,11 @@ If no project-specific overrides are required, the repository config should cont
 
 If project-specific overrides are required:
 
-- keep them in the repository's Biome config after the shared config extension
-- explain each local setting with a JSONC comment when the file format allows comments
-- keep generated-output exclusions, framework-specific parser needs, required rule changes, and VCS defaults local when they differ from the shared config
-- do not copy the full shared config into the consuming repository
-- do not duplicate settings that are inherited from the shared config
+* keep them in the repository's Biome config after the shared config extension
+* explain each local setting with a JSONC comment when the file format allows comments
+* keep generated-output exclusions, framework-specific parser needs, required rule changes, and VCS defaults local when they differ from the shared config
+* do not copy the full shared config into the consuming repository
+* do not duplicate settings that are inherited from the shared config
 
 Use `biome.json` unless the project already uses `biome.jsonc` or comments are needed to explain local overrides. Do not create both.
 
@@ -99,12 +99,12 @@ Use the commands documented by the current package.
 
 At minimum, validate that:
 
-- the active config loads
-- the shared config path resolves
-- package versions are compatible
-- project-local scripts invoke installed binaries
-- CI and hooks do not reference removed tools
-- safe read-only checks complete
+* the active config loads
+* the shared config path resolves
+* package versions are compatible
+* project-local scripts invoke installed binaries
+* CI and hooks do not reference removed tools
+* safe read-only checks complete
 
 ## Final response
 

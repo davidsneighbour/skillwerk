@@ -3,7 +3,7 @@ name: fettle-inspect
 description: Inspect one or more agent skills for structural correctness, clarity, conflicts, dead resources, duplication, portability, and unnecessary context. Use for static skill audits, not runtime behaviour analysis.
 ---
 
-# Fettle Inspector
+# Fettle inspector
 
 Inspect the requested skill or collection without changing it.
 

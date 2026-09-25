@@ -1,6 +1,6 @@
-![clerkwork and foreman](../../.github/assets/images/skillwerk/clerkwork.png)
+# AI skills for software engineering workflows
 
-## AI skills for software engineering workflows
+![clerkwork and foreman](../../.github/assets/images/skillwerk/clerkwork.png)
 
 Clerkwork is a collection of reusable AI skills reflecting Patrick's engineering knowledge: dependency maintenance, GitHub issue triage, project tracking, and repository upkeep. The goal is to keep the routine parts of maintaining a repository consistent and portable across projects and AI assistants.
 

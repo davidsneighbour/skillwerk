@@ -12,7 +12,7 @@ state across the local repositories defined in
 current repository to the rest of the project set (see
 [Ad Hoc Path Sync](#ad-hoc-path-sync)).
 
-## Project Set
+## Project set
 
 The project set lives in `.agents/skills/synchwork/config.json`, under the
 `repositories` key, as a list of local paths (`~` denotes the home
@@ -31,59 +31,59 @@ example, `~/github.com/davidsneighbour/clerkwork` has the slug `clerkwork`).
 Checklist items that reference a repository by slug — such as Social Poster
 Image and Package Scripts below — mean this basename.
 
-## Operating Rules
+## Operating rules
 
-- Treat every repository in the project set as a separate working tree.
-- Start every run by reading `config.json`, then checking each repository's
+* Treat every repository in the project set as a separate working tree.
+* Start every run by reading `config.json`, then checking each repository's
   `AGENTS.md` and project-root `RESUME.md` if present.
-- Preserve unrelated dirty worktree changes in every repository.
-- Touch only the files needed for the requested synchronization task.
-- Do not commit, push, publish, or run mutating external commands unless the
+* Preserve unrelated dirty worktree changes in every repository.
+* Touch only the files needed for the requested synchronization task.
+* Do not commit, push, publish, or run mutating external commands unless the
   user explicitly asks for that action.
-- Report skipped steps, blockers, and pre-existing unrelated dirty files.
+* Report skipped steps, blockers, and pre-existing unrelated dirty files.
 
-## Step-Based Workflow
+## Step-based workflow
 
 1. Confirm the project set.
-   - Read `.agents/skills/synchwork/config.json` and expand `~` in each path.
-   - Verify that every configured path exists.
-   - Verify `scripts` and `repositories` agree: every slug used in `scripts`
+   * Read `.agents/skills/synchwork/config.json` and expand `~` in each path.
+   * Verify that every configured path exists.
+   * Verify `scripts` and `repositories` agree: every slug used in `scripts`
      has a matching `repositories` entry, and every `repositories` entry has
      a corresponding `synchwork:<slug>` tuple in `scripts`. Report any
      mismatch and ask before proceeding with a task that depends on the
      mismatched side.
-   - Read each repository's local instructions before changing files.
-   - Stop and ask if a repository is missing or a `RESUME.md` describes work
+   * Read each repository's local instructions before changing files.
+   * Stop and ask if a repository is missing or a `RESUME.md` describes work
      that conflicts with the requested synchronization.
 
 2. Inspect current state.
-   - Run `git status --short` in each repository.
-   - Identify existing user changes before editing.
-   - Note which files the requested task is allowed to modify.
+   * Run `git status --short` in each repository.
+   * Identify existing user changes before editing.
+   * Note which files the requested task is allowed to modify.
 
 3. Run the synchronization checklist.
-   - Complete each relevant task in [Checklist](#checklist).
-   - Keep every task narrow: inspect, compute the intended common state, apply
+   * Complete each relevant task in [Checklist](#checklist).
+   * Keep every task narrow: inspect, compute the intended common state, apply
      only that state, then verify it.
-   - If a task would require editing outside its stated files, stop and report
+   * If a task would require editing outside its stated files, stop and report
      the reason before making that broader change.
 
 4. Verify the result.
-   - Re-run the task-specific checks.
-   - Re-run `git status --short` in each repository and distinguish new edits
+   * Re-run the task-specific checks.
+   * Re-run `git status --short` in each repository and distinguish new edits
      from pre-existing dirty state.
-   - Confirm that synchronized files are byte-for-byte identical when the task
+   * Confirm that synchronized files are byte-for-byte identical when the task
      requires identical output.
 
 5. Report the outcome.
-   - List the task results by repository.
-   - Include counts, hashes, duplicate names, or other concrete evidence from
+   * List the task results by repository.
+   * Include counts, hashes, duplicate names, or other concrete evidence from
      the checks.
-   - Mention validation commands run and any commands that could not be run.
+   * Mention validation commands run and any commands that could not be run.
 
 ## Checklist
 
-### CSpell Dictionaries
+### CSpell dictionaries
 
 Synchronize `.vscode/dictionary.txt` across every repository in the project
 set.
@@ -101,7 +101,7 @@ set.
 8. Run `git diff --check -- .vscode/dictionary.txt` in each repository.
 9. Report the final word count and dictionary hash for each repository.
 
-### Skill Names
+### Skill names
 
 Ensure no skill folder under `skills/` has the same name across the project
 set.
@@ -113,7 +113,7 @@ set.
    for a rename plan or implementation.
 5. If no duplicates exist, report that the skill namespace is clear.
 
-### Social Poster Image
+### Social poster image
 
 Synchronize each repository's social poster image,
 `.github/assets/images/SKILLNAME.png` (`SKILLNAME` is that repository's own
@@ -132,7 +132,7 @@ repository in the project set.
 4. Report which images were copied, skipped as already identical, or
    flagged because a source image was missing.
 
-### VS Code Settings
+### VS Code settings
 
 Synchronize shared options in `.vscode/settings.json` across the project set,
 without touching per-repository theming.
@@ -152,7 +152,7 @@ without touching per-repository theming.
 7. Report which keys were synchronized, which were left as
    repository-specific theming, and any conflicts that required a decision.
 
-### `synchwork` Package Scripts
+### `synchwork` package scripts
 
 Derive each `synchwork:<slug>` script from the `scripts` array in
 `.agents/skills/synchwork/config.json` rather than from any fixed list in
@@ -200,7 +200,7 @@ Keep `skills.sh.json` accurate in each repository.
 4. Apply only the corrections needed to keep the file accurate; leave
    unrelated structure untouched.
 
-### README Structure and Shared Section
+### README structure and shared section
 
 Keep each repository's `README.md` following the same overall structure, and
 keep the `## The cabinet of @davidsneighbour's skills` section, including its
@@ -221,7 +221,7 @@ heading, byte-for-byte identical in content across the project set.
 6. Report structural differences found outside the shared section, and
    confirm the shared section now matches.
 
-### `synchwork` Skill Definition
+### `synchwork` skill definition
 
 Keep this skill's own definition, `.agents/skills/synchwork/`, identical
 across the project set.
@@ -237,7 +237,7 @@ across the project set.
    written.
 5. Report which repositories were updated.
 
-## Ad Hoc Path Sync
+## Ad hoc path sync
 
 Use this mode when the user asks to sync one specific file or folder from the
 current repository to the rest of the project set, rather than running the
@@ -252,7 +252,7 @@ This mode touches only the given path in the source and target repositories.
 It does not run the full [Checklist](#checklist) and is not a substitute for
 it.
 
-### Resolving Source and Targets
+### Resolving source and targets
 
 1. Determine the source repository: the entry in `repositories` whose path
    contains the current working directory. If none matches, or the match is
@@ -266,17 +266,17 @@ it.
 1. Read the source's copy of `<path>` — file contents, or the full file tree
    if it is a folder.
 2. For each target repository, resolve the same relative path.
-   - If `<path>` does not yet exist in the target, it will be created; no
+   * If `<path>` does not yet exist in the target, it will be created; no
      permission is needed.
-   - If it exists and its content differs from the source, run
+   * If it exists and its content differs from the source, run
      `git status --short -- <path>` in the target first. If the target
      already has uncommitted changes touching `<path>`, stop and ask for
      permission before overwriting it — never overwrite dirty target content
      silently.
 3. Once clear to proceed (clean target, or the user has given permission),
    copy the source's content over:
-   - For a file: overwrite the target file with the source file.
-   - For a folder: copy every file from the source tree into the
+   * For a file: overwrite the target file with the source file.
+   * For a folder: copy every file from the source tree into the
      corresponding location in the target tree, creating missing
      directories and overwriting files that exist at the same relative
      path. Do not delete a file that exists only in the target and not in
@@ -287,7 +287,7 @@ it.
 5. Report, per target repository, what was created, overwritten, skipped as
    already identical, or held back pending permission.
 
-## Completion Standard
+## Completion standard
 
 A synchwork run is complete when every requested checklist item has either
 passed with concrete evidence or has a clearly reported blocker. The final

@@ -153,10 +153,10 @@ This skill only needs the Access Key for its current public API operations.
 
 Never:
 
-- commit credentials;
-- write them into `SKILL.md`;
-- put real credentials in example configuration;
-- return them in JSON;
-- include them in URLs shown to the user;
-- include them in logs or error messages;
-- expose authorisation headers.
+* commit credentials;
+* write them into `SKILL.md`;
+* put real credentials in example configuration;
+* return them in JSON;
+* include them in URLs shown to the user;
+* include them in logs or error messages;
+* expose authorisation headers.

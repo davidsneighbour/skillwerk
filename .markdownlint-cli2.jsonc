@@ -1,0 +1,28 @@
+{
+  // Extends the shared configuration passed with --config in package.json.
+  "config": {
+    // Proper nouns that the sentence-case rule must not lower-case.
+    "title-case-style": {
+      "case": "sentence",
+      "ignore": [
+        "Actions",
+        "Bash",
+        "Code",
+        "Git",
+        "GitHub",
+        "Idiolect",
+        "IDs",
+        "JavaScript",
+        "Node",
+        "npm",
+        "Renovate",
+        "TypeScript",
+        "Unsplash",
+        "URLs",
+        "js"
+      ]
+    }
+  },
+  // Local, untracked project-management files.
+  "ignores": ["PROJECT.md", "TODO.md"]
+}

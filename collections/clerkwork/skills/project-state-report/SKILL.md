@@ -10,15 +10,15 @@ Produce a readable project catch-up report without mixing it with implementation
 
 ## Boundaries
 
-- Work only in the current repository.
-- Preserve unrelated tracked and untracked work.
-- Do not merge, rebase, or create merge commits.
-- Do not implement fixes unless the user explicitly asks.
-- Do not create, update, close, or label GitHub issues or PRs unless the user asks.
-- Do not run expensive checks unless repository instructions or the user request make them necessary.
-- When the report finds tracking work that should be reconciled, recommend using `project-task-triage` rather than silently doing that work.
+* Work only in the current repository.
+* Preserve unrelated tracked and untracked work.
+* Do not merge, rebase, or create merge commits.
+* Do not implement fixes unless the user explicitly asks.
+* Do not create, update, close, or label GitHub issues or PRs unless the user asks.
+* Do not run expensive checks unless repository instructions or the user request make them necessary.
+* When the report finds tracking work that should be reconciled, recommend using `project-task-triage` rather than silently doing that work.
 
-## Track Run State
+## Track run state
 
 Keep these facts for the final report:
 
@@ -42,7 +42,7 @@ recommendation: <next action or do nothing>
 
 ## Workflow
 
-### 1. Read Repository Instructions
+### 1. Read repository instructions
 
 Inspect repository guidance before touching remote state:
 
@@ -56,16 +56,16 @@ Read applicable instruction files, including project-root `AGENTS.md`.
 
 If the project has a resume or interrupted-work protocol, follow it before doing unrelated catch-up work.
 
-### 2. Resolve the Since Window
+### 2. Resolve the since window
 
 Resolve the report window before syncing.
 
 When the user gives a concrete or relative phrase, convert it to an absolute date or timestamp and state the resolved value in the report. Examples:
 
-- `yesterday`: start of yesterday in the user's or repository's local timezone
-- `last week`: the previous calendar week unless the user clearly means the last seven days
-- `since 2026-07-01`: that exact date at local start of day
-- `since the last release`: the latest reachable release tag or GitHub release
+* `yesterday`: start of yesterday in the user's or repository's local timezone
+* `last week`: the previous calendar week unless the user clearly means the last seven days
+* `since 2026-07-01`: that exact date at local start of day
+* `since the last release`: the latest reachable release tag or GitHub release
 
 When the user says `since we last worked on it`, infer the baseline in this order:
 
@@ -86,7 +86,7 @@ git config user.email
 git log --date=iso --format='%H%x09%aI%x09%an%x09%ae%x09%s' --max-count=30
 ```
 
-### 3. Capture Pre-Sync State
+### 3. Capture pre-sync state
 
 Record the local state before fetching:
 
@@ -100,7 +100,7 @@ git log --oneline --decorate --max-count=10
 
 If the working tree has unrelated changes, continue with read-only reporting but do not pull unless a fast-forward is clearly safe and the changes cannot be affected. Prefer reporting `dirty-blocked` over risking user work.
 
-### 4. Fetch and Fast-Forward Safely
+### 4. Fetch and fast-forward safely
 
 Fetch remote state:
 
@@ -111,12 +111,12 @@ git status --branch --short
 
 Then classify sync state:
 
-- `no upstream`: no tracking branch exists; continue with local and GitHub report.
-- `up to date`: local and upstream are equal.
-- `fast-forwarded`: local branch is only behind and the working tree is safe; run `git pull --ff-only`.
-- `diverged`: local and upstream both have unique commits; stop syncing and report the divergence.
-- `dirty-blocked`: working tree changes make a pull unsafe; do not stash automatically.
-- `failed`: fetch or fast-forward failed; report the command and error.
+* `no upstream`: no tracking branch exists; continue with local and GitHub report.
+* `up to date`: local and upstream are equal.
+* `fast-forwarded`: local branch is only behind and the working tree is safe; run `git pull --ff-only`.
+* `diverged`: local and upstream both have unique commits; stop syncing and report the divergence.
+* `dirty-blocked`: working tree changes make a pull unsafe; do not stash automatically.
+* `failed`: fetch or fast-forward failed; report the command and error.
 
 Use commit counts to decide:
 
@@ -126,15 +126,15 @@ git rev-list --left-right --count HEAD...@{u} 2>/dev/null || true
 
 After any fast-forward, record `post_sync_head`.
 
-### 5. Collect Git Change Evidence
+### 5. Collect Git change evidence
 
 Summarize commits and files changed in the resolved window.
 
 Prefer ranges that match the baseline:
 
-- For remote catch-up after fast-forward: `pre_sync_head..HEAD`
-- For a date phrase: `--since=<resolved timestamp>`
-- For divergence: compare both sides with `HEAD..@{u}` and `@{u}..HEAD`
+* For remote catch-up after fast-forward: `pre_sync_head..HEAD`
+* For a date phrase: `--since=<resolved timestamp>`
+* For divergence: compare both sides with `HEAD..@{u}` and `@{u}..HEAD`
 
 Useful commands:
 
@@ -147,7 +147,7 @@ git shortlog -sne <range>
 
 Group the result by area when possible: source, tests, docs, dependencies, configuration, build, release, or tracking.
 
-### 6. Collect GitHub Activity
+### 6. Collect GitHub activity
 
 Use `gh` when available and authenticated. If GitHub data is unavailable, say so and continue from git evidence.
 
@@ -180,33 +180,33 @@ gh issue view <number> --json number,title,state,author,labels,comments,closedAt
 
 Report who did what from commit authors, PR authors, issue authors, reviewers, and closers when available. Do not over-attribute when evidence only shows who opened or updated an item.
 
-### 7. Detect Taskable Items
+### 7. Detect taskable items
 
 Look for taskable follow-up signals:
 
-- open GitHub issues
-- open PRs needing review, changes, or merge attention
-- failed or pending checks on relevant PRs or the current branch
-- TODO or roadmap drift discovered from repository files
-- new failing validation, dependency, audit, or security signals observed during lightweight checks
-- remote changes that introduced obvious follow-up work, such as TODO comments, skipped tests, failing CI notes, deprecations, or incomplete migrations
+* open GitHub issues
+* open PRs needing review, changes, or merge attention
+* failed or pending checks on relevant PRs or the current branch
+* TODO or roadmap drift discovered from repository files
+* new failing validation, dependency, audit, or security signals observed during lightweight checks
+* remote changes that introduced obvious follow-up work, such as TODO comments, skipped tests, failing CI notes, deprecations, or incomplete migrations
 
 Use existing repository tracking conventions. If GitHub Issues are the project's source of truth, prefer recommending issue creation or `project-task-triage` instead of keeping tasks only in prose.
 
-### 8. Recommend Next Action
+### 8. Recommend next action
 
 Choose one primary recommendation:
 
-- `Do nothing`: use when remote is current, no open issues or PRs need attention, no drift is detected, and no taskable items were found.
-- `Review PRs`: use when PRs are open or updated and need attention.
-- `Triage tasks`: use when TODO, ROADMAP, or GitHub issue state appears stale or incomplete.
-- `Work on issue #N`: use when one open issue is clearly the best next task.
-- `Investigate`: use when sync failed, branches diverged, checks failed, or the repo state is ambiguous.
-- `Validate`: use when remote changes landed and the next useful action is running the project's normal quality gate.
+* `Do nothing`: use when remote is current, no open issues or PRs need attention, no drift is detected, and no taskable items were found.
+* `Review PRs`: use when PRs are open or updated and need attention.
+* `Triage tasks`: use when TODO, ROADMAP, or GitHub issue state appears stale or incomplete.
+* `Work on issue #N`: use when one open issue is clearly the best next task.
+* `Investigate`: use when sync failed, branches diverged, checks failed, or the repo state is ambiguous.
+* `Validate`: use when remote changes landed and the next useful action is running the project's normal quality gate.
 
 Explain why the recommendation follows from the evidence.
 
-## Report Format
+## Report format
 
 Keep the report compact and readable:
 

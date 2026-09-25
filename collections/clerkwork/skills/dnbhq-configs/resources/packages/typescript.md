@@ -10,12 +10,12 @@ Read the relevant package repository README, release notes, migration documents,
 
 Current package documentation controls:
 
-- package names
-- exported `tsconfig` paths
-- supported TypeScript and Node.js versions
-- framework-specific variants
-- required compiler options
-- migration instructions
+* package names
+* exported `tsconfig` paths
+* supported TypeScript and Node.js versions
+* framework-specific variants
+* required compiler options
+* migration instructions
 
 Use only config exports documented by the current package. Do not invent config names, and do not extend the package root unless package metadata proves that the installed version intends that form.
 
@@ -23,31 +23,31 @@ Use only config exports documented by the current package. Do not invent config 
 
 Inspect:
 
-- `tsconfig.json`
-- referenced and extended TypeScript configs
-- package-level or workspace configs
-- `typescript` and shared-config dependencies
-- predecessor DNBHQ and davidsneighbour packages
-- framework configs
-- build, typecheck, test, and editor integrations
-- include, exclude, files, references, and path aliases
-- generated declarations and build output
+* `tsconfig.json`
+* referenced and extended TypeScript configs
+* package-level or workspace configs
+* `typescript` and shared-config dependencies
+* predecessor DNBHQ and davidsneighbour packages
+* framework configs
+* build, typecheck, test, and editor integrations
+* include, exclude, files, references, and path aliases
+* generated declarations and build output
 
 Classify the setup as missing, partial, current, outdated, legacy, duplicated, mixed, invalid, or migration-incomplete.
 
 ## Maintenance rules
 
-- If no config is explicitly selected, use `@dnbhq/tsconfig/cli`.
-- If the repository is an Astro project, use `@dnbhq/tsconfig/astro`.
-- If the user explicitly requests a different supported config, follow that instruction.
-- Ask only when repository evidence and user instructions leave the intended project shape unclear.
-- Preserve project-specific includes, excludes, references, paths, and framework requirements.
-- Keep project-specific compiler options on top of the selected preset rather than moving them into the shared package.
-- Remove inherited compiler options only when behaviour remains equivalent.
-- Do not copy an entire shared config locally.
-- Do not change module systems, output structure, strictness, or emit behaviour without evidence from package migration instructions.
-- Do not upgrade TypeScript beyond package and framework compatibility.
-- Validate project references and workspace inheritance.
+* If no config is explicitly selected, use `@dnbhq/tsconfig/cli`.
+* If the repository is an Astro project, use `@dnbhq/tsconfig/astro`.
+* If the user explicitly requests a different supported config, follow that instruction.
+* Ask only when repository evidence and user instructions leave the intended project shape unclear.
+* Preserve project-specific includes, excludes, references, paths, and framework requirements.
+* Keep project-specific compiler options on top of the selected preset rather than moving them into the shared package.
+* Remove inherited compiler options only when behaviour remains equivalent.
+* Do not copy an entire shared config locally.
+* Do not change module systems, output structure, strictness, or emit behaviour without evidence from package migration instructions.
+* Do not upgrade TypeScript beyond package and framework compatibility.
+* Validate project references and workspace inheritance.
 
 ## Config selection
 
@@ -68,11 +68,11 @@ Both `cli` and `astro` are based on the strict preset. Use repository agent inst
 
 After selecting the preset, preserve existing local settings that are still required, including:
 
-- `include`, `exclude`, `files`, and `references`
-- `compilerOptions.baseUrl` and `compilerOptions.paths`
-- emit-related settings such as `outDir`, declaration output, source maps, and build info files
-- framework and test-runner settings
-- generated type paths
+* `include`, `exclude`, `files`, and `references`
+* `compilerOptions.baseUrl` and `compilerOptions.paths`
+* emit-related settings such as `outDir`, declaration output, source maps, and build info files
+* framework and test-runner settings
+* generated type paths
 
 Install `@types/node` only when Node globals, `node:*` imports, scripts, tests, or config files need Node types. Do not add Node types only because TypeScript is present.
 
@@ -84,10 +84,10 @@ Run the safest available typecheck or configuration validation commands.
 
 Separate:
 
-- invalid configuration
-- package incompatibility
-- existing type errors
-- unrelated build failures
+* invalid configuration
+* package incompatibility
+* existing type errors
+* unrelated build failures
 
 ## Final response
 

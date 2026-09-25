@@ -1,10 +1,10 @@
-# Repository Guidelines
+# Repository guidelines
 
 AGENTS.md is the single source of truth for repository instructions. Tool- or
 assistant-specific files may add narrow overrides, but shared workflow,
 structure, security, and editing rules belong here.
 
-## Project Structure & Module Organization
+## Project structure & module organization
 
 Posthaste is a collection of standalone AI skills for drafting, adapting,
 reviewing, and publishing social media content. There is no app, build output,
@@ -14,26 +14,26 @@ uses `SKILL.md` as its entrypoint. Supporting files belong inside the owning
 skill directory, commonly in `resources/`, `scripts/`, or `auth-site/`. Shared
 README assets live in `.github/assets/`.
 
-## Skill Map
+## Skill map
 
-- `posthaste`: placeholder root skill; `SKILL.md` is currently empty.
-- `posthaste-prepare-link`: main link-to-social workflow. It fetches metadata,
+* `posthaste`: placeholder root skill; `SKILL.md` is currently empty.
+* `posthaste-prepare-link`: main link-to-social workflow. It fetches metadata,
   screenshots pages, drafts Patrick-voice posts with topical hashtags, posts
   only after explicit confirmation, and logs posted networks to avoid repeats.
-- `posthaste-post-retrieve-hashtags`: prompt-only topical hashtag generation
+* `posthaste-post-retrieve-hashtags`: prompt-only topical hashtag generation
   from a URL or text block.
-- `posthaste-unsplash`: searches, previews, selects, and tracks Unsplash photos
+* `posthaste-unsplash`: searches, previews, selects, and tracks Unsplash photos
   with mandatory attribution, download tracking on final selection, and
   credentials from `UNSPLASH_POSTHASTE_ACCESS_KEY`, falling back to
   `UNSPLASH_ACCESS_KEY`.
-- `posthaste-voice`: prose editing skill. For substantial edits, use
+* `posthaste-voice`: prose editing skill. For substantial edits, use
   `skills/posthaste-voice/resources/tropes-and-rules.md` as the diagnostic
   checklist.
-- `posthaste-reddit-refresh-token`, `posthaste-threads-refresh-token`, and
+* `posthaste-reddit-refresh-token`, `posthaste-threads-refresh-token`, and
   `posthaste-tumblr-refresh-token`: OAuth setup helpers that must never expose
   token values.
 
-## Build, Test, and Development Commands
+## Build, test, and development commands
 
 Run helper scripts directly from the repository root:
 
@@ -50,7 +50,7 @@ ported `SKILL.md` examples still contain the stale prefix
 those examples, substitute the real path: `skills/<skill-name>/...`. Fix stale
 references when already touching the affected file.
 
-## Coding Style & Naming Conventions
+## Coding style & naming conventions
 
 Use plain Markdown for skill documentation. Keep `SKILL.md` frontmatter
 specific and actionable, especially `id`, `name`, `title`, and `description`.
@@ -59,7 +59,7 @@ Skill directories use lowercase hyphenated names such as
 `post-reddit.ts` or `create-tumblr-refresh-token.ts`. Prefer ASCII punctuation
 unless quoting existing text.
 
-## Testing Guidelines
+## Testing guidelines
 
 No coverage threshold is defined. Validate changed scripts with targeted
 `--help`, dry-run, or non-writing modes before handoff. For publishing, OAuth,
@@ -67,7 +67,7 @@ and browser-assisted flows, never perform real posting, credential writes, login
 automation, or final publish clicks without explicit user confirmation. When a
 skill's behaviour changes, update its `SKILL.md` in the same change.
 
-## Commit & Pull Request Guidelines
+## Commit & pull request guidelines
 
 The current history uses Conventional Commit-style subjects, for example
 `chore: initial commit, reposetup`. Always work on `main`. Do not create
@@ -97,7 +97,7 @@ Pull requests should explain the affected skill, list validation performed, and
 link the related issue or task. Include screenshots only for asset or README
 visual changes.
 
-## Credentials and Secrets
+## Credentials and secrets
 
 Publishing and auth skills read credentials from `~/.env` by default, or from
 an explicit dotenv path such as `CROSSPOST_DOTENV` or `--dotenv`. Do not read
@@ -110,7 +110,7 @@ or credential values. The Unsplash skill must not use bundled, demo, testing,
 or repository-owned credentials; prefer a caller-provided
 `UNSPLASH_POSTHASTE_ACCESS_KEY`, falling back to `UNSPLASH_ACCESS_KEY`.
 
-## Agent Workflow
+## Agent workflow
 
 Before starting repository work, agents must check for project-root
 `RESUME.md`. If it exists, read it first, resolve or explicitly abandon the

@@ -3,7 +3,7 @@ name: fettle-prove
 description: Test whether an agent skill behaves as intended with deterministic fixtures and explicitly labelled variable agent-behaviour scenarios. Use for regression validation and instruction-conflict scenarios.
 ---
 
-# Fettle Prover
+# Fettle prover
 
 Choose the least variable test that can establish the claim.
 

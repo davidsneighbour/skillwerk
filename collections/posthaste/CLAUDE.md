@@ -1,4 +1,4 @@
-# CLAUDE.md
+# `CLAUDE.md`
 
 This file provides Claude Code-specific guidance for working in this
 repository.
@@ -8,6 +8,6 @@ in `AGENTS.md`. Treat `AGENTS.md` as the single source of truth for shared
 repository guidance. Follow every instruction there unless this file explicitly
 overrides it for Claude Code.
 
-## Claude Code Overrides
+## Claude Code overrides
 
 No Claude Code-specific overrides are currently defined.

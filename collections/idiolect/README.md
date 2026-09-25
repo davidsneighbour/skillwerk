@@ -1,6 +1,6 @@
-![Idiolect](../../.github/assets/images/skillwerk/idiolect.png)
+# AI skills for a person's own writing voice
 
-## AI skills for a person's own writing voice
+![Idiolect](../../.github/assets/images/skillwerk/idiolect.png)
 
 Idiolect is a collection of reusable AI skills for capturing, checking, and applying a person's idiolect - their own distinctive vocabulary, rhythm, and habits in writing. The goal is to keep AI-assisted writing sounding like the person who owns the voice, not like a generic assistant.
 

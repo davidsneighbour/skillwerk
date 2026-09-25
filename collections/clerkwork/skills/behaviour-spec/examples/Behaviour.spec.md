@@ -10,20 +10,20 @@ This specification covers a header navigation component with a site title, prima
 
 ### Files in scope
 
-- `src/components/Header/Header.astro`
-- `src/components/Header/Header.test.ts`
-- `tests/e2e/header.spec.ts`
+* `src/components/Header/Header.astro`
+* `src/components/Header/Header.test.ts`
+* `tests/e2e/header.spec.ts`
 
 ### Files out of scope
 
-- `src/components/Footer/Footer.astro`
+* `src/components/Footer/Footer.astro`
 
 ## Vocabulary
 
-- `mobile`: Viewports below `768px`.
-- `desktop`: Viewports at or above `768px`.
-- `visible`: Rendered in the DOM and perceivable by users, not hidden with `display: none`, `visibility: hidden`, `aria-hidden="true"`, or equivalent hiding behaviour.
-- `closed`: The menu content is not visible and cannot be reached by keyboard navigation.
+* `mobile`: Viewports below `768px`.
+* `desktop`: Viewports at or above `768px`.
+* `visible`: Rendered in the DOM and perceivable by users, not hidden with `display: none`, `visibility: hidden`, `aria-hidden="true"`, or equivalent hiding behaviour.
+* `closed`: The menu content is not visible and cannot be reached by keyboard navigation.
 
 ## Invariants
 
@@ -70,9 +70,9 @@ This specification covers a header navigation component with a site title, prima
 
 ## Non-goals
 
-- This specification does not define animation duration or easing.
-- This specification does not define visual styling beyond visibility and accessibility requirements.
+* This specification does not define animation duration or easing.
+* This specification does not define visual styling beyond visibility and accessibility requirements.
 
 ## Open questions
 
-- None.
+* None.

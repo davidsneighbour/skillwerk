@@ -10,14 +10,14 @@ Scan this repository's dependencies with `osv-scanner`, resolve what can be reso
 
 ## Boundaries
 
-- Run only in the current repository.
-- Stop if `osv-scanner` is not installed (`osv-scanner --version`); tell the user how to install it rather than falling back to another tool.
-- This skill sends `package-lock.json` dependency metadata to the public `https://api.osv.dev/v1/querybatch` endpoint. Only run it when explicitly invoked — do not wire it into git hooks, `package.json` scripts, or CI. That trust-boundary decision is recorded in `memories/osv-scan.md` (see [#16](https://github.com/davidsneighbour/ai/issues/16)).
-- Auto-apply only safe, non-breaking fixes (a patch/minor version bump that resolves the reported vulnerability). Never auto-apply a major upgrade; hand it to a GitHub issue instead.
-- Never invent an "accepted" or "workaround" decision yourself. Those require the user's explicit call, made either in conversation or by how a linked GitHub issue was closed.
-- File at most one GitHub issue per vulnerability ID. Always search existing issues (open and closed) before creating a new one.
-- Treat `memories/osv-scan-ledger.json` as the single source of truth for what has already been triaged. Update the specific entry only — never rewrite unrelated entries, never delete history.
-- Do not commit changes without the user's confirmation.
+* Run only in the current repository.
+* Stop if `osv-scanner` is not installed (`osv-scanner --version`); tell the user how to install it rather than falling back to another tool.
+* This skill sends `package-lock.json` dependency metadata to the public `https://api.osv.dev/v1/querybatch` endpoint. Only run it when explicitly invoked — do not wire it into git hooks, `package.json` scripts, or CI. That trust-boundary decision is recorded in `memories/osv-scan.md` (see [#16](https://github.com/davidsneighbour/ai/issues/16)).
+* Auto-apply only safe, non-breaking fixes (a patch/minor version bump that resolves the reported vulnerability). Never auto-apply a major upgrade; hand it to a GitHub issue instead.
+* Never invent an "accepted" or "workaround" decision yourself. Those require the user's explicit call, made either in conversation or by how a linked GitHub issue was closed.
+* File at most one GitHub issue per vulnerability ID. Always search existing issues (open and closed) before creating a new one.
+* Treat `memories/osv-scan-ledger.json` as the single source of truth for what has already been triaged. Update the specific entry only — never rewrite unrelated entries, never delete history.
+* Do not commit changes without the user's confirmation.
 
 ## Ledger format
 
@@ -46,10 +46,10 @@ Scan this repository's dependencies with `osv-scanner`, resolve what can be reso
 
 `status` is one of:
 
-- `open` — a GitHub issue exists and is unresolved. `github_issue` is set; nothing else to do until the issue closes.
-- `accepted` — risk accepted by the user. Skip in future scans unless `review_after` has passed.
-- `fixed` — resolved by upgrading the dependency to `fixed_version`. Kept for history; skip in future scans.
-- `workaround` — mitigated indirectly (e.g. an `overrides`/`resolutions` pin) because the direct dependency has not shipped a native fix yet. Re-checked every run; promote to `fixed` once the override is no longer needed.
+* `open` — a GitHub issue exists and is unresolved. `github_issue` is set; nothing else to do until the issue closes.
+* `accepted` — risk accepted by the user. Skip in future scans unless `review_after` has passed.
+* `fixed` — resolved by upgrading the dependency to `fixed_version`. Kept for history; skip in future scans.
+* `workaround` — mitigated indirectly (e.g. an `overrides`/`resolutions` pin) because the direct dependency has not shipped a native fix yet. Re-checked every run; promote to `fixed` once the override is no longer needed.
 
 `memories/osv-scan.md` holds the human-readable rationale for `accepted` and `workaround` entries — add a dated log entry there whenever one is created or changed.
 
@@ -96,20 +96,20 @@ Write the JSON output outside the repository. Parse `results[].packages[].vulner
 
 Load `memories/osv-scan-ledger.json`. For each finding, match by `id` or any `aliases` against existing entries:
 
-- **`accepted`** and (`review_after` unset or in the future): skip, count as `skipped_accepted`.
-- **`accepted`** and `review_after` has passed: add to `needs_human_decision` — ask the user whether to keep accepting, and update `decided_date`/`review_after` or change status based on their answer.
-- **`fixed`**: skip, count as `skipped_fixed`. (osv-scanner should not normally re-report these; if it does, treat as a regression and escalate via `needs_human_decision` rather than silently re-fixing.)
-- **`workaround`**: check whether the direct dependency now ships a version that removes the need for the override — inspect `npm view <direct-package> versions --json` and whatever changelog/advisory data is available. If resolved, update the entry to `status: fixed`, set `fixed_version`, remove the override from `package.json` if one was added for this purpose, and log the change in `memories/osv-scan.md`. Otherwise leave as-is and count as `workarounds_reviewed`.
-- **`open`**: check the linked issue:
+* **`accepted`** and (`review_after` unset or in the future): skip, count as `skipped_accepted`.
+* **`accepted`** and `review_after` has passed: add to `needs_human_decision` — ask the user whether to keep accepting, and update `decided_date`/`review_after` or change status based on their answer.
+* **`fixed`**: skip, count as `skipped_fixed`. (osv-scanner should not normally re-report these; if it does, treat as a regression and escalate via `needs_human_decision` rather than silently re-fixing.)
+* **`workaround`**: check whether the direct dependency now ships a version that removes the need for the override — inspect `npm view <direct-package> versions --json` and whatever changelog/advisory data is available. If resolved, update the entry to `status: fixed`, set `fixed_version`, remove the override from `package.json` if one was added for this purpose, and log the change in `memories/osv-scan.md`. Otherwise leave as-is and count as `workarounds_reviewed`.
+* **`open`**: check the linked issue:
 
   ```bash
   gh issue view <github_issue> --json state,labels,stateReason
   ```
 
-  - Still open: skip, count as `skipped_open`.
-  - Closed with a `resolution:wont-fix` or `resolution:invalid` label: ask the user to confirm this means the risk is accepted; on confirmation, update the entry to `status: accepted` with `reason` and `decided_date` from the closure, and log it in `memories/osv-scan.md`.
-  - Closed with `resolution:completed` (or otherwise closed as done): ask the user whether it was resolved by a direct dependency upgrade (`status: fixed`, record `fixed_version`) or by a workaround/override (`status: workaround`, record what was overridden). Log the decision in `memories/osv-scan.md`.
-- **No matching entry**: continue to step 4.
+  * Still open: skip, count as `skipped_open`.
+  * Closed with a `resolution:wont-fix` or `resolution:invalid` label: ask the user to confirm this means the risk is accepted; on confirmation, update the entry to `status: accepted` with `reason` and `decided_date` from the closure, and log it in `memories/osv-scan.md`.
+  * Closed with `resolution:completed` (or otherwise closed as done): ask the user whether it was resolved by a direct dependency upgrade (`status: fixed`, record `fixed_version`) or by a workaround/override (`status: workaround`, record what was overridden). Log the decision in `memories/osv-scan.md`.
+* **No matching entry**: continue to step 4.
 
 ### 4. Attempt a safe auto-fix for new findings
 
@@ -121,8 +121,8 @@ osv-scanner fix -M package.json -L package-lock.json --non-interactive --strateg
 
 Or, for a single direct dependency, `npm view <package> versions --json` to find the lowest non-major version that clears the advisory.
 
-- If a safe fix applies cleanly: install it, run `npm install`, then re-run the scan for that package to confirm the finding is gone, and run the repository's validation gate (`npm run ai:check`). If it passes, add a `fixed` ledger entry (`fixed_version`, `decided_date` today, `reason: "auto-fixed by osv-scan"`), do not file an issue, and record it in `auto_fixed`.
-- If validation fails after the fix, or only a major upgrade resolves it, or no fix exists at all: revert any partial fix attempt and continue to step 5.
+* If a safe fix applies cleanly: install it, run `npm install`, then re-run the scan for that package to confirm the finding is gone, and run the repository's validation gate (`npm run ai:check`). If it passes, add a `fixed` ledger entry (`fixed_version`, `decided_date` today, `reason: "auto-fixed by osv-scan"`), do not file an issue, and record it in `auto_fixed`.
+* If validation fails after the fix, or only a major upgrade resolves it, or no fix exists at all: revert any partial fix attempt and continue to step 5.
 
 ### 5. File a GitHub issue for everything else
 
@@ -186,10 +186,10 @@ Never stage through broad globs.
 
 Report:
 
-- `osv-scanner` version and total findings
-- auto-fixed packages (with old/new version)
-- newly filed issues, with URLs
-- counts skipped as already accepted / fixed / open
-- workarounds reviewed and any promoted to fixed
-- anything left in `needs_human_decision`, with the specific question to resolve
-- whether the ledger/notes changed and whether a commit was created
+* `osv-scanner` version and total findings
+* auto-fixed packages (with old/new version)
+* newly filed issues, with URLs
+* counts skipped as already accepted / fixed / open
+* workarounds reviewed and any promoted to fixed
+* anything left in `needs_human_decision`, with the specific question to resolve
+* whether the ledger/notes changed and whether a commit was created

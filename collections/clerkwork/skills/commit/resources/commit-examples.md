@@ -6,19 +6,19 @@ A comprehensive collection of commit message examples following the Conventional
 
 ### Simple feature addition
 
-```
+```text
 feat: add user profile page
 ```
 
 ### Feature with scope
 
-```
+```text
 feat(auth): add two-factor authentication
 ```
 
 ### Feature with body
 
-```
+```text
 feat(search): add semantic similarity search
 
 Implement AI-based similarity detection between documents
@@ -28,7 +28,7 @@ configurable similarity threshold.
 
 ### Feature with issue reference
 
-```
+```text
 feat(api): add webhook signature verification
 
 Add HMAC-SHA256 signature verification for all incoming
@@ -39,7 +39,7 @@ Closes #456
 
 ### Breaking change feature
 
-```
+```text
 feat(api)!: redesign authentication flow
 
 BREAKING CHANGE: The authentication endpoint now requires
@@ -53,19 +53,19 @@ Migration guide: docs/oauth-migration.md
 
 ### Simple bug fix
 
-```
+```text
 fix: resolve login redirect loop
 ```
 
 ### Bug fix with scope
 
-```
+```text
 fix(api): handle null response from webhook
 ```
 
 ### Bug fix with detailed explanation
 
-```
+```text
 fix(auth): resolve concurrent login race condition
 
 Add pessimistic locking to prevent race condition when
@@ -81,7 +81,7 @@ Fixes #789
 
 ### Critical bug fix
 
-```
+```text
 fix(security): prevent SQL injection in search
 
 Sanitize user input before constructing SQL queries in
@@ -97,19 +97,19 @@ Fixes #CVE-2024-12345
 
 ### Simple documentation update
 
-```
+```text
 docs: update README with setup instructions
 ```
 
 ### Documentation with scope
 
-```
+```text
 docs(api): add webhook endpoint documentation
 ```
 
 ### Comprehensive documentation
 
-```
+```text
 docs(contributing): add code review guidelines
 
 Add detailed guidelines for code reviewers covering:
@@ -125,19 +125,19 @@ Related to #234
 
 ### Simple refactoring
 
-```
+```text
 refactor: extract validation logic to service
 ```
 
 ### Refactoring with scope
 
-```
+```text
 refactor(models): simplify tenant scoping logic
 ```
 
 ### Large refactoring
 
-```
+```text
 refactor(services): migrate to Result pattern
 
 Convert all service objects to return explicit Result
@@ -158,13 +158,13 @@ No behavior changes - pure refactoring.
 
 ### Simple performance improvement
 
-```
+```text
 perf: add database index for user lookups
 ```
 
 ### Performance with details
 
-```
+```text
 perf(queries): eliminate N+1 queries in artifacts index
 
 Add eager loading for associated records when fetching
@@ -177,7 +177,7 @@ After: 0.3s page load time
 
 ### Database optimization
 
-```
+```text
 perf(db): add composite index for tenant queries
 
 Add composite index on (tenant_id, created_at) for the
@@ -192,19 +192,19 @@ ON artifacts(tenant_id, created_at DESC);
 
 ### Simple test addition
 
-```
+```text
 test: add specs for user authentication
 ```
 
 ### Test with scope
 
-```
+```text
 test(integration): add webhook processing tests
 ```
 
 ### Comprehensive test suite
 
-```
+```text
 test(services): add complete coverage for CreateOrderService
 
 Add unit tests covering:
@@ -221,19 +221,19 @@ Increases coverage from 67% to 95%.
 
 ### Dependency update
 
-```
+```text
 chore(deps): bump rails from 7.1.0 to 7.2.0
 ```
 
 ### Build configuration
 
-```
+```text
 chore: update Docker configuration for production
 ```
 
 ### Maintenance work
 
-```
+```text
 chore(ci): add security scanning to GitHub Actions
 
 Add Brakeman security scanning and bundler-audit to
@@ -244,13 +244,13 @@ the CI pipeline. Scans run on every PR and main branch push.
 
 ### Code formatting
 
-```
+```text
 style: format code with StandardRB
 ```
 
 ### CSS updates
 
-```
+```text
 style(ui): update button spacing and colors
 
 Align button styles with design system:
@@ -263,13 +263,13 @@ Align button styles with design system:
 
 ### Build system changes
 
-```
+```text
 build: configure webpack for code splitting
 ```
 
 ### Docker configuration
 
-```
+```text
 build(docker): optimize production image size
 
 Reduce Docker image size from 1.2GB to 400MB by:
@@ -282,13 +282,13 @@ Reduce Docker image size from 1.2GB to 400MB by:
 
 ### CI configuration
 
-```
+```text
 ci: add parallel test execution
 ```
 
 ### GitHub actions update
 
-```
+```text
 ci(actions): add automatic dependency updates
 
 Configure Dependabot to automatically open PRs for:
@@ -301,7 +301,7 @@ Configure Dependabot to automatically open PRs for:
 
 ### Simple revert
 
-```
+```text
 revert: revert "feat: add export feature"
 
 This reverts commit a1b2c3d4.
@@ -309,7 +309,7 @@ This reverts commit a1b2c3d4.
 
 ### Revert with explanation
 
-```
+```text
 revert: revert "perf: add caching layer"
 
 This reverts commit a1b2c3d4.
@@ -325,7 +325,7 @@ Related to #567
 
 ### Issue references and co-authors
 
-```
+```text
 feat(ml): add document classification
 
 Implement AI-based classification of documents into
@@ -338,7 +338,7 @@ Co-authored-by: Jane Doe <jane@example.com>
 
 ### Breaking change with migration
 
-```
+```text
 feat(api)!: change webhook payload structure
 
 BREAKING CHANGE: Webhook payloads now nest data under "payload" key.
@@ -373,7 +373,7 @@ Closes #234
 
 ### Multi-Tenant feature
 
-```
+```text
 feat(tenants): add custom subdomain support
 
 Allow tenants to configure custom subdomains instead of
@@ -388,7 +388,7 @@ Closes #789
 
 ### API integration
 
-```
+```text
 feat(integrations): add third-party data synchronization
 
 Sync data from external services via webhooks. Includes
@@ -403,7 +403,7 @@ Related to #400 (sync architecture)
 
 ### AI feature
 
-```
+```text
 feat(ai): add content extraction from documents
 
 Extract structured data from documents using LLM.
@@ -417,7 +417,7 @@ Closes #234
 
 ### Security fix
 
-```
+```text
 fix(auth): prevent session fixation attacks
 
 Reset session ID on successful login to prevent session
@@ -432,7 +432,7 @@ Fixes GHSA-2024-001
 
 ### Database migration
 
-```
+```text
 feat(db): add document embeddings for similarity search
 
 Add new document_embeddings table to store vector embeddings
@@ -451,7 +451,7 @@ Closes #567
 
 ### Background job
 
-```
+```text
 feat(jobs): add retry logic for webhook processing
 
 Add exponential backoff retry for failed webhook processing.
@@ -465,7 +465,7 @@ Closes #345
 
 ### UI component
 
-```
+```text
 feat(ui): add confidence badge component
 
 Add component for displaying AI confidence scores with
@@ -481,7 +481,7 @@ Closes #678
 
 ### Test coverage
 
-```
+```text
 test(system): add end-to-end workflow test
 
 Add comprehensive system test covering:
@@ -499,7 +499,7 @@ Closes #890
 
 ### Performance optimization
 
-```
+```text
 perf(api): optimize webhook processing
 
 Reduce webhook processing time from ~500ms to ~50ms by:
@@ -517,7 +517,7 @@ Closes #456
 
 ### ❌ vague description
 
-```
+```text
 fix: update stuff
 chore: changes
 feat: improvements
@@ -525,47 +525,47 @@ feat: improvements
 
 ### ❌ past tense
 
-```
+```text
 feat: added user profile
 fix: fixed login bug
 ```
 
 ### ❌ capitalized first letter
 
-```
+```text
 Feat: Add user profile
 Fix: Resolve login issue
 ```
 
 ### ❌ ending period
 
-```
+```text
 feat: add user profile.
 fix: resolve login issue.
 ```
 
 ### ❌ too long first line
 
-```
+```text
 feat: add a really comprehensive user profile page with avatar upload, bio editing, social links, and activity feed
 ```
 
 ### ❌ multiple unrelated changes
 
-```
+```text
 feat: add user profile, fix login bug, update README, refactor database queries
 ```
 
 ### ❌ missing type
 
-```
+```text
 add user profile
 resolve login issue
 ```
 
 ### ✅ corrected versions
 
-```
+```text
 feat: add user profile
 fix: resolve login bug
 docs: update README with setup instructions
@@ -578,7 +578,7 @@ refactor: optimize database queries
 
 Save to `.gitmessage`:
 
-```
+```text
 # <type>(<scope>): <description>
 #
 # [optional body]
@@ -607,7 +607,7 @@ git config commit.template .gitmessage
 
 **Basic Format:**
 
-```
+```text
 <type>(<scope>): <description>
 ```
 
@@ -624,7 +624,7 @@ git config commit.template .gitmessage
 
 **Breaking Changes:**
 
-```
+```text
 feat!: change API
 # or
 BREAKING CHANGE: footer
@@ -632,7 +632,7 @@ BREAKING CHANGE: footer
 
 **Issue References:**
 
-```
+```text
 Closes #123
 Fixes #456
 Related to #789

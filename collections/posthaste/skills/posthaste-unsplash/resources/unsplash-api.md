@@ -8,8 +8,8 @@ New Unsplash applications begin in demo mode.
 
 Typical limits:
 
-- demo mode: 50 requests/hour;
-- production mode: up to 1,000 requests/hour after approval.
+* demo mode: 50 requests/hour;
+* production mode: up to 1,000 requests/hour after approval.
 
 When available, inspect:
 
@@ -30,19 +30,19 @@ Conceptual script interface:
 
 Parameters:
 
-- `QUERY` — required search query;
-- `PAGE` — page number, default `1`;
-- `PER_PAGE` — results per page, default `10`, maximum `30`;
-- `ORDER_BY` — `relevant` or `latest`;
-- `ORIENTATION` — `landscape`, `portrait`, or `squarish`;
-- `COLOR` — supported Unsplash colour filter.
-- `--json` — emit JSON lines for machine-readable workflows; this is the script default;
-- `--table` — emit a Markdown table with a clickable image preview column for human review.
-- `--preview-list` — emit stacked Markdown results with each preview image outside a table.
+* `QUERY` — required search query;
+* `PAGE` — page number, default `1`;
+* `PER_PAGE` — results per page, default `10`, maximum `30`;
+* `ORDER_BY` — `relevant` or `latest`;
+* `ORIENTATION` — `landscape`, `portrait`, or `squarish`;
+* `COLOR` — supported Unsplash colour filter.
+* `--json` — emit JSON lines for machine-readable workflows; this is the script default;
+* `--table` — emit a Markdown table with a clickable image preview column for human review.
+* `--preview-list` — emit stacked Markdown results with each preview image outside a table.
 
 Where implemented, also support:
 
-- `CONTENT_FILTER` — `low` or `high`.
+* `CONTENT_FILTER` — `low` or `high`.
 
 User-facing command options:
 
@@ -77,13 +77,13 @@ Conceptual script interface:
 
 Parameters:
 
-- `QUERY` — optional topic/query;
-- `COUNT` — number of photos, default `1`, maximum `30`;
-- `ORIENTATION` — `landscape`, `portrait`, or `squarish`.
+* `QUERY` — optional topic/query;
+* `COUNT` — number of photos, default `1`, maximum `30`;
+* `ORIENTATION` — `landscape`, `portrait`, or `squarish`.
 
 Where implemented, also support:
 
-- `CONTENT_FILTER` — `low` or `high`.
+* `CONTENT_FILTER` — `low` or `high`.
 
 User-facing options:
 
@@ -116,11 +116,11 @@ Unsplash photo objects expose hotlinked image URLs under `urls`.
 
 Common fields:
 
-- `raw`;
-- `full`;
-- `regular`;
-- `small`;
-- `thumb`.
+* `raw`;
+* `full`;
+* `regular`;
+* `small`;
+* `thumb`.
 
 For normal web content, prefer `urls.regular` unless the consuming workflow requires another size.
 
@@ -183,9 +183,9 @@ No Unsplash photos matched those criteria.
 
 Report:
 
-- operation;
-- HTTP status when available;
-- safe API error message.
+* operation;
+* HTTP status when available;
+* safe API error message.
 
 Never include credentials.
 
@@ -193,9 +193,9 @@ Never include credentials.
 
 Existing Bash scripts require:
 
-- Bash;
-- `curl`;
-- `jq`.
+* Bash;
+* `curl`;
+* `jq`.
 
 Ubuntu/Debian:
 
@@ -217,5 +217,5 @@ chmod +x scripts/*.sh
 
 ## References
 
-- https://unsplash.com/documentation
-- https://unsplash.com/developers
+* [Unsplash API documentation](https://unsplash.com/documentation)
+* [Unsplash developer applications](https://unsplash.com/developers)

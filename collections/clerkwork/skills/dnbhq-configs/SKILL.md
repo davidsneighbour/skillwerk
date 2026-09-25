@@ -64,13 +64,13 @@ Use `resources/package-registry.md` as the single source of truth for supported 
 
 During setup:
 
-- keep changes scoped to the selected packages
-- preserve repository-specific overrides
-- avoid replacing legacy or overlapping tools until feature coverage is confirmed
-- remove dependencies or config fragments only when the registry or current package documentation identifies them as removable, or when repository evidence shows they are no longer referenced
-- avoid write-mode linting, mass formatting, image optimisation, release tagging, or publishing unless explicitly requested
-- update package scripts, hooks, CI, and editor integration only where required by the selected package setup
-- keep every package's changes independently reviewable
+* keep changes scoped to the selected packages
+* preserve repository-specific overrides
+* avoid replacing legacy or overlapping tools until feature coverage is confirmed
+* remove dependencies or config fragments only when the registry or current package documentation identifies them as removable, or when repository evidence shows they are no longer referenced
+* avoid write-mode linting, mass formatting, image optimisation, release tagging, or publishing unless explicitly requested
+* update package scripts, hooks, CI, and editor integration only where required by the selected package setup
+* keep every package's changes independently reviewable
 
 The init response must include:
 
@@ -82,44 +82,44 @@ The init response must include:
 
 Read the relevant resource before auditing each area:
 
-- `resources/package-registry.md`
-- `resources/packages/biome.md`
-- `resources/packages/markdownlint.md`
-- `resources/packages/release.md`
-- `resources/packages/renovate.md`
-- `resources/packages/typescript.md`
-- `resources/packages/other.md`
+* `resources/package-registry.md`
+* `resources/packages/biome.md`
+* `resources/packages/markdownlint.md`
+* `resources/packages/release.md`
+* `resources/packages/renovate.md`
+* `resources/packages/typescript.md`
+* `resources/packages/other.md`
 
 ## Operating rules
 
-- Audit before editing.
-- Do not modify configuration during the initial audit.
-- Do not run package-specific maintenance until the user selects it.
-- Do not assume every repository needs every shared package.
-- Read package documentation before recommending an update.
-- Treat installed package documentation as authoritative for the installed version.
-- Treat upstream package documentation and migration notes as authoritative for the target version.
-- Do not remove legacy tools until replacement coverage is confirmed.
-- Check package README.md files for defaults and supported changes before copying package-specific setup details into a repository.
-- Avoid unrelated formatting or source-code changes.
-- Preserve repository-specific overrides that remain necessary.
-- Keep findings separated by registry package.
+* Audit before editing.
+* Do not modify configuration during the initial audit.
+* Do not run package-specific maintenance until the user selects it.
+* Do not assume every repository needs every shared package.
+* Read package documentation before recommending an update.
+* Treat installed package documentation as authoritative for the installed version.
+* Treat upstream package documentation and migration notes as authoritative for the target version.
+* Do not remove legacy tools until replacement coverage is confirmed.
+* Check package README.md files for defaults and supported changes before copying package-specific setup details into a repository.
+* Avoid unrelated formatting or source-code changes.
+* Preserve repository-specific overrides that remain necessary.
+* Keep findings separated by registry package.
 
 ## Initial repository audit
 
 Inspect:
 
-- `package.json`
-- package-manager lock files
-- existing DNBHQ and davidsneighbour dependencies
-- Biome, ESLint, and Prettier configuration
-- TypeScript configuration
-- framework-specific configuration
-- package scripts
-- lint-staged and Git hooks
-- CI workflows
-- editor settings
-- generated-file and ignore configuration
+* `package.json`
+* package-manager lock files
+* existing DNBHQ and davidsneighbour dependencies
+* Biome, ESLint, and Prettier configuration
+* TypeScript configuration
+* framework-specific configuration
+* package scripts
+* lint-staged and Git hooks
+* CI workflows
+* editor settings
+* generated-file and ignore configuration
 
 Classify each supported registry package as:
 

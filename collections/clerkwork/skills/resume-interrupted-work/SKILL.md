@@ -16,7 +16,7 @@ This skill manages a project-root `RESUME.md` scratch file that allows any agent
 
 It must explain the unfinished task clearly enough that another agent can resume without hidden context, previous chat history, or assumptions.
 
-## Startup Rule
+## Startup rule
 
 Before starting project work, check whether a project-root `RESUME.md` exists.
 
@@ -30,13 +30,13 @@ If `RESUME.md` exists:
 
 Only after `RESUME.md` has been resolved and removed may normal work continue.
 
-## No Resume File
+## No resume file
 
 If no project-root `RESUME.md` exists, continue with the user's current request normally.
 
 Do not create `RESUME.md` pre-emptively.
 
-## User Says Resume or Continue
+## User says resume or continue
 
 When the user says `resume`, `continue`, `carry on`, or similar:
 
@@ -45,23 +45,23 @@ When the user says `resume`, `continue`, `carry on`, or similar:
 3. If it does not exist, continue from the visible current task context if possible.
 4. If neither `RESUME.md` nor visible context is enough to continue, ask the user for the missing context.
 
-## When to Create or Update `RESUME.md`
+## When to create or update `RESUME.md`
 
 Create or update project-root `RESUME.md` whenever the current task cannot be fully completed in the current step.
 
 This includes:
 
-- the user says `pause`, `stop`, `resume later`, or similar;
-- work must stop because of context, time, usage, or tool limits;
-- a required dependency, credential, tool, environment, or user answer is missing;
-- a multi-step task is only partially complete;
-- files were changed but not verified;
-- verification failed and the cause is not fully fixed;
-- there are known remaining steps required to complete the user's active request.
+* the user says `pause`, `stop`, `resume later`, or similar;
+* work must stop because of context, time, usage, or tool limits;
+* a required dependency, credential, tool, environment, or user answer is missing;
+* a multi-step task is only partially complete;
+* files were changed but not verified;
+* verification failed and the cause is not fully fixed;
+* there are known remaining steps required to complete the user's active request.
 
 Do not create `RESUME.md` for unrelated nice-to-have improvements, speculative cleanup, or optional future ideas.
 
-## Required `RESUME.md` Format
+## Required `RESUME.md` format
 
 Use this structure:
 
@@ -105,40 +105,40 @@ Restate the user's request in concrete terms.
 - Include anything that is easy to miss.
 ```
 
-## Writing Rules
+## Writing rules
 
 Write `RESUME.md` plainly and operationally.
 
 The file must not depend on:
 
-- hidden reasoning;
-- previous private context;
-- unreferenced chat history;
-- vague phrases like "continue what I was doing";
-- unexplained file paths;
-- unexplained tool output.
+* hidden reasoning;
+* previous private context;
+* unreferenced chat history;
+* vague phrases like "continue what I was doing";
+* unexplained file paths;
+* unexplained tool output.
 
 Prefer exact paths, commands, filenames, issue numbers, branch names, and observed error messages.
 
-## Removal Rule
+## Removal rule
 
 Remove `RESUME.md` once its contents are no longer needed.
 
 Before removing it, make sure one of these is true:
 
-- the unfinished work was completed;
-- the user explicitly cancelled or replaced the unfinished work;
-- the remaining items were moved into a durable tracker such as an issue, TODO file, or project board.
+* the unfinished work was completed;
+* the user explicitly cancelled or replaced the unfinished work;
+* the remaining items were moved into a durable tracker such as an issue, TODO file, or project board.
 
 Never leave a stale `RESUME.md` in the repository after the interruption has been resolved.
 
-## Git Commit Rule
+## Git commit rule
 
 `RESUME.md` is a temporary scratch file for resuming interrupted work in the near future. It is not a durable project-planning file, not a backlog, and not a file that should normally become part of the code base.
 
 Do not include `RESUME.md` in git commits unless the user explicitly asks for it to be committed. Do not offer to add `RESUME.md` to a commit. If a task needs durable tracking, move the relevant information into an issue, `TODO.md`, `PROJECT.md`, or another appropriate project-tracking location, then remove `RESUME.md`.
 
-## Registration Rule
+## Registration rule
 
 When this skill is being installed, updated, or audited as part of repository instruction setup, verify that `AGENTS.md` mentions the `RESUME.md` protocol.
 

@@ -24,14 +24,14 @@ Treat each category as a separate classification dimension. Do not choose labels
 
 Analyse any combination of:
 
-- issue title
-- issue body
-- issue comments
-- issue state
-- existing labels
-- linked pull requests or commits
-- assignees and milestone
-- explicit user instructions
+* issue title
+* issue body
+* issue comments
+* issue state
+* existing labels
+* linked pull requests or commits
+* assignees and milestone
+* explicit user instructions
 
 When only plain issue text is provided, return recommendations without claiming that labels were applied.
 
@@ -56,70 +56,70 @@ When connected GitHub tooling is available and the user asks to update or apply 
 
 Describes the primary nature of the work requested or required.
 
-- Select exactly one type for every issue, whether open or closed.
-- Prefer the label that describes the intended change, not merely the file type involved.
-- Use `type:chore` only when no more specific type applies.
-- A bug fix that also adds regression tests remains `type:bug`, not `type:tests`.
-- A dependency upgrade remains `type:dependencies`, even when it requires code changes.
-- Use `type:security` for security hardening, vulnerabilities, unsafe behaviour, access control, secret exposure, or security-sensitive configuration.
-- Use priority to represent urgency and scheduling, not as a formal security severity score.
-- Use `type:design` for visual design, layout, branding, styling, themes, interaction presentation, or design-system work.
-- Use `type:content` for user-facing editorial or marketing copy and content structure. Use `type:documentation` for technical, project, process, or usage documentation.
+* Select exactly one type for every issue, whether open or closed.
+* Prefer the label that describes the intended change, not merely the file type involved.
+* Use `type:chore` only when no more specific type applies.
+* A bug fix that also adds regression tests remains `type:bug`, not `type:tests`.
+* A dependency upgrade remains `type:dependencies`, even when it requires code changes.
+* Use `type:security` for security hardening, vulnerabilities, unsafe behaviour, access control, secret exposure, or security-sensitive configuration.
+* Use priority to represent urgency and scheduling, not as a formal security severity score.
+* Use `type:design` for visual design, layout, branding, styling, themes, interaction presentation, or design-system work.
+* Use `type:content` for user-facing editorial or marketing copy and content structure. Use `type:documentation` for technical, project, process, or usage documentation.
 
 ### `status`
 
 Describes the issue's current workflow state while it is open.
 
-- Select exactly one status for every open issue.
-- Update it when the lifecycle state changes.
-- Remove it when the issue closes.
-- `status:blocked` takes precedence while meaningful progress cannot continue.
-- `status:review` means implementation or analysis is ready for review or validation.
-- `status:done` means an agent or contributor has finished the work, but the issue remains open because the change has not yet been merged, pushed, deployed, or otherwise closed.
-- When an agent finishes work without closing the issue, set `status:done`.
-- When an agent finishes and closes the issue in the same operation, skip `status:done` and apply `resolution:completed` directly.
+* Select exactly one status for every open issue.
+* Update it when the lifecycle state changes.
+* Remove it when the issue closes.
+* `status:blocked` takes precedence while meaningful progress cannot continue.
+* `status:review` means implementation or analysis is ready for review or validation.
+* `status:done` means an agent or contributor has finished the work, but the issue remains open because the change has not yet been merged, pushed, deployed, or otherwise closed.
+* When an agent finishes work without closing the issue, set `status:done`.
+* When an agent finishes and closes the issue in the same operation, skip `status:done` and apply `resolution:completed` directly.
 
 Do not add `status:planned`, `status:waiting`, or `status:needs-info`:
 
-- planned work is `status:confirmed` until implementation starts
-- unanswered questions use `meta:question`
-- a question that prevents progress uses `status:blocked` plus `meta:question`
-- a question that does not prevent progress uses the otherwise correct status plus `meta:question`
+* planned work is `status:confirmed` until implementation starts
+* unanswered questions use `meta:question`
+* a question that prevents progress uses `status:blocked` plus `meta:question`
+* a question that does not prevent progress uses the otherwise correct status plus `meta:question`
 
 ### `resolution`
 
 Describes why a closed issue was closed.
 
-- Do not apply a resolution to an open issue.
-- Apply exactly one resolution when closing an issue.
-- `resolution:completed` means the requested work was completed and the issue is now closed.
-- `resolution:cancelled` means previously intended or accepted work was deliberately withdrawn before completion.
-- `resolution:superseded` means another decision, implementation, issue, or approach replaced this issue, without the issue merely being a duplicate report.
-- `resolution:wont-fix` means the issue remains understood but there is a deliberate decision not to implement or fix it.
-- `resolution:duplicate` means the same issue or request is already tracked elsewhere.
-- `resolution:invalid` means the report or request is not valid enough to remain actionable.
+* Do not apply a resolution to an open issue.
+* Apply exactly one resolution when closing an issue.
+* `resolution:completed` means the requested work was completed and the issue is now closed.
+* `resolution:cancelled` means previously intended or accepted work was deliberately withdrawn before completion.
+* `resolution:superseded` means another decision, implementation, issue, or approach replaced this issue, without the issue merely being a duplicate report.
+* `resolution:wont-fix` means the issue remains understood but there is a deliberate decision not to implement or fix it.
+* `resolution:duplicate` means the same issue or request is already tracked elsewhere.
+* `resolution:invalid` means the report or request is not valid enough to remain actionable.
 
 ### `prio`
 
 Describes deliberate prioritisation based on impact, urgency, and scheduling intent.
 
-- Apply exactly one priority label to every open issue.
-- Remove all priority labels when the issue is closed.
-- Use explicit user or project priority when available.
-- Otherwise infer priority from impact, urgency, dependencies, and scheduling consequences.
-- Use `prio:low` as the deterministic default when no evidence supports a higher priority.
-- Do not add `prio:unsorted`; the taxonomy requires an actionable priority, and the owner's established fallback is `prio:low`.
-- Do not equate security severity with priority automatically. A security issue may receive any priority based on actual risk and urgency.
+* Apply exactly one priority label to every open issue.
+* Remove all priority labels when the issue is closed.
+* Use explicit user or project priority when available.
+* Otherwise infer priority from impact, urgency, dependencies, and scheduling consequences.
+* Use `prio:low` as the deterministic default when no evidence supports a higher priority.
+* Do not add `prio:unsorted`; the taxonomy requires an actionable priority, and the owner's established fallback is `prio:low`.
+* Do not equate security severity with priority automatically. A security issue may receive any priority based on actual risk and urgency.
 
 ### `meta`
 
 Adds workflow or collaboration context that does not replace the other categories.
 
-- Apply zero or more compatible meta labels to open issues.
-- Remove a meta label once its condition no longer applies.
-- Remove all meta labels when the issue is closed.
-- Use `meta:question` whenever clarification, information, or discussion is needed.
-- Combine `meta:question` with `status:blocked` only when the missing answer prevents meaningful progress.
+* Apply zero or more compatible meta labels to open issues.
+* Remove a meta label once its condition no longer applies.
+* Remove all meta labels when the issue is closed.
+* Use `meta:question` whenever clarification, information, or discussion is needed.
+* Combine `meta:question` with `status:blocked` only when the missing answer prevents meaningful progress.
 
 ## Type precedence
 
@@ -152,38 +152,38 @@ unconfirmed -> confirmed -> in-progress -> review -> done
 
 Interpretation:
 
-- `status:unconfirmed`: validity, reproducibility, scope, or acceptance is unresolved.
-- `status:confirmed`: accepted as valid work, but active implementation has not started.
-- `status:in-progress`: active work is underway.
-- `status:blocked`: progress cannot continue because of an external dependency, missing decision, missing information, or another issue.
-- `status:review`: implementation or investigation is ready for review, testing, or validation.
-- `status:done`: work is finished, but the open issue is awaiting merge, push, deployment, automated closure, or other final handling.
+* `status:unconfirmed`: validity, reproducibility, scope, or acceptance is unresolved.
+* `status:confirmed`: accepted as valid work, but active implementation has not started.
+* `status:in-progress`: active work is underway.
+* `status:blocked`: progress cannot continue because of an external dependency, missing decision, missing information, or another issue.
+* `status:review`: implementation or investigation is ready for review, testing, or validation.
+* `status:done`: work is finished, but the open issue is awaiting merge, push, deployment, automated closure, or other final handling.
 
 ## Lifecycle invariants
 
 An open issue must have:
 
-- exactly one `type`
-- exactly one `status`
-- exactly one `prio`
-- zero or more `meta` labels
-- no `resolution`
+* exactly one `type`
+* exactly one `status`
+* exactly one `prio`
+* zero or more `meta` labels
+* no `resolution`
 
 A closed issue must have:
 
-- exactly one `type`
-- exactly one `resolution`
-- no `status`
-- no `prio`
-- no `meta`
+* exactly one `type`
+* exactly one `resolution`
+* no `status`
+* no `prio`
+* no `meta`
 
 The `status` and `resolution` categories are mutually exclusive.
 
 ### Finishing work
 
-- Work finished, issue remains open: set `status:done`.
-- Work finished and issue closes immediately: apply `resolution:completed` directly.
-- Issue already has `status:done` and is now closing: replace it with `resolution:completed` and remove all open-only labels.
+* Work finished, issue remains open: set `status:done`.
+* Work finished and issue closes immediately: apply `resolution:completed` directly.
+* Issue already has `status:done` and is now closing: replace it with `resolution:completed` and remove all open-only labels.
 
 ### Closing an issue
 
@@ -250,16 +250,16 @@ For applied changes, state exactly what changed and whether any recommended chan
 
 Before finishing, verify:
 
-- every selected label exists in the taxonomy
-- no single-value category has multiple labels
-- every issue has exactly one type
-- every open issue has exactly one status and exactly one priority
-- open issues have no resolution label
-- every closed issue has exactly one resolution label
-- closed issues have no status, priority, or meta labels
-- `type` reflects the primary acceptance criterion
-- `prio:low` is used when no higher priority is justified
-- stale lifecycle and meta labels were removed
+* every selected label exists in the taxonomy
+* no single-value category has multiple labels
+* every issue has exactly one type
+* every open issue has exactly one status and exactly one priority
+* open issues have no resolution label
+* every closed issue has exactly one resolution label
+* closed issues have no status, priority, or meta labels
+* `type` reflects the primary acceptance criterion
+* `prio:low` is used when no higher priority is justified
+* stale lifecycle and meta labels were removed
 
 ## Taxonomy provisioning
 
@@ -271,10 +271,10 @@ dry-run mode first when current label state is uncertain.
 
 After every run, the manager audits the repository and reports:
 
-- installed canonical labels
-- missing canonical labels
-- legacy labels using a managed namespace with an unknown value
-- repository-specific labels outside the managed namespaces
+* installed canonical labels
+* missing canonical labels
+* legacy labels using a managed namespace with an unknown value
+* repository-specific labels outside the managed namespaces
 
 Managed namespaces are `type:`, `status:`, `resolution:`, `prio:`, and `meta:`. Treat an unknown label inside one of these namespaces as a likely legacy label requiring review. Preserve labels outside these namespaces as potentially intentional repository-specific labels. The audit never deletes or renames labels.
 

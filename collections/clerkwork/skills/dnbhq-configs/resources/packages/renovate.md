@@ -10,11 +10,11 @@ Read the `dnbhq/renovate-config` repository README.md and migration notes before
 
 Current package documentation controls:
 
-- preset names
-- supported config file shape
-- included preset behavior
-- migration instructions
-- validation caveats
+* preset names
+* supported config file shape
+* included preset behavior
+* migration instructions
+* validation caveats
 
 This is a Renovate GitHub preset. Do not install `@dnbhq/renovate-config` from npm as a normal runtime or dev dependency.
 
@@ -22,24 +22,24 @@ This is a Renovate GitHub preset. Do not install `@dnbhq/renovate-config` from n
 
 Inspect:
 
-- `renovate.json`, `renovate.json5`, `.github/renovate.json`, and `.github/renovate.json5`
-- `.renovaterc`, `.renovaterc.json`, `.renovaterc.json5`, and `package.json` `renovate` config
-- `.github/workflows/*.yml` and `.github/workflows/*.yaml`
-- npm, GitHub Actions, Docker, Hugo, Go, Composer, Python, Rust, and other package ecosystem files
-- npm workspaces, `packages/*`, `apps/*`, and nested lockfiles
-- current project-specific Renovate settings
+* `renovate.json`, `renovate.json5`, `.github/renovate.json`, and `.github/renovate.json5`
+* `.renovaterc`, `.renovaterc.json`, `.renovaterc.json5`, and `package.json` `renovate` config
+* `.github/workflows/*.yml` and `.github/workflows/*.yaml`
+* npm, GitHub Actions, Docker, Hugo, Go, Composer, Python, Rust, and other package ecosystem files
+* npm workspaces, `packages/*`, `apps/*`, and nested lockfiles
+* current project-specific Renovate settings
 
 Classify the setup as missing, partial, current, outdated, legacy, duplicated, mixed, invalid, or migration-incomplete.
 
 ## Maintenance rules
 
-- Use the GitHub preset documented by the package README.md, normally `github>dnbhq/renovate-config`.
-- Prefer `.github/renovate.json5` because JSON5 supports comments and is the DNBHQ convention.
-- Create `.github` when needed.
-- Do not create both JSON and JSON5 Renovate config files.
-- Preserve project-specific package rules, schedules, manager settings, host rules, custom registries, encrypted secrets, reviewers, labels, assignees, and branch naming unless they are clearly obsolete.
-- Do not remove unrelated dependency-update tooling unless the user explicitly asks or responsibilities are intentionally separated.
-- Do not create secrets.
+* Use the GitHub preset documented by the package README.md, normally `github>dnbhq/renovate-config`.
+* Prefer `.github/renovate.json5` because JSON5 supports comments and is the DNBHQ convention.
+* Create `.github` when needed.
+* Do not create both JSON and JSON5 Renovate config files.
+* Preserve project-specific package rules, schedules, manager settings, host rules, custom registries, encrypted secrets, reviewers, labels, assignees, and branch naming unless they are clearly obsolete.
+* Do not remove unrelated dependency-update tooling unless the user explicitly asks or responsibilities are intentionally separated.
+* Do not create secrets.
 
 ## Cleanup
 
@@ -53,11 +53,11 @@ Run the safest available Renovate config validation command for the current tool
 
 Validate that:
 
-- the config parses
-- the shared preset reference is present
-- local overrides are valid Renovate configuration
-- old config fragments are gone or intentionally retained
-- duplicate config files do not conflict
+* the config parses
+* the shared preset reference is present
+* local overrides are valid Renovate configuration
+* old config fragments are gone or intentionally retained
+* duplicate config files do not conflict
 
 Separate local syntax/config errors from failures to resolve the shared GitHub preset because of credentials, network, registry, or GitHub access.
 

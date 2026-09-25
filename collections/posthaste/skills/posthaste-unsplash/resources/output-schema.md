@@ -20,11 +20,11 @@ Use:
 
 Requirements:
 
-- The preview image uses an Unsplash hotlinked `urls.small` or `urls.thumb` URL.
-- The photo ID links to the Unsplash photo page.
-- The photographer links to the photographer's Unsplash profile.
-- Attribution is always visible.
-- Links back to Unsplash use the configured UTM referral parameters.
+* The preview image uses an Unsplash hotlinked `urls.small` or `urls.thumb` URL.
+* The photo ID links to the Unsplash photo page.
+* The photographer links to the photographer's Unsplash profile.
+* Attribution is always visible.
+* Links back to Unsplash use the configured UTM referral parameters.
 
 Do not embed locally downloaded thumbnails.
 
@@ -42,25 +42,25 @@ Use:
 
 Requirements:
 
-- `Preview` uses the Unsplash hotlinked thumbnail/small URL.
-- `Photo` links to the Unsplash photo page.
-- `Photographer` links to the photographer's Unsplash profile.
-- Keep descriptions concise enough for table display.
-- Attribution is always visible.
-- Links back to Unsplash use the configured UTM referral parameters.
+* `Preview` uses the Unsplash hotlinked thumbnail/small URL.
+* `Photo` links to the Unsplash photo page.
+* `Photographer` links to the photographer's Unsplash profile.
+* Keep descriptions concise enough for table display.
+* Attribution is always visible.
+* Links back to Unsplash use the configured UTM referral parameters.
 
 ## JSON output conditions
 
 Return JSON when:
 
-- the user explicitly requests JSON;
-- `--json` is supplied;
-- another skill requests machine-readable data.
+* the user explicitly requests JSON;
+* `--json` is supplied;
+* another skill requests machine-readable data.
 
 Return:
 
-- an array for multiple candidates;
-- a single object when exactly one selected photo is requested.
+* an array for multiple candidates;
+* a single object when exactly one selected photo is requested.
 
 ## Canonical photo object
 

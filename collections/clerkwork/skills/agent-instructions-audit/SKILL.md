@@ -57,7 +57,7 @@ Do not keep a minimal `CLAUDE.md` adapter for the supported current-Claude setup
 
 Use three instruction layers.
 
-### Bootstrap: AGENTS.md
+### Bootstrap: `AGENTS.md`
 
 `AGENTS.md` is unconditional context and therefore the most expensive layer.
 
@@ -68,7 +68,7 @@ Keep it as small as practical. It should contain only:
 * the minimal explanation needed to discover scoped instructions and task references;
 * narrow semantic triggers that cannot live in a more specific scoped instruction.
 
-### Scoped instructions: .agents/instructions/
+### Scoped instructions: `.agents/instructions/`
 
 Scoped instruction files contain behavioural rules that apply automatically because the files being worked on match their scope.
 
@@ -84,7 +84,7 @@ applyTo: "**/*"
 
 Also flag effectively-global scopes that technically avoid those exact forms but cover most working files.
 
-### Task references: .agents/references/
+### Task references: `.agents/references/`
 
 Reference files contain specialised knowledge or procedures whose applicability depends on the semantic task rather than simply the path of the file being edited.
 
@@ -92,7 +92,7 @@ Reference files MUST NOT have `applyTo`.
 
 A reference MUST have a discoverable task trigger. Prefer placing that trigger in the narrowest relevant scoped instruction. Put it in `AGENTS.md` only when no narrower instruction can reliably expose it.
 
-## CLAUDE.md migration
+## `CLAUDE.md` migration
 
 For the supported latest-Claude setup, `CLAUDE.md` is legacy repository state.
 

@@ -1,6 +1,6 @@
-![Posthaste](../../.github/assets/images/skillwerk/posthaste.png)
+# AI-assisted social publishing, posthaste
 
-## AI-assisted social publishing, posthaste
+![Posthaste](../../.github/assets/images/skillwerk/posthaste.png)
 
 Posthaste is a collection of reusable AI skills for drafting, adapting, reviewing, and publishing social media content. Let's keep social publishing workflows focused, portable, and easy to use across projects and AI assistants.
 

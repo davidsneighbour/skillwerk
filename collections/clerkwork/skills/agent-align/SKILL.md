@@ -79,7 +79,7 @@ Use `.agents/references/` for specialised knowledge, procedures, framework notes
 
 Subdirectories below either directory are encouraged where they make ownership and discovery clearer. Do not create files or directories merely to satisfy this example.
 
-## AGENTS.md: canonical source of truth
+## `AGENTS.md`: canonical source of truth
 
 Create or maintain `AGENTS.md` as the canonical entry point for all repository agent instructions.
 
@@ -100,7 +100,7 @@ Scoped instruction files are part of the canonical instruction set and have the 
 
 Inspect the repository before changing anything.
 
-### AGENTS.md does not exist
+### `AGENTS.md` does not exist
 
 1. Inspect repository documentation, configuration, and existing conventions.
 2. If the current agent provides an appropriate repository-initialisation mechanism, use it only as input, not as authoritative output.
@@ -111,14 +111,14 @@ Inspect the repository before changing anything.
 
 Do not invent extensive repository policies that cannot be derived from repository evidence.
 
-### AGENTS.md exists
+### `AGENTS.md` exists
 
 1. Review and preserve its useful instructions.
 2. Refactor complex conditional sections into scoped instructions or references where appropriate.
 3. Resolve duplication and contradictions deliberately.
 4. Do not create `CLAUDE.md`.
 
-### CLAUDE.md exists
+### `CLAUDE.md` exists
 
 An existing project `CLAUDE.md` is legacy state for the supported current-Claude setup and can prevent Claude Code's default `AGENTS.md` fallback from being used.
 

@@ -22,8 +22,8 @@ Do not reduce or generalise the GitHub workflow merely to make the skill theoret
 
 Use these Clerkwork skills when their responsibilities are needed:
 
-- `labels` owns Patrick's issue label taxonomy and lifecycle classification.
-- `commit` owns Conventional Commits message construction and commit-message review.
+* `labels` owns Patrick's issue label taxonomy and lifecycle classification.
+* `commit` owns Conventional Commits message construction and commit-message review.
 
 Do not duplicate their detailed rules here. Issue work orchestrates them.
 
@@ -35,11 +35,11 @@ Infer the operation from the user's wording. The user does not need to name a mo
 
 Use inspection-only behaviour for requests such as:
 
-- "check open issues"
-- "show me the open issues"
-- "review the issue queue"
-- "what issues are open?"
-- "what is happening with issue #123?"
+* "check open issues"
+* "show me the open issues"
+* "review the issue queue"
+* "what issues are open?"
+* "what is happening with issue #123?"
 
 Inspect and report. Do not implement work unless the request also asks for implementation.
 
@@ -47,10 +47,10 @@ Inspect and report. Do not implement work unless the request also asks for imple
 
 Use selection-only behaviour for requests such as:
 
-- "what should we work on next?"
-- "pick the next issue"
-- "select an issue"
-- "find a suitable issue"
+* "what should we work on next?"
+* "pick the next issue"
+* "select an issue"
+* "find a suitable issue"
 
 Return one suitable issue without modifying the repository.
 
@@ -58,10 +58,10 @@ Return one suitable issue without modifying the repository.
 
 Use specific-issue behaviour when the request identifies an issue, for example:
 
-- "work on issue #123"
-- "fix #123"
-- "take care of #123"
-- "continue issue #123"
+* "work on issue #123"
+* "fix #123"
+* "take care of #123"
+* "continue issue #123"
 
 Inspect that issue and work only on it unless the user explicitly broadens the scope.
 
@@ -69,10 +69,10 @@ Inspect that issue and work only on it unless the user explicitly broadens the s
 
 Use next-issue behaviour for requests such as:
 
-- "work on the next issue"
-- "pick an issue and fix it"
-- "work on one open issue"
-- "find something useful to fix"
+* "work on the next issue"
+* "pick an issue and fix it"
+* "work on one open issue"
+* "find something useful to fix"
 
 Select one suitable issue, then run the common implementation workflow for that issue.
 
@@ -80,12 +80,12 @@ Select one suitable issue, then run the common implementation workflow for that 
 
 Use continuous behaviour for requests such as:
 
-- "continue working on issues"
-- "work through the issues"
-- "keep working on open issues"
-- "fix all actionable open issues"
-- "clear the issue queue"
-- "work through 3 issues"
+* "continue working on issues"
+* "work through the issues"
+* "keep working on open issues"
+* "fix all actionable open issues"
+* "clear the issue queue"
+* "work through 3 issues"
 
 Repeatedly select and complete one issue at a time until a stop condition is reached or the user's issue limit is met.
 
@@ -151,14 +151,14 @@ Inspect enough promising candidates to make a defensible choice. Usually 3-5 can
 
 Skip issues that are clearly:
 
-- blocked
-- waiting on unavailable information
-- duplicates, invalid, cancelled, or intentionally not being fixed
-- vague epics without an actionable next change
-- dependent on unavailable secrets, production systems, private credentials, or external accounts
-- primarily unresolved product, strategy, or design decisions
-- unrelated to the repository
-- impossible to validate safely in the current environment
+* blocked
+* waiting on unavailable information
+* duplicates, invalid, cancelled, or intentionally not being fixed
+* vague epics without an actionable next change
+* dependent on unavailable secrets, production systems, private credentials, or external accounts
+* primarily unresolved product, strategy, or design decisions
+* unrelated to the repository
+* impossible to validate safely in the current environment
 
 For selection-only requests, return:
 
@@ -253,13 +253,13 @@ Do not require every earlier issue, milestone, or category to be completely reso
 
 Stop continuous work when:
 
-- no safe actionable issue remains
-- the selected issue is blocked or cannot be completed safely
-- validation fails for a reason that cannot be resolved within issue scope
-- unexpected working-tree changes make further work unsafe
-- the next work requires unavailable credentials, external systems, or a human decision
-- repository instructions require manual review before continuing
-- the user-specified issue limit has been reached
+* no safe actionable issue remains
+* the selected issue is blocked or cannot be completed safely
+* validation fails for a reason that cannot be resolved within issue scope
+* unexpected working-tree changes make further work unsafe
+* the next work requires unavailable credentials, external systems, or a human decision
+* repository instructions require manual review before continuing
+* the user-specified issue limit has been reached
 
 When one issue is blocked, do not automatically treat all later independent issues as blocked. If the user's request is explicitly to continue autonomously through issues, record the blocked issue and continue with another independent actionable issue unless repository instructions or dependency relationships make that unsafe.
 
@@ -269,11 +269,11 @@ Use `labels` whenever the repository uses Patrick's taxonomy.
 
 Typical lifecycle handling is:
 
-- before implementation: ensure classification is valid
-- when active work starts: move the issue to the appropriate in-progress state
-- when clarification blocks progress: represent the blocked/question state
-- when implementation is complete but the issue remains open: use the appropriate completed-open state
-- when closure occurs through the repository workflow: ensure closed-issue labels and resolution are valid
+* before implementation: ensure classification is valid
+* when active work starts: move the issue to the appropriate in-progress state
+* when clarification blocks progress: represent the blocked/question state
+* when implementation is complete but the issue remains open: use the appropriate completed-open state
+* when closure occurs through the repository workflow: ensure closed-issue labels and resolution are valid
 
 Do not manually close an issue when project instructions require closure through a commit, pull request, merge, or another automated mechanism.
 

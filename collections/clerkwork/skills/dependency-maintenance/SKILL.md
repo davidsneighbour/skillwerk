@@ -10,16 +10,16 @@ Maintain npm dependencies without mixing unrelated work into the update.
 
 ## Boundaries
 
-- Work only in the current repository.
-- Support npm projects only. Stop on pnpm, Yarn, Bun, or ambiguous package-manager state unless the user explicitly asks to adapt the workflow.
-- Preserve unrelated tracked and untracked work.
-- Do not make unrelated source, formatting, or refactoring changes.
-- Do not install maintenance tooling as a project dependency.
-- Do not use `npm audit fix --force` without explicit approval.
-- Do not treat a generic "update dependencies" request as approval for major upgrades.
-- Do not merge, rebase, or use plain `git pull`.
-- Do not commit when validation fails unless the user explicitly accepts the failure.
-- Commit only when the request includes committing or clearly asks for a completed maintenance run.
+* Work only in the current repository.
+* Support npm projects only. Stop on pnpm, Yarn, Bun, or ambiguous package-manager state unless the user explicitly asks to adapt the workflow.
+* Preserve unrelated tracked and untracked work.
+* Do not make unrelated source, formatting, or refactoring changes.
+* Do not install maintenance tooling as a project dependency.
+* Do not use `npm audit fix --force` without explicit approval.
+* Do not treat a generic "update dependencies" request as approval for major upgrades.
+* Do not merge, rebase, or use plain `git pull`.
+* Do not commit when validation fails unless the user explicitly accepts the failure.
+* Commit only when the request includes committing or clearly asks for a completed maintenance run.
 
 ## Track run state
 
@@ -69,10 +69,10 @@ npm pkg get packageManager workspaces 2>/dev/null || true
 
 Classify the project:
 
-- Continue as npm when `package-lock.json` or `npm-shrinkwrap.json` exists, `packageManager` identifies npm, or the user explicitly identifies npm.
-- Stop as unsupported when only another package manager's lockfile exists.
-- Stop as ambiguous when multiple package-manager lockfile types exist.
-- Stop when no `package.json` exists.
+* Continue as npm when `package-lock.json` or `npm-shrinkwrap.json` exists, `packageManager` identifies npm, or the user explicitly identifies npm.
+* Stop as unsupported when only another package manager's lockfile exists.
+* Stop as ambiguous when multiple package-manager lockfile types exist.
+* Stop when no `package.json` exists.
 
 ### 2. Determine repository shape
 
@@ -88,10 +88,10 @@ find . -maxdepth 3 \
 
 Use this decision model:
 
-- **Single package:** one root package manifest; update the root manifest and lockfile.
-- **npm workspaces:** root `package.json` declares workspaces; update included workspace manifests and refresh the root lockfile.
-- **Configured monorepo:** an existing npm-check-updates configuration defines package-file scope; run from the repository root and respect it.
-- **Ambiguous monorepo:** multiple manifests exist without workspaces or clear configuration; stop and ask which package paths are in scope.
+* **Single package:** one root package manifest; update the root manifest and lockfile.
+* **npm workspaces:** root `package.json` declares workspaces; update included workspace manifests and refresh the root lockfile.
+* **Configured monorepo:** an existing npm-check-updates configuration defines package-file scope; run from the repository root and respect it.
+* **Ambiguous monorepo:** multiple manifests exist without workspaces or clear configuration; stop and ask which package paths are in scope.
 
 Do not update arbitrary nested manifests.
 
@@ -109,11 +109,11 @@ git diff --cached -- '**/package.json' '**/package-lock.json' '**/npm-shrinkwrap
 
 Handle the result as follows:
 
-- Continue when the tree is clean.
-- Continue with unrelated untracked files, but leave them untouched.
-- Stop when package manifests or lockfiles already have changes. Ask whether to include them, commit them separately, or use them as the update baseline.
-- For unrelated tracked changes, prefer asking the user to commit or stash them.
-- Auto-stash only when the user requested an automated end-to-end run, the changes are clearly unrelated, and hiding them cannot affect the maintenance result.
+* Continue when the tree is clean.
+* Continue with unrelated untracked files, but leave them untouched.
+* Stop when package manifests or lockfiles already have changes. Ask whether to include them, commit them separately, or use them as the update baseline.
+* For unrelated tracked changes, prefer asking the user to commit or stash them.
+* Auto-stash only when the user requested an automated end-to-end run, the changes are clearly unrelated, and hiding them cannot affect the maintenance result.
 
 When auto-stashing:
 
@@ -134,11 +134,11 @@ git fetch --prune
 git status --branch --short
 ```
 
-- If there is no upstream, record `no upstream` and continue.
-- If local and upstream are equal, record `up to date`.
-- If the branch is only behind, run `git pull --ff-only`.
-- If the branch has diverged, stop. Do not merge or rebase.
-- If fetch or pull fails, stop and report the failure.
+* If there is no upstream, record `no upstream` and continue.
+* If local and upstream are equal, record `up to date`.
+* If the branch is only behind, run `git pull --ff-only`.
+* If the branch has diverged, stop. Do not merge or rebase.
+* If fetch or pull fails, stop and report the failure.
 
 ### 5. Inspect available updates
 
@@ -153,11 +153,11 @@ Allow an existing npm-check-updates configuration to control package scope. Do n
 
 Classify proposed updates:
 
-- patch and minor updates
-- major updates
-- production dependencies
-- development dependencies
-- high-risk tooling such as frameworks, build tools, TypeScript, test runners, linters, and deployment packages
+* patch and minor updates
+* major updates
+* production dependencies
+* development dependencies
+* high-risk tooling such as frameworks, build tools, TypeScript, test runners, linters, and deployment packages
 
 ### 6. Choose update scope
 
@@ -165,9 +165,9 @@ Follow an explicit user scope when provided.
 
 Otherwise:
 
-- Apply patch and minor updates by default.
-- Present major updates before applying them.
-- Apply majors without another prompt only when the user explicitly asked for all/latest dependencies or clearly authorized major upgrades.
+* Apply patch and minor updates by default.
+* Present major updates before applying them.
+* Apply majors without another prompt only when the user explicitly asked for all/latest dependencies or clearly authorized major upgrades.
 
 For patch and minor updates:
 
@@ -224,11 +224,11 @@ After `npm audit fix`, inspect the diff again. If it changed files outside the a
 
 Do not automatically fix findings when:
 
-- `--force` is required
-- a major upgrade is required but not approved
-- framework or build-tool changes may be breaking
-- no safe fix is available
-- the remediation risk exceeds the vulnerability risk
+* `--force` is required
+* a major upgrade is required but not approved
+* framework or build-tool changes may be breaking
+* no safe fix is available
+* the remediation risk exceeds the vulnerability risk
 
 For remaining findings, report package, severity, direct or transitive status, safe-fix availability, and recommended action.
 
@@ -254,10 +254,10 @@ Run only scripts that exist. Prefer root orchestration scripts in workspaces and
 
 Record every command and whether it passed, failed, or was skipped. If validation fails:
 
-- stop before committing
-- preserve the dependency changes for inspection
-- report whether the failure appears update-related
-- provide exact rollback commands using only changed dependency files
+* stop before committing
+* preserve the dependency changes for inspection
+* report whether the failure appears update-related
+* provide exact rollback commands using only changed dependency files
 
 ### 9. Review and optionally commit
 
@@ -285,10 +285,10 @@ build(deps): update dependencies
 
 Include a concise body covering:
 
-- updated package and lockfiles
-- major upgrades, if any
-- audit result and remaining findings
-- validation commands
+* updated package and lockfiles
+* major upgrades, if any
+* audit result and remaining findings
+* validation commands
 
 Capture the commit hash:
 
@@ -302,17 +302,17 @@ Never stage through broad globs, `git add .`, or `git add -A`.
 
 Report:
 
-- status: completed, stopped, or failed
-- branch and upstream sync result
-- repository type and package manager
-- package and lockfiles changed
-- production and development updates
-- major upgrades
-- audit fixes and remaining findings
-- validation results
-- commit hash, or why no commit was created
-- unrelated files left untouched
-- manual follow-up recommendations
+* status: completed, stopped, or failed
+* branch and upstream sync result
+* repository type and package manager
+* package and lockfiles changed
+* production and development updates
+* major upgrades
+* audit fixes and remaining findings
+* validation results
+* commit hash, or why no commit was created
+* unrelated files left untouched
+* manual follow-up recommendations
 
 When a stash was created, add a dedicated note with the actual ref and these recovery commands:
 

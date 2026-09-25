@@ -8,11 +8,11 @@ Review the specification itself.
 
 Do not:
 
-- implement tests
-- modify application code
-- fill gaps from implementation
-- invent intended behaviour
-- resolve ambiguity silently
+* implement tests
+* modify application code
+* fill gaps from implementation
+* invent intended behaviour
+* resolve ambiguity silently
 
 ## Inputs
 
@@ -20,21 +20,21 @@ The user should provide a path to a `Behaviour.spec.md` file or a folder contain
 
 Read:
 
-- the provided `Behaviour.spec.md`
-- referenced files, if they exist
-- existing tests, if they exist
-- nearby files only when needed for consistency checks
+* the provided `Behaviour.spec.md`
+* referenced files, if they exist
+* existing tests, if they exist
+* nearby files only when needed for consistency checks
 
 ## Implementation inspection limits
 
 Implementation files may be read only to detect:
 
-- referenced files that do not exist
-- referenced tests that do not exist
-- files present in the folder but omitted from scope
-- naming mismatches
-- current test coverage for specified behaviour
-- obvious contradictions between file names and spec scope
+* referenced files that do not exist
+* referenced tests that do not exist
+* files present in the folder but omitted from scope
+* naming mismatches
+* current test coverage for specified behaviour
+* obvious contradictions between file names and spec scope
 
 Do not reinterpret the spec based on implementation.
 
@@ -42,40 +42,40 @@ Do not reinterpret the spec based on implementation.
 
 Check the specification for:
 
-- required front matter
-- required sections
-- stable behaviour IDs
-- complete scope
-- clear vocabulary
-- valid invariants
-- atomic behaviours
-- relevant edge cases
-- accessibility requirements where applicable
-- complete test mapping
-- unresolved open questions
-- vague wording
-- missing thresholds
-- impossible assertions
-- framework assumptions
-- test type mismatches
+* required front matter
+* required sections
+* stable behaviour IDs
+* complete scope
+* clear vocabulary
+* valid invariants
+* atomic behaviours
+* relevant edge cases
+* accessibility requirements where applicable
+* complete test mapping
+* unresolved open questions
+* vague wording
+* missing thresholds
+* impossible assertions
+* framework assumptions
+* test type mismatches
 
 ## Strict decision rules
 
 If `strict: true` is present, reject the specification when any of these are true:
 
-- any required section is missing
-- any testable item lacks an ID
-- any ID is duplicated
-- any behaviour lacks context
-- any behaviour lacks trigger
-- any behaviour lacks expected result
-- any required threshold is missing
-- any behaviour depends on interpretation
-- any behaviour depends on implementation knowledge
-- any open question affects test generation
-- test mapping is missing for any ID
-- a test type is impossible or unsupported by the repository
-- vague wording makes an assertion unreliable
+* any required section is missing
+* any testable item lacks an ID
+* any ID is duplicated
+* any behaviour lacks context
+* any behaviour lacks trigger
+* any behaviour lacks expected result
+* any required threshold is missing
+* any behaviour depends on interpretation
+* any behaviour depends on implementation knowledge
+* any open question affects test generation
+* test mapping is missing for any ID
+* a test type is impossible or unsupported by the repository
+* vague wording makes an assertion unreliable
 
 Strict mode is a hard gate.
 
@@ -85,9 +85,9 @@ Do not return `ACCEPT WITH ISSUES` in strict mode when there is a blocking issue
 
 End with exactly one decision:
 
-- `ACCEPT`
-- `ACCEPT WITH ISSUES`
-- `REJECT`
+* `ACCEPT`
+* `ACCEPT WITH ISSUES`
+* `REJECT`
 
 Use `ACCEPT WITH ISSUES` only when issues are non-blocking.
 
@@ -103,11 +103,11 @@ Be strict and specific.
 
 For each issue, include:
 
-- traceable location where possible
-- problematic text or summary
-- why it is weak
-- required correction
-- suggested rewrite when useful
+* traceable location where possible
+* problematic text or summary
+* why it is weak
+* required correction
+* suggested rewrite when useful
 
 Use traceable file references like:
 

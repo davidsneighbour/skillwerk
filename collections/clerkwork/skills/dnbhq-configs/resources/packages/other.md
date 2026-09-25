@@ -8,13 +8,13 @@ Read its package registry before presenting selectable maintenance targets. Only
 
 This skill may cover configuration packages such as:
 
-- Markdown and prose linting
-- Stylelint
-- Astro or framework conventions
-- test configuration
-- editor configuration
-- commit and repository quality tooling
-- other DNBHQ shared presets
+* Markdown and prose linting
+* Stylelint
+* Astro or framework conventions
+* test configuration
+* editor configuration
+* commit and repository quality tooling
+* other DNBHQ shared presets
 
 Only maintain packages that are detected in the repository or explicitly selected by the user.
 
@@ -24,15 +24,15 @@ Read `resources/package-registry.md` before proceeding.
 
 Each package entry must define:
 
-- current package name
-- package repository
-- predecessor package names
-- relevant config files
-- authoritative documentation locations
-- installation and update checks
-- migration concerns
-- validation commands
-- known coexistence rules
+* current package name
+* package repository
+* predecessor package names
+* relevant config files
+* authoritative documentation locations
+* installation and update checks
+* migration concerns
+* validation commands
+* known coexistence rules
 
 Do not invent package-specific behaviour when the registry lacks an entry. Audit and report the package, then request that a package resource be added.
 
@@ -51,12 +51,12 @@ For each selected package:
 
 ## Rules
 
-- Keep each package's changes independently reviewable.
-- Do not combine unrelated cleanup.
-- Do not replace specialised tools without confirming feature coverage.
-- Preserve intentional local configuration.
-- Avoid write-mode linting or formatting unless explicitly requested.
-- Move sufficiently complex packages into dedicated skills rather than expanding this skill indefinitely.
+* Keep each package's changes independently reviewable.
+* Do not combine unrelated cleanup.
+* Do not replace specialised tools without confirming feature coverage.
+* Preserve intentional local configuration.
+* Avoid write-mode linting or formatting unless explicitly requested.
+* Move sufficiently complex packages into dedicated skills rather than expanding this skill indefinitely.
 
 ## Final response
 

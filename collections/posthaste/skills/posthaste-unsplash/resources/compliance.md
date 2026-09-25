@@ -37,8 +37,8 @@ When another skill consumes the JSON result, do not silently discard attribution
 
 Attribution links must point to:
 
-- the photographer's Unsplash profile;
-- Unsplash itself.
+* the photographer's Unsplash profile;
+* Unsplash itself.
 
 Use the Posthaste referral parameters consistently.
 
@@ -54,19 +54,19 @@ Unsplash's download tracking requirement applies when a photo is selected for us
 
 Trigger tracking when a photo is selected for actions such as:
 
-- using it in a blog post;
-- assigning it as a hero image;
-- inserting it into content;
-- saving it locally for use;
-- selecting it as the final asset in another workflow.
+* using it in a blog post;
+* assigning it as a hero image;
+* inserting it into content;
+* saving it locally for use;
+* selecting it as the final asset in another workflow.
 
 Do not track:
 
-- search result retrieval;
-- displaying candidate images;
-- previewing;
-- metadata inspection;
-- rejected candidates.
+* search result retrieval;
+* displaying candidate images;
+* previewing;
+* metadata inspection;
+* rejected candidates.
 
 ## 5. Use `download_location`
 
@@ -106,10 +106,10 @@ Follow `authentication.md` for credential discovery and setup.
 
 Never include or fall back to:
 
-- a testing key;
-- a demo key;
-- an example key;
-- a repository-owned shared credential.
+* a testing key;
+* a demo key;
+* an example key;
+* a repository-owned shared credential.
 
 The active user/project must provide its own Unsplash API Access Key.
 
@@ -133,5 +133,5 @@ The parent skill may transform presentation, but it must retain the information 
 
 ## References
 
-- https://unsplash.com/documentation
-- https://help.unsplash.com/en/collections/1451694-api-guidelines
+* [Unsplash API documentation](https://unsplash.com/documentation)
+* [Unsplash API guidelines](https://help.unsplash.com/en/collections/1451694-api-guidelines)

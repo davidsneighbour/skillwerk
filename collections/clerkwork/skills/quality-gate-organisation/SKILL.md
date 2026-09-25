@@ -21,7 +21,7 @@ npm run check
 
 A quality gate is any command that inspects the repository and exits with success or failure without intentionally changing files.
 
-## Core Rule
+## Core rule
 
 Do not use `lint`, `validate`, `format`, `test`, and `audit` as interchangeable terms.
 
@@ -36,10 +36,10 @@ They describe different kinds of checks:
 | `test` | Behavioural correctness |
 | `audit` | Security, dependency, performance, or risk inspection |
 
-`validate` is not simply “stricter lint”.
-`lint` is not simply “technical validation”.
+`validate` is not simply "stricter lint".
+`lint` is not simply "technical validation".
 
-## Required Naming Model
+## Required naming model
 
 ### `check`
 
@@ -244,7 +244,7 @@ Good:
 
 Pick one style per repository.
 
-## Mutating Commands
+## Mutating commands
 
 A command named `check`, `lint`, `validate`, `test`, or `audit` must not intentionally modify files.
 
@@ -322,7 +322,7 @@ Good:
 }
 ```
 
-## Recommended Repository Baseline
+## Recommended repository baseline
 
 Use this as the default shape for JavaScript, TypeScript, Astro, Markdown, or documentation-heavy repositories.
 
@@ -350,31 +350,31 @@ Use this as the default shape for JavaScript, TypeScript, Astro, Markdown, or do
 
 Adapt the commands to the tools actually used in the repository.
 
-## Decision Rules
+## Decision rules
 
 When naming a command, ask these questions in order:
 
 1. Does it intentionally change files?
 
-   - Use `format`, `*:fix`, `*:write`, or `*:update`.
+   * Use `format`, `*:fix`, `*:write`, or `*:update`.
 2. Is it the top-level non-mutating gate?
 
-   - Use `check`.
+   * Use `check`.
 3. Does it inspect style, conventions, spelling, prose, maintainability, or likely mistakes?
 
-   - Use `lint`.
+   * Use `lint`.
 4. Does it verify a strict contract, schema, required metadata, type contract, or project policy?
 
-   - Use `validate`.
+   * Use `validate`.
 5. Does it verify runtime or behavioural correctness?
 
-   - Use `test`.
+   * Use `test`.
 6. Does it inspect risk, security, dependencies, performance, accessibility, or workflows?
 
-   - Use `audit`.
+   * Use `audit`.
 7. Is it genuinely mixed?
 
-   - Use `check:*`.
+   * Use `check:*`.
 
 ## Anti-patterns
 
@@ -406,22 +406,22 @@ Prefer:
 }
 ```
 
-## Relationship to Tool-specific Skills
+## Relationship to tool-specific skills
 
 This skill only defines command naming and quality-gate taxonomy.
 
 Tool-specific behaviour belongs in separate skills or instructions, for example:
 
-- Biome configuration
-- ESLint rules
-- markdownlint rules
-- Vale editorial rules
-- cspell dictionaries
-- typos configuration
-- Prettier formatting policy
-- Astro checks
-- TypeScript strictness
-- GitHub Actions security audits
-- dependency audit policy
+* Biome configuration
+* ESLint rules
+* markdownlint rules
+* Vale editorial rules
+* cspell dictionaries
+* typos configuration
+* Prettier formatting policy
+* Astro checks
+* TypeScript strictness
+* GitHub Actions security audits
+* dependency audit policy
 
 Those sub-skills may define exact commands, config files, ignores, severity levels, and CI behaviour, but they should preserve the naming model defined here.

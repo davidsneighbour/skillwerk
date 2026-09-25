@@ -38,12 +38,12 @@ Behaviour.spec.md
 
 Use this skill when the user asks to:
 
-- create a behaviour specification
-- review a `Behaviour.spec.md` file
-- generate tests from a behaviour specification
-- validate implementation against a behaviour specification
-- debug mismatches between tests, implementation, and documented behaviour
-- prepare a feature or component for strict test coverage
+* create a behaviour specification
+* review a `Behaviour.spec.md` file
+* generate tests from a behaviour specification
+* validate implementation against a behaviour specification
+* debug mismatches between tests, implementation, and documented behaviour
+* prepare a feature or component for strict test coverage
 
 ## Required files
 
@@ -59,9 +59,9 @@ Use the repository's existing test tools and conventions.
 
 Do not introduce new test frameworks, packages, runners, or tooling unless:
 
-- the user explicitly requests it
-- the repository has no viable existing test path
-- the missing tooling is reported as a blocker first
+* the user explicitly requests it
+* the repository has no viable existing test path
+* the missing tooling is reported as a blocker first
 
 Framework-specific guidance belongs in `references/framework-profiles.md`.
 
@@ -85,10 +85,10 @@ Every invariant, behaviour, edge case, and accessibility requirement must have a
 
 Use these prefixes:
 
-- `I001` for invariants
-- `B001` for behaviours
-- `E001` for edge cases
-- `A001` for accessibility requirements
+* `I001` for invariants
+* `B001` for behaviours
+* `E001` for edge cases
+* `A001` for accessibility requirements
 
 IDs must be used in test names, comments, coverage reports, and validation summaries where relevant.
 
@@ -110,11 +110,11 @@ Review the specification itself.
 
 Implementation files may be read only to detect:
 
-- missing referenced files
-- naming mismatches
-- components or modules present in scope but omitted from the spec
-- existing tests that already cover specified behaviour
-- contradictions between stated scope and local files
+* missing referenced files
+* naming mismatches
+* components or modules present in scope but omitted from the spec
+* existing tests that already cover specified behaviour
+* contradictions between stated scope and local files
 
 Do not edit implementation or tests during review.
 
@@ -144,27 +144,27 @@ Do not claim success unless validation passed or expected failures were explicit
 
 Stop before editing tests or implementation when:
 
-- `Behaviour.spec.md` is missing
-- required sections are missing
-- `strict: true` is missing in a new spec
-- any required behaviour lacks an ID
-- any behaviour is ambiguous
-- any behaviour lacks a trigger
-- any behaviour lacks an expected result
-- required thresholds are missing
-- open questions affect test generation
-- the test type cannot be determined from the spec
-- repository test conventions are unclear
-- adding required tooling would be necessary but has not been approved
+* `Behaviour.spec.md` is missing
+* required sections are missing
+* `strict: true` is missing in a new spec
+* any required behaviour lacks an ID
+* any behaviour is ambiguous
+* any behaviour lacks a trigger
+* any behaviour lacks an expected result
+* required thresholds are missing
+* open questions affect test generation
+* the test type cannot be determined from the spec
+* repository test conventions are unclear
+* adding required tooling would be necessary but has not been approved
 
 ## Core rules
 
-- Specification over implementation.
-- Observable behaviour over implementation detail.
-- Stable IDs over prose-only tracking.
-- Atomic statements over compound statements.
-- Explicit thresholds over vague wording.
-- Open questions over guessing.
-- Expected failures over skipped failures.
-- Existing tools over new packages.
-- Traceable reports over generic summaries.
+* Specification over implementation.
+* Observable behaviour over implementation detail.
+* Stable IDs over prose-only tracking.
+* Atomic statements over compound statements.
+* Explicit thresholds over vague wording.
+* Open questions over guessing.
+* Expected failures over skipped failures.
+* Existing tools over new packages.
+* Traceable reports over generic summaries.

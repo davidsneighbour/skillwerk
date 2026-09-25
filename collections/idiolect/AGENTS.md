@@ -1,10 +1,10 @@
-# Repository Guidelines
+# Repository guidelines
 
 AGENTS.md is the single source of truth for repository instructions. Tool- or
 assistant-specific files may add narrow overrides, but shared workflow,
 structure, security, and editing rules belong here.
 
-## Project Structure & Module Organization
+## Project structure & module organization
 
 Idiolect is a collection of standalone AI skills for capturing, checking, and
 applying a person's idiolect in writing. There is no app, build output, or
@@ -13,13 +13,13 @@ central test suite; the repository product is the Markdown and scripts under
 uses `SKILL.md` as its entrypoint. Supporting files belong inside the owning
 skill directory, commonly in `resources/` or `scripts/`.
 
-## Skill Map
+## Skill map
 
 * `idiolect`: the core skill. Builds a voice profile from writing samples
   (`profile`), checks a draft against that profile (`check`), and rewrites a
   draft into the author's voice (`apply`).
 
-## Build, Test, and Development Commands
+## Build, test, and development commands
 
 There is no root build step. Run helper scripts directly from the repository
 root once a skill defines one, for example:
@@ -40,7 +40,7 @@ npm run lint:markdown
 npm run lint:spelling
 ```
 
-## Coding Style & Naming Conventions
+## Coding style & naming conventions
 
 Use plain Markdown for skill documentation. Keep `SKILL.md` frontmatter
 specific and actionable, especially `id`, `name`, `title`, and `description`.
@@ -48,13 +48,13 @@ Skill directories use lowercase hyphenated names such as `idiolect` or, for
 future companion skills, `idiolect-<purpose>`; resource scripts use
 action-oriented names. Prefer ASCII punctuation unless quoting existing text.
 
-## Testing Guidelines
+## Testing guidelines
 
 No coverage threshold is defined. Validate changed scripts with targeted
 `--help`, dry-run, or non-writing modes before handoff. When a skill's
 behaviour changes, update its `SKILL.md` in the same change.
 
-## Commit & Pull Request Guidelines
+## Commit & pull request guidelines
 
 Always work on `main`. Do not create branches unless the user explicitly asks
 for a feature branch.
@@ -83,14 +83,14 @@ Pull requests should explain the affected skill, list validation performed,
 and link the related issue or task. Include screenshots only for asset or
 README visual changes.
 
-## Voice Samples and Personal Data
+## Voice samples and personal data
 
 Writing samples used to build or check a voice profile may be personal. Do
 not copy sample text into commits, issues, or pull requests beyond what is
 needed to explain a change. Do not commit a user's stored voice profile to
 this repository; profiles belong with the user, not with the skill code.
 
-## Agent Workflow
+## Agent workflow
 
 Before starting repository work, agents must check for project-root
 `RESUME.md`. If it exists, read it first, resolve or explicitly abandon the

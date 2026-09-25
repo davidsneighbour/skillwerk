@@ -70,9 +70,9 @@ ACCEPT
 
 The final decision must be exactly one of:
 
-- `ACCEPT`
-- `ACCEPT WITH ISSUES`
-- `REJECT`
+* `ACCEPT`
+* `ACCEPT WITH ISSUES`
+* `REJECT`
 
 ## Test-generation output
 
@@ -160,10 +160,10 @@ path/to/file.ext#Heading
 
 Do not use vague references like:
 
-- in the component
-- in the test file
-- somewhere in the spec
-- above
+* in the component
+* in the test file
+* somewhere in the spec
+* above
 
 ## Full file contents
 
@@ -171,8 +171,8 @@ Do not include full file contents by default.
 
 Include full file contents only when:
 
-- the user explicitly asks for them
-- the file is short and full content is necessary for correctness
-- the assistant first asks and the user confirms
+* the user explicitly asks for them
+* the file is short and full content is necessary for correctness
+* the assistant first asks and the user confirms
 
 Prefer summaries, traceable paths, validation output, and important snippets.

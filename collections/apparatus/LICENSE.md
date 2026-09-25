@@ -1,4 +1,4 @@
-# MIT License
+# MIT license
 
 Copyright © 2026 Patrick Kollitsch
 

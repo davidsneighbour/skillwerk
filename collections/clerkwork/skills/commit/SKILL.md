@@ -6,18 +6,16 @@ type: skill
 description: Write Git commit messages that follow the Conventional Commits specification (v1.0.0) — types, scopes, description, body, and footers — with examples and best practices. Use when creating a commit, drafting or reviewing a commit message, or checking commit history for consistency.
 ---
 
-# Conventional commits
-
 Write commit messages that follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification: an explicit, machine-readable commit history that makes project changes and automation (changelogs, releases) easier.
 
 ## When to use this skill
 
 Use this skill when:
 
-- creating a Git commit
-- drafting or reviewing a commit message
-- reviewing commit messages in a pull request
-- checking commit history for consistency with the specification
+* creating a Git commit
+* drafting or reviewing a commit message
+* reviewing commit messages in a pull request
+* checking commit history for consistency with the specification
 
 ## Commit message structure
 
@@ -120,10 +118,10 @@ fix(api): handle rate limit errors
 
 **Rules:**
 
-- use imperative, present tense: "add", not "added" or "adds";
-- don't capitalise the first letter;
-- no period at the end;
-- keep under 72 characters, ideally under 50.
+* use imperative, present tense: "add", not "added" or "adds";
+* don't capitalise the first letter;
+* no period at the end;
+* keep under 72 characters, ideally under 50.
 
 **Good:**
 
@@ -192,18 +190,18 @@ Co-authored-by: Jane Doe <jane@example.com>
 
 Do:
 
-- use present-tense imperative mood ("add", not "added");
-- keep the first line under 50 characters when possible;
-- reference issues or PRs in the footer;
-- explain "why" in the body, not "what";
-- make commits atomic — one logical change per commit.
+* use present-tense imperative mood ("add", not "added");
+* keep the first line under 50 characters when possible;
+* reference issues or PRs in the footer;
+* explain "why" in the body, not "what";
+* make commits atomic — one logical change per commit.
 
 Don't:
 
-- use vague descriptions ("fix stuff", "updates");
-- combine multiple unrelated changes in one commit;
-- capitalise the first letter or end the description with a period;
-- use past tense;
-- commit broken code.
+* use vague descriptions ("fix stuff", "updates");
+* combine multiple unrelated changes in one commit;
+* capitalise the first letter or end the description with a period;
+* use past tense;
+* commit broken code.
 
 For a fuller set of examples covering every type, scope pattern, and footer combination, see `resources/commit-examples.md`.

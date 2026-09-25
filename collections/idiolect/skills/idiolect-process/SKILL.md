@@ -13,6 +13,7 @@ description: >
   than replacing that skill.
 ---
 
+# Idiolect process
 
 ## Role in multi-skill workflows
 
@@ -33,7 +34,9 @@ documentation, content generation, or another specialised task:
 
 Think of the workflow as:
 
-    specialised skill -> substantive draft -> Idiolect -> final draft
+```text
+specialised skill -> substantive draft -> Idiolect -> final draft
+```
 
 Do not treat Idiolect and the specialised skill as mutually exclusive.
 
@@ -44,31 +47,30 @@ to represent their own writing.
 
 Strong triggers include phrases such as:
 
-- "write this up"
-- "write this up as a draft"
-- "create a draft"
-- "draft this"
-- "write this in my words"
-- "write this in my own words"
-- "in my voice"
-- "make this sound like me"
+* "write this up"
+* "write this up as a draft"
+* "create a draft"
+* "draft this"
+* "write this in my words"
+* "write this in my own words"
+* "in my voice"
+* "make this sound like me"
 
 These triggers apply even when another skill is already handling the primary
 task.
 
 For example:
 
-- "Audit this site and write up the report as a draft"
+* "Audit this site and write up the report as a draft"
   -> audit skill -> Idiolect
 
-- "Turn these findings into a blog post draft"
+* "Turn these findings into a blog post draft"
   -> relevant research/content skill -> Idiolect
 
-- "Use the project-status skill and write this up for me"
+* "Use the project-status skill and write this up for me"
   -> project-status skill -> Idiolect
 
 Idiolect should normally be the last prose-producing step.
-
 
 ## Do not apply
 
@@ -78,15 +80,15 @@ Apply it when the prose is intended to be presented as the user's writing.
 
 Do not apply it to:
 
-- source code
-- configuration files
-- shell commands
-- JSON, YAML, TOML, or other structured data
-- raw research notes unless requested as authored prose
-- verbatim quotations
-- generated commit messages unless explicitly requested
-- factual values, identifiers, paths, URLs, or citations
-- another person's writing when the task requires preserving that person's voice
+* source code
+* configuration files
+* shell commands
+* JSON, YAML, TOML, or other structured data
+* raw research notes unless requested as authored prose
+* verbatim quotations
+* generated commit messages unless explicitly requested
+* factual values, identifiers, paths, URLs, or citations
+* another person's writing when the task requires preserving that person's voice
 
 ## Authority
 
@@ -95,12 +97,12 @@ characteristics.
 
 It does not have authority to change:
 
-- facts
-- conclusions
-- recommendations
-- technical terminology where precision matters
-- citations or attribution
-- user requirements
-- domain-specific decisions made by the primary skill
+* facts
+* conclusions
+* recommendations
+* technical terminology where precision matters
+* citations or attribution
+* user requirements
+* domain-specific decisions made by the primary skill
 
 If style and substantive accuracy conflict, substantive accuracy wins.

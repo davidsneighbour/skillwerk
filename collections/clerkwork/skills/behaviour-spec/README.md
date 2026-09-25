@@ -8,14 +8,14 @@ It defines a strict, specification-first workflow for describing expected behavi
 
 This skill helps an AI agent answer these questions before changing tests or implementation:
 
-- What behaviour is actually specified?
-- Is the specification complete enough to test?
-- Which behaviours are already covered?
-- Which behaviours are missing tests?
-- Which behaviours are blocked by ambiguity?
-- Which existing repository test tools should be used?
-- Which files changed, and where?
-- Which validation commands passed or failed?
+* What behaviour is actually specified?
+* Is the specification complete enough to test?
+* Which behaviours are already covered?
+* Which behaviours are missing tests?
+* Which behaviours are blocked by ambiguity?
+* Which existing repository test tools should be used?
+* Which files changed, and where?
+* Which validation commands passed or failed?
 
 The central rule is:
 
@@ -125,15 +125,15 @@ strict: true
 
 A complete spec contains these sections:
 
-- `Scope`
-- `Vocabulary`
-- `Invariants`
-- `Behaviours`
-- `Edge cases`
-- `Accessibility requirements`
-- `Test mapping`
-- `Non-goals`
-- `Open questions`
+* `Scope`
+* `Vocabulary`
+* `Invariants`
+* `Behaviours`
+* `Edge cases`
+* `Accessibility requirements`
+* `Test mapping`
+* `Non-goals`
+* `Open questions`
 
 If a section is not relevant, keep the heading and write `None.`.
 
@@ -143,10 +143,10 @@ Every testable item must have a stable ID.
 
 Use these prefixes:
 
-- `I001` for invariants
-- `B001` for behaviours
-- `E001` for edge cases
-- `A001` for accessibility requirements
+* `I001` for invariants
+* `B001` for behaviours
+* `E001` for edge cases
+* `A001` for accessibility requirements
 
 IDs must be used in test names, comments, coverage reports, and validation summaries where relevant.
 
@@ -196,11 +196,11 @@ When the specification is clear but the implementation does not satisfy it, the 
 
 Expected failing tests are allowed only when:
 
-- the behaviour is clear
-- the expected result is defined
-- the implementation currently does not satisfy the spec
-- the repository test framework supports expected failures
-- the expected failure is traceable to a spec ID
+* the behaviour is clear
+* the expected result is defined
+* the implementation currently does not satisfy the spec
+* the repository test framework supports expected failures
+* the expected failure is traceable to a spec ID
 
 Expected failing tests must not be used for ambiguous behaviour.
 
@@ -214,16 +214,16 @@ The agent must use the repository's existing tools and conventions.
 
 The agent must not introduce new test runners, packages, or frameworks unless one of these is true:
 
-- the user explicitly requests it
-- the repository has no viable existing test path
-- the missing tooling is reported as a blocker first
+* the user explicitly requests it
+* the repository has no viable existing test path
+* the missing tooling is reported as a blocker first
 
 Examples:
 
-- If a repository already uses Vitest, use Vitest for suitable unit, rendering, or component tests.
-- If a repository already uses Playwright, use Playwright for browser interaction, keyboard, focus, scroll, viewport, and responsive behaviour.
-- If a repository already uses another test runner, use that runner instead.
-- If a repository has no suitable test setup, report that as a test infrastructure blocker.
+* If a repository already uses Vitest, use Vitest for suitable unit, rendering, or component tests.
+* If a repository already uses Playwright, use Playwright for browser interaction, keyboard, focus, scroll, viewport, and responsive behaviour.
+* If a repository already uses another test runner, use that runner instead.
+* If a repository has no suitable test setup, report that as a test infrastructure blocker.
 
 ## Traceable output
 
@@ -243,12 +243,12 @@ path/to/Behaviour.spec.md#Behaviours
 
 The output should include:
 
-- summary
-- coverage report
-- files changed
-- important snippets
-- validation output
-- open questions
+* summary
+* coverage report
+* files changed
+* important snippets
+* validation output
+* open questions
 
 Do not include full file contents unless the user explicitly requests them.
 
@@ -304,13 +304,13 @@ Do not ask the agent to generate tests until blocking issues are resolved.
 
 Common blocking issues are:
 
-- missing behaviour IDs
-- missing trigger
-- missing expected result
-- missing viewport or timing threshold
-- vague wording
-- unresolved open questions
-- incomplete test mapping
+* missing behaviour IDs
+* missing trigger
+* missing expected result
+* missing viewport or timing threshold
+* vague wording
+* unresolved open questions
+* incomplete test mapping
 
 ### 5. Generate or update tests
 
@@ -364,11 +364,11 @@ These are examples only. The actual commands must come from the repository's exi
 
 This is good because each behaviour has:
 
-- stable ID
-- defined context
-- defined trigger
-- observable expected result
-- appropriate test type
+* stable ID
+* defined context
+* defined trigger
+* observable expected result
+* appropriate test type
 
 ## Bad specification example
 
@@ -378,12 +378,12 @@ This is good because each behaviour has:
 
 This is bad because it lacks:
 
-- behaviour ID
-- viewport threshold
-- trigger
-- expected result
-- test type
-- assertion target
+* behaviour ID
+* viewport threshold
+* trigger
+* expected result
+* test type
+* assertion target
 
 A better version:
 
@@ -417,27 +417,27 @@ Use `ACCEPT WITH ISSUES` only for non-blocking issues.
 
 The agent must stop before editing tests or implementation when:
 
-- `Behaviour.spec.md` is missing
-- required sections are missing
-- `strict: true` is missing in a new spec
-- any required behaviour lacks an ID
-- any behaviour is ambiguous
-- any behaviour lacks a trigger
-- any behaviour lacks an expected result
-- required thresholds are missing
-- open questions affect test generation
-- the test type cannot be determined from the spec
-- repository test conventions are unclear
-- adding required tooling would be necessary but has not been approved
+* `Behaviour.spec.md` is missing
+* required sections are missing
+* `strict: true` is missing in a new spec
+* any required behaviour lacks an ID
+* any behaviour is ambiguous
+* any behaviour lacks a trigger
+* any behaviour lacks an expected result
+* required thresholds are missing
+* open questions affect test generation
+* the test type cannot be determined from the spec
+* repository test conventions are unclear
+* adding required tooling would be necessary but has not been approved
 
 ## Design principles
 
-- Specification over implementation.
-- Observable behaviour over implementation detail.
-- Stable IDs over prose-only tracking.
-- Atomic statements over compound statements.
-- Explicit thresholds over vague wording.
-- Open questions over guessing.
-- Expected failures over skipped failures.
-- Existing tools over new packages.
-- Traceable reports over generic summaries.
+* Specification over implementation.
+* Observable behaviour over implementation detail.
+* Stable IDs over prose-only tracking.
+* Atomic statements over compound statements.
+* Explicit thresholds over vague wording.
+* Open questions over guessing.
+* Expected failures over skipped failures.
+* Existing tools over new packages.
+* Traceable reports over generic summaries.

@@ -12,13 +12,13 @@ Do not introduce these tools just because they are mentioned here.
 
 When the repository uses JavaScript or TypeScript:
 
-- follow the existing module system
-- preserve strict TypeScript settings
-- avoid `any`
-- use `unknown` with guards when needed
-- avoid empty catch blocks
-- include explicit error handling
-- follow existing import aliases and test helpers
+* follow the existing module system
+* preserve strict TypeScript settings
+* avoid `any`
+* use `unknown` with guards when needed
+* avoid empty catch blocks
+* include explicit error handling
+* follow existing import aliases and test helpers
 
 ## Vitest-style repositories
 
@@ -26,11 +26,11 @@ Use when the repository already uses Vitest or a Vitest-compatible test setup.
 
 Suitable for:
 
-- pure functions
-- rendering tests
-- component tests
-- static accessibility checks where supported
-- props and input/output behaviour
+* pure functions
+* rendering tests
+* component tests
+* static accessibility checks where supported
+* props and input/output behaviour
 
 Do not use Vitest to fake browser-only behaviour unless the repository already has a reliable convention for it.
 
@@ -42,15 +42,15 @@ Use when the repository already uses Playwright or a Playwright-compatible brows
 
 Suitable for:
 
-- real browser interaction
-- keyboard behaviour
-- focus behaviour
-- responsive behaviour
-- scroll behaviour
-- sticky behaviour
-- navigation
-- visibility changes
-- browser-level accessibility checks where supported
+* real browser interaction
+* keyboard behaviour
+* focus behaviour
+* responsive behaviour
+* scroll behaviour
+* sticky behaviour
+* navigation
+* visibility changes
+* browser-level accessibility checks where supported
 
 For expected failures, use the repository's existing Playwright-compatible expected-failure convention. If none exists, report that as a test infrastructure question before editing.
 
@@ -97,9 +97,9 @@ When specifications or generated documentation are edited, follow repository mar
 
 Prefer:
 
-- ATX headings
-- dash bullets
-- fenced code blocks
-- ASCII punctuation
-- descriptive link text
-- traceable paths in backticks
+* ATX headings
+* dash bullets
+* fenced code blocks
+* ASCII punctuation
+* descriptive link text
+* traceable paths in backticks

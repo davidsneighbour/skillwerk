@@ -16,8 +16,8 @@ The skill must:
 
 1. Determine whether the repository should use:
 
-   - the latest active LTS Node.js release; or
-   - the latest active Node.js release, including Current releases.
+   * the latest active LTS Node.js release; or
+   * the latest active Node.js release, including Current releases.
 2. Calculate an appropriate `engines.node` range.
 3. Find Node.js and npm version declarations throughout the repository.
 4. Update or propose changes consistently.
@@ -35,13 +35,13 @@ Review mode is the default.
 
 Use review mode unless the request explicitly contains an execution instruction such as:
 
-- `execute`
-- `apply`
-- `implement`
-- `update all`
-- `fix all`
-- `make the changes`
-- `run the migration`
+* `execute`
+* `apply`
+* `implement`
+* `update all`
+* `fix all`
+* `make the changes`
+* `run the migration`
 
 In review mode:
 
@@ -95,17 +95,17 @@ Use the newest Node.js major release that currently has an active LTS status.
 
 Do not select:
 
-- an EOL release;
-- an odd-numbered Current release;
-- a future release whose official start date has not arrived.
+* an EOL release;
+* an odd-numbered Current release;
+* a future release whose official start date has not arrived.
 
 Examples of user intent:
 
-- `use LTS`
-- `prefer stability`
-- `production LTS`
-- `latest LTS`
-- `stay on LTS`
+* `use LTS`
+* `prefer stability`
+* `production LTS`
+* `latest LTS`
+* `stay on LTS`
 
 ### Policy: active-latest
 
@@ -113,15 +113,15 @@ Use the newest officially released Node.js major whose lifecycle has started and
 
 This may select:
 
-- an even-numbered LTS release; or
-- an odd-numbered Current release.
+* an even-numbered LTS release; or
+* an odd-numbered Current release.
 
 Examples of user intent:
 
-- `use latest`
-- `use current`
-- `use newest active Node`
-- `do not restrict this to LTS`
+* `use latest`
+* `use current`
+* `use newest active Node`
+* `do not restrict this to LTS`
 
 ### Asking for the policy
 
@@ -129,14 +129,14 @@ Before making version decisions, determine whether the repository already define
 
 Look for an explicit policy in:
 
-- `.github/dnb.toml`
-- `AGENTS.md`
-- `README.md`
-- `package.json`
-- version-management configuration
-- existing workflows
-- repository instructions
-- prior user instructions in the current task
+* `.github/dnb.toml`
+* `AGENTS.md`
+* `README.md`
+* `package.json`
+* version-management configuration
+* existing workflows
+* repository instructions
+* prior user instructions in the current task
 
 If no policy is explicitly defined, ask:
 
@@ -207,13 +207,13 @@ For `latest active release`:
 
 Record:
 
-- selected policy;
-- selected major version;
-- lifecycle status;
-- start date;
-- LTS date when applicable;
-- maintenance date when available;
-- end-of-life date.
+* selected policy;
+* selected major version;
+* lifecycle status;
+* start date;
+* LTS date when applicable;
+* maintenance date when available;
+* end-of-life date.
 
 ## Determine the supported engine range
 
@@ -247,10 +247,10 @@ For a library or reusable configuration package, inspect which active release li
 
 Unless repository instructions say otherwise:
 
-- include all actively maintained LTS majors;
-- include Current only when the policy is `active-latest` and CI tests it;
-- exclude EOL majors;
-- do not claim support for untested future majors.
+* include all actively maintained LTS majors;
+* include Current only when the policy is `active-latest` and CI tests it;
+* exclude EOL majors;
+* do not claim support for untested future majors.
 
 Example form:
 
@@ -339,39 +339,39 @@ Search the complete repository for Node.js and npm version declarations.
 
 Exclude:
 
-- `.git/`
-- `node_modules/`
-- generated build output;
-- coverage output;
-- caches;
-- vendored dependencies;
-- lockfile package metadata that does not represent repository policy.
+* `.git/`
+* `node_modules/`
+* generated build output;
+* coverage output;
+* caches;
+* vendored dependencies;
+* lockfile package metadata that does not represent repository policy.
 
 Inspect at least the following.
 
 ### Package metadata
 
-- root `package.json`
-- workspace `package.json` files
-- `packageManager`
-- `engines.node`
-- `engines.npm`
-- `devEngines`
-- Volta configuration
-- npm configuration
-- package-lock metadata where directly relevant
+* root `package.json`
+* workspace `package.json` files
+* `packageManager`
+* `engines.node`
+* `engines.npm`
+* `devEngines`
+* Volta configuration
+* npm configuration
+* package-lock metadata where directly relevant
 
 ### Version manager files
 
-- `.nvmrc`
-- `.node-version`
-- `.tool-versions`
-- `mise.toml`
-- `.mise.toml`
-- `volta`
-- `.npmrc`
-- `.env`
-- example environment files
+* `.nvmrc`
+* `.node-version`
+* `.tool-versions`
+* `mise.toml`
+* `.mise.toml`
+* `volta`
+* `.npmrc`
+* `.env`
+* example environment files
 
 ### GitHub Actions
 
@@ -384,31 +384,31 @@ Inspect all files under:
 
 Look for:
 
-- `actions/setup-node`
-- `node-version`
-- `node-version-file`
-- matrix Node versions
-- container images containing Node.js
-- `npm@latest`
-- explicit npm versions
-- `npx`
-- Corepack activation
-- reusable workflow inputs
-- workflow comments documenting versions
+* `actions/setup-node`
+* `node-version`
+* `node-version-file`
+* matrix Node versions
+* container images containing Node.js
+* `npm@latest`
+* explicit npm versions
+* `npx`
+* Corepack activation
+* reusable workflow inputs
+* workflow comments documenting versions
 
 ### Containers and deployment
 
 Inspect:
 
-- `Dockerfile`
-- `Dockerfile.*`
-- Compose files
-- Dev Container files
-- deployment configuration
-- Netlify configuration
-- Cloudflare configuration
-- build images
-- CI images
+* `Dockerfile`
+* `Dockerfile.*`
+* Compose files
+* Dev Container files
+* deployment configuration
+* Netlify configuration
+* Cloudflare configuration
+* build images
+* CI images
 
 Look for values such as:
 
@@ -421,14 +421,14 @@ FROM node:25-alpine
 
 Inspect:
 
-- `README.md`
-- `docs/`
-- `AGENTS.md`
-- contribution documentation
-- setup guides
-- code examples
-- badges
-- comments describing supported Node.js versions
+* `README.md`
+* `docs/`
+* `AGENTS.md`
+* contribution documentation
+* setup guides
+* code examples
+* badges
+* comments describing supported Node.js versions
 
 Update documentation only when it states or demonstrates a conflicting Node.js or npm version.
 
@@ -529,10 +529,10 @@ library
 
 Meaning:
 
-- `policy`: selects the development and primary CI Node.js version.
-- `packageType`: determines whether `engines.node` represents one runtime or multiple supported release lines.
-- `includeAllActiveLts`: for libraries, include every active LTS line in `engines.node` and CI.
-- `includeCurrentForLibraries`: for libraries, additionally include the active Current release.
+* `policy`: selects the development and primary CI Node.js version.
+* `packageType`: determines whether `engines.node` represents one runtime or multiple supported release lines.
+* `includeAllActiveLts`: for libraries, include every active LTS line in `engines.node` and CI.
+* `includeCurrentForLibraries`: for libraries, additionally include the active Current release.
 
 If the repository has `.github/dnb.toml` and its established schema should be extended instead, prefer adding equivalent keys there rather than introducing duplicate configuration.
 
@@ -566,10 +566,10 @@ The workflow must:
 6. Calculate the expected active versions.
 7. Compare expected values with:
 
-   - `package.json#engines.node`;
-   - the selected development Node version;
-   - Node.js versions used in GitHub Actions;
-   - npm declarations that conflict with the selected Node versions.
+   * `package.json#engines.node`;
+   * the selected development Node version;
+   * Node.js versions used in GitHub Actions;
+   * npm declarations that conflict with the selected Node versions.
 8. Print a readable GitHub Actions summary.
 9. Fail when authoritative version declarations are stale.
 10. Explain exactly which files or values need updating.
@@ -608,25 +608,25 @@ node scripts/check-node-version-policy.mjs --format=json
 
 Required behaviour:
 
-- `--check`
+* `--check`
 
-  - makes no changes;
-  - exits `0` when declarations are current;
-  - exits non-zero when changes are required.
-- `--write`
+  * makes no changes;
+  * exits `0` when declarations are current;
+  * exits non-zero when changes are required.
+* `--write`
 
-  - updates supported version declarations;
-  - preserves unrelated file content;
-  - reports every changed file.
-- `--format=json`
+  * updates supported version declarations;
+  * preserves unrelated file content;
+  * reports every changed file.
+* `--format=json`
 
-  - emits machine-readable results.
-- default output
+  * emits machine-readable results.
+* default output
 
-  - is concise and friendly.
-- `--verbose`
+  * is concise and friendly.
+* `--verbose`
 
-  - shows inspected files and comparison details.
+  * shows inspected files and comparison details.
 
 Use named options only.
 
@@ -644,13 +644,13 @@ chore: update Node.js version policy
 
 The issue body should include:
 
-- current repository policy;
-- current declared versions;
-- expected versions;
-- affected files;
-- relevant lifecycle dates;
-- the workflow run URL;
-- the command that can apply the changes.
+* current repository policy;
+* current declared versions;
+* expected versions;
+* affected files;
+* relevant lifecycle dates;
+* the workflow run URL;
+* the command that can apply the changes.
 
 Do not create a new issue every week.
 
@@ -720,23 +720,23 @@ Do not present raw full-file replacements unless the file is new or the surround
 
 For a new workflow or script, provide:
 
-- file path;
-- purpose;
-- significant behaviour;
-- permissions;
-- triggers;
-- files it may inspect or update.
+* file path;
+* purpose;
+* significant behaviour;
+* permissions;
+* triggers;
+* files it may inspect or update.
 
 ## Validation
 
 After applying changes, determine the repository's validation commands from:
 
-- `package.json#scripts`
-- `AGENTS.md`
-- repository instructions
-- CI workflows
-- contribution documentation
-- Makefiles or task runners
+* `package.json#scripts`
+* `AGENTS.md`
+* repository instructions
+* CI workflows
+* contribution documentation
+* Makefiles or task runners
 
 Run the appropriate available checks.
 
@@ -865,13 +865,13 @@ Document the Node.js policy in the repository's relevant `README.md`.
 
 Include:
 
-- selected policy;
-- meaning of the policy;
-- authoritative configuration file;
-- weekly workflow path;
-- local check command;
-- local write command;
-- how failures are reported.
+* selected policy;
+* meaning of the policy;
+* authoritative configuration file;
+* weekly workflow path;
+* local check command;
+* local write command;
+* how failures are reported.
 
 Link new documentation from an applicable `INDEX.md` when one exists.
 
@@ -881,17 +881,17 @@ Do not document behaviour that the script or workflow does not enforce.
 
 The task is complete only when:
 
-- the Node.js policy has been explicitly selected;
-- the official lifecycle schedule has been checked;
-- `package.json#engines.node` is current;
-- repository Node.js declarations have been audited;
-- npm declarations have been audited;
-- unsafe `npm@latest` CI upgrades have been removed or justified;
-- the weekly policy workflow exists;
-- the policy-check script exists;
-- documentation is current;
-- repository checks have run;
-- all changes and failures have been reported clearly.
+* the Node.js policy has been explicitly selected;
+* the official lifecycle schedule has been checked;
+* `package.json#engines.node` is current;
+* repository Node.js declarations have been audited;
+* npm declarations have been audited;
+* unsafe `npm@latest` CI upgrades have been removed or justified;
+* the weekly policy workflow exists;
+* the policy-check script exists;
+* documentation is current;
+* repository checks have run;
+* all changes and failures have been reported clearly.
 
 Do not commit changes unless the user explicitly asks for a commit.
 
