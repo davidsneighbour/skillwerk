@@ -1,4 +1,4 @@
 interface:
   display_name: "Clerkwork issues"
-  short_description: "Work with project issues"
+  short_description: "Manage project issues in GitHub"
   default_prompt: "Use $issues to inspect, select, or work through project issues using Patrick's GitHub-first workflow."

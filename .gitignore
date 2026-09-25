@@ -1,0 +1,6 @@
+.migration/mirrors/
+.migration/backups/
+node_modules/
+dist/
+*.tgz
+

@@ -1,0 +1,4 @@
+interface:
+  display_name: "DNBHQ configs"
+  short_description: "Audit and maintain repository configuration."
+  default_prompt: "Use $dnbhq-configs to audit or maintain shared repository configuration."

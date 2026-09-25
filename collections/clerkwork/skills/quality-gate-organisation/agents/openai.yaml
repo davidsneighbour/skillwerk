@@ -1,0 +1,4 @@
+interface:
+  display_name: "Quality gate organisation"
+  short_description: "Organise repository quality-gate commands."
+  default_prompt: "Use $quality-gate-organisation to organise repository quality-check commands."

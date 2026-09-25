@@ -5,17 +5,12 @@
     {
       "title": "Router",
       "description": "Single interface to the Clerkwork collection and its skill catalogue.",
-      "skills": [
-        "foreman"
-      ]
+      "skills": ["foreman"]
     },
     {
       "title": "Agent Management",
       "description": "Skills for aligning, auditing, and optimising repository agent instruction architecture.",
-      "skills": [
-        "agent-align",
-        "agent-instructions-audit"
-      ]
+      "skills": ["agent-align", "agent-instructions-audit"]
     },
     {
       "title": "Repository Maintenance",
@@ -36,13 +31,14 @@
       ]
     },
     {
+      "title": "Repository Governance",
+      "description": "Skills for specifications, shared configuration, and quality-gate conventions.",
+      "skills": ["behaviour-spec", "dnbhq-configs", "quality-gate-organisation"]
+    },
+    {
       "title": "Git and GitHub",
       "description": "Skills for commits and Patrick's GitHub-first issue workflow.",
-      "skills": [
-        "commit",
-        "issues",
-        "labels"
-      ]
+      "skills": ["commit", "issues", "labels"]
     }
   ]
 }
