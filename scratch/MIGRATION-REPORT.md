@@ -51,3 +51,22 @@ Every source head is an ancestor of the current repository history. Each importe
 Clerkwork's source `npm run check` had existing failures. Its skill metadata validator initially found nine missing or invalid entries; these were corrected after import, and TypeScript, metadata validation, and tests pass. Its Markdown lint step still reports 1,813 pre-existing findings under the current shared Markdown configuration. `npm ci` also reported three high-severity development dependency advisories. These are recorded debt, not hidden migration successes.
 
 The Skillwerk main branch, archival refs, and eight collection-specific 2.0.0 tags and releases are published. Each release includes its isolated collection archive. The source repositories, their releases, issues, and pull requests remain unchanged; source-repository redirects or archival decisions remain a manual follow-up.
+
+## Close-out audit
+
+The migration is complete, but the following plan items were not implemented exactly as written or were deliberately changed:
+
+* The Clerkwork pilot was imported directly on `main`, not in a disposable clone or dedicated migration branch.
+* The pilot's full source `npm run check` did not pass because of existing Markdown lint findings. Functional TypeScript, skill validation, and tests passed, and the migration continued with that debt recorded.
+* Clean-room verification used `skills add <isolated-path> --list` to verify discovery from each extracted archive. It did not perform a full installation into every supported agent host.
+* CI validates skill structure, rejects collection-escaping Markdown links, packages each collection, and uploads the archive. It does not execute the `skills` installer against each archive or comprehensively analyse runtime imports.
+* Fettle's Claude and Codex plugin validation command was not run during the final collection test pass. Its TypeScript checks and tests passed.
+* Existing open source work was recorded here, but Apparatus PRs 2 and 3 and Fettle PR 1 were not copied into the Skillwerk issue tracker.
+* The eight initial 2.0.0 releases were published directly with `gh release create`. GitHub did not emit release-workflow runs because all eight tags were pushed together; future individual collection tags use the shared release workflow.
+* All eight collections were deliberately reset to a shared `2.0.0` cutover baseline instead of continuing their inherited version sequences. Releases are independent after that baseline.
+* MIT was standardised across all eight collection copies. Apparatus and Fettle had no licence detected at source, and existing MIT files were normalised to one text.
+* Post-import validation corrections changed Clerkwork metadata and Idiolect skill identity and manifests. The import commits retain exact source trees, but the current collection trees intentionally include these fixes.
+* Complete backup bundles remain local and ignored under `.migration/backups/`; published archival refs provide the remote historical preservation layer.
+* One shared tag-driven workflow implements independent collection releases instead of eight duplicated workflow files.
+* Original repository disposition, redirects, and archival remain a manual follow-up by explicit owner decision. The source repositories were not modified.
+* Markdown lint debt and reported dependency advisories were explicitly deferred to the later DNBHQ configuration work.
