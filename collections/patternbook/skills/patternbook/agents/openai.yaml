@@ -1,0 +1,4 @@
+interface:
+  display_name: "Patternbook"
+  short_description: "Placeholder for digital design pattern skills"
+  default_prompt: "Use $patternbook once its design-pattern workflows are defined."
