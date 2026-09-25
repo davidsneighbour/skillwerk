@@ -144,14 +144,14 @@ Convert all service objects to return explicit Result
 objects instead of raising exceptions for control flow.
 
 This improves error handling consistency and makes
-service behavior more predictable.
+service behaviour more predictable.
 
 Affects:
 - Users::CreateService
 - Projects::CreateService
 - Artifacts::ProcessService
 
-No behavior changes - pure refactoring.
+No behaviour changes - pure refactoring.
 ```
 
 ## Performance (perf)

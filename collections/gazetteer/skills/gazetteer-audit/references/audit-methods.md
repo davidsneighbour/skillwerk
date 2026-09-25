@@ -196,7 +196,7 @@ wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -
 * --convert-links (or -k): Rewrites internal links so they point to your local downloaded files instead of the live web.
 * --adjust-extension (or -E): Appends .html to files that are HTML but don't end in it, ensuring they open properly in a web browser.
 * --page-requisites (or -p): Grabs all necessary images, stylesheets, and scripts needed to render the page correctly offline.
-* --no-parent (or -np): Prevents wget from traveling upward into parent directories of the initial URL path.
+* --no-parent (or -np): Prevents wget from travelling upward into parent directories of the initial URL path.
 * --wait=2: Pauses for 2 seconds between requests to be polite and prevent the server from blocking your IP address.
 
 A concise shorthand for the above is:

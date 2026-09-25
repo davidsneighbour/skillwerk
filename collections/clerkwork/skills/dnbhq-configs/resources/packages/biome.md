@@ -90,7 +90,7 @@ Before removing ESLint, Prettier, or related config fragments:
 
 1. confirm Biome covers the replaced responsibility
 2. search package scripts, config files, workflows, local scripts, imports, and documentation that defines live commands
-3. keep any tool that still owns behavior outside Biome's coverage
+3. keep any tool that still owns behaviour outside Biome's coverage
 4. report retained overlap explicitly
 
 ## Validation

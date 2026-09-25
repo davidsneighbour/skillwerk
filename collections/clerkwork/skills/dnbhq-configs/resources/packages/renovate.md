@@ -12,7 +12,7 @@ Current package documentation controls:
 
 * preset names
 * supported config file shape
-* included preset behavior
+* included preset behaviour
 * migration instructions
 * validation caveats
 
@@ -43,7 +43,7 @@ Classify the setup as missing, partial, current, outdated, legacy, duplicated, m
 
 ## Cleanup
 
-Remove obsolete Renovate config fragments and duplicated shared-preset settings only after comparing with the current README.md and preset behavior.
+Remove obsolete Renovate config fragments and duplicated shared-preset settings only after comparing with the current README.md and preset behaviour.
 
 If an npm validation script is useful, add it conservatively. Prefer an `npx` validator invocation during validation instead of adding Renovate as a permanent dependency unless the repository already has a reason to run Renovate locally.
 

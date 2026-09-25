@@ -183,7 +183,7 @@ npx --yes npm-check-updates --upgrade
 npm install
 ```
 
-For workspaces, use workspace-aware behavior supported by the installed npm-check-updates version or the repository configuration. If neither defines safe scope, stop instead of guessing.
+For workspaces, use workspace-aware behaviour supported by the installed npm-check-updates version or the repository configuration. If neither defines safe scope, stop instead of guessing.
 
 After installation:
 

@@ -9,15 +9,21 @@
     "node_modules",
     "package-lock.json",
     "scratch",
-    "collections/*/.github/assets"
+    "collections/*/.github/assets",
+    "PROJECT.md",
+    "TODO.md"
   ],
   "patterns": [
     {
       "name": "hashtags",
       "pattern": "/#[\\p{L}\\p{N}_]+/gu"
+    },
+    {
+      "name": "hex-colours",
+      "pattern": "/\\b[0-9A-Fa-f]{6}\\b/g"
     }
   ],
-  "ignoreRegExpList": ["hashtags"],
+  "ignoreRegExpList": ["hashtags", "hex-colours"],
   "dictionaryDefinitions": [
     {
       "name": "workspace-words",

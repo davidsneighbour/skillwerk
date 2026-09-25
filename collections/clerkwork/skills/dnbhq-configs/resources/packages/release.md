@@ -13,7 +13,7 @@ Current package documentation controls:
 * exported APIs
 * option names
 * defaults
-* merge behavior
+* merge behaviour
 * migration instructions
 * script recommendations
 * release-it compatibility caveats
@@ -35,7 +35,7 @@ Classify the setup as missing, partial, current, outdated, legacy, duplicated, m
 
 Assume the package README.md defaults unless repository evidence or the user says otherwise.
 
-The default release behavior is:
+The default release behaviour is:
 
 * determine the version bump from Conventional Changelog rules
 * create the release commit
@@ -68,7 +68,7 @@ When migrating existing release configuration, map old settings to the current `
 
 * changelog file path
 * GitHub token environment variable
-* conventional commit type and scope behavior
+* conventional commit type and scope behaviour
 * repository package path or fallback URL
 * Git, GitHub, npm, plugin, and hook overrides
 
@@ -105,4 +105,4 @@ Separate:
 
 ## Final response
 
-Report starting state, documentation consulted, config file changes, token handling, npm publishing behavior, release scripts, migrated legacy settings, retained or removed packages/configs, validation, and unresolved issues.
+Report starting state, documentation consulted, config file changes, token handling, npm publishing behaviour, release scripts, migrated legacy settings, retained or removed packages/configs, validation, and unresolved issues.
