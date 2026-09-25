@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fettle Engineer"
+  short_description: "Design evidence-backed skill improvements"
+  default_prompt: "Turn the specified Fettle finding into a focused improvement proposal and regression criteria."
