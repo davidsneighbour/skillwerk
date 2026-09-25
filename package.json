@@ -7,7 +7,7 @@
     "node": ">=25"
   },
   "scripts": {
-    "check": "npm run lint && npm run typecheck && npm run validate && npm test",
+    "check": "node scripts/check.ts",
     "package": "node scripts/package-collection.ts",
     "lint": "npm run lint:code && npm run lint:markdown && npm run lint:spelling && npm run lint:secrets",
     "lint:code": "biome check .",
