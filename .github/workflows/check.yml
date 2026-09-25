@@ -1,0 +1,23 @@
+name: Check
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  collections:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        collection: [apparatus, clerkwork, fettle, gallimaufry, gazetteer, idiolect, patternbook, posthaste]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 25
+      - run: npm run check -- --collection ${{ matrix.collection }}
+      - run: npm run package -- --collection ${{ matrix.collection }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.collection }}
+          path: dist/${{ matrix.collection }}.tar.gz

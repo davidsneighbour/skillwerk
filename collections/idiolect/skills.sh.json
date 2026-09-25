@@ -5,9 +5,7 @@
     {
       "title": "Idiolect",
       "description": "Skills for capturing, checking, and applying a person's distinctive writing voice.",
-      "skills": [
-        "idiolect"
-      ]
+      "skills": ["idiolect-process", "idiolect-voice", "idiolect"]
     }
   ]
 }

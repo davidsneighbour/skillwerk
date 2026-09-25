@@ -7,4 +7,14 @@ The repository owns development tooling, validation, maintenance automation, and
 - [Architecture](ARCHITECTURE.md)
 - [Migration plan](MIGRATION.md)
 
-> Migration status: planning. No source repository has been imported. The eight source repositories must be inventoried and the history-preservation and independent-installation gates verified before migration.
+> Migration status: all eight collections are imported locally with preserved ancestry and verified isolated packages. External publication and source-repository cutover are pending. See [Migration record](MIGRATION-RECORD.md).
+
+## Install a collection
+
+Replace `<collection>` with `apparatus`, `clerkwork`, `fettle`, `gallimaufry`, `gazetteer`, `idiolect`, `patternbook`, or `posthaste`:
+
+```sh
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/<collection>/skills --yes
+```
+
+Each collection remains self-contained. Collection-specific versions use tags such as `clerkwork/v1.2.0`, and release archives contain one collection only.

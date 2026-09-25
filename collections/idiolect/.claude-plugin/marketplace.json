@@ -13,6 +13,8 @@
       "source": "./",
       "strict": false,
       "skills": [
+        "./skills/idiolect-process",
+        "./skills/idiolect-voice",
         "./skills/idiolect"
       ]
     }

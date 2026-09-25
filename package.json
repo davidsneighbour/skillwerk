@@ -1,0 +1,11 @@
+{
+  "name": "skillwerk",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=25" },
+  "scripts": {
+    "check": "node scripts/check-collections.ts",
+    "package": "node scripts/package-collection.ts"
+  }
+}
