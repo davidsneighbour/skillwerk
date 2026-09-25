@@ -12,7 +12,13 @@
     "fettle": "./scripts/fettle.ts"
   },
   "scripts": {
-    "fettle": "node scripts/fettle.ts"
+    "fettle": "node scripts/fettle.ts",
+    "release": "release-it --config .release-it.ts --ci",
+    "release:dry": "release-it --config .release-it.ts --dry-run --ci",
+    "release:force": "release-it --config .release-it.ts --ci --no-increment",
+    "release:major": "release-it --config .release-it.ts --ci --increment=major",
+    "release:minor": "release-it --config .release-it.ts --ci --increment=minor",
+    "release:patch": "release-it --config .release-it.ts --ci --increment=patch"
   },
   "repository": {
     "type": "git",
