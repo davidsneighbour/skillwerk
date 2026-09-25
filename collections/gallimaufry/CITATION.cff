@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use code or cite this website, please cite it as below."
+authors:
+  - family-names: "Kollitsch"
+    given-names: "Patrick"
+    orcid: "https://orcid.org/0000-0001-6250-2135"
+title: "Gallimaufry"
+version: v0.2.0
+date-released: 2026-09-20
+url: "https://github.com/davidsneighbour/gallimaufry"
+repository-code: "https://github.com/davidsneighbour/gallimaufry"
+license: "MIT"
+commit: 305289b6a8b550349278250e4213b4c7cfcabe9b
+keywords:
+  - ai
+  - skills
+  - miscellany

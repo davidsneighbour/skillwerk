@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interrogate Source"
+  short_description: "Analyse source material with strict evidence separation."
+  default_prompt: "Use $interrogate-source to analyse this source material, separate transcription from scrutiny, and extract reusable knowledge where justified."
