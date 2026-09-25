@@ -4,3 +4,7 @@ node_modules/
 dist/
 *.tgz
 
+
+# Local project-management working files
+/PROJECT.md
+/TODO.md
