@@ -1,16 +1,10 @@
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { collections, selectedCollection } from "./collections.ts";
 
-const collections = [
-  "apparatus",
-  "clerkwork",
-  "gallimaufry",
-  "gazetteer",
-  "idiolect",
-  "patternbook",
-  "posthaste",
-];
+const selected = selectedCollection(process.argv.slice(2));
+const targets = selected ? [selected] : collections;
 const explicitOnlySkills = [
   "posthaste-reddit-refresh-token",
   "posthaste-threads-refresh-token",
@@ -20,7 +14,7 @@ const validator = fileURLToPath(
   new URL("./validate-skills.ts", import.meta.url),
 );
 
-for (const collection of collections) {
+for (const collection of targets) {
   const result = spawnSync(
     process.execPath,
     [validator, join("collections", collection)],

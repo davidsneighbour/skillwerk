@@ -12,10 +12,6 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-const CLAUDE_MARKETPLACE = ".claude-plugin/marketplace.json";
-const SKILLS_SH_MANIFEST = "skills.sh.json";
-const VALIDATOR_CONFIG = join("scripts", "validate-skills.config.json");
-
 const NAME_MAX = 64;
 const DESCRIPTION_MAX = 1024;
 const OPENAI_SHORT_DESCRIPTION_MIN = 25;
@@ -228,18 +224,34 @@ if (!collectionRoot) {
   console.error("Usage: node scripts/validate-skills.ts <collection-root>");
   process.exit(2);
 }
-process.chdir(collectionRoot);
 
-const slugs = readdirSync("skills", { withFileTypes: true })
+// Every path is resolved against the collection root explicitly, so the
+// validator works from any working directory and reports repository paths.
+const CLAUDE_MARKETPLACE = join(
+  collectionRoot,
+  ".claude-plugin",
+  "marketplace.json",
+);
+const SKILLS_SH_MANIFEST = join(collectionRoot, "skills.sh.json");
+const VALIDATOR_CONFIG = join(
+  collectionRoot,
+  "scripts",
+  "validate-skills.config.json",
+);
+const PACKAGE_JSON = join(collectionRoot, "package.json");
+
+const slugs = readdirSync(join(collectionRoot, "skills"), {
+  withFileTypes: true,
+})
   .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
   .map((entry) => entry.name)
   .sort();
 
-const packageJson = readOptionalJson<PackageJson>("package.json");
+const packageJson = readOptionalJson<PackageJson>(PACKAGE_JSON);
 const repositoryPackageName = packageNameSlug(packageJson?.name);
 if (!repositoryPackageName) {
   fail(
-    "package.json",
+    PACKAGE_JSON,
     "`name` must identify the repository package name, such as @scope/example-skill",
   );
 }
@@ -274,7 +286,7 @@ for (const skill of explicitOnlySkillSlugs) {
 }
 
 for (const slug of slugs) {
-  const path = join("skills", slug, "SKILL.md");
+  const path = join(collectionRoot, "skills", slug, "SKILL.md");
   if (!existsSync(path)) {
     fail(path, "missing SKILL.md");
     continue;
@@ -311,7 +323,13 @@ for (const slug of slugs) {
     );
   }
 
-  const openAiPath = join("skills", slug, "agents", "openai.yaml");
+  const openAiPath = join(
+    collectionRoot,
+    "skills",
+    slug,
+    "agents",
+    "openai.yaml",
+  );
   if (!existsSync(openAiPath)) {
     fail(openAiPath, "missing agents/openai.yaml");
     continue;
@@ -439,9 +457,11 @@ if (claudeMarketplace) {
 }
 
 if (errors.length > 0) {
-  console.error(`✗ ${errors.length} problem(s):\n`);
+  console.error(`✗ ${collectionRoot}: ${errors.length} problem(s):\n`);
   for (const error of errors) console.error(`  ${error}`);
   process.exit(1);
 }
 
-console.log(`✓ ${slugs.length} skill(s) valid: ${slugs.join(", ")}`);
+console.log(
+  `✓ ${collectionRoot}: ${slugs.length} skill(s) valid: ${slugs.join(", ")}`,
+);
