@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Router",
+      "description": "Single interface to the Clerkwork collection and its skill catalogue.",
+      "skills": [
+        "foreman"
+      ]
+    },
+    {
+      "title": "Agent Management",
+      "description": "Skills for aligning, auditing, and optimising repository agent instruction architecture.",
+      "skills": [
+        "agent-align",
+        "agent-instructions-audit"
+      ]
+    },
+    {
+      "title": "Repository Maintenance",
+      "description": "Skills for keeping dependencies, Node versions, and vulnerabilities current.",
+      "skills": [
+        "dependency-maintenance",
+        "manage-node-version-policy",
+        "osv-scan"
+      ]
+    },
+    {
+      "title": "Project Management",
+      "description": "Skills for reporting project state, tracking work, and resuming interrupted work.",
+      "skills": [
+        "project-state-report",
+        "project-task-triage",
+        "resume-interrupted-work"
+      ]
+    },
+    {
+      "title": "Git and GitHub",
+      "description": "Skills for commits and Patrick's GitHub-first issue workflow.",
+      "skills": [
+        "commit",
+        "issues",
+        "labels"
+      ]
+    }
+  ]
+}

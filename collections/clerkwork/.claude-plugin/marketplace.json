@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "version": "1.2.0",
+  "name": "clerkwork",
+  "description": "Clerkwork skills for dependency maintenance, GitHub issue triage, project tracking, and repository upkeep.",
+  "owner": {
+    "name": "David's Neighbour"
+  },
+  "plugins": [
+    {
+      "name": "clerkwork",
+      "description": "Collection of Clerkwork skills for software engineering workflows and repository maintenance.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/foreman",
+        "./skills/agent-align",
+        "./skills/agent-instructions-audit",
+        "./skills/commit",
+        "./skills/dependency-maintenance",
+        "./skills/issues",
+        "./skills/labels",
+        "./skills/manage-node-version-policy",
+        "./skills/osv-scan",
+        "./skills/project-state-report",
+        "./skills/project-task-triage",
+        "./skills/resume-interrupted-work"
+      ]
+    }
+  ]
+}

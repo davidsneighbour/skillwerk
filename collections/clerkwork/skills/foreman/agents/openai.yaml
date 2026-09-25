@@ -1,0 +1,4 @@
+interface:
+  display_name: "Foreman"
+  short_description: "Browse and route Clerkwork skills"
+  default_prompt: "Use $foreman overview to show the Clerkwork skill catalogue, or route my request to the appropriate skill."
