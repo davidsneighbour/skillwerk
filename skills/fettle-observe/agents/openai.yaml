@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fettle Observer"
+  short_description: "Find patterns in agent executions"
+  default_prompt: "Analyse available agent execution evidence and report recurring, deduplicated findings."
