@@ -45,11 +45,11 @@ Shared packages are development-time dependencies only. They must not leak into 
 
 ## Installation and release contract
 
-- Document the supported installation mechanism for every collection before migration, including currently used repository URLs and whether the installer supports a repository subdirectory.
-- Preserve each collection's existing user-facing installation workflow, or provide and verify an explicit compatible replacement before switching.
-- Produce one independently addressable release artefact per changed collection, with a collection-specific version/tag namespace to prevent collisions.
-- Validate the actual published artefact in a clean directory. Check that skill metadata, entrypoints, referenced resources, scripts, and licences are present and that no relative link escapes the collection.
-- Decide distribution URLs, installer syntax, and compatibility mirrors only after testing the installers. Do not assume arbitrary GitHub subdirectory installation is supported.
+* Document the supported installation mechanism for every collection before migration, including currently used repository URLs and whether the installer supports a repository subdirectory.
+* Preserve each collection's existing user-facing installation workflow, or provide and verify an explicit compatible replacement before switching.
+* Produce one independently addressable release artefact per changed collection, with a collection-specific version/tag namespace to prevent collisions.
+* Validate the actual published artefact in a clean directory. Check that skill metadata, entrypoints, referenced resources, scripts, and licences are present and that no relative link escapes the collection.
+* Decide distribution URLs, installer syntax, and compatibility mirrors only after testing the installers. Do not assume arbitrary GitHub subdirectory installation is supported.
 
 ## History and repository metadata
 
