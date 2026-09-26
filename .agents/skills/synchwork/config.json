@@ -1,0 +1,57 @@
+{
+  "meld": {
+    "apparatus": ["clerkwork", "posthaste", "apparatus"],
+    "clerkwork": ["patternbook", "posthaste", "clerkwork"],
+    "fettle": ["clerkwork", "posthaste", "fettle"],
+    "gallimaufry": ["clerkwork", "posthaste", "gallimaufry"],
+    "gazetteer": ["clerkwork", "posthaste", "gazetteer"],
+    "idiolect": ["clerkwork", "posthaste", "idiolect"],
+    "patternbook": ["clerkwork", "posthaste", "patternbook"],
+    "posthaste": ["clerkwork", "patternbook", "posthaste"]
+  },
+  "readme": {
+    "skip": ["fettle"]
+  },
+  "cabinet": [
+    {
+      "collection": "apparatus",
+      "title": "Apparatus",
+      "description": "A collection of practical, tool-driven skills for operating browsers, diagnostics, media utilities, and other reusable technical machinery."
+    },
+    {
+      "collection": "clerkwork",
+      "title": "Clerkwork",
+      "description": "It's an engineers world. Start your engines, maintain, contrive, and put in the works."
+    },
+    {
+      "collection": "fettle",
+      "title": "Fettle",
+      "description": "The craft of keeping skills in order. A collection of engineering skills for inspecting, testing, and improving agent skills. Fettle observes executions, detects recurring failures, identifies opportunities for improvement, and helps keep your skill collections reliable, consistent, and well maintained."
+    },
+    {
+      "collection": "gallimaufry",
+      "title": "Gallimaufry",
+      "description": "A miscellaneous collection of small AI skills and odd useful workflows."
+    },
+    {
+      "collection": "gazetteer",
+      "title": "Gazetteer",
+      "description": "Place-aware patterns for geographic content, local context, and location-rich publishing."
+    },
+    {
+      "collection": "idiolect",
+      "title": "Idiolect",
+      "description": "Finding your own language in skill outputs."
+    },
+    {
+      "collection": "patternbook",
+      "title": "Patternbook",
+      "description": "Patterns for better digital work."
+    },
+    {
+      "collection": "posthaste",
+      "title": "Posthaste",
+      "description": "A collection of skills to post to social media of all kinds."
+    }
+  ]
+}

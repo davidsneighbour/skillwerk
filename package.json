@@ -23,7 +23,8 @@
     "validate:collections": "node scripts/check-collections.ts",
     "validate:skills": "node scripts/validate-all-skills.ts",
     "test": "node --test \"collections/**/*.test.ts\"",
-    "test:archive": "node scripts/test-archive.ts"
+    "test:archive": "node scripts/test-archive.ts",
+    "synchwork:meld": "node scripts/synchwork-meld.ts"
   },
   "workspaces": [
     "collections/*"
