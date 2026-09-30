@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fettle"
+  short_description: "Browse Fettle skills and prepare skill releases"
+  default_prompt: "Use $fettle overview to show the Fettle workflows, route my request to the appropriate skill, or prepare the release of a skill."
