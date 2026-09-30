@@ -5,12 +5,12 @@ authors:
     given-names: "Patrick"
     orcid: "https://orcid.org/0000-0001-6250-2135"
 title: "Idiolect"
-version: v1.0.1
-date-released: 2026-08-23
+version: v2.0.1
+date-released: 2026-10-01
 url: "https://github.com/davidsneighbour/idiolect"
 repository-code: "https://github.com/davidsneighbour/idiolect"
 license: "MIT"
-commit: fd25cf7993e9604afd56d49d5bfda509caaff193
+commit: ce0248e94636ce51beee6631197a3dda0fa8c4d5
 keywords:
   - ai
   - skills
