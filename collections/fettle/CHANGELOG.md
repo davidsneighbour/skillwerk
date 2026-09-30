@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.1](https://github.com/davidsneighbour/skillwerk/compare/fettle%2Fv2.1.0...fettle%2Fv2.1.1) (2026-09-30)
+
+### Build
+
+* **release:** update root lockfile on each collection release ([9e3a0cc](https://github.com/davidsneighbour/skillwerk/commit/9e3a0cc85f25394f2b1fc57f1f7b3781ef1dfdaf))
+
 ## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/fettle%2Fv2.0.0...fettle%2Fv2.1.0) (2026-09-30)
 
 ### Feat
