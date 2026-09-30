@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.2](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.0.1...posthaste%2Fv2.0.2) (2026-09-30)
+
+### Build
+
+* **release:** update root lockfile on each collection release ([9e3a0cc](https://github.com/davidsneighbour/skillwerk/commit/9e3a0cc85f25394f2b1fc57f1f7b3781ef1dfdaf))
+
 ## [2.0.1](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.0.0...posthaste%2Fv2.0.1) (2026-09-30)
 
 ### Fix
