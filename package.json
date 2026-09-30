@@ -60,9 +60,10 @@
     "yargs": "18.2.0"
   },
   "overrides": {
-    "js-yaml": "5.2.2",
-    "markdown-it": "14.3.0",
+    "js-yaml": "5.4.2",
+    "markdown-it": "14.3.2",
     "linkify-it": "5.0.2",
-    "smol-toml": "1.9.0"
+    "smol-toml": "1.9.0",
+    "undici": "7.29.1"
   }
 }
