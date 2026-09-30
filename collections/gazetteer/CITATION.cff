@@ -5,12 +5,12 @@ authors:
     given-names: "Patrick"
     orcid: "https://orcid.org/0000-0001-6250-2135"
 title: "Gazetteer"
-version: v2.0.1
+version: v2.0.2
 date-released: 2026-10-01
 url: "https://github.com/davidsneighbour/gazetteer"
 repository-code: "https://github.com/davidsneighbour/gazetteer"
 license: "MIT"
-commit: 51443a83b6d9da31c3081d33f2c15f4bbffa66ec
+commit: db937f4019657c4483e5f26e7ed6ccecb65d7430
 keywords:
   - ai
   - skills
