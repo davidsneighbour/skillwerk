@@ -18,6 +18,8 @@ Each collection remains self-contained. Collection-specific versions use tags su
 
 ## Release a collection
 
+To see which collections have unreleased commits, run `npm run release:status`. It lists, for each collection, the commits since its last `<collection>/v*` tag, how many of them change no other collection (`own`), and the version bump that the release would propose. Add `--collection <collection>` to also list the commits.
+
 Run the release from the repository root with a clean working tree and `GITHUB_TOKEN_CONTENT_PRIVATE` set:
 
 ```sh

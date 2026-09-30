@@ -2,6 +2,10 @@
   "name": "skillwerk",
   "version": "0.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidsneighbour/skillwerk.git"
+  },
   "type": "module",
   "engines": {
     "node": ">=25"
@@ -9,6 +13,7 @@
   "scripts": {
     "check": "node scripts/check.ts",
     "package": "node scripts/package-collection.ts",
+    "release:status": "node scripts/release-status.ts",
     "lint": "npm run lint:code && npm run lint:markdown && npm run lint:spelling && npm run lint:secrets",
     "lint:code": "biome check .",
     "lint:code:fix": "biome check --write .",
