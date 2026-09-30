@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.2](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.0.1...gallimaufry%2Fv2.0.2) (2026-09-30)
+
+### Fix
+
+* **gallimaufry:** remove manifest entries for missing web-screenshot-2 skill ([c28b991](https://github.com/davidsneighbour/skillwerk/commit/c28b9913a645b93b863dc4c10c3c0319c0c51d46))
+
+### Build
+
+* **release:** update root lockfile on each collection release ([9e3a0cc](https://github.com/davidsneighbour/skillwerk/commit/9e3a0cc85f25394f2b1fc57f1f7b3781ef1dfdaf))
+
 ## [2.0.1](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.0.0...gallimaufry%2Fv2.0.1) (2026-09-30)
 
 ### Fix
