@@ -25,6 +25,14 @@ const updateManifestVersions = [
   VERSION,
 ].join(" ");
 
+// The root package-lock.json records the version of every collection. npm
+// updates it from inside the workspace, but release-it stages only files
+// below the collection directory, so stage the root lockfile here.
+const updateRootLockfile = [
+  "npm install --package-lock-only --ignore-scripts --no-audit --no-fund",
+  '&& git add "$(git rev-parse --show-toplevel)/package-lock.json"',
+].join(" ");
+
 const config: Config = createReleaseConfig({
   githubTokenRef: "GITHUB_TOKEN_CONTENT_PRIVATE",
   overrides: {
@@ -37,7 +45,7 @@ const config: Config = createReleaseConfig({
       releaseName: `${collection} v${VERSION}`,
     },
     hooks: {
-      "after:bump": updateManifestVersions,
+      "after:bump": [updateManifestVersions, updateRootLockfile],
     },
     npm: {
       publish: false,
