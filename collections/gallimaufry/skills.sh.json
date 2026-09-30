@@ -13,8 +13,7 @@
         "dnb-strict-typescript-check",
         "dnb-tailwindplus-elements",
         "eli5",
-        "interrogate-source",
-        "web-screenshot-2"
+        "interrogate-source"
       ]
     }
   ]

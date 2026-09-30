@@ -20,8 +20,7 @@
         "./skills/dnb-strict-typescript-check",
         "./skills/dnb-tailwindplus-elements",
         "./skills/eli5",
-        "./skills/interrogate-source",
-        "./skills/web-screenshot-2"
+        "./skills/interrogate-source"
       ]
     }
   ]
