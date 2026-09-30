@@ -27,6 +27,8 @@ npm run release:dry --workspace collections/<collection>
 npm run release --workspace collections/<collection>
 ```
 
+To release every collection that has unreleased commits, run `npm run release:changed:dry` and then `npm run release:changed`. The collections are released one after the other, and the run stops at the first failure.
+
 The release covers one collection only:
 
 * The version in `package.json` and in any plugin manifest (`.claude-plugin/marketplace.json`, `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`) changes.
