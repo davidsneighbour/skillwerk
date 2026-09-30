@@ -4,6 +4,8 @@ name: osv-scan
 title: Clerkwork OSV Vulnerability Scan
 type: skill
 description: Scan dependencies for known vulnerabilities with osv-scanner, auto-apply safe non-breaking fixes, file GitHub issues for the rest, and track accepted/fixed/workaround decisions in a committed ledger so repeat runs never re-file the same vulnerability. Use when asked to run an OSV scan, check dependencies for vulnerabilities, triage osv-scanner findings, or decide whether to accept, fix, or work around a reported vulnerability.
+metadata:
+  version: "1.0.0"
 ---
 
 Scan this repository's dependencies with `osv-scanner`, resolve what can be resolved automatically, and hand everything else to GitHub Issues — without ever losing track of a prior decision.

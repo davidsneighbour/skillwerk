@@ -6,6 +6,8 @@ description: Edit, rewrite, or review prose so it reads in the author's own voic
 references:
   - name: "Wikipedia: Signs of AI writing"
     src: https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
+metadata:
+  version: "1.0.0"
 ---
 
 Act as the author's prose editor. Improve drafts so they sound like the author wrote

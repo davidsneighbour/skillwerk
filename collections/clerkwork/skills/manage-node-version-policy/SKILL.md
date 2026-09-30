@@ -4,6 +4,8 @@ id: manage-node-version-policy
 name: manage-node-version-policy
 title: Clerkwork Manage Node Version Policy
 description: "Audits and updates Node.js and npm version declarations across a repository, synchronises package.json engines with actively supported Node.js releases, adds a weekly lifecycle check, and verifies the repository after changes. Use when asked to update Node versions, fix Node engine constraints, remove EOL Node versions, align GitHub Actions with package.json, or enforce an LTS/current Node policy. Triggers on: 'update Node versions', 'check Node engines', 'fix Node workflow versions', 'Node version policy', 'remove EOL Node', 'execute Node updates'."
+metadata:
+  version: "1.0.0"
 ---
 
 Use this procedure to audit and maintain Node.js and npm version declarations throughout a repository.

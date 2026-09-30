@@ -3,6 +3,11 @@
   "notGrouped": "bottom",
   "groupings": [
     {
+      "title": "Router",
+      "description": "Single interface to the Fettle collection, its workflows, and skill release preparation.",
+      "skills": ["fettle"]
+    },
+    {
       "title": "Fettle",
       "description": "Skills for inspecting, observing, improving, proving, and stewarding agent skills with evidence-backed findings.",
       "skills": [

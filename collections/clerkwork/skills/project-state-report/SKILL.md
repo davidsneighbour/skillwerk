@@ -4,6 +4,8 @@ name: project-state-report
 title: Clerkwork Project State Report
 type: skill
 description: Analyse a repository's current state, safely fetch and fast-forward remote updates, report what changed since a supplied date phrase or since the user last worked on the project, include GitHub PR and issue activity, and recommend what to do next. Use when asked for a project state report, project catch-up, what changed since yesterday or last week, what happened since we last worked, update from remote and summarize, or a project-task-triage-style status with remote and GitHub activity.
+metadata:
+  version: "1.0.0"
 ---
 
 Produce a readable project catch-up report without mixing it with implementation work.

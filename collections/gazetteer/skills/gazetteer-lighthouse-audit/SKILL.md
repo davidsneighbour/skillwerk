@@ -4,43 +4,36 @@ name: gazetteer-lighthouse-audit
 title: Gazetteer Lighthouse Audit
 description: Run reproducible Lighthouse audits against a live website and prepare reusable audit artifacts for another skill or agent. Use when a workflow needs Lighthouse performance, accessibility, best-practices, or SEO data for a live URL. Prefer delegation to a parallel/background subagent when the calling environment supports it.
 argument-hint: "<url>"
+metadata:
+  version: "1.0.0"
 ---
 
 <!-- cspell:words devtoolslog -->
 
 ## Gazetteer lighthouse audit
 
-Run Lighthouse against a specified live URL and return the resulting audit
-artifacts to the calling skill or agent.
+Run Lighthouse against a specified live URL and return the resulting audit artifacts to the calling skill or agent.
 
-This skill is primarily a **worker skill**. It performs data collection and
-does not interpret, summarise, fix, or otherwise act on Lighthouse findings
-unless explicitly requested.
+This skill is primarily a **worker skill**. It performs data collection and does not interpret, summarise, fix, or otherwise act on Lighthouse findings unless explicitly requested.
 
 ## Execution model
 
 When this skill is invoked as part of a larger workflow:
 
-1. Prefer delegating the entire Lighthouse audit to an independent subagent or
-   background task when the current agent runtime supports parallel execution.
+1. Prefer delegating the entire Lighthouse audit to an independent subagent or background task when the current agent runtime supports parallel execution.
 2. The calling agent MAY continue unrelated work while the audit runs.
 3. Do not make the calling workflow wait before performing independent work.
-4. When parallel/background delegation is unavailable, run the audit
-   synchronously.
-5. The worker MUST finish both configured Lighthouse runs before reporting
-   completion.
+4. When parallel/background delegation is unavailable, run the audit synchronously.
+5. The worker MUST finish both configured Lighthouse runs before reporting completion.
 6. Return the generated manifest and artifact location to the caller.
 
-Do not promise asynchronous execution when the current runtime does not provide
-a mechanism for it.
+Do not promise asynchronous execution when the current runtime does not provide a mechanism for it.
 
 ## Audit concurrency
 
 Run the two Lighthouse profiles **sequentially**, not concurrently.
 
-Lighthouse performance measurements are sensitive to CPU, memory, browser, and
-network contention. Parallel Lighthouse processes on the same machine can
-distort measurements.
+Lighthouse performance measurements are sensitive to CPU, memory, browser, and network contention. Parallel Lighthouse processes on the same machine can distort measurements.
 
 The intended concurrency model is therefore:
 
@@ -52,8 +45,7 @@ parent agent
     └── desktop audit
 ```
 
-The parent and Lighthouse worker may run concurrently. The mobile and desktop
-Lighthouse runs must not.
+The parent and Lighthouse worker may run concurrently. The mobile and desktop Lighthouse runs must not.
 
 ## Input
 
@@ -78,13 +70,11 @@ configs/mobile.json
 configs/desktop.json
 ```
 
-These are Lighthouse CLI flags files and are passed using
-`--cli-flags-path`.
+These are Lighthouse CLI flags files and are passed using `--cli-flags-path`.
 
 Do not silently replace these configurations with Lighthouse defaults.
 
-The configurations are part of the audit definition and allow audits taken at
-different times or by different parent skills to remain comparable.
+The configurations are part of the audit definition and allow audits taken at different times or by different parent skills to remain comparable.
 
 ## Running the audit
 
@@ -105,8 +95,7 @@ Each Lighthouse invocation MUST generate all supported reusable report formats:
 * HTML
 * CSV
 
-Also preserve Lighthouse diagnostic assets using `--save-assets`, including
-trace and DevTools log data produced by Lighthouse.
+Also preserve Lighthouse diagnostic assets using `--save-assets`, including trace and DevTools log data produced by Lighthouse.
 
 Do not open reports interactively.
 
@@ -120,12 +109,9 @@ Conceptually:
 /tmp/lighthouse-audit.XXXXXXXX/
 ```
 
-Do not write audit results into the repository unless explicitly instructed by
-the caller.
+Do not write audit results into the repository unless explicitly instructed by the caller.
 
-Do not automatically delete the temporary directory when the worker completes.
-The parent workflow owns the artifacts after handoff and decides when they are
-no longer required.
+Do not automatically delete the temporary directory when the worker completes. The parent workflow owns the artifacts after handoff and decides when they are no longer required.
 
 Expected structure:
 
@@ -144,8 +130,7 @@ Expected structure:
 └── desktop-0.devtoolslog.json
 ```
 
-Exact diagnostic asset filenames may vary between Lighthouse versions. The
-manifest, rather than filename assumptions, is authoritative.
+Exact diagnostic asset filenames may vary between Lighthouse versions. The manifest, rather than filename assumptions, is authoritative.
 
 ## Manifest
 
@@ -170,8 +155,7 @@ It MUST contain at least:
 * diagnostic asset paths;
 * failure information when applicable.
 
-Paths MUST be absolute so another agent can consume them without knowing the
-worker's original working directory.
+Paths MUST be absolute so another agent can consume them without knowing the worker's original working directory.
 
 Example shape:
 
@@ -211,8 +195,7 @@ Example shape:
 
 This skill performs collection only.
 
-After both audits have completed successfully, return a concise handoff such
-as:
+After both audits have completed successfully, return a concise handoff such as:
 
 ```text
 Lighthouse audit complete.
@@ -226,9 +209,7 @@ Output directory:
 
 The manifest is the primary machine-readable return value.
 
-A parent skill SHOULD read `manifest.json` first and use the JSON Lighthouse
-reports for analysis. HTML and CSV exist for human inspection and alternate
-processing.
+A parent skill SHOULD read `manifest.json` first and use the JSON Lighthouse reports for analysis. HTML and CSV exist for human inspection and alternate processing.
 
 Do not paste Lighthouse findings into the worker response unless requested.
 
@@ -243,8 +224,7 @@ If an audit fails:
 5. include the command exit status and concise error information;
 6. return the temporary directory and manifest path to the caller.
 
-If mobile succeeds and desktop fails, preserve and expose the successful
-mobile artifacts.
+If mobile succeeds and desktop fails, preserve and expose the successful mobile artifacts.
 
 Never destroy useful partial output because another profile failed.
 
@@ -272,5 +252,4 @@ This skill does not:
 
 Those responsibilities belong to the calling skill.
 
-Its sole responsibility is to produce a complete, reproducible Lighthouse
-audit artifact set and hand it back reliably.
+Its sole responsibility is to produce a complete, reproducible Lighthouse audit artifact set and hand it back reliably.

@@ -4,6 +4,8 @@ name: labels
 title: Clerkwork Issue Label Classifier
 type: skill
 description: Analyse issue text or issue metadata and select or apply labels from Patrick's category:value label taxonomy. Use when creating, triaging, reviewing, updating, or closing issues, or when validating whether an issue's existing labels correctly represent its type, workflow status, resolution, priority, and metadata.
+metadata:
+  version: "1.0.0"
 ---
 
 Classify issues using the canonical label taxonomy in `references/label-taxonomy.yml`.

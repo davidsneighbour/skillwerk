@@ -2,6 +2,8 @@
 name: posthaste-unsplash
 description: Search, preview, select, and retrieve Unsplash photos with required attribution and download tracking. Use for Unsplash searches, stock-photo requests, random photo selection, image discovery for content, or when another Posthaste skill needs Unsplash image candidates. Treat "find" requests as searches.
 argument-hint: "help | search [query] [options] | random [topic] [options]"
+metadata:
+  version: "1.0.0"
 ---
 
 # Posthaste Unsplash

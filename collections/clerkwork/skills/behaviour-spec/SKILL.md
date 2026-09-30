@@ -4,6 +4,8 @@ name: behaviour-spec
 title: Behaviour Specification
 type: skill
 description: "Create, review, and generate tests from strict Behaviour.spec.md files. Use when a repository contains or needs behaviour specifications for features, components, pages, modules, CLIs, APIs, workflows, or integrations; when asked to review a Behaviour.spec.md file; when generating or updating tests from a behaviour specification; or when validating implementation against specified behaviour."
+metadata:
+  version: "1.0.0"
 ---
 
 ## Behaviour specification

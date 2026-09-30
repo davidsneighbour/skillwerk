@@ -13,6 +13,7 @@
       "source": "./",
       "strict": false,
       "skills": [
+        "./skills/fettle",
         "./skills/fettle-inspect",
         "./skills/fettle-observe",
         "./skills/fettle-engineer",

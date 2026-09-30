@@ -4,6 +4,8 @@ name: dnbhq-configs
 title: DNBHQ repository configuration maintenance
 type: skill
 description: Audit DNBHQ repository configuration and coordinate selected package-specific maintenance workflows.
+metadata:
+  version: "1.0.0"
 ---
 
 Audit or initialise the current repository's shared DNBHQ configuration and coordinate targeted maintenance through the package-specific skills.

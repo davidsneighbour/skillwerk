@@ -6,7 +6,7 @@
 
 Gallimaufry is a collection of reusable AI skills for miscellaneous AI asset
 maintenance and small specialised workflows: useful things that do not belong
-cleanly in Clerkwork, Gazetteer, Idiolect, Patternbook, or Posthaste.
+cleanly in Apparatus, Clerkwork, Gazetteer, Idiolect, Patternbook, or Posthaste.
 
 * [A miscellaneous collection of useful AI skills](#a-miscellaneous-collection-of-useful-ai-skills)
 * [Install](#install)
@@ -19,7 +19,7 @@ cleanly in Clerkwork, Gazetteer, Idiolect, Patternbook, or Posthaste.
 Install the current Gallimaufry skill set with:
 
 ```bash
-npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/gallimaufry/skills --yes
+npx skills add davidsneighbour/gallimaufry --yes
 ```
 
 ## Update
@@ -27,7 +27,7 @@ npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collection
 Re-run the install command to refresh an existing install:
 
 ```bash
-npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/gallimaufry/skills --yes
+npx skills add davidsneighbour/gallimaufry --yes
 ```
 
 Use `--global` when the skills should be available outside the current project.

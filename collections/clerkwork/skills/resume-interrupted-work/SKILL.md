@@ -4,6 +4,8 @@ name: resume-interrupted-work
 title: Resume interrupted work
 type: skill
 description: Manage a project-root RESUME.md handoff file that blocks new work until previously interrupted or paused work is resolved. Use whenever work starts in a repository, when the user says resume, continue, or carry on, or when previous work may have been interrupted.
+metadata:
+  version: "1.0.0"
 ---
 
 Use this skill whenever work starts in a repository, when the user says `resume`, `continue`, `carry on`, or when previous work may have been interrupted.

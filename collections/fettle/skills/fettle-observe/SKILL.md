@@ -1,6 +1,8 @@
 ---
 name: fettle-observe
 description: Analyse agent execution events and historical logs to find recurring failures, incorrect skill use, repeated corrections, regressions, and excessive work. Use for runtime evidence, not static construction audits.
+metadata:
+  version: "1.0.0"
 ---
 
 # Fettle observer

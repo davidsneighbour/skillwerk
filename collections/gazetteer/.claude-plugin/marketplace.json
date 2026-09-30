@@ -13,9 +13,18 @@
       "source": "./",
       "strict": false,
       "skills": [
+        "./skills/dnb-blog-draft-materialise",
+        "./skills/dnb-blog-draft-meta-matter",
+        "./skills/dnb-interface-design",
+        "./skills/dnb-interface-engineering",
+        "./skills/dnb-markdown-formatting",
+        "./skills/dnb-post-into-void",
+        "./skills/dnb-post-session-into-void",
+        "./skills/dnb-voice",
         "./skills/gazetteer",
         "./skills/gazetteer-audit",
-        "./skills/gazetteer-lighthouse-audit"
+        "./skills/gazetteer-lighthouse-audit",
+        "./skills/gazetteer-llm-visibility"
       ]
     }
   ]

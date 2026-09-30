@@ -4,6 +4,8 @@ name: dependency-maintenance
 title: Clerkwork Dependency Maintenance
 type: skill
 description: Safely maintain npm dependencies in a single-package repository or npm monorepo. Use when asked to inspect outdated packages, update dependency ranges and lockfiles, assess or fix npm audit findings, validate the result, and optionally create a conventional dependency-update commit while preserving unrelated work.
+metadata:
+  version: "1.0.0"
 ---
 
 Maintain npm dependencies without mixing unrelated work into the update.

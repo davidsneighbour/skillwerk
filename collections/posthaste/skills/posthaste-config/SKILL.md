@@ -3,6 +3,8 @@ id: posthaste-config
 name: posthaste-config
 title: Posthaste Config
 description: Load, merge, validate, explain, or create Posthaste TOML configuration. Use when another Posthaste skill needs user or project defaults, when the user asks what Posthaste configuration is active, or when the user wants to initialise or change global or project Posthaste settings.
+metadata:
+  version: "1.0.0"
 ---
 
 Manage persistent, non-secret configuration shared by Posthaste skills.

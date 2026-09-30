@@ -5,6 +5,8 @@ title: Clerkwork agent instructions audit
 type: skill
 description: Audit repository agent instructions for bootstrap cost, scope quality, duplication, legacy CLAUDE.md content, and correct separation between AGENTS.md, scoped instructions, task references, skills, and documentation. Audit is non-mutating by default; optimise only when explicitly requested.
 argument-hint: "<audit|optimise> [target]"
+metadata:
+  version: "1.0.0"
 ---
 
 Use this skill when the user asks to audit, review, reduce, optimise, restructure, or analyse the cost or architecture of repository agent instructions.

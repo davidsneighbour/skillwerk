@@ -1,6 +1,8 @@
 ---
 name: fettle-engineer
 description: Convert an existing evidence-backed Fettle finding into a specific skill improvement or GitHub issue proposal with affected files, benefits, authority constraints, and regression criteria.
+metadata:
+  version: "1.0.0"
 ---
 
 # Fettle engineer

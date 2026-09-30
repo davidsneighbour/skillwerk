@@ -4,6 +4,8 @@ name: foreman
 title: Foreman
 description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman audit packages` to the matching Clerkwork skill. Foreman identifies the job and hands it off; it does not duplicate the target skill's work.
 argument-hint: "<overview|agent|repository|project|git|audit|issues|status|resume> [action|target]"
+metadata:
+  version: "1.0.0"
 ---
 
 Use this skill whenever the user addresses `foreman`, wants to see what Clerkwork can do, cannot remember a skill name, or wants Clerkwork to choose the right skill for a task.

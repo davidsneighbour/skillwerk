@@ -1,6 +1,8 @@
 ---
 name: fettle-steward
 description: Audit the health of agent skill collections, including inventory, ownership, dependencies, overlaps, obsolete skills, shared resources, and cross-collection consistency.
+metadata:
+  version: "1.0.0"
 ---
 
 # Fettle steward

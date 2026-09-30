@@ -7,6 +7,8 @@ description: >
   from, transcribe and assess, or derive reusable knowledge from external
   material. Separates faithful source transcription from critical analysis
   and reusable knowledge extraction.
+metadata:
+  version: "1.0.0"
 ---
 
 # Interrogate source

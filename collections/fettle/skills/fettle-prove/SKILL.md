@@ -1,6 +1,8 @@
 ---
 name: fettle-prove
 description: Test whether an agent skill behaves as intended with deterministic fixtures and explicitly labelled variable agent-behaviour scenarios. Use for regression validation and instruction-conflict scenarios.
+metadata:
+  version: "1.0.0"
 ---
 
 # Fettle prover

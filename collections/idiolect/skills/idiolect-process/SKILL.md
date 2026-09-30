@@ -11,6 +11,8 @@ description: >
   "make this sound like me", or otherwise indicates that the resulting prose
   should represent their own voice. It may run after another skill rather
   than replacing that skill.
+metadata:
+  version: "1.0.0"
 ---
 
 # Idiolect process

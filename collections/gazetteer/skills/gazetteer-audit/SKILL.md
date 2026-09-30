@@ -3,6 +3,8 @@ id: gazetteer-audit
 name: gazetteer-audit
 title: Gazetteer Site Audit
 description: Audit a live website, staging deployment, or web project against a comprehensive checklist. Use for launch readiness, website quality reviews, technical SEO, accessibility, security headers, well-known URIs, agent readiness, performance, privacy, resilience, or internationalisation audits that require an evidence-backed report and prioritised remediation tasks.
+metadata:
+  version: "1.0.0"
 ---
 
 ## Gazetteer site audit

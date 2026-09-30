@@ -4,6 +4,8 @@ name: agent-align
 title: Clerkwork agent alignment
 type: skill
 description: Create or update repository agent instruction files only when the user asks to onboard Clerkwork, asks for agent alignment, or explicitly names agent-align. Always ask for confirmation before changing files.
+metadata:
+  version: "1.0.0"
 ---
 
 Use this skill only when the user asks to onboard Clerkwork in any form, asks for agent alignment, or explicitly asks for `agent-align`.

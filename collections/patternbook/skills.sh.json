@@ -5,7 +5,7 @@
     {
       "title": "Patternbook",
       "description": "Skills for digital design and presentation: design systems, branding, typography, colour, composition, and interface patterns.",
-      "skills": ["patternbook"]
+      "skills": ["patternbook", "astro-component", "baseline-modernise"]
     }
   ]
 }

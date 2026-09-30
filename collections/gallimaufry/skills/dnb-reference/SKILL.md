@@ -13,6 +13,8 @@ inputs:
     required: true
     type: string
     description: Path to the AI Markdown file that should receive the reference.
+metadata:
+  version: "1.0.0"
 ---
 
 ## Add AI file reference

@@ -3,6 +3,8 @@ id: posthaste-prepare-link
 name: posthaste-prepare-link
 title: Posthaste Prepare Link
 description: Take a URL, pull its title/description/tags, screenshot the page, and draft a social post in Patrick's voice with topic hashtags derived from the linked page. Publishes through @humanwhocodes/crosspost or direct platform APIs only after explicit confirmation, attaches the screenshot on networks that support images, and keeps a durable per-network log of what has already been posted so the same link is never reposted to the same network by accident. Use for `/posthaste-prepare-link`, "post this link", "share this article", or "make a post about this page".
+metadata:
+  version: "1.0.0"
 ---
 
 Turn a single URL into one confirmed social post: fetch the

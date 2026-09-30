@@ -5,12 +5,26 @@
     {
       "title": "Gazetteer",
       "description": "Describe it. Place it. Make it findable.",
-      "skills": ["gazetteer"]
+      "skills": ["gazetteer", "gazetteer-llm-visibility"]
     },
     {
       "title": "Audit",
       "description": "Evidence-backed website and Lighthouse audit skills.",
       "skills": ["gazetteer-audit", "gazetteer-lighthouse-audit"]
+    },
+    {
+      "title": "Writing and interface",
+      "description": "Blog drafting, voice, Markdown, social posting, and interface design skills carried in the Gazetteer collection.",
+      "skills": [
+        "dnb-blog-draft-materialise",
+        "dnb-blog-draft-meta-matter",
+        "dnb-interface-design",
+        "dnb-interface-engineering",
+        "dnb-markdown-formatting",
+        "dnb-post-into-void",
+        "dnb-post-session-into-void",
+        "dnb-voice"
+      ]
     }
   ]
 }
