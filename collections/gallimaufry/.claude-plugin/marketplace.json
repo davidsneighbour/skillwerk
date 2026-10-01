@@ -13,6 +13,7 @@
       "source": "./",
       "strict": false,
       "skills": [
+        "./skills/distil",
         "./skills/dnb-reference",
         "./skills/interrogate-source"
       ]

@@ -1,12 +1,13 @@
 ---
 name: interrogate-source
 description: >
-  Rigorously analyse externally sourced material such as screenshots, images,
-  posts, prompts, lists, frameworks, carousels, diagrams, and pasted content.
-  Use when asked to analyse, interrogate, sanity-check, extract a framework
-  from, transcribe and assess, or derive reusable knowledge from external
-  material. Separates faithful source transcription from critical analysis
-  and reusable knowledge extraction.
+  Rigorously interrogate externally sourced material such as screenshots,
+  images, posts, prompts, lists, frameworks, carousels, diagrams, and pasted
+  content. Use when asked to create or build a framework from a source, to
+  dive deep into it, to interrogate it, or to derive reusable knowledge from
+  it. Separates faithful source transcription from critical analysis and
+  reusable knowledge extraction. For requests to distil, extract, or analyse
+  a source, use distil instead.
 metadata:
   version: "1.0.0"
 ---
@@ -14,6 +15,8 @@ metadata:
 # Interrogate source
 
 Interrogate externally sourced material rather than merely summarising it.
+
+Use this skill for requests to create a framework from a source, to dive deep into a source, or to interrogate it. For requests to distil, extract, or analyse a source, use `distil` instead.
 
 The objective is to establish:
 

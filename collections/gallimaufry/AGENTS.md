@@ -17,6 +17,7 @@ belong inside the owning skill directory, commonly in `resources/`,
 
 ## Skill map
 
+* `distil`: extract the useful core from rhetorically presented source material, put it into context, and turn what survives into a reusable framework or prompt where justified.
 * `dnb-reference`: add or update strict references frontmatter on AI asset
   files from supplied HTTP or HTTPS URLs.
 

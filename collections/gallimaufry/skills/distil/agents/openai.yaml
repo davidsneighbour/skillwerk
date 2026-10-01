@@ -1,0 +1,4 @@
+interface:
+  display_name: "Distil"
+  short_description: "Extract the useful core from rhetorical sources."
+  default_prompt: "Use $distil to separate the substance of this source from its rhetoric, put it into context, and turn what survives into something reusable where justified."

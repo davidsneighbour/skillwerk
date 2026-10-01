@@ -34,6 +34,7 @@ Use `--global` when the skills should be available outside the current project.
 
 ## Skills
 
+* `distil` extracts the useful core from social-media, promotional, and other rhetorically presented material, puts it into context, and turns what survives into a reusable framework or prompt where justified.
 * `dnb-reference` adds or updates strict references frontmatter on AI asset
   files from supplied HTTP or HTTPS URLs.
 * `interrogate-source` analyses external source material by keeping faithful
