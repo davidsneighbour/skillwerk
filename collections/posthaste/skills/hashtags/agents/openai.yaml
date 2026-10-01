@@ -1,0 +1,4 @@
+interface:
+  display_name: "Posthaste Hashtags"
+  short_description: "Tag a URL or text with hashtags"
+  default_prompt: "Use $hashtags to generate hashtags for this URL or text (5 by default, a requested number, or full mode)."

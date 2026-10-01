@@ -9,7 +9,7 @@
         "posthaste",
         "posthaste-config",
         "posthaste-prepare-link",
-        "posthaste-post-retrieve-hashtags",
+        "hashtags",
         "posthaste-unsplash",
         "posthaste-voice"
       ]

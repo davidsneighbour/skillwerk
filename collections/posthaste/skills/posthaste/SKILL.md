@@ -22,8 +22,7 @@ because no config file exists; consuming-skill defaults remain valid.
 * Use `posthaste-prepare-link` when the user supplies a URL and wants a social
   post drafted, adapted for network limits, checked against the posted log, or
   published after explicit confirmation.
-* Use `posthaste-post-retrieve-hashtags` when the user only wants topical
-  hashtags for a URL or supplied text.
+* Hand every hashtag or tag request to `hashtags`. This includes requests for hashtags for a URL or supplied text, a specific number of tags, full mode, tag lists supplied for consistency, and the `extract` command.
 * Use `posthaste-reddit-refresh-token`,
   `posthaste-threads-refresh-token`, or `posthaste-tumblr-refresh-token` when a
   direct network integration needs credentials refreshed or created.

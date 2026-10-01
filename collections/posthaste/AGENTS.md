@@ -16,12 +16,11 @@ README assets live in `.github/assets/`.
 
 ## Skill map
 
-* `posthaste`: placeholder root skill; `SKILL.md` is currently empty.
+* `posthaste`: router skill. It resolves configuration and hands each request to the matching Posthaste skill. It hands every hashtag request to `hashtags`.
 * `posthaste-prepare-link`: main link-to-social workflow. It fetches metadata,
-  screenshots pages, drafts Patrick-voice posts with topical hashtags, posts
+  screenshots pages, drafts Patrick-voice posts with topical hashtags from `hashtags`, posts
   only after explicit confirmation, and logs posted networks to avoid repeats.
-* `posthaste-post-retrieve-hashtags`: prompt-only topical hashtag generation
-  from a URL or text block.
+* `hashtags`: the single, prompt-only hashtag skill. It generates tags from a URL or text block: 5 by default, a requested number, or all relevant tags in full mode, as plain tags or social-ready `#` hashtags. It keeps a session vocabulary that the `extract` command returns. The router hands all hashtag requests to this skill.
 * `posthaste-unsplash`: searches, previews, selects, and tracks Unsplash photos
   with mandatory attribution, download tracking on final selection, and
   credentials from `UNSPLASH_POSTHASTE_ACCESS_KEY`, falling back to

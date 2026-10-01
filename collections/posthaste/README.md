@@ -145,7 +145,7 @@ node skills/posthaste-prepare-link/resources/post-crosspost.ts --info
 * `posthaste` routes the social publishing skill set.
 * `posthaste-config` loads, validates, merges, and creates layered TOML configuration.
 * `posthaste-prepare-link` drafts and publishes confirmed social posts from URLs.
-* `posthaste-post-retrieve-hashtags` generates topical hashtags from a URL or supplied text.
+* `hashtags` generates hashtags from a URL or supplied text: 5 by default, a requested number, or all relevant tags in full mode, as plain tags or social-ready `#` hashtags. The `posthaste` router hands all hashtag requests to this skill.
 * `posthaste-unsplash` searches, previews, selects, and tracks Unsplash photos with required attribution.
 * `posthaste-voice` edits, rewrites, and reviews prose so it keeps the author's voice.
 * `posthaste-reddit-refresh-token` creates Reddit OAuth credentials for direct Reddit posting.

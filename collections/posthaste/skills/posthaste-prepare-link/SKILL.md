@@ -218,28 +218,11 @@ Reject non-`http(s)` URLs and ask for a corrected one.
    asking for publish confirmation, so the user can catch a banner-dominated
    or broken capture and ask for a retake instead of publishing it blind.
 
-4. **Derive topic hashtags.**
+4. **Get topic hashtags from the `hashtags` skill.**
 
-   Create two to four hashtags from the actual topic and angle of the linked
-   page. Use the fetched title, description, visible page content, screenshot,
-   and the draft's point of view as evidence. Metadata tags from step 1 may
-   provide hints, but do not treat them as the source of truth and do not tell
-   the user that hashtags were inferred only because the page had no tags. The
-   normal behaviour of this skill is to create relevant topic hashtags.
+   Do not create hashtags in this skill. Use the `hashtags` skill with the canonical URL (or final URL) as the input, in limited mode with its default of 5 tags, and in its lowercase `#` hashtag format. For example, `"open source"` becomes `#opensource` and `"TypeScript"` becomes `#typescript`. Use the tags it returns, in its order, as the hashtags for the post. Metadata tags from step 1 are not a source for hashtags, and do not tell the user that hashtags came from metadata or were missing from it.
 
-   Skip generic or noisy hashtags (e.g. a bare "news" or "blog"). Convert each
-   selected topic into a valid social hashtag:
-
-   * lowercase everything
-   * strip punctuation that is not meaningful for separation
-   * join ordinary multi-word tags with no separators
-   * use dashes only when two distinctive words need separation for reading
-
-   Examples: `"open source"` becomes `#opensource`, `"TypeScript"` becomes
-   `#typescript`, and `"privacy first"` may become `#privacy-first` when the
-   separation improves readability. If the page is too thin to support useful
-   hashtags from its topic, ask the user for the desired angle rather than
-   publishing with filler tags.
+   If the user asks for a different number of hashtags, pass that number to `hashtags`. If `hashtags` returns fewer than 5 tags, use only those tags and do not add filler tags. If `hashtags` returns an `ERROR:` line, or the page is too thin to support useful hashtags, show the error and ask the user for the desired angle or for readable content rather than publishing with filler tags.
 
 5. **Draft the post.**
 
@@ -287,7 +270,7 @@ Reject non-`http(s)` URLs and ask for a corrected one.
    ```
 
    Keep the same URL and appropriate topic hashtags in short variants unless
-   there is no room. Nostr is text-only through Crosspost, so its variant
+   there is no room. If there is not enough room for all hashtags, remove them from the end of the list first, because `hashtags` returns them in order of priority. Nostr is text-only through Crosspost, so its variant
    should stand on its own without relying on an attached screenshot. If a
    network-specific file exists, treat it as the source of truth for that
    network and read it again before publishing or rephrasing.
@@ -375,7 +358,7 @@ When the user says `edit post`, ask them to edit the linked draft file or
 provide replacement text. When they are done, read the file again and show the
 table again. When the user says `edit hashtags`, update the hashtags in the
 draft file so the file remains the exact publishable post, then show the table
-again. When the user says `edit image`, collect or create a replacement image
+again. If the user asks for new or more hashtags instead of supplying them, get them from the `hashtags` skill as in step 4. When the user says `edit image`, collect or create a replacement image
 path, update the image row, and show the table again. When the user says
 `edit alt-text`, collect replacement alt text and show the table again.
 
@@ -809,8 +792,7 @@ Before publishing, verify:
 * the post is within each target network's character range
 * any network-specific draft was read from its file after the user's latest
   edit, rephrase, or confirmation
-* the selected hashtags are present in the post text, lowercase, and genuinely
-  relevant, not generic filler
+* the selected hashtags came from the `hashtags` skill or from the user, are present in the post text, lowercase, and genuinely relevant, not generic filler
 * the screenshot exists, has alt text, and was shown to the user before this
   confirmation step
 * the URL was checked against the posted log for the target networks, and if a
