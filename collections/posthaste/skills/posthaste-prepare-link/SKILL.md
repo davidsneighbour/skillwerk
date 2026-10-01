@@ -424,16 +424,29 @@ TUMBLR_ACCESS_TOKEN_EXPIRES_AT
 TUMBLR_BLOG_IDENTIFIER
 ```
 
-The resource script defaults `CROSSPOST_DOTENV` to `~/.env` when the variable
-is not already set. The TOML key `[paths].dotenv` can set the default dotenv
-path, `CROSSPOST_DOTENV` overrides it for Crosspost-compatible invocations, and
-the explicit `--dotenv` argument overrides both.
+The default dotenv path is `~/.env`. The TOML key `[paths].dotenv` overrides
+it, a `CROSSPOST_DOTENV` value already set in the environment overrides the
+TOML value, and the explicit `--dotenv` argument overrides all of them. The
+helper then runs Crosspost with `CROSSPOST_DOTENV` set to this effective path,
+so Crosspost and the direct scripts read the same file.
+
+Crosspost reads fixed variable names such as `MASTODON_ACCESS_TOKEN`. When TOML
+renames one of these variables, for example
+`[networks.mastodon.env] access_token = "POSTHASTE_MASTODON_TOKEN"`, the helper
+copies the value of the configured variable to the name Crosspost reads, in the
+Crosspost child process only. `--dry-run` prints the name mapping, never the
+value.
 
 The TOML key `[paths].posted_log` controls the posted-log path used by
 `post-crosspost.ts` and `check-posted-log.ts`; explicit `--log-path` overrides
-it. If `[posting].default_networks` names a network disabled with
+it. Without `--to`, `check-posted-log.ts` reports against
+`[posting].default_networks` when it is configured, otherwise against all
+supported networks that TOML does not disable.
+
+If `[posting].default_networks` names a network disabled with
 `[networks.<network>].enabled = false`, the runtime treats that as invalid
-configuration and exits before publishing.
+configuration and exits before publishing. An explicit `--to` that names a
+disabled network also exits before publishing.
 
 For Reddit, either provide a current `REDDIT_ACCESS_TOKEN` plus
 `REDDIT_USER_AGENT` and `REDDIT_SUBREDDIT`, or provide

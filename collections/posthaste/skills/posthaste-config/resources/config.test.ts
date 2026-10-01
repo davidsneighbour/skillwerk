@@ -216,8 +216,70 @@ default_networks = ["reddit"]
 [networks.reddit]
 enabled = false
 `),
-    /default_networks includes disabled network reddit/u,
+    /posting\.default_networks \(from global\) includes disabled network reddit; networks\.reddit\.enabled is false \(from global\)/u,
   );
+});
+
+test("CLI selection of a disabled network names the CLI as the source", async () => {
+  const paths = await tempConfigPaths();
+  await writeToml(
+    paths.projectConfigPath,
+    `
+[networks.reddit]
+enabled = false
+`,
+  );
+
+  await assert.rejects(
+    loadPosthasteConfig({
+      ...paths,
+      defaults: DEFAULTS,
+      cli: {
+        posting: {
+          defaultNetworks: ["reddit"],
+        },
+      },
+      knownNetworks: KNOWN_NETWORKS,
+    }),
+    /the explicit network selection includes disabled network reddit; networks\.reddit\.enabled is false \(from project\)/u,
+  );
+});
+
+test("merging config layers does not mutate caller defaults", async () => {
+  const before = JSON.stringify(DEFAULTS);
+  await loadWithTempConfig(`
+[posting]
+default_networks = ["reddit"]
+
+[networks.reddit.env]
+access_token = "POSTHASTE_REDDIT_TOKEN"
+`);
+
+  assert.equal(JSON.stringify(DEFAULTS), before);
+});
+
+test("non-string environment variable names are rejected", async () => {
+  await assert.rejects(
+    loadWithTempConfig(`
+[networks.reddit.env]
+access_token = 123
+`),
+    /networks\.reddit\.env\.access_token: expected an environment variable name string/u,
+  );
+});
+
+test("credential-like values outside env tables are rejected without echoing them", async () => {
+  const error = await loadWithTempConfig(`
+[networks.mastodon]
+access_token = "inline-secret-value"
+`).then(
+    () => undefined,
+    (reason: unknown) => reason,
+  );
+
+  assert.ok(error instanceof Error);
+  assert.match(error.message, /networks\.mastodon\.access_token/u);
+  assert.doesNotMatch(error.message, /inline-secret-value/u);
 });
 
 test("diagnostic data does not include secret environment values", async () => {

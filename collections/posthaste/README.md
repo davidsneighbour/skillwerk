@@ -46,7 +46,9 @@ Posthaste can use layered TOML configuration for persistent, non-secret defaults
 | ~/.config/posthaste/config.toml | global user configuration |
 | .posthaste.toml | project configuration |
 
-Configuration is applied over defaults owned by each skill. Project settings override global settings, explicitly supplied config files override project settings, environment-specific overrides such as `CROSSPOST_DOTENV` override those files where applicable, and explicit command, argument, or user-request values from the chat override configuration.
+Configuration is applied over defaults owned by each skill. Project settings override global settings, explicitly supplied config files override project settings, environment-specific overrides such as `CROSSPOST_DOTENV` override those files where applicable, and explicit command, argument, or user-request values from the chat override configuration. The runtime scripts read the global and project files directly; an explicitly supplied config file is currently applied only by the agent, not by the scripts.
+
+Run `node skills/posthaste-prepare-link/resources/post-crosspost.ts --info` to see which files were found, the effective values, and where each value came from. The output shows environment variable names, never their values.
 
 ```mermaid
 ---

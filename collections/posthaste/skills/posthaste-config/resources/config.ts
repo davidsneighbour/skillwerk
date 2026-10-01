@@ -180,7 +180,7 @@ export async function loadPosthasteConfig(
   const warnings = validateRawConfig(merged, options.knownNetworks);
   const resolved = rawToResolvedConfig(merged);
 
-  validateResolvedConfig(resolved, options.knownNetworks);
+  validateResolvedConfig(resolved, provenance, options.knownNetworks);
 
   return {
     ...resolved,
@@ -276,28 +276,17 @@ function mergeLayer(
       continue;
     }
 
-    target[key] = value;
     provenance[provenanceKey] = sourceName;
 
+    // Copy tables and arrays so later layers never mutate a caller's defaults.
     if (isPlainRecord(value)) {
-      markNestedProvenance(value, sourceName, provenance, nextPath);
+      const copy: PlainRecord = {};
+      target[key] = copy;
+      mergeLayer(copy, value, sourceName, provenance, nextPath);
+      continue;
     }
-  }
-}
 
-function markNestedProvenance(
-  value: PlainRecord,
-  sourceName: ConfigSource,
-  provenance: Record<string, ConfigSource>,
-  path: string[],
-): void {
-  for (const [key, child] of Object.entries(value)) {
-    const nextPath = [...path, key];
-    provenance[configPath(nextPath)] = sourceName;
-
-    if (isPlainRecord(child)) {
-      markNestedProvenance(child, sourceName, provenance, nextPath);
-    }
+    target[key] = Array.isArray(value) ? [...value] : value;
   }
 }
 
@@ -539,9 +528,15 @@ function validateResolvedConfig(
     ResolvedPosthasteConfig,
     "sources" | "provenance" | "warnings"
   >,
+  provenance: Record<string, ConfigSource>,
   knownNetworks: readonly string[] | undefined,
 ): void {
   const known = knownNetworks ? new Set(knownNetworks) : undefined;
+  const selectionSource = provenance["posting.default_networks"] ?? "default";
+  const selection =
+    selectionSource === "cli"
+      ? "the explicit network selection"
+      : `posting.default_networks (from ${selectionSource})`;
 
   if (known) {
     for (const network of resolved.posting.defaultNetworks) {
@@ -556,7 +551,7 @@ function validateResolvedConfig(
   for (const network of resolved.posting.defaultNetworks) {
     if (resolved.networks[network]?.enabled === false) {
       throw new Error(
-        `Invalid Posthaste config: posting.default_networks includes disabled network ${network}.`,
+        `Invalid Posthaste config: ${selection} includes disabled network ${network}; networks.${network}.enabled is false (from ${provenance[`networks.${network}.enabled`] ?? "default"}).`,
       );
     }
   }

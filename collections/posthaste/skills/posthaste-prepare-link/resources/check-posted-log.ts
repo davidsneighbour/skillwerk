@@ -7,6 +7,7 @@ import {
   expandHomePath,
   loadPosthasteConfig,
   type PosthasteConfigDefaults,
+  provenanceFor,
 } from "../../posthaste-config/resources/config.ts";
 
 interface CliConfig {
@@ -66,6 +67,8 @@ Usage:
 Options:
   --url <url>         URL to check. Required.
   --to <networks>     Optional comma-separated networks to report against.
+                      Default: posting.default_networks from Posthaste TOML,
+                      otherwise all supported networks not disabled in TOML.
   --log-path <path>   Log file path. Default: ${DEFAULT_LOG_PATH}.
   --help               Show this help text.
 
@@ -209,10 +212,18 @@ async function main(): Promise<void> {
       (record.canonicalUrl !== undefined &&
         normaliseUrl(record.canonicalUrl) === target),
   );
+  const configuredDefaultNetworks =
+    provenanceFor(resolvedConfig, "posting.default_networks") === "default"
+      ? []
+      : resolvedConfig.posting.defaultNetworks.filter(isNetwork);
   const networksToCheck =
     config.targetNetworks.length > 0
       ? config.targetNetworks
-      : [...SUPPORTED_NETWORKS];
+      : configuredDefaultNetworks.length > 0
+        ? configuredDefaultNetworks
+        : SUPPORTED_NETWORKS.filter(
+            (network) => resolvedConfig.networks[network]?.enabled !== false,
+          );
   const postedNetworks = networksToCheck.filter((network) =>
     matches.some((record) => hasPostedNetwork(record, network)),
   );

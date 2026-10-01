@@ -1,8 +1,8 @@
 import { constants as fsConstants } from "node:fs";
 import { access, readFile } from "node:fs/promises";
-import { homedir } from "node:os";
-import { join, resolve } from "node:path";
+import { resolve } from "node:path";
 import {
+  expandHomePath,
   loadPosthasteConfig,
   type NetworkConfigDefaults,
   POSTHASTE_SHARED_NETWORKS,
@@ -23,17 +23,7 @@ export interface DirectRuntimeConfig {
   dotenvValues: Record<string, string>;
 }
 
-export function expandHomePath(input: string): string {
-  if (input === "~") {
-    return homedir();
-  }
-
-  if (input.startsWith("~/")) {
-    return join(homedir(), input.slice(2));
-  }
-
-  return input;
-}
+export { expandHomePath };
 
 export async function readOptionalFile(
   filePath: string,

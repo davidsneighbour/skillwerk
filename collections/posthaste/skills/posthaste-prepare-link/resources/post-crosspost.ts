@@ -11,15 +11,22 @@ import {
   rm,
   writeFile,
 } from "node:fs/promises";
-import { homedir, tmpdir } from "node:os";
+import { tmpdir } from "node:os";
 import { basename, dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  expandHomePath,
+  fileExists,
   loadPosthasteConfig,
   type PosthasteConfigDefaults,
   provenanceFor,
   type ResolvedPosthasteConfig,
 } from "../../posthaste-config/resources/config.ts";
+import {
+  getEnvValue,
+  readDotenv,
+  readOptionalFile,
+} from "./direct-api-utils.ts";
 
 type Network =
   | "mastodon"
@@ -253,13 +260,15 @@ Options:
   --reddit-post-type <link|self>     Reddit post type. Default: link when a URL is available, otherwise self.
   --reddit-link-url <url>            Reddit link-post URL. Default: canonical/source URL.
   --reddit-no-comment                For Reddit link posts, skip commenting with the message text.
-  --to <networks>                    Comma-separated networks. Default: all configured supported networks.
+  --to <networks>                    Comma-separated networks. Overrides posting.default_networks.
+                                     Default: posting.default_networks from Posthaste TOML,
+                                     otherwise all enabled networks with credentials.
   --image <path>                     Optional image path.
   --image-alt <text>                 Required when --image is used.
-  --dotenv <path>                    Dotenv path for posting credentials. Default: ${DEFAULT_DOTENV_PATH}.
+  --dotenv <path>                    Dotenv path for posting credentials. Default: paths.dotenv, else ${DEFAULT_DOTENV_PATH}.
   --source-url <url>                 Original link this post is about. Enables log tracking.
   --canonical-url <url>              Canonical form of the source URL, if different.
-  --log-path <path>                  Posted-log file path. Default: ${DEFAULT_LOG_PATH}.
+  --log-path <path>                  Posted-log file path. Default: paths.posted_log, else ${DEFAULT_LOG_PATH}.
   --force                            Repost even if the target network is already logged.
   --no-log                           Publish without recording to the posted log.
   --dry-run                          Validate and print the commands without publishing.
@@ -271,7 +280,8 @@ Supported Crosspost networks in this helper:
 Supported direct API networks in this helper:
   ${DIRECT_NETWORKS.join(", ")}
 
-Required environment by network:
+Required environment by network (default names; rename them with
+[networks.<network>.env] in Posthaste TOML):
   Mastodon: MASTODON_ACCESS_TOKEN, MASTODON_HOST
   Bluesky: BLUESKY_HOST, BLUESKY_IDENTIFIER, BLUESKY_PASSWORD
   LinkedIn: LINKEDIN_ACCESS_TOKEN
@@ -281,8 +291,14 @@ Required environment by network:
   Threads: THREADS_ACCESS_TOKEN, THREADS_USER_ID
   Tumblr: TUMBLR_ACCESS_TOKEN, TUMBLR_BLOG_IDENTIFIER
 
+Configuration:
+  Built-in defaults < ~/.config/posthaste/config.toml < <cwd>/.posthaste.toml
+  < CROSSPOST_DOTENV (dotenv path only) < CLI arguments.
+  Run --info to see the effective values and where each one came from.
+
 Notes:
-  - CROSSPOST_DOTENV is set to ~/.env unless already present.
+  - Crosspost receives CROSSPOST_DOTENV set to the effective dotenv path.
+    Renamed Crosspost variables are passed to Crosspost under the names it reads.
   - Reddit defaults to link posts for URL shares. Use --reddit-post-type self
     to create a self/text post instead. Link posts add the message as a comment
     unless --reddit-no-comment is used.
@@ -296,18 +312,6 @@ Notes:
   - When --source-url is given, each successful network publish appends one JSON
     line to the log so future runs can post only to missing networks.
 `);
-}
-
-function expandHomePath(input: string): string {
-  if (input === "~") {
-    return homedir();
-  }
-
-  if (input.startsWith("~/")) {
-    return join(homedir(), input.slice(2));
-  }
-
-  return input;
 }
 
 async function resolveRuntimeConfig(
@@ -350,6 +354,78 @@ function configuredEnvName(
     DEFAULT_NETWORK_ENV[network][semanticKey] ??
     semanticKey
   );
+}
+
+/**
+ * Pick the target networks: explicit `--to` first, then a configured
+ * `posting.default_networks`, then every enabled network with credentials.
+ */
+export function selectNetworks(
+  cliConfig: Pick<CliConfig, "targetNetworks">,
+  config: ResolvedPosthasteConfig,
+  dotenvValues: Record<string, string>,
+): Network[] {
+  if (cliConfig.targetNetworks.length > 0) {
+    return cliConfig.targetNetworks;
+  }
+
+  const configuredDefaultNetworks =
+    provenanceFor(config, "posting.default_networks") === "default"
+      ? []
+      : config.posting.defaultNetworks.filter(isNetwork);
+
+  return configuredDefaultNetworks.length > 0
+    ? configuredDefaultNetworks
+    : getConfiguredNetworks(config, dotenvValues);
+}
+
+export interface CrosspostEnvironment {
+  env: NodeJS.ProcessEnv;
+  /** Configured name -> name that Crosspost reads. Names only, no values. */
+  renamed: Record<string, string>;
+}
+
+/**
+ * Build the environment for the Crosspost child process. Crosspost reads fixed
+ * variable names, so a name that Posthaste TOML renames is copied to the name
+ * Crosspost expects. A variable that is already set takes precedence over the
+ * Crosspost dotenv file, so the configured value wins.
+ */
+export function crosspostEnvironment(
+  config: ResolvedPosthasteConfig,
+  networks: readonly Network[],
+  dotenvValues: Record<string, string>,
+): CrosspostEnvironment {
+  const env: NodeJS.ProcessEnv = {
+    ...process.env,
+    CROSSPOST_DOTENV: resolve(expandHomePath(config.paths.dotenv)),
+  };
+  const renamed: Record<string, string> = {};
+
+  for (const network of networks) {
+    if (SUPPORTED_NETWORKS[network].transport !== "crosspost") {
+      continue;
+    }
+
+    for (const [semanticKey, crosspostName] of Object.entries(
+      DEFAULT_NETWORK_ENV[network],
+    )) {
+      const configuredName = configuredEnvName(config, network, semanticKey);
+
+      if (configuredName === crosspostName) {
+        continue;
+      }
+
+      const value = getEnvValue(configuredName, dotenvValues);
+
+      if (value) {
+        env[crosspostName] = value;
+        renamed[configuredName] = crosspostName;
+      }
+    }
+  }
+
+  return { env, renamed };
 }
 
 function normaliseUrl(value: string): string {
@@ -567,67 +643,6 @@ async function assertReadableFile(
   }
 }
 
-async function readOptionalFile(filePath: string): Promise<string | undefined> {
-  try {
-    await access(filePath, fsConstants.R_OK);
-  } catch {
-    return undefined;
-  }
-
-  return readFile(filePath, "utf8");
-}
-
-async function readDotenv(dotenvPath: string): Promise<Record<string, string>> {
-  const resolved = resolve(expandHomePath(dotenvPath));
-  const content = await readOptionalFile(resolved);
-
-  if (!content) {
-    return {};
-  }
-
-  const values: Record<string, string> = {};
-
-  for (const line of content.split("\n")) {
-    const trimmed = line.trim();
-
-    if (!trimmed || trimmed.startsWith("#")) {
-      continue;
-    }
-
-    const withoutExport = trimmed.startsWith("export ")
-      ? trimmed.slice("export ".length).trim()
-      : trimmed;
-    const separatorIndex = withoutExport.indexOf("=");
-
-    if (separatorIndex === -1) {
-      continue;
-    }
-
-    const key = withoutExport.slice(0, separatorIndex).trim();
-    let value = withoutExport.slice(separatorIndex + 1).trim();
-
-    if (
-      (value.startsWith('"') && value.endsWith('"')) ||
-      (value.startsWith("'") && value.endsWith("'"))
-    ) {
-      value = value.slice(1, -1);
-    }
-
-    if (key) {
-      values[key] = value;
-    }
-  }
-
-  return values;
-}
-
-function envHasValue(
-  name: string,
-  dotenvValues: Record<string, string>,
-): boolean {
-  return Boolean(process.env[name] || dotenvValues[name]);
-}
-
 function envRequirementGroups(
   config: ResolvedPosthasteConfig,
   network: Network,
@@ -646,7 +661,7 @@ function missingEnvForGroup(
   group: string[],
   dotenvValues: Record<string, string>,
 ): string[] {
-  return group.filter((name) => !envHasValue(name, dotenvValues));
+  return group.filter((name) => !getEnvValue(name, dotenvValues));
 }
 
 function bestMissingEnv(
@@ -680,15 +695,6 @@ function getConfiguredNetworks(
       config.networks[network]?.enabled !== false &&
       isNetworkConfigured(config, network, dotenvValues),
   );
-}
-
-async function fileExists(filePath: string): Promise<boolean> {
-  try {
-    await access(filePath, fsConstants.F_OK);
-    return true;
-  } catch {
-    return false;
-  }
 }
 
 async function printInfo(
@@ -1276,20 +1282,7 @@ async function main(): Promise<void> {
     return;
   }
 
-  const configuredNetworks = getConfiguredNetworks(
-    resolvedConfig,
-    dotenvValues,
-  );
-  const configuredDefaultNetworks =
-    provenanceFor(resolvedConfig, "posting.default_networks") === "default"
-      ? []
-      : (resolvedConfig.posting.defaultNetworks as Network[]);
-  const selectedNetworks =
-    config.targetNetworks.length > 0
-      ? config.targetNetworks
-      : configuredDefaultNetworks.length > 0
-        ? configuredDefaultNetworks
-        : configuredNetworks;
+  const selectedNetworks = selectNetworks(config, resolvedConfig, dotenvValues);
 
   if (selectedNetworks.length === 0) {
     throw new Error(
@@ -1328,12 +1321,11 @@ async function main(): Promise<void> {
     config.title = await resolveRedditTitleFromSidecar(config);
   }
 
-  const env: NodeJS.ProcessEnv = {
-    ...process.env,
-    CROSSPOST_DOTENV:
-      process.env.CROSSPOST_DOTENV ??
-      resolve(expandHomePath(effectiveDotenvPath)),
-  };
+  const { env, renamed } = crosspostEnvironment(
+    resolvedConfig,
+    networksToPost,
+    dotenvValues,
+  );
   const published: string[] = [];
 
   try {
@@ -1341,6 +1333,14 @@ async function main(): Promise<void> {
       console.log(
         `Skipping already-posted networks: ${loggedNetworks.join(", ")}`,
       );
+    }
+
+    if (config.dryRun) {
+      for (const [configuredName, crosspostName] of Object.entries(renamed)) {
+        console.log(
+          `Crosspost env mapping: ${configuredName} -> ${crosspostName}`,
+        );
+      }
     }
 
     for (const prepared of preparedMessages) {
@@ -1430,8 +1430,10 @@ async function main(): Promise<void> {
   }
 }
 
-main().catch((error: unknown) => {
-  const message = error instanceof Error ? error.message : String(error);
-  console.error(`Error: ${message}`);
-  process.exitCode = 1;
-});
+if (import.meta.main) {
+  main().catch((error: unknown) => {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`Error: ${message}`);
+    process.exitCode = 1;
+  });
+}

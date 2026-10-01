@@ -18,11 +18,12 @@ import {
   type ServerResponse,
 } from "node:http";
 import { createServer as createHttpsServer } from "node:https";
-import { homedir, platform, tmpdir } from "node:os";
+import { platform, tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { createInterface } from "node:readline/promises";
 import {
   envNameFor,
+  expandHomePath,
   loadPosthasteConfig,
   POSTHASTE_SHARED_NETWORKS,
   type ResolvedPosthasteConfig,
@@ -150,18 +151,6 @@ Security:
     in both the local-server and hosted paste flows.
   - The dotenv file must be private (0600) unless --fix-permissions is used.
 `);
-}
-
-function expandHomePath(input: string): string {
-  if (input === "~") {
-    return homedir();
-  }
-
-  if (input.startsWith("~/")) {
-    return join(homedir(), input.slice(2));
-  }
-
-  return input;
 }
 
 function requireArg(argv: string[], index: number, flag: string): string {

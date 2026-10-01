@@ -133,10 +133,20 @@ The current runtime supports these shared keys:
 * `[networks.<network>].enabled`
 * `[networks.<network>.env].*`
 
+The runtime loader applies these layers: consuming skill defaults, global TOML,
+project TOML from the current working directory, an `environment` layer for
+documented environment overrides such as `CROSSPOST_DOTENV`, and a `cli` layer
+for explicit arguments. Merging copies tables, so a later layer never changes
+the defaults object of the consuming skill. The runtime scripts do not yet accept
+an explicitly supplied config file; that layer applies only when an agent
+follows this skill's rules directly.
+
 `posthaste-prepare-link` treats a default network that is disabled by
 `[networks.<network>].enabled = false` as invalid configuration. This makes a
 contradictory configuration fail before publishing instead of silently narrowing
-the target set.
+the target set. The same rule applies to a network that is selected explicitly
+with `--to`. The error names where the selection and the `enabled` value came
+from.
 
 ## Secret safety
 

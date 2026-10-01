@@ -15,10 +15,11 @@ import {
   type IncomingMessage,
   type ServerResponse,
 } from "node:http";
-import { homedir, platform } from "node:os";
-import { dirname, join, resolve } from "node:path";
+import { platform } from "node:os";
+import { dirname, resolve } from "node:path";
 import {
   envNameFor,
+  expandHomePath,
   loadPosthasteConfig,
   POSTHASTE_SHARED_NETWORKS,
   type ResolvedPosthasteConfig,
@@ -113,18 +114,6 @@ Security:
   - The OAuth state parameter is generated per run and verified on callback.
   - The dotenv file must be private (0600) unless --fix-permissions is used.
 `);
-}
-
-function expandHomePath(input: string): string {
-  if (input === "~") {
-    return homedir();
-  }
-
-  if (input.startsWith("~/")) {
-    return join(homedir(), input.slice(2));
-  }
-
-  return input;
 }
 
 function parseArgs(argv: string[]): CliConfig {
