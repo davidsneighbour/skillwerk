@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.1.0...gallimaufry%2Fv2.2.0) (2026-10-11)
+
+### Feat
+
+* **scqa-rewrite:** prepare skill for publishing ([c627815](https://github.com/davidsneighbour/skillwerk/commit/c6278154c16cf69eb2e64d0883ac44f68da67b7d)), closes [#25](https://github.com/davidsneighbour/skillwerk/issues/25)
+
+### Docs
+
+* consolidate repository agent instructions ([1a47d4e](https://github.com/davidsneighbour/skillwerk/commit/1a47d4e3ec9a6233af78a6ec88e3d32e2edf2e4a)), closes [#28](https://github.com/davidsneighbour/skillwerk/issues/28)
+
 ## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.0.2...gallimaufry%2Fv2.1.0) (2026-10-11)
 
 ### Feat
