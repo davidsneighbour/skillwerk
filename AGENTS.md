@@ -2,7 +2,7 @@
 
 ## Scope
 
-This root `AGENTS.md` is the single source of truth for repository instructions for all assistants, including Claude Code. Keep collection-specific rules in the named sections below. Do not add collection `AGENTS.md` files or assistant-specific adapters without explicit user confirmation.
+This root `AGENTS.md` is the canonical entry point for repository instructions for all assistants, including Claude Code. Keep shared rules here and collection-specific rules in `.agents/instructions/`. Do not add collection `AGENTS.md` files or assistant-specific adapters without explicit user confirmation.
 
 This repository contains eight independently installable skill collections under `collections/`. Keep collection runtime files self-contained. Do not add runtime imports from sibling collections or root-only tooling.
 
@@ -26,7 +26,11 @@ Always work on the `main` branch. Do not create branches unless explicitly asked
 
 ## Collection changes
 
-Apply the collection-specific rules below when working within that collection. Package with `npm run package -- --collection <name>`. The resulting archive must contain only that collection and must install without files from the repository root or sibling collections.
+Before inspecting or editing a collection, read `.agents/instructions/<collection>.instructions.md` if it exists, and apply its rules when the repository-relative path matches its `applyTo` pattern. Load the file explicitly even if the assistant does not load scoped instructions automatically. When work spans multiple collections, read each matching instruction file. These files have the same authority as this file within their scope.
+
+Use collection READMEs and skill entry points for capability inventories and operating procedures. Create scoped instruction files only for actionable rules, with `applyTo: "collections/<collection>/**"`; do not include descriptive catalogues or repository-wide scopes.
+
+Package with `npm run package -- --collection <name>`. The resulting archive must contain only that collection and must install without files from the repository root or sibling collections.
 
 ## Agent workflow
 
@@ -49,49 +53,3 @@ No coverage threshold is defined. Validate changed scripts with targeted `--help
 Use Conventional Commit subjects: `type(optional-scope): imperative summary`. For skill capabilities, use `feat(<skill-name>): ...`; for corrections, use `fix(<skill-name>): ...`. Explain the change, its reason, validation, and the issue reference in the commit body. Do not commit unfinished work with open questions. Push when stopping work if commits were added.
 
 Close issues through `Closes #<number>` in commit messages, rather than closing them manually. Link commits, pull requests, and issues when reporting or documenting work, including their stable GitHub URLs before local commits are pushed. Pull requests must explain the affected skill, validation, and the related issue or task. Include screenshots only for asset or README visual changes.
-
-## Collection-specific rules
-
-These sections apply only to the named collection. Skill entry points and collection READMEs remain the authority for current capability inventories; do not rely on historical placeholder descriptions.
-
-### Apparatus
-
-`collections/apparatus/` contains browser, diagnostic, media, and other technical utility skills. `web-screenshot` uses its machine-local browser runtime through `collections/apparatus/skills/web-screenshot/scripts/runtime.mjs`. Validate its command interface with `collections/apparatus/skills/web-screenshot/scripts/web-screenshot --help`.
-
-### Clerkwork
-
-`collections/clerkwork/` contains engineering, repository maintenance, project management, Git, GitHub, and agent management skills. `foreman` is the collection interface; `foreman overview` lists skills by category, and topic requests route to the relevant skill. Keep public skill names flat and without a `clerkwork-` prefix. Categories are catalogue and navigation metadata, rather than invocation namespaces.
-
-Every Clerkwork skill must read and apply `collections/clerkwork/resources/vocabulary.md`, including direct calls that bypass Foreman. Each skill bundles an identical copy at `collections/clerkwork/skills/<skill-name>/resources/vocabulary.md` for standalone installations. Edit the collection-level source, then run `node scripts/sync-clerkwork-vocabulary.ts` from the repository root. Collection validation rejects missing or different copies.
-
-### Gallimaufry
-
-`collections/gallimaufry/` contains miscellaneous AI asset maintenance and specialised workflows that do not fit the other collections, including source analysis with `distil`, strict HTTP or HTTPS references frontmatter with `dnb-reference`, and Situation, Complication, Question, and Answer message rewriting with `scqa-rewrite`.
-
-### Gazetteer
-
-`collections/gazetteer/` contains search visibility and content discovery skills, including technical and local SEO, metadata, structured data, entities, locations, service areas, internal linking, crawlability, indexing, and search-result presentation. Consult the actual `SKILL.md` before relying on an entry point that may still be a placeholder. `gazetteer-audit` audits website specifications against evidence; `gazetteer-lighthouse-audit` collects reproducible Lighthouse audit artefacts.
-
-### Idiolect
-
-`collections/idiolect/` contains skills for capturing, checking, and applying a person's writing voice. The core `idiolect` skill builds a profile from samples with `profile`, checks a draft with `check`, and rewrites it with `apply`.
-
-Writing samples may be personal. Do not copy sample text into commits, issues, or pull requests beyond what is needed to explain a change. Do not commit a user's stored voice profile; profiles belong with the user.
-
-### Patternbook
-
-`collections/patternbook/` contains digital design and presentation skills covering design systems, branding, typography, colour, composition, interface patterns, responsive design, usability, accessibility, visual audits, consistency checks, and recommendations. Read the actual `SKILL.md` before using a placeholder entry point.
-
-### Posthaste
-
-`collections/posthaste/` contains skills for drafting, adapting, reviewing, and publishing social content. `posthaste` resolves configuration and routes requests. Route every hashtag request to the single prompt-only `hashtags` skill, including from `posthaste-prepare-link`. It returns five tags by default, a requested count, or all relevant tags in full mode, supports plain tags or social-ready hashtags, and returns its session vocabulary with `extract`.
-
-`posthaste-prepare-link` fetches metadata, captures screenshots, drafts posts in Patrick's voice, publishes only after explicit confirmation, and logs posted networks to avoid repeats. For substantial prose edits, use `collections/posthaste/skills/posthaste-voice/resources/tropes-and-rules.md` as the diagnostic checklist.
-
-When running or citing ported examples with `skills/70-content-design-and-voice/<skill-name>/...`, substitute `collections/posthaste/skills/<skill-name>/...` from this repository root. Fix stale references when already touching the affected file.
-
-For publishing, OAuth, and browser-assisted flows, do not perform real posting, credential writes, login automation, or final publish clicks without explicit user confirmation. OAuth refresh-token helpers must never expose token values.
-
-Publishing and auth skills read `~/.env` first, then the current project root's `.env`, then a different configured or explicit dotenv path such as `CROSSPOST_DOTENV` or `--dotenv`. Later files override matching keys; missing files contribute no values. Existing process environment variables take precedence over dotenv values. Keep project credential files ignored by Git. Refresh-token scripts write only to the selected dotenv path, require explicit write flags, and must refuse unsafe dotenv permissions unless the user requests a permissions fix.
-
-Never print, paste, summarise, or commit real token, secret, authorisation code, or credential values. `posthaste-unsplash` requires attribution and download tracking on final selection. It must use caller-provided `UNSPLASH_POSTHASTE_ACCESS_KEY`, falling back to `UNSPLASH_ACCESS_KEY`, and must not use bundled, demo, testing, or repository-owned credentials.
