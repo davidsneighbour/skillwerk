@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.3](https://github.com/davidsneighbour/skillwerk/compare/gazetteer%2Fv2.0.2...gazetteer%2Fv2.0.3) (2026-10-11)
+
+### Fix
+
+* align collection manifests with existing skills ([bbd90cc](https://github.com/davidsneighbour/skillwerk/commit/bbd90ccd6134d1b76a2d6a9d38f3ad40fe246bfc)), closes [#27](https://github.com/davidsneighbour/skillwerk/issues/27)
+
+### Docs
+
+* consolidate repository agent instructions ([1a47d4e](https://github.com/davidsneighbour/skillwerk/commit/1a47d4e3ec9a6233af78a6ec88e3d32e2edf2e4a)), closes [#28](https://github.com/davidsneighbour/skillwerk/issues/28)
+
 ## [2.0.2](https://github.com/davidsneighbour/skillwerk/compare/gazetteer%2Fv2.0.1...gazetteer%2Fv2.0.2) (2026-09-30)
 
 ### Build
