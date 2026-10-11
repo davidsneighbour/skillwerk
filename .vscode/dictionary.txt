@@ -114,6 +114,7 @@ repr
 rgba
 Samui
 schemamap
+SCQA
 scratchpad
 sendreplies
 shortlog

@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCQA rewrite"
+  short_description: "Rewrite messages with clear SCQA structure."
+  default_prompt: "Use $scqa-rewrite to rewrite this message using Situation, Complication, Question, and Answer while preserving its meaning and tone."

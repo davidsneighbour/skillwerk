@@ -20,6 +20,7 @@ belong inside the owning skill directory, commonly in `resources/`,
 * `distil`: extract the useful core from rhetorically presented source material, put it into context, and turn what survives into a reusable framework or prompt where justified.
 * `dnb-reference`: add or update strict references frontmatter on AI asset
   files from supplied HTTP or HTTPS URLs.
+* `scqa-rewrite`: rewrite emails and messages using Situation, Complication, Question, and Answer while preserving the original meaning and tone.
 
 ## Build, test, and development commands
 

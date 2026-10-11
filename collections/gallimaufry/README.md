@@ -19,7 +19,7 @@ cleanly in Apparatus, Clerkwork, Gazetteer, Idiolect, Patternbook, or Posthaste.
 Install the current Gallimaufry skill set with:
 
 ```bash
-npx skills add davidsneighbour/gallimaufry --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/gallimaufry/skills --yes
 ```
 
 ## Update
@@ -27,7 +27,7 @@ npx skills add davidsneighbour/gallimaufry --yes
 Re-run the install command to refresh an existing install:
 
 ```bash
-npx skills add davidsneighbour/gallimaufry --yes
+npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collections/gallimaufry/skills --yes
 ```
 
 Use `--global` when the skills should be available outside the current project.
@@ -39,6 +39,7 @@ Use `--global` when the skills should be available outside the current project.
   files from supplied HTTP or HTTPS URLs.
 * `interrogate-source` analyses external source material by keeping faithful
   transcription, critical scrutiny, and reusable knowledge extraction separate.
+* `scqa-rewrite` rewrites emails and messages using Situation, Complication, Question, and Answer while preserving the original meaning and tone.
 
 ## The cabinet of @davidsneighbour's skills
 

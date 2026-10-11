@@ -5,7 +5,12 @@
     {
       "title": "Gallimaufry",
       "description": "Miscellaneous AI asset maintenance skills and small specialised workflows.",
-      "skills": ["distil", "dnb-reference", "interrogate-source"]
+      "skills": [
+        "distil",
+        "dnb-reference",
+        "interrogate-source",
+        "scqa-rewrite"
+      ]
     }
   ]
 }
