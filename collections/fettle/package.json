@@ -1,6 +1,6 @@
 {
   "name": "fettle",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Evidence-backed engineering for agent skill collections",
   "type": "module",
   "private": true,

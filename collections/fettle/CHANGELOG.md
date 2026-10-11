@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.2](https://github.com/davidsneighbour/skillwerk/compare/fettle%2Fv2.1.1...fettle%2Fv2.1.2) (2026-10-11)
+
+### Fix
+
+* exclude scratch from skill inspection ([d5ca0be](https://github.com/davidsneighbour/skillwerk/commit/d5ca0beb00f1f2d77cc909ee5fbf4d61ca05f553)), closes [#29](https://github.com/davidsneighbour/skillwerk/issues/29)
+
 ## [2.1.1](https://github.com/davidsneighbour/skillwerk/compare/fettle%2Fv2.1.0...fettle%2Fv2.1.1) (2026-09-30)
 
 ### Build
