@@ -22,11 +22,13 @@ import {
   provenanceFor,
   type ResolvedPosthasteConfig,
 } from "../../posthaste-config/resources/config.ts";
+import { readDotenvWithSources } from "../../posthaste-config/resources/dotenv.ts";
 import {
-  getEnvValue,
-  readDotenv,
-  readOptionalFile,
-} from "./direct-api-utils.ts";
+  checkTargets,
+  credentialRule,
+  explainFailure,
+} from "./credential-check.ts";
+import { getEnvValue, readOptionalFile } from "./direct-api-utils.ts";
 
 type Network =
   | "mastodon"
@@ -70,6 +72,7 @@ interface CliConfig {
   dryRun: boolean;
   force: boolean;
   info: boolean;
+  check: boolean;
   targetNetworks: Network[];
 }
 
@@ -246,6 +249,7 @@ Usage:
   node post-crosspost.ts --info
 
 Options:
+  --check                            Check all target credentials online without publishing.
   --info                             Print configuration info and exit.
   --message <text>                   Message text to publish.
   --message-file <path>              File containing the default message text.
@@ -497,6 +501,7 @@ function parseArgs(argv: string[]): CliConfig {
     dryRun: false,
     force: false,
     info: false,
+    check: false,
   };
   let index = 0;
   const nextValue = (flag: string): string => {
@@ -512,6 +517,11 @@ function parseArgs(argv: string[]): CliConfig {
       case "-h":
         printHelp();
         process.exit(0);
+        break;
+
+      case "--check":
+      case "--preflight":
+        config.check = true;
         break;
 
       case "--info":
@@ -617,7 +627,7 @@ function parseArgs(argv: string[]): CliConfig {
     }
   }
 
-  if (config.info) {
+  if (config.info || config.check) {
     return config;
   }
 
@@ -702,6 +712,8 @@ async function printInfo(
   cliConfig: CliConfig,
   config: ResolvedPosthasteConfig,
   dotenvValues: Record<string, string>,
+  credentialSources: Record<string, Record<string, string>>,
+  credentialErrors: string[],
 ): Promise<void> {
   const logPath = resolve(expandHomePath(config.paths.postedLog));
   const dotenvPath = resolve(expandHomePath(config.paths.dotenv));
@@ -745,6 +757,8 @@ async function printInfo(
   console.log(
     JSON.stringify(
       {
+        credentialSources,
+        credentialErrors,
         globalConfigPath: config.sources.globalConfigPath,
         globalConfigPresent: config.sources.globalConfigPresent,
         projectConfigPath: config.sources.projectConfigPath,
@@ -1256,10 +1270,19 @@ function parseDirectScriptResult(output: string): DirectScriptResult {
     .find((line) => line.startsWith("{") && line.endsWith("}"));
 
   if (!jsonLine) {
-    throw new Error(`Direct API script did not return JSON:\n${output.trim()}`);
+    throw new Error(
+      "Direct API script returned a non-JSON response. Run --check.",
+    );
   }
 
-  return JSON.parse(jsonLine) as DirectScriptResult;
+  try {
+    return JSON.parse(jsonLine) as DirectScriptResult;
+  } catch (cause) {
+    throw new Error(
+      "Direct API script returned a non-JSON response. Run --check.",
+      { cause },
+    );
+  }
 }
 
 function directResultUrl(result: DirectScriptResult): string {
@@ -1276,10 +1299,61 @@ async function main(): Promise<void> {
   const config = parseArgs(process.argv.slice(2));
   const resolvedConfig = await resolveRuntimeConfig(config);
   const effectiveDotenvPath = resolvedConfig.paths.dotenv;
-  const dotenvValues = await readDotenv(effectiveDotenvPath);
+  const layers = await readDotenvWithSources(effectiveDotenvPath);
+  const dotenvValues = layers.values;
+  const selected = selectNetworks(config, resolvedConfig, dotenvValues);
+  const credentials = (network: Network): Record<string, string> =>
+    Object.fromEntries(
+      Object.keys(DEFAULT_NETWORK_ENV[network]).map((key) => [
+        key,
+        dotenvValues[configuredEnvName(resolvedConfig, network, key)] ?? "",
+      ]),
+    );
+  const diagnostics: string[] = [];
+  for (const network of selected) {
+    const names = [
+      ...new Set(envRequirementGroups(resolvedConfig, network).flat()),
+    ];
+    const overridden = names.filter(
+      (name) =>
+        layers.projectOverrides.includes(name) &&
+        layers.sources[name]?.startsWith("project:"),
+    );
+    if (
+      overridden.length > 0 &&
+      overridden.length < names.filter((name) => dotenvValues[name]).length
+    )
+      console.error(
+        `Warning: ${network}: project .env overrides only some credential keys; check account consistency (${overridden.join(", ")}).`,
+      );
+    for (const [key, value] of Object.entries(credentials(network))) {
+      if (!value) continue;
+      const name = configuredEnvName(resolvedConfig, network, key);
+      const rule = credentialRule(network, key, value);
+      const message = `${name} (${layers.sources[name] ?? "missing"}): ${rule.error ?? rule.warning}`;
+      if (rule.error) diagnostics.push(message);
+      if (rule.warning) console.error(`Warning: ${message}`);
+    }
+  }
 
   if (config.info) {
-    await printInfo(config, resolvedConfig, dotenvValues);
+    const credentialSources = Object.fromEntries(
+      selected.map((network) => [
+        network,
+        Object.fromEntries(
+          [
+            ...new Set(envRequirementGroups(resolvedConfig, network).flat()),
+          ].map((name) => [name, layers.sources[name] ?? "missing"]),
+        ),
+      ]),
+    );
+    await printInfo(
+      config,
+      resolvedConfig,
+      dotenvValues,
+      credentialSources,
+      diagnostics,
+    );
     return;
   }
 
@@ -1291,7 +1365,37 @@ async function main(): Promise<void> {
     );
   }
 
-  validateNetworkConfiguration(resolvedConfig, selectedNetworks, dotenvValues);
+  try {
+    validateNetworkConfiguration(
+      resolvedConfig,
+      selectedNetworks,
+      dotenvValues,
+    );
+  } catch (error) {
+    diagnostics.unshift(
+      error instanceof Error ? error.message : "Network configuration invalid.",
+    );
+  }
+  if (diagnostics.length > 0)
+    throw new Error(
+      `Credential validation failed. Nothing published; online checks not attempted: ${selectedNetworks.join(", ")}\n${diagnostics.join("\n")}`,
+    );
+  if (config.check) {
+    const failures = await checkTargets(
+      selectedNetworks.map((network) => ({
+        network,
+        credentials: credentials(network),
+      })),
+    );
+    if (failures.length)
+      throw new Error(
+        `Preflight failed. Nothing published.\n${failures.join("\n")}`,
+      );
+    console.log(
+      `Preflight passed: ${selectedNetworks.join(", ")}. Nothing published.`,
+    );
+    return;
+  }
   await validateImage(config);
 
   const logPath = resolve(expandHomePath(resolvedConfig.paths.postedLog));
@@ -1315,6 +1419,19 @@ async function main(): Promise<void> {
     return;
   }
 
+  if (!config.dryRun && networksToPost.length > 1) {
+    const failures = await checkTargets(
+      networksToPost.map((network) => ({
+        network,
+        credentials: credentials(network),
+      })),
+    );
+    if (failures.length)
+      throw new Error(
+        `Preflight failed. Nothing published to: ${networksToPost.join(", ")}\n${failures.join("\n")}`,
+      );
+  }
+
   const preparedMessages = await prepareMessages(config, networksToPost);
   validateMessageLengths(preparedMessages);
 
@@ -1328,6 +1445,7 @@ async function main(): Promise<void> {
     dotenvValues,
   );
   const published: string[] = [];
+  const attempted: Network[] = [];
 
   try {
     if (loggedNetworks.length > 0) {
@@ -1370,6 +1488,7 @@ async function main(): Promise<void> {
         continue;
       }
 
+      attempted.push(prepared.network);
       let url: string;
 
       if (networkConfig.transport === "crosspost") {
@@ -1382,7 +1501,8 @@ async function main(): Promise<void> {
 
         if (result.exitCode !== 0) {
           throw new Error(
-            `Crosspost failed for ${prepared.network} with exit code ${result.exitCode}.\n${combinedOutput}`,
+            `${prepared.network}: ${explainFailure(prepared.network, combinedOutput)}`,
+            { cause: new Error(combinedOutput) },
           );
         }
 
@@ -1401,7 +1521,8 @@ async function main(): Promise<void> {
 
         if (result.exitCode !== 0) {
           throw new Error(
-            `Direct API script failed for ${prepared.network} with exit code ${result.exitCode}.\n${combinedOutput}`,
+            `${prepared.network}: ${explainFailure(prepared.network, combinedOutput)}`,
+            { cause: new Error(combinedOutput) },
           );
         }
 
@@ -1411,6 +1532,17 @@ async function main(): Promise<void> {
       await recordPostedNetwork(config, prepared, url);
       published.push(`${prepared.network}: ${url}`);
     }
+  } catch (error) {
+    console.error(
+      `Not attempted: ${networksToPost.filter((network) => !attempted.includes(network)).join(", ") || "none"}`,
+    );
+    console.error(
+      `Published before failure: ${published.map((line) => line.split(":")[0]).join(", ") || "none"}`,
+    );
+    console.error(
+      `Not published: ${networksToPost.filter((network) => !published.some((line) => line.startsWith(`${network}:`))).join(", ")}`,
+    );
+    throw error;
   } finally {
     await Promise.all(preparedMessages.map((prepared) => prepared.cleanup?.()));
   }

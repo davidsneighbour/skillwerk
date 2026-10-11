@@ -292,3 +292,99 @@ default_networks = ["mastodon", "bluesky"]
     "bluesky",
   ]);
 });
+
+test("broken session values block all publishing and do not leak credentials", async () => {
+  for (const override of [
+    'MASTODON_HOST="https://mas.to"',
+    "export BLUESKY_HOST='bsky.social/'",
+    "BLUESKY_HOST=bsky.app",
+    "BLUESKY_IDENTIFIER=old.example",
+  ]) {
+    const box = await sandbox(
+      undefined,
+      undefined,
+      `MASTODON_HOST=mas.to\nMASTODON_ACCESS_TOKEN=${SECRET}\nBLUESKY_HOST=bsky.social\nBLUESKY_IDENTIFIER=current.example\nBLUESKY_PASSWORD=xxxx-xxxx-xxxx-xxxx`,
+    );
+    await writeFile(join(box.cwd, ".env"), override);
+    const mock = join(box.cwd, "mock.mjs");
+    await writeFile(
+      mock,
+      `globalThis.fetch = async (url) => new Response(JSON.stringify(String(url).includes('createSession') ? {} : { id: '123' }), { status: String(url).includes('createSession') ? 401 : 200, headers: { 'content-type': 'application/json' } });`,
+    );
+    // An isolated PATH stub ensures a regression cannot invoke the real publisher.
+    await writeFile(
+      join(box.cwd, "npx"),
+      "#!/bin/sh\necho PUBLISH_ATTEMPT >&2\nexit 99\n",
+      { mode: 0o700 },
+    );
+    const result = spawnSync(
+      process.execPath,
+      [
+        "--import",
+        mock,
+        POST_CROSSPOST,
+        "--to",
+        "mastodon,bluesky",
+        "--message",
+        "fixture",
+        "--no-log",
+      ],
+      {
+        cwd: box.cwd,
+        encoding: "utf8",
+        env: { HOME: box.home, PATH: box.cwd },
+      },
+    );
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /Nothing published/);
+    assert.ok(!result.stderr.includes("PUBLISH_ATTEMPT"));
+    assert.ok(!result.stderr.includes(SECRET));
+    assert.ok(!result.stderr.includes("old.example"));
+    assert.match(result.stderr, /project:|current full handle/);
+  }
+});
+
+test("--info shows credential sources and partial project override warning", async () => {
+  const box = await sandbox(
+    undefined,
+    undefined,
+    `BLUESKY_HOST=bsky.social\nBLUESKY_IDENTIFIER=current.example\nBLUESKY_PASSWORD=${SECRET}`,
+  );
+  await writeFile(join(box.cwd, ".env"), 'export BLUESKY_HOST="bsky.app"');
+  const result = run(POST_CROSSPOST, box, ["--info", "--to", "bluesky"]);
+  assert.equal(result.status, 0);
+  const info = JSON.parse(result.stdout) as {
+    credentialSources: { bluesky: Record<string, string> };
+    credentialErrors: string[];
+  };
+  assert.match(info.credentialSources.bluesky.BLUESKY_HOST ?? "", /^project:/);
+  assert.match(
+    info.credentialSources.bluesky.BLUESKY_PASSWORD ?? "",
+    /^global:/,
+  );
+  assert.equal(info.credentialErrors.length, 1);
+  assert.match(result.stderr, /only some credential keys/);
+  assert.ok(!`${result.stdout}${result.stderr}`.includes(SECRET));
+});
+
+test("--check needs no message and aggregates authentication failures", async () => {
+  const box = await sandbox(
+    undefined,
+    undefined,
+    `MASTODON_HOST=mas.to\nMASTODON_ACCESS_TOKEN=${SECRET}\nBLUESKY_HOST=bsky.social\nBLUESKY_IDENTIFIER=current.example\nBLUESKY_PASSWORD=xxxx-xxxx-xxxx-xxxx`,
+  );
+  const mock = join(box.cwd, "mock.mjs");
+  await writeFile(
+    mock,
+    `globalThis.fetch = async () => new Response('{}', { status: 401, headers: { 'content-type': 'application/json' } });`,
+  );
+  const result = spawnSync(
+    process.execPath,
+    ["--import", mock, POST_CROSSPOST, "--check", "--to", "mastodon,bluesky"],
+    { cwd: box.cwd, encoding: "utf8", env: { HOME: box.home, PATH: box.cwd } },
+  );
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /mastodon:.*Token revoked/);
+  assert.match(result.stderr, /bluesky:.*Session authentication failed/);
+  assert.ok(!result.stderr.includes(SECRET));
+});

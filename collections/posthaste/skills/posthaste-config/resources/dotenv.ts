@@ -8,6 +8,23 @@ export async function readDotenv(
   dotenvPath = "~/.env",
   options: { home?: string; cwd?: string } = {},
 ): Promise<Record<string, string>> {
+  return (
+    await readDotenvWithSources(dotenvPath, { ...options, environment: {} })
+  ).values;
+}
+
+export async function readDotenvWithSources(
+  dotenvPath = "~/.env",
+  options: {
+    home?: string;
+    cwd?: string;
+    environment?: NodeJS.ProcessEnv;
+  } = {},
+): Promise<{
+  values: Record<string, string>;
+  sources: Record<string, string>;
+  projectOverrides: string[];
+}> {
   const home = options.home ?? homedir();
   const cwd = options.cwd ?? process.cwd();
   const globalPath = join(home, ".env");
@@ -23,6 +40,8 @@ export async function readDotenv(
     ]),
   ];
   const values: Record<string, string> = {};
+  const sources: Record<string, string> = {};
+  const projectOverrides: string[] = [];
   for (const path of paths) {
     let content: string;
     try {
@@ -31,12 +50,26 @@ export async function readDotenv(
       if ((error as NodeJS.ErrnoException).code === "ENOENT") continue;
       throw error;
     }
-    Object.assign(values, parseDotenv(content));
+    for (const [key, value] of Object.entries(parseDotenv(content))) {
+      if (path === join(cwd, ".env") && Object.hasOwn(values, key))
+        projectOverrides.push(key);
+      values[key] = value;
+      sources[key] =
+        `${path === globalPath ? "global" : path === join(cwd, ".env") ? "project" : "--dotenv"}: ${path}`;
+    }
   }
-  return values;
+  for (const [key, value] of Object.entries(
+    options.environment ?? process.env,
+  )) {
+    if (value !== undefined) {
+      values[key] = value;
+      sources[key] = "process environment";
+    }
+  }
+  return { values, sources, projectOverrides };
 }
 
-function parseDotenv(content: string): Record<string, string> {
+export function parseDotenv(content: string): Record<string, string> {
   const values: Record<string, string> = {};
 
   for (const line of content.split("\n")) {

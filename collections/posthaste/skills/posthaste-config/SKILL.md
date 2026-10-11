@@ -334,3 +334,11 @@ confirmation required by the host environment before writing.
 ## Credential file precedence
 
 Read credentials from lowest to highest precedence: global `~/.env`, project `.env` in the current working project root, a different file selected by `[paths].dotenv`, `CROSSPOST_DOTENV`, or `--dotenv`, and existing process environment variables. Later files override matching keys, including empty values, while retaining unmatched global keys. Missing files are valid; other read errors must be reported. Never read `.env` from the installed skill directory. Keep local credential files ignored by Git, and never print credential values. Token helpers write only to the selected dotenv path, with their existing explicit write and permission checks.
+
+## Credential troubleshooting
+
+Credential layers load in this order: global `~/.env`, project `.env`, then a different configured or explicit `--dotenv` file. Later files override matching keys only. Existing process environment variables take precedence over every file. Run the prepare-link coordinator with `--info --to mastodon,bluesky` to list the source file or process environment for each required variable without values. The coordinator warns when project overrides cover only some credential keys for a target, which can mix accounts.
+
+Project dotenv files written for other tools often use full URLs where Posthaste requires bare hosts. Delete duplicate project keys when they should use the global defaults. Add format examples to `.env.template`, such as `MASTODON_HOST="mas.to"` and `BLUESKY_HOST="bsky.social"`, and keep real credentials ignored by Git.
+
+For safe diagnosis, use `--dry-run` to check shape locally (scheme, trailing slash, full handle dot, DID prefix, and app-password pattern), `--info` to inspect provenance, and `--check` for non-publishing API checks. Never print dotenv contents or use shell tracing. If comparing files, parse them with `resources/dotenv.ts` and report only whether the selected values are equal; never report the values themselves. Use the parser so quotes and `export` prefixes are handled consistently. `--check` tests the host through a read endpoint and reports safe causes without response bodies or tokens.

@@ -14,6 +14,41 @@ support images, publish through `@humanwhocodes/crosspost` or direct platform
 APIs only after explicit confirmation, and log each network so the URL does
 not get reposted to the same place later.
 
+## Resource paths
+
+Resolve `POSTHASTE_RESOURCES` from this skill's actual base directory before running examples. For a Claude installation, this is commonly `POSTHASTE_RESOURCES="$HOME/.claude/skills/posthaste-prepare-link/resources"`; other installers use a different skills directory. In this repository, use `POSTHASTE_RESOURCES="$PWD/collections/posthaste/skills/posthaste-prepare-link/resources"`. Do not assume that a consuming project contains `skills/`.
+
+<!-- cspell:ignore getaddrinfo ENOTFOUND -->
+
+## Credential values
+
+The coordinator validates every selected target before publishing, including during `--dry-run`. Invalid formats are rejected without changing values. Diagnostics show variable names, source layers/files, and failed rules only. Bluesky app-password format is a warning because server authentication is authoritative.
+
+| Variable | Required format | Fix |
+| --- | --- | --- |
+| `MASTODON_HOST` | Bare host, such as `mas.to`; no scheme, path, or trailing slash. A port is permitted when needed. | Remove `https://` and any trailing `/`. |
+| `BLUESKY_HOST` | Bare PDS/API host, such as `bsky.social`; never `bsky.app`. | Use `bsky.social` or your account's PDS host. |
+| `BLUESKY_IDENTIFIER` | Current full handle with a dot, a `did:plc:` or `did:web:` DID, or an email address; no leading `@`. | Use the current profile handle. A custom domain replaces the old handle. |
+| `BLUESKY_PASSWORD` | App password `xxxx-xxxx-xxxx-xxxx` (warning only). | Create one at [Bluesky app-password settings](https://bsky.app/settings/app-passwords). |
+| `NOSTR_RELAYS` | Comma-separated `wss://` relay URLs. | Check every relay scheme. |
+| `REDDIT_SUBREDDIT` | Name without `r/` or `/r/`. | Remove the prefix. |
+| `TUMBLR_BLOG_IDENTIFIER` | Blog name or host without a scheme or path. | Remove `https://` and any path. |
+
+Run `node "$POSTHASTE_RESOURCES/post-crosspost.ts" --check --to mastodon,bluesky` to test access without posting; `--preflight` is an alias. No message is required. This performs Bluesky server discovery and session authentication, Mastodon credential verification, LinkedIn person lookup, Reddit account lookup (refreshing a token in memory when needed), Threads account lookup, and Tumblr owned-blog access checks. HTTP requests have a 15-second timeout and refuse redirects. All selected checks are attempted, and failures are reported together. Nostr checks the signing-key format and reads from each relay without signing; it cannot prove that a relay will accept a signed event or authenticated write.
+
+Before a real publish to more than one remaining target, the coordinator runs preflight automatically. Any failed check prevents every publish in that run. `--dry-run` checks formats locally and makes no online requests. Preflight cannot guarantee that a later publish will succeed: write permissions, service changes, or rate limits can still cause partial publication. Runtime failure diagnostics list published and unpublished networks. Use the posted log to retry only missing networks.
+
+| Raw error | Likely cause | Fix |
+| --- | --- | --- |
+| `getaddrinfo EAI_AGAIN https` or `ENOTFOUND https` | Host contains a scheme. | Remove `https://`. |
+| `getaddrinfo ENOTFOUND` | Host typo or connection failure. | Check the host and connection. |
+| `JSON.parse`, `Unexpected token <`, or non-JSON response | HTML from a web host, path, or trailing slash. | Use the bare API host and run `--check`. |
+| Bluesky `401 Failed to create session` | Old handle after a custom-domain change or revoked app password. | Use the current full handle or DID, and create a new app password. |
+| LinkedIn `401 Failed to retrieve person URN` | Expired or invalid access token. | Follow the LinkedIn renewal section below. |
+| Mastodon `401` | Revoked token or token for another instance. | Create a token on the instance named by `MASTODON_HOST`. |
+
+Raw subprocess output and response bodies are deliberately withheld from normal diagnostics because they can contain credentials. Check `--info` for source names and `--check` for safe cause-and-fix messages before collecting additional private trace detail.
+
 ## Supported networks
 
 This skill currently publishes through Crosspost to:
@@ -95,7 +130,7 @@ posting setup, print the helper's configuration information and do not start a
 draft:
 
 ```bash
-node skills/posthaste-prepare-link/resources/post-crosspost.ts --info
+node "$POSTHASTE_RESOURCES/post-crosspost.ts" --info
 ```
 
 The info output must include:
@@ -163,7 +198,7 @@ Reject non-`http(s)` URLs and ask for a corrected one.
 1. **Fetch page metadata.**
 
    ```bash
-   node skills/posthaste-prepare-link/resources/fetch-link-metadata.ts \
+   node "$POSTHASTE_RESOURCES/fetch-link-metadata.ts" \
      --url "<url>" \
      --sidecar scratch/posthaste-prepare-link/<slug>.meta.json
    ```
@@ -184,7 +219,7 @@ Reject non-`http(s)` URLs and ask for a corrected one.
 2. **Check the posted log before doing any more work.**
 
    ```bash
-   node skills/posthaste-prepare-link/resources/check-posted-log.ts \
+   node "$POSTHASTE_RESOURCES/check-posted-log.ts" \
      --url "<canonicalUrl>"
    ```
 
@@ -205,7 +240,7 @@ Reject non-`http(s)` URLs and ask for a corrected one.
 3. **Take a screenshot.**
 
    ```bash
-   node skills/posthaste-prepare-link/resources/screenshot-site.ts \
+   node "$POSTHASTE_RESOURCES/screenshot-site.ts" \
      --url "<url>" \
      --output scratch/posthaste-prepare-link/<slug>.png
    ```
@@ -329,7 +364,7 @@ Reject non-`http(s)` URLs and ask for a corrected one.
 
 ## Image handling
 
-The screenshot from step 3 is the image attachment. Write concise, accurate
+The screenshot from step 3 is the default image attachment. When metadata contains `ogImage`, offer it as a separate option in the review table, with a preview, source URL, and suitable alt text. Label the screenshot as the default and the `ogImage` as the alternative. A page image can show the article more clearly than a screenshot that contains only navigation and a cover image. If selected, download the `ogImage` to a local file before publishing, and update the review table and attachment path. Write concise, accurate
 alt text describing what the screenshot actually shows (page title/section,
 not a guess at content off-screen). Do not invent alt text unrelated to the
 captured image.
@@ -479,7 +514,7 @@ existing refresh token is available, run the companion with
 `--refresh-existing` to refresh without a browser round trip.
 
 ```bash
-node skills/posthaste-prepare-link/resources/post-crosspost.ts \
+node "$POSTHASTE_RESOURCES/post-crosspost.ts" \
   --message-file scratch/posthaste-prepare-link/<slug>.md \
   --image scratch/posthaste-prepare-link/<slug>.png \
   --image-alt "Concise screenshot description" \
@@ -616,7 +651,7 @@ proceeding.
 2. Build the web-intent link:
 
    ```bash
-   node skills/posthaste-prepare-link/resources/post-twitter-intent.ts \
+   node "$POSTHASTE_RESOURCES/post-twitter-intent.ts" \
      --message-file scratch/posthaste-prepare-link/<slug>.twitter.md
    ```
 
@@ -675,7 +710,7 @@ deploy, so a selector copied from one session will not survive to the next.
 1. **Resolve configuration.**
 
    ```bash
-   node skills/posthaste-prepare-link/resources/patreon-config.ts
+   node "$POSTHASTE_RESOURCES/patreon-config.ts"
    ```
 
    This reads `PATREON_LOGIN_URL` (optional, defaults to
