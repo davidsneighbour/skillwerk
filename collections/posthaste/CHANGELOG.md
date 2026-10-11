@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.0.2...posthaste%2Fv2.1.0) (2026-10-11)
+
+### Feat
+
+* **posthaste-config:** layer global and local dotenv files ([0744eba](https://github.com/davidsneighbour/skillwerk/commit/0744ebaae30c41dc65e35ead539ee219459ec092)), closes [#24](https://github.com/davidsneighbour/skillwerk/issues/24)
+* **posthaste:** add a single hashtags skill and use it everywhere ([21342bd](https://github.com/davidsneighbour/skillwerk/commit/21342bdac867987294038772222e6a8745680c46)), closes [#14](https://github.com/davidsneighbour/skillwerk/issues/14)
+
+### Fix
+
+* **posthaste:** apply TOML configuration consistently in runtime scripts ([30e560d](https://github.com/davidsneighbour/skillwerk/commit/30e560de87ae3b8e841f205110de63892f793e25)), closes [#11](https://github.com/davidsneighbour/skillwerk/issues/11)
+
 ## [2.0.2](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.0.1...posthaste%2Fv2.0.2) (2026-09-30)
 
 ### Build
