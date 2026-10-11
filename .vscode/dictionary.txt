@@ -63,6 +63,7 @@ janesmith
 jank
 jdevalk
 Joost
+katex
 keyout
 Kollitsch
 laravel
