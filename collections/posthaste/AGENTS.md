@@ -98,11 +98,7 @@ visual changes.
 
 ## Credentials and secrets
 
-Publishing and auth skills read credentials from `~/.env` by default, or from
-an explicit dotenv path such as `CROSSPOST_DOTENV` or `--dotenv`. Do not read
-from or write to a project-local `.env` for these skills. Refresh-token scripts
-must require explicit write flags before persisting values and must refuse
-unsafe dotenv permissions unless the user requests a permissions fix.
+Publishing and auth skills read `~/.env` first, then the current project root's `.env`, then a different configured or explicit dotenv path such as `CROSSPOST_DOTENV` or `--dotenv`. Later files override matching keys; missing files contribute no values. Existing process environment variables take precedence over dotenv values. Keep project credential files ignored by Git. Refresh-token scripts write only to the selected dotenv path, require explicit write flags, and must refuse unsafe dotenv permissions unless the user requests a permissions fix.
 
 Never print, paste, summarize, or commit real token, secret, authorization code,
 or credential values. The Unsplash skill must not use bundled, demo, testing,

@@ -14,7 +14,7 @@ for (const collection of targets) {
     continue;
   }
   const skills = readdirSync(skillsRoot, { withFileTypes: true }).filter(
-    (entry) => entry.isDirectory(),
+    (entry) => entry.isDirectory() && entry.name !== "scratch",
   );
   for (const skill of skills) {
     const skillRoot = join(skillsRoot, skill.name);

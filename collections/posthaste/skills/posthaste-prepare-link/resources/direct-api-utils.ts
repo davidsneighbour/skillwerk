@@ -8,6 +8,7 @@ import {
   POSTHASTE_SHARED_NETWORKS,
   type ResolvedPosthasteConfig,
 } from "../../posthaste-config/resources/config.ts";
+import { readDotenv as readLayeredDotenv } from "../../posthaste-config/resources/dotenv.ts";
 
 export interface CommonDirectConfig {
   message?: string;
@@ -38,56 +39,16 @@ export async function readOptionalFile(
 }
 
 export async function readDotenv(
-  dotenvPath: string,
+  path: string,
 ): Promise<Record<string, string>> {
-  const resolved = resolve(expandHomePath(dotenvPath));
-  const content = await readOptionalFile(resolved);
-
-  if (!content) {
-    return {};
-  }
-
-  const values: Record<string, string> = {};
-
-  for (const line of content.split("\n")) {
-    const trimmed = line.trim();
-
-    if (!trimmed || trimmed.startsWith("#")) {
-      continue;
-    }
-
-    const withoutExport = trimmed.startsWith("export ")
-      ? trimmed.slice("export ".length).trim()
-      : trimmed;
-    const separatorIndex = withoutExport.indexOf("=");
-
-    if (separatorIndex === -1) {
-      continue;
-    }
-
-    const key = withoutExport.slice(0, separatorIndex).trim();
-    let value = withoutExport.slice(separatorIndex + 1).trim();
-
-    if (
-      (value.startsWith('"') && value.endsWith('"')) ||
-      (value.startsWith("'") && value.endsWith("'"))
-    ) {
-      value = value.slice(1, -1);
-    }
-
-    if (key) {
-      values[key] = value;
-    }
-  }
-
-  return values;
+  return readLayeredDotenv(path);
 }
 
 export function getEnvValue(
   name: string,
   dotenvValues: Record<string, string>,
 ): string | undefined {
-  return process.env[name] || dotenvValues[name];
+  return process.env[name] ?? dotenvValues[name];
 }
 
 export function getConfiguredEnvName(

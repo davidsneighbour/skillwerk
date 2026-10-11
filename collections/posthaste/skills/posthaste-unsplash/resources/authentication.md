@@ -25,34 +25,13 @@ Whenever referring to an existing key in output, represent it only as:
 
 ## Credential resolution
 
-Resolve credentials in this order:
-
-1. Check whether `UNSPLASH_POSTHASTE_ACCESS_KEY` is already available to the current process.
-2. If unavailable, check whether `UNSPLASH_ACCESS_KEY` is already available to the current process.
-3. If neither variable is available, check whether the project root contains `.env`.
-4. If `.env` exists, load it into the process environment.
-5. After loading `.env`, check `UNSPLASH_POSTHASTE_ACCESS_KEY` first, then `UNSPLASH_ACCESS_KEY`.
-6. Confirm only that one supported variable exists and is non-empty.
-7. Ensure child Bash scripts inherit the resulting environment.
-8. Continue only when a usable key is available.
+Load global `~/.env` first, then project `.env`, and then any different dotenv file selected by Posthaste configuration or an explicit request. Later files override matching keys. Preserve existing process environment variables above all dotenv values. Use the shared `posthaste-config/resources/dotenv.ts` loader when preparing the child script environment; it parses data without executing shell commands. Check `UNSPLASH_POSTHASTE_ACCESS_KEY` first, falling back to `UNSPLASH_ACCESS_KEY`, after merging all layers. Ensure child Bash scripts inherit the result, and continue only when a usable key is available.
 
 Do not expose the credential while checking for it.
 
-## Safe Bash loading
+## Safe loading
 
-When a project `.env` must be loaded before invoking an existing script:
-
-```bash
-set -a
-source .env
-set +a
-
-./scripts/search.sh "architecture"
-```
-
-This allows variables defined by `.env` to be inherited by the script.
-
-Do not print the environment after loading it.
+Follow the credential file precedence in `posthaste-config`. Pass the merged values to the child script, with existing process environment variables applied last. Do not source dotenv files as shell scripts, and do not print the environment after loading it.
 
 ## Forbidden diagnostics
 

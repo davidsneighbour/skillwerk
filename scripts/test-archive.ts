@@ -37,11 +37,19 @@ const EXCEPTIONS: Record<string, { matches: RegExp; reason: string }> = {
 const selected = selectedCollection(process.argv.slice(2));
 const targets = selected ? [selected] : collections;
 
-const filesBelow = (root: string): string[] =>
-  readdirSync(root, { recursive: true, withFileTypes: true })
-    .filter((entry) => !entry.isDirectory())
-    .map((entry) => relative(root, join(entry.parentPath, entry.name)))
-    .sort();
+const filesBelow = (root: string): string[] => {
+  const files: string[] = [];
+  const visit = (directory: string): void => {
+    for (const entry of readdirSync(directory, { withFileTypes: true })) {
+      if (entry.name === "scratch" && entry.isDirectory()) continue;
+      const path = join(directory, entry.name);
+      if (entry.isDirectory()) visit(path);
+      else files.push(relative(root, path));
+    }
+  };
+  visit(root);
+  return files.sort();
+};
 
 const isInside = (root: string, path: string): boolean => {
   const offset = relative(root, path);
@@ -152,6 +160,7 @@ const testCollection = (collection: string, workspace: string): Result => {
     .filter(
       (entry) =>
         entry.isDirectory() &&
+        entry.name !== "scratch" &&
         existsSync(join(skillsRoot, entry.name, "SKILL.md")),
     )
     .map((entry) => entry.name)

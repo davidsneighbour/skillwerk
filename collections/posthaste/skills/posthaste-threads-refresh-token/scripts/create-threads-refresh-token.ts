@@ -28,6 +28,7 @@ import {
   POSTHASTE_SHARED_NETWORKS,
   type ResolvedPosthasteConfig,
 } from "../../posthaste-config/resources/config.ts";
+import { readDotenv } from "../../posthaste-config/resources/dotenv.ts";
 
 interface CliConfig {
   appId?: string;
@@ -263,61 +264,6 @@ function parseArgs(argv: string[]): CliConfig {
   }
 
   return config;
-}
-
-async function readDotenv(dotenvPath: string): Promise<Record<string, string>> {
-  const resolved = resolve(expandHomePath(dotenvPath));
-  let content = "";
-
-  try {
-    content = await readFile(resolved, "utf8");
-  } catch (error) {
-    if (
-      !(
-        error &&
-        typeof error === "object" &&
-        "code" in error &&
-        error.code === "ENOENT"
-      )
-    ) {
-      throw error;
-    }
-  }
-
-  const values: Record<string, string> = {};
-
-  for (const line of content.split("\n")) {
-    const trimmed = line.trim();
-
-    if (!trimmed || trimmed.startsWith("#")) {
-      continue;
-    }
-
-    const withoutExport = trimmed.startsWith("export ")
-      ? trimmed.slice("export ".length).trim()
-      : trimmed;
-    const separatorIndex = withoutExport.indexOf("=");
-
-    if (separatorIndex === -1) {
-      continue;
-    }
-
-    const key = withoutExport.slice(0, separatorIndex).trim();
-    let value = withoutExport.slice(separatorIndex + 1).trim();
-
-    if (
-      (value.startsWith('"') && value.endsWith('"')) ||
-      (value.startsWith("'") && value.endsWith("'"))
-    ) {
-      value = value.slice(1, -1);
-    }
-
-    if (key) {
-      values[key] = value;
-    }
-  }
-
-  return values;
 }
 
 function hydrateConfig(

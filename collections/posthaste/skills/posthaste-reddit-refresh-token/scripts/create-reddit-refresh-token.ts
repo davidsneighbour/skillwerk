@@ -24,6 +24,7 @@ import {
   POSTHASTE_SHARED_NETWORKS,
   type ResolvedPosthasteConfig,
 } from "../../posthaste-config/resources/config.ts";
+import { readDotenv } from "../../posthaste-config/resources/dotenv.ts";
 
 interface CliConfig {
   clientId?: string;
@@ -254,12 +255,16 @@ async function loadRuntimeConfig(
   });
 
   config.dotenvPath = runtimeConfig.paths.dotenv;
+  const credentials = {
+    ...(await readDotenv(config.dotenvPath)),
+    ...process.env,
+  };
   config.clientId ??=
-    process.env[
+    credentials[
       envNameFor(runtimeConfig, "reddit", "client_id", "REDDIT_CLIENT_ID")
     ];
   config.clientSecret ??=
-    process.env[
+    credentials[
       envNameFor(
         runtimeConfig,
         "reddit",
@@ -268,11 +273,11 @@ async function loadRuntimeConfig(
       )
     ];
   config.userAgent ??=
-    process.env[
+    credentials[
       envNameFor(runtimeConfig, "reddit", "user_agent", "REDDIT_USER_AGENT")
     ];
   config.subreddit ??=
-    process.env[
+    credentials[
       envNameFor(runtimeConfig, "reddit", "subreddit", "REDDIT_SUBREDDIT")
     ];
 

@@ -13,6 +13,7 @@ const result = spawnSync(
   [
     "--exclude=node_modules",
     "--exclude=.git",
+    "--exclude=scratch",
     "-czf",
     output,
     "-C",

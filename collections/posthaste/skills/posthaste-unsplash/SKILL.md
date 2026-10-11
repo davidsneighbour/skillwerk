@@ -381,3 +381,5 @@ Do not silently replace invalid values unless the correction is unambiguous.
 * Unsplash API documentation: [https://unsplash.com/documentation](https://unsplash.com/documentation)
 * Unsplash developer applications: [https://unsplash.com/developers](https://unsplash.com/developers)
 * Unsplash API guidelines: [https://help.unsplash.com/en/collections/1451694-api-guidelines](https://help.unsplash.com/en/collections/1451694-api-guidelines)
+
+Credential discovery must follow `resources/authentication.md`: global `~/.env`, project `.env`, a selected dotenv overlay, and existing process environment variables, in that order.

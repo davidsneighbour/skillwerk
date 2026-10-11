@@ -824,3 +824,7 @@ logged for that network, so a duplicate check will still work.
 Keep the draft file after publishing, rephrasing, or cancellation. Keep the
 screenshot file as long as it is linked from the review table or useful for
 audit. Do not move either file to `/tmp`.
+
+## Credential file precedence
+
+Read credentials from lowest to highest precedence: global `~/.env`, project `.env` in the current working project root, a different file selected by `[paths].dotenv`, `CROSSPOST_DOTENV`, or `--dotenv`, and existing process environment variables. Later files override matching keys, including empty values, while retaining unmatched global keys. Missing files are valid; other read errors must be reported. Never read `.env` from the installed skill directory. Keep local credential files ignored by Git, and never print credential values. Token helpers write only to the selected dotenv path, with their existing explicit write and permission checks.

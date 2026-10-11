@@ -9,5 +9,6 @@
     "noEmit": true,
     "noPropertyAccessFromIndexSignature": false
   },
+  "exclude": ["**/scratch/**", "**/node_modules/**"],
   "include": ["collections/**/*.ts", "scripts/**/*.ts"]
 }

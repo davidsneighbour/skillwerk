@@ -330,3 +330,7 @@ directories for additional `.posthaste.toml` files.
 
 If a write is requested outside the current workspace or repository, obtain any
 confirmation required by the host environment before writing.
+
+## Credential file precedence
+
+Read credentials from lowest to highest precedence: global `~/.env`, project `.env` in the current working project root, a different file selected by `[paths].dotenv`, `CROSSPOST_DOTENV`, or `--dotenv`, and existing process environment variables. Later files override matching keys, including empty values, while retaining unmatched global keys. Missing files are valid; other read errors must be reported. Never read `.env` from the installed skill directory. Keep local credential files ignored by Git, and never print credential values. Token helpers write only to the selected dotenv path, with their existing explicit write and permission checks.

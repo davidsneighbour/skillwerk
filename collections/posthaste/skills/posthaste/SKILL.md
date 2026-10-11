@@ -29,3 +29,5 @@ because no config file exists; consuming-skill defaults remain valid.
 
 Never publish, write credentials, automate login, or click final publish
 controls without explicit confirmation from the user.
+
+Credential files follow `posthaste-config`: load global `~/.env`, then project `.env`, then a different selected dotenv file. Preserve existing process environment variables above file values. Local files override matching global keys and retain all other global keys.

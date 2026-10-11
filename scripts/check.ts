@@ -33,6 +33,10 @@ const scopedSteps = (name: string): Step[] => {
     tsconfig,
     JSON.stringify({
       extends: resolve("tsconfig.json"),
+      exclude: [
+        `${repository}/**/scratch/**`,
+        `${repository}/**/node_modules/**`,
+      ],
       compilerOptions: { typeRoots: [resolve("node_modules", "@types")] },
       include: [
         `${repository}/${root}/**/*.ts`,
@@ -55,6 +59,7 @@ const scopedSteps = (name: string): Step[] => {
         "./node_modules/@dnbhq/markdownlint-config/.markdownlint-cli2.jsonc",
         `${root}/**/*.{md,mdx}`,
         "#**/CHANGELOG.md",
+        "#**/scratch/**",
         "#**/node_modules/**",
       ],
     },
@@ -82,7 +87,7 @@ const scopedSteps = (name: string): Step[] => {
     {
       name: "test",
       command: process.execPath,
-      args: ["--test", `${root}/**/*.test.ts`],
+      args: ["scripts/run-tests.ts", "--collection", name],
     },
   ];
 };

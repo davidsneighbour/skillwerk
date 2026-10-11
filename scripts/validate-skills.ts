@@ -243,7 +243,12 @@ const PACKAGE_JSON = join(collectionRoot, "package.json");
 const slugs = readdirSync(join(collectionRoot, "skills"), {
   withFileTypes: true,
 })
-  .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
+  .filter(
+    (entry) =>
+      entry.isDirectory() &&
+      entry.name !== "scratch" &&
+      !entry.name.startsWith("."),
+  )
   .map((entry) => entry.name)
   .sort();
 

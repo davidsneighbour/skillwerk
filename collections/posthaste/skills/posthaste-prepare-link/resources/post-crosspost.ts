@@ -397,6 +397,7 @@ export function crosspostEnvironment(
   dotenvValues: Record<string, string>,
 ): CrosspostEnvironment {
   const env: NodeJS.ProcessEnv = {
+    ...dotenvValues,
     ...process.env,
     CROSSPOST_DOTENV: resolve(expandHomePath(config.paths.dotenv)),
   };
