@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.1.1](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.1.0...posthaste%2Fv2.1.1) (2026-10-11)
+
+### Fix
+
+* **posthaste-prepare-link:** validate credentials before publishing ([30b8c6f](https://github.com/davidsneighbour/skillwerk/commit/30b8c6ffab05493cc659ae1f4f8bae918a8ffdec)), closes [#31](https://github.com/davidsneighbour/skillwerk/issues/31)
+
+### Docs
+
+* consolidate repository agent instructions ([1a47d4e](https://github.com/davidsneighbour/skillwerk/commit/1a47d4e3ec9a6233af78a6ec88e3d32e2edf2e4a)), closes [#28](https://github.com/davidsneighbour/skillwerk/issues/28)
+
 ## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.0.2...posthaste%2Fv2.1.0) (2026-10-11)
 
 ### Feat
