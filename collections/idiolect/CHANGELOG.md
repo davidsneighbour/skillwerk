@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.3](https://github.com/davidsneighbour/skillwerk/compare/idiolect%2Fv2.0.2...idiolect%2Fv2.0.3) (2026-10-11)
+
+### Docs
+
+* consolidate repository agent instructions ([1a47d4e](https://github.com/davidsneighbour/skillwerk/commit/1a47d4e3ec9a6233af78a6ec88e3d32e2edf2e4a)), closes [#28](https://github.com/davidsneighbour/skillwerk/issues/28)
+
 ## [2.0.2](https://github.com/davidsneighbour/skillwerk/compare/idiolect%2Fv2.0.1...idiolect%2Fv2.0.2) (2026-09-30)
 
 ### Build
