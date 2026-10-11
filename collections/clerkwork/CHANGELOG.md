@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.0.2...clerkwork%2Fv2.1.0) (2026-10-11)
+
+### Feat
+
+* **foreman:** apply shared vocabulary across Clerkwork ([14fcf2e](https://github.com/davidsneighbour/skillwerk/commit/14fcf2e5d8cdf447b2f0cf47194ca77385c38adc)), closes [#26](https://github.com/davidsneighbour/skillwerk/issues/26)
+
+### Docs
+
+* consolidate repository agent instructions ([1a47d4e](https://github.com/davidsneighbour/skillwerk/commit/1a47d4e3ec9a6233af78a6ec88e3d32e2edf2e4a)), closes [#28](https://github.com/davidsneighbour/skillwerk/issues/28)
+
 ## [2.0.2](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.0.1...clerkwork%2Fv2.0.2) (2026-09-30)
 
 ### Build
