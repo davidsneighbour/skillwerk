@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.0.2...gallimaufry%2Fv2.1.0) (2026-10-11)
+
+### Feat
+
+* **distil:** add the distil skill to Gallimaufry ([32834e0](https://github.com/davidsneighbour/skillwerk/commit/32834e063e17cd4351fe38ca78e110623d56843b)), closes [#16](https://github.com/davidsneighbour/skillwerk/issues/16)
+
+### Fix
+
+* **gallimaufry:** remove manifest entries for unreviewed skills ([a77be1a](https://github.com/davidsneighbour/skillwerk/commit/a77be1a9b2c4fb116eb0edff60a59a764e72c076)), closes [#15](https://github.com/davidsneighbour/skillwerk/issues/15)
+
 ## [2.0.2](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.0.1...gallimaufry%2Fv2.0.2) (2026-09-30)
 
 ### Fix
