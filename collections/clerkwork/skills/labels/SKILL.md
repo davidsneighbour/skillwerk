@@ -8,6 +8,10 @@ metadata:
   version: "1.0.0"
 ---
 
+## Shared vocabulary
+
+Before applying this skill, read [the shared vocabulary](resources/vocabulary.md) and use its meanings for project, project root, skill, and collection. This rule applies whether the skill is invoked directly or through Foreman. The project is the repository that the current task concerns, and its root is that repository's top-level directory.
+
 Classify issues using the canonical label taxonomy in `references/label-taxonomy.yml`.
 
 This skill's implementation — tooling, examples, and scripts — targets GitHub, since that is the git host used almost universally in Patrick's own work. The classification model itself (category:value taxonomy, lifecycle invariants) is host-agnostic; extend `scripts/label-manager.sh` and the applying-changes steps below to another git provider's label API if one is ever needed.

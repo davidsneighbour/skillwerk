@@ -14,6 +14,10 @@ test suite; the repository product is the Markdown and scripts under
 uses `SKILL.md` as its entrypoint. Supporting files belong inside the owning
 skill directory, commonly in `references/`, `scripts/`, or `agents/`.
 
+## Shared vocabulary
+
+Every Clerkwork skill must read and apply `resources/vocabulary.md` before doing its work, including direct calls that bypass Foreman. The collection-level file is the source of truth. Each skill bundles an identical copy at `skills/<skill-name>/resources/vocabulary.md` so standalone installations retain the rule. Edit the collection-level source, then run `node scripts/sync-clerkwork-vocabulary.ts` from the repository root. Collection validation rejects missing or different copies.
+
 ## Skill map
 
 `foreman` is the single interface to the Clerkwork collection. `foreman overview` lists all available skills grouped by category, and topic-oriented requests such as `foreman git`, `foreman project`, or `foreman audit packages` route to the relevant skill.

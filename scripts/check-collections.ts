@@ -25,6 +25,21 @@ for (const collection of targets) {
       continue;
     }
     const source = readFileSync(skillFile, "utf8");
+    if (collection === "clerkwork") {
+      const vocabulary = join(root, "resources", "vocabulary.md");
+      const bundled = join(skillRoot, "resources", "vocabulary.md");
+      if (
+        !existsSync(vocabulary) ||
+        !existsSync(bundled) ||
+        readFileSync(bundled, "utf8") !== readFileSync(vocabulary, "utf8") ||
+        !source.includes("[the shared vocabulary](resources/vocabulary.md)")
+      ) {
+        console.error(
+          `FAIL clerkwork/${skill.name}: missing vocabulary instruction or outdated copy; run node scripts/sync-clerkwork-vocabulary.ts`,
+        );
+        failures++;
+      }
+    }
     const frontmatter = /^---\n([\s\S]*?)\n---/m.exec(source)?.[1];
     if (
       !frontmatter ||

@@ -9,6 +9,10 @@ metadata:
   version: "1.0.0"
 ---
 
+## Shared vocabulary
+
+Before applying this skill, read [the shared vocabulary](resources/vocabulary.md) and use its meanings for project, project root, skill, and collection. This rule applies whether the skill is invoked directly or through Foreman. The project is the repository that the current task concerns, and its root is that repository's top-level directory.
+
 Use this skill when the user asks to audit, review, reduce, optimise, restructure, or analyse the cost or architecture of repository agent instructions.
 
 The primary goal is not merely shorter prose. The goal is to minimise unconditional agent context while preserving reliable discovery of specialised instructions.

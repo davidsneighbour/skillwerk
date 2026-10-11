@@ -9,6 +9,7 @@ Clerkwork is a collection of reusable AI skills reflecting Patrick's engineering
 * [AI skills for software engineering workflows](#ai-skills-for-software-engineering-workflows)
 * [Install](#install)
 * [Update](#update)
+* [Shared vocabulary](#shared-vocabulary)
 * [Skills](#skills)
 * [The cabinet of @davidsneighbour's skills](#the-cabinet-of-davidsneighbours-skills)
 
@@ -29,6 +30,10 @@ npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collection
 ```
 
 Use `--global` when the skills should be available outside the current project.
+
+## Shared vocabulary
+
+All Clerkwork skills use [the shared vocabulary](resources/vocabulary.md), including skills invoked directly. Each installed skill includes a copy, so project and project root always refer to the repository that the current task concerns and its top-level directory. To update the vocabulary, edit the collection-level source and run `node scripts/sync-clerkwork-vocabulary.ts` from the repository root; collection validation checks that all bundled copies match.
 
 ## Skills
 

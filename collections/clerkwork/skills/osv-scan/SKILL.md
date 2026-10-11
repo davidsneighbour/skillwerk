@@ -8,6 +8,10 @@ metadata:
   version: "1.0.0"
 ---
 
+## Shared vocabulary
+
+Before applying this skill, read [the shared vocabulary](resources/vocabulary.md) and use its meanings for project, project root, skill, and collection. This rule applies whether the skill is invoked directly or through Foreman. The project is the repository that the current task concerns, and its root is that repository's top-level directory.
+
 Scan this repository's dependencies with `osv-scanner`, resolve what can be resolved automatically, and hand everything else to GitHub Issues — without ever losing track of a prior decision.
 
 ## Boundaries
