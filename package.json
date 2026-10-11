@@ -44,26 +44,29 @@
     "@dnbhq/secretlint-config": "0.1.1",
     "@dnbhq/tsconfig": "0.1.6",
     "@release-it/conventional-changelog": "12.0.0",
-    "@types/node": "26.6.3",
+    "@types/node": "26.6.5",
     "@types/twitter-text": "3.1.10",
     "@types/yargs": "17.0.35",
     "cspell": "10.3.6",
     "fast-glob": "3.3.3",
-    "playwright": "1.63.0",
+    "playwright": "1.64.0",
     "release-it": "21.0.3",
     "sharp": "0.35.5",
-    "skills": "1.7.0",
-    "smol-toml": "1.9.0",
+    "skills": "1.7.2",
+    "smol-toml": "1.9.1",
     "twitter-text": "3.1.0",
     "typescript": "7.0.2",
-    "web-features": "3.40.0",
+    "web-features": "3.42.0",
     "yargs": "18.2.0"
   },
   "overrides": {
     "js-yaml": "5.4.2",
     "markdown-it": "14.3.2",
     "linkify-it": "5.0.2",
-    "smol-toml": "1.9.0",
-    "undici": "7.29.1"
+    "smol-toml": "1.9.1",
+    "undici": "7.29.1",
+    "get-uri": {
+      "basic-ftp": "^6.2.1"
+    }
   }
 }
