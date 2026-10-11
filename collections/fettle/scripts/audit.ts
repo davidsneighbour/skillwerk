@@ -1,6 +1,6 @@
 import type { Dirent } from "node:fs";
 import { access, readdir, readFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
+import { dirname, resolve, sep } from "node:path";
 import type { Inspection } from "./types.ts";
 
 const frontmatterPattern = /^---\n([\s\S]*?)\n---\n/;
@@ -16,6 +16,7 @@ async function exists(path: string): Promise<boolean> {
 }
 
 async function skillFiles(root: string): Promise<string[]> {
+  if (resolve(root).split(sep).includes("scratch")) return [];
   if (await exists(resolve(root, "SKILL.md")))
     return [resolve(root, "SKILL.md")];
   let entries: Dirent[];
@@ -29,6 +30,7 @@ async function skillFiles(root: string): Promise<string[]> {
     if (
       !entry.isDirectory() ||
       entry.name === "node_modules" ||
+      entry.name === "scratch" ||
       entry.name.startsWith(".")
     )
       continue;

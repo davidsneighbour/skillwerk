@@ -2,6 +2,7 @@
 .migration/backups/
 node_modules/
 dist/
+scratch/
 *.tgz
 
 
