@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.1.0...clerkwork%2Fv2.2.0) (2026-10-12)
+
+### Feat
+
+* **dependency-maintenance:** add packages workflow ([0a7fd3d](https://github.com/davidsneighbour/skillwerk/commit/0a7fd3d534741cda24314a545021e70514015c09)), closes [#33](https://github.com/davidsneighbour/skillwerk/issues/33)
+
 ## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.0.2...clerkwork%2Fv2.1.0) (2026-10-11)
 
 ### Feat
