@@ -37,7 +37,9 @@ All Clerkwork skills use [the shared vocabulary](resources/vocabulary.md), inclu
 
 ## Skills
 
-Use `/foreman overview` when you do not remember a skill name. Foreman lists the complete collection by category and can narrow it with requests such as `/foreman git`, `/foreman project`, or route concrete jobs such as `/foreman audit packages`.
+Use `/foreman overview` when you do not remember a skill name. Foreman lists the complete collection by category and can narrow it with requests such as `/foreman git`, `/foreman project`, or route concrete jobs such as `/foreman packages`.
+
+Use `/foreman packages` for a complete npm maintenance run: compatible grouped updates, safe vulnerability fixes, validation, commit, push, CI verification, unresolved-finding issues, and dependency or versioning PR review. Use `/foreman packages check` for inspection only, or `/foreman packages latest` to include major upgrades. The complete run does not authorise forced fixes, alert dismissal, or merging or closing PRs.
 
 Skill names are intentionally flat. Categories organise the collection without becoming part of the invocation name, so individual skills remain independently installable and portable.
 

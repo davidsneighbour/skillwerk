@@ -3,9 +3,9 @@ id: dependency-maintenance
 name: dependency-maintenance
 title: Clerkwork Dependency Maintenance
 type: skill
-description: Safely maintain npm dependencies in a single-package repository or npm monorepo. Use when asked to inspect outdated packages, update dependency ranges and lockfiles, assess or fix npm audit findings, validate the result, and optionally create a conventional dependency-update commit while preserving unrelated work.
+description: Safely maintain npm dependencies in a single-package repository or npm monorepo. Use when asked to inspect outdated packages, update dependency ranges and lockfiles, assess or fix npm audit findings, check Dependabot alerts and dependency PRs, update compatible package groups, track unresolved vulnerabilities in GitHub issues, and validate, commit, and push a complete maintenance run while preserving unrelated work.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 ## Shared vocabulary
@@ -13,6 +13,12 @@ metadata:
 Before applying this skill, read [the shared vocabulary](resources/vocabulary.md) and use its meanings for project, project root, skill, and collection. This rule applies whether the skill is invoked directly or through Foreman. The project is the repository that the current task concerns, and its root is that repository's top-level directory.
 
 Maintain npm dependencies without mixing unrelated work into the update.
+
+## Invocation contract
+
+`foreman packages` requests a complete maintenance run: inspect updates and GitHub state, apply safe patch and minor updates and vulnerability fixes, validate, commit scoped changes, push, verify CI, recheck security findings, create or reuse follow-up issues, and review remaining dependency or versioning PRs. This invocation authorises those actions in the current repository. It does not authorise major upgrades, forced audit fixes, alert dismissal, PR merges, or PR closure. `foreman packages latest` also authorises major upgrades, subject to compatibility and validation.
+
+Inspection-only wording such as `foreman packages check` means inspect and report without installing, editing, committing, pushing, or creating issues. For inspection-only runs, read local state, audit results, available updates, GitHub alerts, issues, and PRs, then report proposed work. Skip stashing, synchronisation, upgrades, installation, audit fixes, and all remote mutations. Direct skill calls follow the user's requested scope. Repository instructions take precedence over these defaults.
 
 ## Boundaries
 
@@ -23,9 +29,9 @@ Maintain npm dependencies without mixing unrelated work into the update.
 * Do not install maintenance tooling as a project dependency.
 * Do not use `npm audit fix --force` without explicit approval.
 * Do not treat a generic "update dependencies" request as approval for major upgrades.
-* Do not merge, rebase, or use plain `git pull`.
+* Do not merge, rebase, use plain `git pull`, dismiss alerts, or merge or close PRs without explicit authorisation.
 * Do not commit when validation fails unless the user explicitly accepts the failure.
-* Commit only when the request includes committing or clearly asks for a completed maintenance run.
+* Commit and push only when the request authorises them, including the complete-run invocation above. Do not push unrelated local commits without authorisation.
 
 ## Track run state
 
@@ -45,13 +51,19 @@ audit_fixes_applied: yes / no
 validation_commands: <command and result list>
 commit_created: yes / no
 commit_hash: <hash or none>
+update_groups: <members, target versions, and compatibility evidence>
+github_security: checked / unavailable / pending
+follow_up_issues: <created or reused URLs>
+push_result: pushed / failed / skipped
+ci_result: passed / failed / pending / unavailable / not configured
+dependency_prs: <URLs and dispositions>
 ```
 
 ## Workflow
 
 ### 1. Inspect repository instructions and state
 
-Read repository guidance such as `AGENTS.md`, `CONTRIBUTING.md`, and relevant documentation before changing files.
+Read repository guidance such as `AGENTS.md`, `CONTRIBUTING.md`, and relevant documentation before changing files. Resolve any project-root `RESUME.md` first, inspect `git stash list`, and honour excluded paths in every search. Do not restore saved work without user authorisation.
 
 Run:
 
@@ -69,7 +81,7 @@ Inspect package-manager markers:
 find . -maxdepth 3 \
   \( -name package.json -o -name package-lock.json -o -name npm-shrinkwrap.json \
   -o -name pnpm-lock.yaml -o -name yarn.lock -o -name bun.lock -o -name bun.lockb \) \
-  -not -path "*/node_modules/*" -not -path "*/.git/*"
+  -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/scratch/*"
 npm pkg get packageManager workspaces 2>/dev/null || true
 ```
 
@@ -89,7 +101,7 @@ find . -maxdepth 3 \
   \( -name ".ncurc" -o -name ".ncurc.json" -o -name ".ncurc.yml" \
   -o -name ".ncurc.yaml" -o -name ".ncurc.js" -o -name "ncu.config.js" \
   -o -name "ncu.config.cjs" -o -name "ncu.config.mjs" \) \
-  -not -path "*/node_modules/*" -not -path "*/.git/*"
+  -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/scratch/*"
 ```
 
 Use this decision model:
@@ -146,7 +158,25 @@ git status --branch --short
 * If the branch has diverged, stop. Do not merge or rebase.
 * If fetch or pull fails, stop and report the failure.
 
-### 5. Inspect available updates
+### 5. Inspect GitHub security and existing work
+
+Capture an initial `npm audit --json` result before changing dependencies so the final comparison has a local baseline. Store temporary output outside the repository, and distinguish findings from command or registry errors.
+
+For complete and inspection-only runs, identify the repository from its remote and verify access with `gh repo view --json nameWithOwner,url,defaultBranchRef`. Use the actual `OWNER/REPO` in commands. Fetch every page of open Dependabot alerts:
+
+```bash
+gh api --paginate 'repos/OWNER/REPO/dependabot/alerts?state=open&per_page=100'
+gh issue list --repo OWNER/REPO --state open --limit 100 --json number,title,body,labels,url
+gh pr list --repo OWNER/REPO --state open --limit 100 --json number,title,body,author,baseRefName,headRefName,url
+```
+
+Paginate issues and PRs when the limit is reached. Inspect dependency and versioning PRs by their changed files and bodies, including human-authored PRs; do not rely only on bot authors or labels. Read relevant PR diffs and checks without checking out or merging their branches. Distinguish package updates from release-only version bumps, and avoid duplicating work already in progress.
+
+Record advisory identifiers, alert URLs, affected manifests, vulnerable ranges, patched versions, and runtime or development scope. Correlate npm audit and Dependabot findings by advisory and dependency path; neither source replaces the other. Authentication failures, disabled alerts, and insufficient permissions mean unavailable, never zero findings. Continue independent local maintenance when safe, and report the missing GitHub coverage.
+
+Use [GitHub's Dependabot alerts API documentation](https://docs.github.com/en/rest/dependabot/alerts) when response fields or permissions need verification.
+
+### 6. Inspect available updates
 
 Run from the repository root:
 
@@ -165,7 +195,7 @@ Classify proposed updates:
 * development dependencies
 * high-risk tooling such as frameworks, build tools, TypeScript, test runners, linters, and deployment packages
 
-### 6. Choose update scope
+### 7. Choose update scope and compatible groups
 
 Follow an explicit user scope when provided.
 
@@ -174,6 +204,12 @@ Otherwise:
 * Apply patch and minor updates by default.
 * Present major updates before applying them.
 * Apply majors without another prompt only when the user explicitly asked for all/latest dependencies or clearly authorized major upgrades.
+
+Before changing versions, inspect project update-group rules, npm-check-updates configuration, Dependabot or Renovate groups, installed manifests, and target package peer dependencies. Use current upstream compatibility documentation or `npm view PACKAGE@VERSION peerDependencies engines --json` to verify proposed versions.
+
+Treat packages that must move together as one update group. For Vitest, inspect `vitest` and each installed `@vitest/*` companion, such as UI, browser, and coverage packages. Select mutually compatible releases and preserve exact version alignment where their requirements demand it. Do not assume Vite, plugins, or every package in a namespace uses the same version number. Do not add companions that the project does not use.
+
+Apply all manifest changes for a group before one install. If a filter or ignored package prevents a compatible group update, keep the whole group unchanged and report the blocker. Do not bypass peer conflicts with `--force` or `--legacy-peer-deps`. Major restrictions apply to the entire group. Record members, target versions, and compatibility evidence, and run the relevant test, coverage, browser, or build checks after installation. The generic commands below must be adjusted to preserve these groups and repository scope.
 
 For patch and minor updates:
 
@@ -201,7 +237,7 @@ git diff -- '**/package.json' '**/package-lock.json' '**/npm-shrinkwrap.json'
 
 Verify that changes are limited to intended dependency manifests and lockfiles. Record exact changed files and version transitions.
 
-### 7. Audit dependencies
+### 8. Audit dependencies
 
 Run:
 
@@ -226,7 +262,7 @@ git diff -- '**/package.json' '**/package-lock.json' '**/npm-shrinkwrap.json'
 npm audit || true
 ```
 
-After `npm audit fix`, inspect the diff again. If it changed files outside the approved dependency scope or introduced unapproved major changes, stop and report the situation before committing.
+Apply the same compatible-group checks to audit remediation, parent upgrades, and overrides. After `npm audit fix`, inspect the diff again. If it changed files outside the approved dependency scope or introduced unapproved major changes, stop and report the situation before committing.
 
 Do not automatically fix findings when:
 
@@ -236,9 +272,11 @@ Do not automatically fix findings when:
 * no safe fix is available
 * the remediation risk exceeds the vulnerability risk
 
-For remaining findings, report package, severity, direct or transitive status, safe-fix availability, and recommended action.
+For each npm audit or Dependabot finding, inspect the actual dependency chain with `npm explain PACKAGE` or `npm ls PACKAGE --all`. Prefer upgrading the direct parent to a release with a patched transitive dependency. Consider an override only after checking compatibility, project policy, and validation; never assume an override is safe because installation succeeds. Do not dismiss a finding merely because it is a development dependency.
 
-### 8. Validate the repository
+For remaining findings, record package, advisory, severity, direct or transitive status, affected paths, safe-fix availability, and recommended action. Preserve non-zero audit results as findings; distinguish them from network or registry failures, which are unavailable results. A known tracked finding need not prevent committing validated improvements unless repository policy says otherwise.
+
+### 9. Validate the repository
 
 Inspect repository scripts and documented checks:
 
@@ -260,12 +298,12 @@ Run only scripts that exist. Prefer root orchestration scripts in workspaces and
 
 Record every command and whether it passed, failed, or was skipped. If validation fails:
 
-* stop before committing
+* stop before committing or pushing, but still track confirmed unresolved findings and report PR status when safe
 * preserve the dependency changes for inspection
 * report whether the failure appears update-related
 * provide exact rollback commands using only changed dependency files
 
-### 9. Review and optionally commit
+### 10. Review and optionally commit
 
 Review staged and unstaged state:
 
@@ -277,6 +315,8 @@ git diff -- '**/package.json' '**/package-lock.json' '**/npm-shrinkwrap.json'
 ```
 
 Ensure no temporary audit artifacts or unrelated files are included.
+
+Follow repository issue-reference rules, including any package-upgrade exemption. For maintenance that needs an issue, reuse or create the issue before committing and include the required `Refs` or `Closes` footer. Do not close an unresolved vulnerability issue through a partial fix.
 
 If a commit is authorized and validation passed:
 
@@ -304,7 +344,23 @@ git rev-parse --short HEAD
 
 Never stage through broad globs, `git add .`, or `git add -A`.
 
-### 10. Report
+### 11. Push and verify the result
+
+For a complete run, inspect outgoing commits before pushing. Push only the authorised work to the configured upstream with ordinary `git push`; never force-push. If there is no upstream, report the blocked push rather than guessing a destination. Stop dependent remote verification if push fails. When no changes were needed, skip the commit and push, but still perform the final security and PR checks.
+
+For a successful push, record the full commit SHA and stable GitHub URL. Query workflow runs for that exact SHA with `gh run list --repo OWNER/REPO --commit SHA --json databaseId,headSha,status,conclusion,url`. Inspect failures with `gh run view RUN_ID --repo OWNER/REPO --log-failed`. Do not use an older passing run as evidence. Poll with short waits for up to ten minutes, keeping the user informed; report pending or unavailable when the result cannot be established. No matching runs means not configured or pending, not passed. Repair update-related failures within scope, validate, commit, push, and verify again; stop and report if repair requires an unapproved migration or remains blocked.
+
+Rerun `npm audit --json` and refresh Dependabot alerts after the push. Compare them with the initial findings and the pushed manifests and lockfile. GitHub scanning may lag: report a locally verified fix with remote confirmation pending when appropriate, and do not claim that an open alert has closed. Do not poll indefinitely or dismiss alerts to make the report clean.
+
+### 12. Track unresolved findings and review remaining pull requests
+
+For a complete run, create or reuse GitHub issues for findings that remain actionable but cannot be safely fixed. Search existing issues by advisory identifier, package, and dependency chain before creating anything. Combine matching npm audit and Dependabot reports in one issue; retain distinct affected paths and blockers. Reuse a matching open issue and update it only when there is new material evidence. Avoid duplicate issues or repetitive comments on repeated runs.
+
+Include the advisory and alert URLs, severity, affected package and dependency chain, current and patched versions, attempted remediation and validation, the concrete blocker, and the next action or condition for revisiting. Distinguish no upstream fix from a fix requiring unapproved breaking work or failing validation. Do not expose private advisory details in a public issue; report restricted findings through the repository's approved security channel. Check `gh label list` and use existing appropriate labels. Follow the available `issues` and `labels` skills when applicable; standalone installations must use repository rules and the requirements here without requiring sibling skill files. Never create missing taxonomy labels without confirmation. Use a body file or structured arguments to preserve issue text.
+
+Refresh open PRs after the final push and inspect relevant diffs and checks against the updated base. Report each dependency or versioning PR as still needed, partially covered, superseded, blocked, or unrelated, with its URL and evidence. A newer base version alone does not prove a PR is superseded; check all changed files, group compatibility, and non-version changes. Review release-only PRs against repository release policy. Recommend the next action, but do not merge, close, rebase, or comment on PRs without separate authorisation.
+
+### 13. Report
 
 Report:
 
@@ -318,6 +374,11 @@ Report:
 * validation results
 * commit hash, or why no commit was created
 * unrelated files left untouched
+* grouped update decisions and compatibility evidence
+* push and CI results for the exact commit
+* final npm audit and Dependabot results, including pending or unavailable checks
+* created or reused issue URLs and unresolved blockers
+* remaining dependency and versioning PR URLs, dispositions, and recommended actions
 * manual follow-up recommendations
 
 When a stash was created, add a dedicated note with the actual ref and these recovery commands:

@@ -2,10 +2,10 @@
 id: foreman
 name: foreman
 title: Foreman
-description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman audit packages` to the matching Clerkwork skill. Foreman identifies the job and hands it off; it does not duplicate the target skill's work.
-argument-hint: "<overview|agent|repository|project|git|audit|issues|status|resume> [action|target]"
+description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` to the matching Clerkwork skill. Foreman identifies the job and hands it off; it does not duplicate the target skill's work.
+argument-hint: "<overview|packages|agent|repository|project|git|audit|issues|status|resume> [action|target]"
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 ## Shared vocabulary
@@ -48,13 +48,14 @@ If the user supplies a broad category or topic without a concrete action, show o
 ## Routing
 
 1. If the user requests an overview, help, a list of skills, or asks what Clerkwork can do, show the catalogue instead of asking a clarifying question.
-2. If the user gives only a category or topic, show that category and its available jobs.
+2. Treat `foreman packages` as a concrete complete maintenance request and route it directly to `dependency-maintenance`. Otherwise, if the user gives only a category or topic, show that category and its available jobs.
 3. If the request clearly matches one skill, hand off directly to that skill.
 4. If the category is known but multiple actions remain plausible, list the relevant skills and ask the user to choose only when their intended job cannot be inferred.
 5. Do not perform the target skill's underlying work inside Foreman, and do not bypass its confirmation or safety rules.
 
 ## Common command routes
 
+* `foreman packages`, `foreman packages latest`, or `foreman packages check` → `dependency-maintenance` (complete run, majors authorised, or inspection only, respectively)
 * `foreman audit packages` → `dependency-maintenance`
 * `foreman audit security` → `osv-scan`
 * `foreman audit node` → `manage-node-version-policy`
