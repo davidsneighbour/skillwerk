@@ -2,10 +2,10 @@
 id: foreman
 name: foreman
 title: Foreman
-description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` to the matching Clerkwork skill. Foreman identifies the job and hands it off; it does not duplicate the target skill's work.
-argument-hint: "<overview|packages|agent|repository|project|git|audit|issues|status|resume> [action|target]"
+description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman identifies the job and hands it off; it does not duplicate the target skill's work.
+argument-hint: "<overview|packages|agent|repository|project|git|cspell|spelling|audit|issues|status|resume> [action|target]"
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 ## Shared vocabulary
@@ -29,6 +29,7 @@ If the user supplies a broad category or topic without a concrete action, show o
 
 ### Repository maintenance
 
+* `cspell-inline` — apply CSpell in-document directives for file-local spelling exceptions, accepted words, disabled lines or sections, regex filtering, compound words, and per-file dictionaries.
 * `dependency-maintenance` — inspect and safely update npm dependencies.
 * `manage-node-version-policy` — audit and align Node.js and npm version declarations.
 * `osv-scan` — scan dependencies for known vulnerabilities, apply safe fixes, and track follow-up work.
@@ -59,6 +60,7 @@ If the user supplies a broad category or topic without a concrete action, show o
 * `foreman audit packages` → `dependency-maintenance`
 * `foreman audit security` → `osv-scan`
 * `foreman audit node` → `manage-node-version-policy`
+* `foreman cspell`, `foreman spelling`, or `foreman spellcheck` → `cspell-inline`
 * `foreman agent align` → `agent-align`
 * `foreman agent instructions` → `agent-instructions-audit`
 * `foreman status` or `foreman report` → `project-state-report`
