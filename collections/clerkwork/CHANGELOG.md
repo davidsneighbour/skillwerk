@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.2.0...clerkwork%2Fv2.3.0) (2026-10-15)
+
+### Feat
+
+* **cspell-inline:** add inline document settings skill ([50e9974](https://github.com/davidsneighbour/skillwerk/commit/50e997491945950823458600bd129d17feda3c1f)), closes [#34](https://github.com/davidsneighbour/skillwerk/issues/34)
+
 ## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.1.0...clerkwork%2Fv2.2.0) (2026-10-12)
 
 ### Feat
