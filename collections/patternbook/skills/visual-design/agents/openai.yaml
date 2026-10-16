@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual Design Rules"
+  short_description: "Apply Patternbook visual design rules to UI work"
+  default_prompt: "Use $visual-design to apply the Patternbook visual design rules to this interface."

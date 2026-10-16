@@ -52,6 +52,7 @@ grayscale
 gsub
 handoff
 HMAC
+Hobday
 hreflang
 HSTS
 httponly

@@ -33,11 +33,14 @@ Use `--global` when the skills should be available outside the current project.
 ## Skills
 
 * `patternbook` is a placeholder entry point. No operating instructions are defined yet.
-* `stylesheet` applies Patternbook authoring rules whenever an agent writes, edits, or reviews CSS, SCSS, PostCSS, Tailwind classes, or inline styles.
+* `stylesheet` applies Patternbook authoring rules (`CSS###`) whenever an agent writes, edits, or reviews CSS, SCSS, PostCSS, Tailwind classes, or inline styles.
+* `visual-design` applies Patternbook visual design rules (`DSG###`) to colour, contrast, spacing, alignment, typography, borders, shadows, and depth when an agent designs, implements, or reviews interfaces.
 
 ### Rules
 
-Skills can keep authoring rules in a `rules/` directory, one rule per file. Each rule file has frontmatter with `id`, `title`, and `applies-when`, and the sections Rule, Do, Don't, Why, Exceptions, and Sources. The owning `SKILL.md` lists every rule in a rule index, so the agent can open only the rules that match the current change. See [`skills/stylesheet/`](skills/stylesheet/) for the reference implementation.
+Skills can keep rules in a `rules/` directory, one rule per file, named `<id>-<slug>.md`. Each skill uses its own ID prefix, such as `CSS` or `DSG`, followed by a three-digit number. IDs are stable: do not renumber or reuse them, and deprecate rules instead of deleting them.
+
+Each rule file has frontmatter with `id`, `title`, and `applies-when`. The sections Rule and Sources are required; Why, Do, Don't, Check, and Exceptions are optional. The owning `SKILL.md` lists every rule in a rule index, so the agent opens only the rules that match the current change. Agents report findings and applied rules by rule ID, for example `DSG020: Body copy computes to 14px.` See [`skills/stylesheet/`](skills/stylesheet/) and [`skills/visual-design/`](skills/visual-design/).
 
 ## The cabinet of @davidsneighbour's skills
 
