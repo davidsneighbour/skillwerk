@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.3](https://github.com/davidsneighbour/skillwerk/compare/fettle%2Fv2.1.2...fettle%2Fv2.1.3) (2026-10-16)
+
+### Docs
+
+* **fettle:** point to the plan issue instead of the scratch file ([d393f54](https://github.com/davidsneighbour/skillwerk/commit/d393f540bf17dad71df8d27f68fac37d551125db)), references [#38](https://github.com/davidsneighbour/skillwerk/issues/38) [#38](https://github.com/davidsneighbour/skillwerk/issues/38)
+
 ## [2.1.2](https://github.com/davidsneighbour/skillwerk/compare/fettle%2Fv2.1.1...fettle%2Fv2.1.2) (2026-10-11)
 
 ### Fix
