@@ -13,6 +13,7 @@
       "source": "./",
       "strict": false,
       "skills": [
+        "./skills/accessible-design",
         "./skills/patternbook",
         "./skills/stylesheet",
         "./skills/visual-design"

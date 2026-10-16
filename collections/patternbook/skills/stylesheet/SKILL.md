@@ -4,7 +4,7 @@ name: stylesheet
 title: Patternbook Stylesheet Rules
 description: Apply Patternbook authoring rules (CSS001 and up) when writing, editing, refactoring, or reviewing stylesheets - CSS, SCSS, PostCSS, CSS modules, Tailwind classes, or inline styles. Use before choosing units, layout techniques, or property values so that project-wide CSS rules, such as full viewport height handling, are followed consistently.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 Authoring rules for stylesheet work. Each rule is one file in `rules/` and has a stable `CSS###` ID. The rules describe how to write new styles and how to correct existing styles that you touch.
@@ -19,7 +19,7 @@ Apply this skill whenever you write, edit, refactor, or review styles in any for
 * Tailwind or other utility classes
 * inline `style` attributes
 
-For visual design decisions, such as colour, spacing, typography, or depth, also apply the `visual-design` skill.
+For visual design decisions, such as colour, spacing, typography, or depth, also apply the `visual-design` skill. For contrast and disabled controls, also apply the `accessible-design` skill.
 
 ## Procedure
 

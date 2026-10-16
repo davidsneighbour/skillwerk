@@ -35,6 +35,7 @@ Use `--global` when the skills should be available outside the current project.
 * `patternbook` is a placeholder entry point. No operating instructions are defined yet.
 * `stylesheet` applies Patternbook authoring rules (`CSS###`) whenever an agent writes, edits, or reviews CSS, SCSS, PostCSS, Tailwind classes, or inline styles.
 * `visual-design` applies Patternbook visual design rules (`DSG###`) to colour, contrast, spacing, alignment, typography, borders, shadows, and depth when an agent designs, implements, or reviews interfaces.
+* `accessible-design` applies Patternbook accessibility rules (`A11Y###`) to text contrast, non-text contrast of controls and states, disabled controls, and native `disabled` versus `aria-disabled`. Its rules take precedence over `DSG###` and `CSS###` rules.
 
 ### Rules
 

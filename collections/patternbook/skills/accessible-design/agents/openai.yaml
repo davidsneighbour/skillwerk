@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessible Design Rules"
+  short_description: "Apply Patternbook accessibility rules to UI work"
+  default_prompt: "Use $accessible-design to apply the Patternbook accessibility rules to this interface."

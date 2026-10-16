@@ -4,7 +4,7 @@ name: visual-design
 title: Patternbook Visual Design Rules
 description: Apply Patternbook visual design rules (DSG001 and up) when designing, implementing, or reviewing user interfaces - colour, contrast, neutrals, spacing, alignment, grids, typography, line length, buttons, corner radii, borders, shadows, depth, and icons. Use when building or changing UI components, pages, themes, or design tokens, and for design or implementation reviews that need rule-based findings.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 Visual design rules for interface work. Each rule is one file in `rules/` and has a stable `DSG###` ID.
@@ -24,7 +24,7 @@ Apply this skill when you design, implement, or review visual properties of an i
 * icons next to text
 * design tokens and design system values
 
-For CSS authoring rules, such as which units to use, also apply the `stylesheet` skill.
+For CSS authoring rules, such as which units to use, also apply the `stylesheet` skill. For contrast, disabled controls, and other accessibility requirements, also apply the `accessible-design` skill. Its `A11Y###` rules take precedence over `DSG###` rules.
 
 ## Procedure
 
