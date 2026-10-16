@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.4.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.3.0...clerkwork%2Fv2.4.0) (2026-10-16)
+
+### Feat
+
+* **foreman:** integrate repository workflow procedures ([de0a888](https://github.com/davidsneighbour/skillwerk/commit/de0a88813705f3764b486e7d00aa9ab032e5e51f)), closes [#35](https://github.com/davidsneighbour/skillwerk/issues/35)
+
 ## [2.3.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.2.0...clerkwork%2Fv2.3.0) (2026-10-15)
 
 ### Feat

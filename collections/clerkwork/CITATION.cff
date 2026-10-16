@@ -5,12 +5,12 @@ authors:
     given-names: "Patrick"
     orcid: "https://orcid.org/0000-0001-6250-2135"
 title: "Clerkwork"
-version: v2.3.0
+version: v2.4.0
 date-released: 2026-10-16
 url: "https://github.com/davidsneighbour/clerkwork"
 repository-code: "https://github.com/davidsneighbour/clerkwork"
 license: "MIT"
-commit: 50e997491945950823458600bd129d17feda3c1f
+commit: de0a88813705f3764b486e7d00aa9ab032e5e51f
 keywords:
   - ai
   - skills
