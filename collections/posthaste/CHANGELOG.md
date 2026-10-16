@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.2](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.1.1...posthaste%2Fv2.1.2) (2026-10-16)
+
+### Docs
+
+* **posthaste-prepare-link:** document smol-toml prerequisite for X intent flow ([14eb16e](https://github.com/davidsneighbour/skillwerk/commit/14eb16e9b44f807c7c1f23182ea10c9deedd283d)), closes [#36](https://github.com/davidsneighbour/skillwerk/issues/36), references [#13](https://github.com/davidsneighbour/skillwerk/issues/13)
+
 ## [2.1.1](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.1.0...posthaste%2Fv2.1.1) (2026-10-11)
 
 ### Fix
