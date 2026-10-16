@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/patternbook%2Fv2.0.3...patternbook%2Fv2.1.0) (2026-10-16)
+
+### Feat
+
+* **accessible-design:** add Patternbook accessibility rules skill ([62d71b5](https://github.com/davidsneighbour/skillwerk/commit/62d71b51316de45a0ce9ba9d8b7d3d4ad28419a0)), closes [#55](https://github.com/davidsneighbour/skillwerk/issues/55)
+* **stylesheet:** add Patternbook stylesheet skill with authoring rules ([24848c2](https://github.com/davidsneighbour/skillwerk/commit/24848c2a1ea1cf249e43220e9445694069bd61c4)), closes [#53](https://github.com/davidsneighbour/skillwerk/issues/53)
+* **visual-design:** add Patternbook visual design rules skill ([c1b083d](https://github.com/davidsneighbour/skillwerk/commit/c1b083d058695e8124f285172ada372ea34577d8)), closes [#54](https://github.com/davidsneighbour/skillwerk/issues/54)
+
 ## [2.0.3](https://github.com/davidsneighbour/skillwerk/compare/patternbook%2Fv2.0.2...patternbook%2Fv2.0.3) (2026-10-11)
 
 ### Fix
