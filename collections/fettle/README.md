@@ -40,4 +40,4 @@ Commands write generated data below `reports/`, which Git ignores. Observation n
 * [Finding schema](schemas/finding.schema.json)
 * [Report schema](schemas/report.schema.json)
 
-The original concept is retained in `scratch/PLAN.md`.
+The original concept plan and its open work are tracked in [#38](https://github.com/davidsneighbour/skillwerk/issues/38).
