@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stylesheet Rules"
+  short_description: "Apply Patternbook rules when writing CSS"
+  default_prompt: "Use $stylesheet to apply the Patternbook stylesheet rules to this CSS change."

@@ -33,6 +33,11 @@ Use `--global` when the skills should be available outside the current project.
 ## Skills
 
 * `patternbook` is a placeholder entry point. No operating instructions are defined yet.
+* `stylesheet` applies Patternbook authoring rules whenever an agent writes, edits, or reviews CSS, SCSS, PostCSS, Tailwind classes, or inline styles.
+
+### Rules
+
+Skills can keep authoring rules in a `rules/` directory, one rule per file. Each rule file has frontmatter with `id`, `title`, and `applies-when`, and the sections Rule, Do, Don't, Why, Exceptions, and Sources. The owning `SKILL.md` lists every rule in a rule index, so the agent can open only the rules that match the current change. See [`skills/stylesheet/`](skills/stylesheet/) for the reference implementation.
 
 ## The cabinet of @davidsneighbour's skills
 
