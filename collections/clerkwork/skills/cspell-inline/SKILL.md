@@ -15,7 +15,7 @@ Before applying this skill, read [the shared vocabulary](resources/vocabulary.md
 
 ## Purpose
 
-Use CSpell's in-document settings for file-local spell-check behaviour. This version is deliberately limited to inline document directives documented at <https://cspell.org/docs/Configuration/document-settings>.
+Use CSpell's in-document settings for file-local spell-check behaviour. This version is deliberately limited to inline document directives documented at [CSpell document settings](https://cspell.org/docs/Configuration/document-settings).
 
 Use this skill automatically when a request means any of the following:
 
@@ -234,4 +234,4 @@ Until those capabilities are implemented, do not convert a project-wide or phras
 
 The source of truth for supported inline syntax is CSpell's official document-settings documentation:
 
-<https://cspell.org/docs/Configuration/document-settings>
+[CSpell document settings](https://cspell.org/docs/Configuration/document-settings)

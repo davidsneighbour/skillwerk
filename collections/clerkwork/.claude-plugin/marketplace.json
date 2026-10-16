@@ -20,6 +20,7 @@
         "./skills/agent-align",
         "./skills/agent-instructions-audit",
         "./skills/commit",
+        "./skills/cspell-inline",
         "./skills/dependency-maintenance",
         "./skills/issues",
         "./skills/labels",

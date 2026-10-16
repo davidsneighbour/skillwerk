@@ -4,13 +4,14 @@
 
 Clerkwork is a collection of reusable AI skills reflecting Patrick's engineering knowledge: dependency maintenance, GitHub issue triage, project tracking, and repository upkeep. The goal is to keep the routine parts of maintaining a repository consistent and portable across projects and AI assistants.
 
-> Clerkwork is the collection. Foreman is its interface. Skills describe jobs. Categories organise the collection.
+> Clerkwork is the collection. Foreman is its interface. Skills describe jobs. Foreman procedures describe supporting workflows. Categories organise the collection.
 
 * [AI skills for software engineering workflows](#ai-skills-for-software-engineering-workflows)
 * [Install](#install)
 * [Update](#update)
 * [Shared vocabulary](#shared-vocabulary)
 * [Skills](#skills)
+* [Procedures](#procedures)
 * [The cabinet of @davidsneighbour's skills](#the-cabinet-of-davidsneighbours-skills)
 
 ## Install
@@ -41,6 +42,8 @@ Use `/foreman overview` when you do not remember a skill name. Foreman lists the
 
 Use `/foreman packages` for a complete npm maintenance run: compatible grouped updates, safe vulnerability fixes, validation, commit, push, CI verification, unresolved-finding issues, and dependency or versioning PR review. Use `/foreman packages check` for inspection only, or `/foreman packages latest` to include major upgrades. The complete run does not authorise forced fixes, alert dismissal, or merging or closing PRs.
 
+Foreman also bundles [focused procedures](skills/foreman/SKILL.md#procedures): CI diagnosis and monitoring, merge conflict resolution, pull request feedback, repository delivery, pull request preparation for review, claim verification, and maintainability review. These are available with Foreman alone. Delivery follows the target repository's documented branch policy, including direct-to-main and branch-and-pull-request workflows; it does not impose one policy across projects.
+
 Skill names are intentionally flat. Categories organise the collection without becoming part of the invocation name, so individual skills remain independently installable and portable.
 
 ### Agent management
@@ -61,11 +64,38 @@ Skill names are intentionally flat. Categories organise the collection without b
 * `project-task-triage` syncs the local TODO.md scratch pad with GitHub Issues and regenerates the local PROJECT.md dashboard.
 * `resume-interrupted-work` manages a project-root RESUME.md handoff file that blocks new work until interrupted work is resolved.
 
+### Repository governance
+
+* `behaviour-spec` creates, reviews, and generates tests from behaviour specifications.
+* `dnbhq-configs` audits repository configuration and coordinates shared configuration maintenance.
+* `quality-gate-organisation` organises repository quality-check commands.
+
 ### Git and GitHub
 
 * `commit` writes Git commit messages that follow the Conventional Commits specification.
 * `issues` inspects, selects, and works through project issues using Patrick's GitHub-first workflow, while preserving the same principles on other issue systems where practical.
 * `labels` analyses issue text and selects or applies labels from Patrick's category:value label taxonomy.
+
+## Procedures
+
+Procedures live inside Foreman and are loaded only for the requested workflow. They install with Foreman and have no separate manifest entries or sibling-skill dependencies.
+
+| Request | Outcome |
+| --- | --- |
+| `foreman ci` | Inspect CI for the target pull request or branch. |
+| `foreman fix ci` | Diagnose and correct an actionable failure within the authorised scope. |
+| `foreman watch ci` | Monitor checks for the current head commit and report their result. |
+| `foreman conflicts` | Resolve the active integration operation while preserving intended behaviour. |
+| `foreman pr comments` | Summarise outstanding review feedback with links and context. |
+| `foreman deliver` | Follow the target repository's direct or pull request delivery policy. |
+| `foreman new branch and pr` | Apply branch-and-pull-request delivery where the repository permits it. |
+| `foreman pr tidy` | Prepare reviewer guidance and identify obstacles to review. |
+| `foreman verify <claim>` | Check a falsifiable claim with reproducible evidence. |
+| `foreman review maintainability` | Report supported structural findings in the requested change range. |
+
+Repository instructions define branch, validation, and delivery policy. The user's request defines the authorised actions. Inspection, watching checks, and summarising comments do not imply permission to edit code or publish changes. Existing specialist workflows, such as `foreman packages`, retain their own operating modes.
+
+The incoming sketches were consolidated rather than published as ten new skills. The two CI sketches became one procedure. Verification permits direct observation for absolute claims and baseline comparisons for improvement claims. Maintainability review uses evidence of maintenance cost rather than arbitrary file-size limits. The interactive review canvas was omitted because its required renderer, styles, and template were absent. Chat-derived preference extraction was omitted because transcript access, privacy, evidence quality, and ownership of generated guidance need a separate design.
 
 ## The cabinet of @davidsneighbour's skills
 

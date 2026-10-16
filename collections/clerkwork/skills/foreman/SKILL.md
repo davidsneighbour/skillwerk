@@ -2,10 +2,10 @@
 id: foreman
 name: foreman
 title: Foreman
-description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman identifies the job and hands it off; it does not duplicate the target skill's work.
-argument-hint: "<overview|packages|agent|repository|project|git|cspell|spelling|audit|issues|status|resume> [action|target]"
+description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman routes specialist jobs and applies bundled procedures for CI diagnosis, pull request workflows, conflict resolution, verification, and maintainability review.
+argument-hint: "<overview|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume> [action|target]"
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 ## Shared vocabulary
@@ -16,9 +16,9 @@ Use this skill whenever the user addresses `foreman`, wants to see what Clerkwor
 
 ## Overview
 
-A bare `foreman`, `foreman overview`, `foreman help`, or equivalent request must print the complete catalogue below, grouped by category. Include each skill name and a short description. Do not require the user to remember a category or exact skill name before showing the overview.
+A bare `foreman`, `foreman overview`, `foreman help`, or equivalent request must print the complete catalogue below, grouped by category. Include each skill name and a short description, followed by the procedure requests and descriptions below. Do not require the user to remember a category or exact skill name before showing the overview.
 
-If the user supplies a broad category or topic without a concrete action, show only the matching category and its available skills. Examples include `foreman git`, `foreman github`, `foreman project`, `foreman agent`, and `foreman repository`.
+If the user supplies a broad category or topic without a concrete action, show only the matching category and its available skills and procedures. Examples include `foreman git`, `foreman github`, `foreman project`, `foreman agent`, and `foreman repository`.
 
 ## Catalogue
 
@@ -40,19 +40,42 @@ If the user supplies a broad category or topic without a concrete action, show o
 * `project-task-triage` — sync TODO.md, GitHub Issues, and PROJECT.md.
 * `resume-interrupted-work` — resume or resolve work recorded in RESUME.md before unrelated work starts.
 
+### Repository governance
+
+* `behaviour-spec` — create, review, and generate tests from behaviour specifications.
+* `dnbhq-configs` — audit repository configuration and coordinate shared configuration maintenance.
+* `quality-gate-organisation` — organise repository quality-check commands.
+
 ### Git and GitHub
 
 * `commit` — write a Git commit message that follows the Conventional Commits specification.
 * `issues` — inspect, select, or work through project issues using Patrick's GitHub-first workflow.
 * `labels` — classify issues with Patrick's category:value label taxonomy.
 
+## Procedures
+
+Procedures are supporting workflows bundled with Foreman, not separate skills. Read only the procedure that matches a concrete request. For a broad topic request, show the matching skills and procedures without starting work.
+
+| Request | Procedure |
+| --- | --- |
+| `foreman ci`, `foreman fix ci`, or `foreman watch ci` | [Diagnose and monitor CI](procedures/ci.md); infer inspection, fixing, or monitoring from the wording |
+| `foreman conflicts` | [Resolve merge conflicts](procedures/merge-conflicts.md) |
+| `foreman pr comments` | [Summarise pull request feedback](procedures/pr-feedback.md) |
+| `foreman deliver` or `foreman new branch and pr` | [Deliver repository work](procedures/delivery.md); apply the target repository's branch policy |
+| `foreman pr tidy` | [Prepare a pull request for review](procedures/pr-reviewability.md) |
+| `foreman verify <claim>` | [Verify a claim](procedures/verification.md) |
+| `foreman review maintainability` | [Review maintainability](procedures/maintainability-review.md) |
+
+These procedures rely on ordinary agent capabilities. They add decision rules and evidence requirements rather than Git tutorials. Repository instructions and the user's authorised scope govern all actions. A procedure does not grant permission to commit, push, publish, merge, or rewrite history.
+
 ## Routing
 
 1. If the user requests an overview, help, a list of skills, or asks what Clerkwork can do, show the catalogue instead of asking a clarifying question.
-2. Treat `foreman packages` as a concrete complete maintenance request and route it directly to `dependency-maintenance`. Otherwise, if the user gives only a category or topic, show that category and its available jobs.
-3. If the request clearly matches one skill, hand off directly to that skill.
+2. Treat `foreman packages` as a concrete complete maintenance request and route it directly to `dependency-maintenance`. Otherwise, if the user gives only a category or topic, show that category and its available jobs, including relevant procedures.
+3. If the request clearly matches one specialist skill, hand off directly to that skill. Prefer its established workflow over a generic procedure.
 4. If the category is known but multiple actions remain plausible, list the relevant skills and ask the user to choose only when their intended job cannot be inferred.
-5. Do not perform the target skill's underlying work inside Foreman, and do not bypass its confirmation or safety rules.
+5. If a concrete request matches a bundled procedure, read it and apply it within Foreman. For broad Git or GitHub topics, include CI, conflict resolution, pull request feedback, delivery, and pull request preparation; for verification or review topics, show the relevant procedure.
+6. Do not perform the target skill's underlying work inside Foreman, and do not bypass its confirmation or safety rules.
 
 ## Common command routes
 
@@ -70,6 +93,9 @@ If the user supplies a broad category or topic without a concrete action, show o
 * `foreman issues labels` → `labels`
 * `foreman issues sync` → `project-task-triage`
 * `foreman commit` → `commit`
+* `foreman spec` → `behaviour-spec`
+* `foreman configs` → `dnbhq-configs`
+* `foreman quality gates` → `quality-gate-organisation`
 
 The `issues` skill infers inspect, select, specific-issue, next-issue, or continuous behaviour from the user's wording. Foreman does not need separate routing targets for those operations.
 
@@ -79,4 +105,4 @@ The `issues` skill infers inspect, select, specific-issue, next-issue, or contin
 * Prefer showing a small relevant catalogue over asking the user to remember exact names.
 * Keep skill names flat; categories never become part of the public invocation name.
 * Never invent a skill that is not in the catalogue.
-* If no skill fits, say so rather than forcing the request into the nearest category.
+* If neither a skill nor a procedure fits, say so rather than forcing the request into the nearest category.

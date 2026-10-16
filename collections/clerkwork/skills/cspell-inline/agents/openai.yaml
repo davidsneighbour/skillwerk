@@ -1,0 +1,4 @@
+interface:
+  display_name: "CSpell inline settings"
+  short_description: "Apply file-local CSpell directives."
+  default_prompt: "Use $cspell-inline to apply the narrowest supported in-document spelling directive."

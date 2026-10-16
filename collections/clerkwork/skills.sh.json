@@ -16,6 +16,7 @@
       "title": "Repository Maintenance",
       "description": "Skills for keeping dependencies, Node versions, and vulnerabilities current.",
       "skills": [
+        "cspell-inline",
         "dependency-maintenance",
         "manage-node-version-policy",
         "osv-scan"
