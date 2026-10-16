@@ -5,7 +5,7 @@ title: Clerkwork agent alignment
 type: skill
 description: Create or update repository agent instruction files only when the user asks to onboard Clerkwork, asks for agent alignment, or explicitly names agent-align. Always ask for confirmation before changing files.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 ## Shared vocabulary
@@ -183,6 +183,8 @@ docs/
 ```
 
 Prefer explicit repository conventions over assumptions.
+
+During onboarding or when repository policy is incomplete, read the [repository onboarding checklist](references/onboarding-checklist.md). Use it to inspect validation commands, protected files, delivery policy, deployment providers, project conventions, and working records. Derive answers from repository evidence before asking the user, and add only useful project-specific rules to the canonical hierarchy. The checklist is supporting material bundled with this skill, not an additional instruction authority. When onboarding establishes an active Netlify deployment, follow its provider-reference instructions to install the bundled links and a task trigger without running provider setup.
 
 ## Partnership with agent instruction audit
 
