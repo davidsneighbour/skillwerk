@@ -614,12 +614,17 @@ or the posted-log dedup checks described above. Only start this flow when the
 user explicitly names Twitter or X, for example "post this to twitter" or
 "post to x" — never offer it as part of the default network list.
 
-Prerequisite: `resources/post-twitter-intent.ts` needs the `twitter-text`
-package to validate message length with X's weighted-character algorithm. If
-it is not already installed in the current project, run
-`npm install --save-dev twitter-text` before step 2 below; otherwise step 2
-exits with a one-line message asking for the same install rather than
-proceeding.
+Prerequisites: `resources/post-twitter-intent.ts` needs two npm packages in the current project:
+
+* `twitter-text` validates message length with X's weighted-character algorithm. Without it, step 2 exits with a one-line message that asks for `npm install --save-dev twitter-text`.
+* `smol-toml` is loaded through the shared Posthaste config loader that the script imports. Without it, step 2 fails with a raw `ERR_MODULE_NOT_FOUND` stack trace for `smol-toml`, not with an install hint.
+
+Before step 2, check whether both packages exist in the current project's `node_modules`. If one is missing, do not install it yourself. Give the user the commands for the missing packages, and wait until they confirm that the install is done:
+
+```bash
+npm install -D smol-toml
+npm install -D twitter-text
+```
 
 1. Check whether the existing draft (`<slug>.md`) already fits in 280
    characters including the URL and hashtags. If it does not, write a short
