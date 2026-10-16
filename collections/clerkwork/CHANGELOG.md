@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.4.0...clerkwork%2Fv2.5.0) (2026-10-16)
+
+### Feat
+
+* **agent-align:** add repository onboarding checklist ([0af1b3f](https://github.com/davidsneighbour/skillwerk/commit/0af1b3fc2181aaf635196b9d16a8c0a9cdbcffea)), closes [#37](https://github.com/davidsneighbour/skillwerk/issues/37)
+
 ## [2.4.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.3.0...clerkwork%2Fv2.4.0) (2026-10-16)
 
 ### Feat
