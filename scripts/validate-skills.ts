@@ -8,17 +8,64 @@
 //   - agents/openai.yaml exists and has valid OpenAI UI metadata
 //   - skills/ and skills.sh.json entries are 1:1
 //   - skills/ and the Claude marketplace skill paths are 1:1
+//
+// And against the content checks carried over from the former skill-check
+// project:
+//
+//   - the SKILL.md body is not empty, and stays within the spec's 500-line
+//     recommendation (a warning, not a failure)
+//   - relative links resolve and do not escape the collection
+//   - no HTML comments except tooling directives, which could hide
+//     instructions from a reviewer
+//   - no dangerous shell patterns, policy-bypass language, or hard-coded
+//     home directories
 
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 
 const NAME_MAX = 64;
 const DESCRIPTION_MAX = 1024;
+const BODY_LINES_RECOMMENDED_MAX = 500;
 const OPENAI_SHORT_DESCRIPTION_MIN = 25;
 const OPENAI_SHORT_DESCRIPTION_MAX = 64;
 // Lowercase alphanumerics in hyphen-separated groups: no leading, trailing or
 // doubled hyphen, which is every rule the spec puts on `name` bar its length.
 const NAME_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
+// Comments that only configure tooling. Any other comment is invisible in
+// rendered Markdown but still read by the agent.
+const TOOLING_COMMENT_PATTERN =
+  /^<!--\s*(?:cspell|spell-checker|markdownlint|prettier-ignore|biome-ignore)\b/i;
+
+// Each pattern is checked per line, including code blocks, because a skill's
+// commands are usually there. They stay narrow so that no exemption list is
+// needed.
+const DANGEROUS_SHELL_PATTERNS: Array<[RegExp, string]> = [
+  [
+    /\b(?:curl|wget)\b[^\n|;&]*\|\s*(?:sudo\s+)?(?:bash|zsh|sh)\b/,
+    "pipes a download into a shell",
+  ],
+  [/\bchmod\s+(?:-R\s+)?0?777\b/, "makes files world-writable"],
+  [
+    /\brm\s+-(?:rf|fr)\s+["']?(?:\/\*?|~\/?|\$\{?HOME\}?\/?|\.{1,2}\/?|\*)["']?(?=$|[\s;&|)`])/,
+    "deletes the root, home, or working directory recursively",
+  ],
+  [/-ExecutionPolicy\s+Bypass\b/i, "bypasses the PowerShell execution policy"],
+];
+
+const POLICY_BYPASS_PATTERNS: RegExp[] = [
+  /\bignore (?:all )?(?:previous|prior|earlier|system|developer) instructions\b/i,
+  /\b(?:bypass|disable) (?:safety|security|policy|guardrails|restrictions|filters)\b/i,
+  /\bjailbreak/i,
+  /\bdo anything now\b/i,
+  /\bdo not reveal (?:this|these) instructions?\b/i,
+];
+
+const HOME_PATH_PATTERN =
+  /(?:\/home\/|\/Users\/|C:\\Users\\)(?!<|\{|\$|user\b|username\b|you\b|runner\b)[A-Za-z0-9._-]+/;
+
+const MARKDOWN_LINK_PATTERN =
+  /!?\[[^\]\n]*\]\(\s*<?([^)\s>]+)>?(?:\s+["'(][^)]*)?\)|^[ \t]{0,3}\[[^\]\n]+\]:[ \t]*<?(\S+?)>?(?:\s|$)/gm;
 
 type Frontmatter = {
   description?: string;
@@ -65,6 +112,10 @@ const fail = (where: string, message: string): void => {
   errors.push(`${where}: ${message}`);
 };
 
+const warnings: string[] = [];
+const warn = (where: string, message: string): void => {
+  warnings.push(`${where}: ${message}`);
+};
 // Enough YAML for two quoted-or-plain scalars, which saves a dependency.
 const frontmatterOf = (source: string): Frontmatter | null => {
   const match = /^---\n(.*?)\n---(?:\n|$)/s.exec(source);
@@ -85,6 +136,116 @@ const frontmatterOf = (source: string): Frontmatter | null => {
     fields[key] = quoted ? (quoted[1] ?? quoted[2] ?? "") : value;
   }
   return fields;
+};
+
+// The body and the line it starts on, so findings report SKILL.md line numbers.
+const bodyOf = (source: string): { body: string; firstLine: number } => {
+  const match = /^---\n.*?\n---(?:\n|$)/s.exec(source);
+  const frontmatter = match?.[0] ?? "";
+  return {
+    body: source.slice(frontmatter.length),
+    firstLine: frontmatter.split("\n").length,
+  };
+};
+
+// Blanks fenced code blocks and inline code without changing line numbers or
+// offsets, so example links and comments in code are not checked as Markdown.
+const withoutCode = (markdown: string): string => {
+  let fence: string | null = null;
+  const lines = markdown.split("\n").map((line) => {
+    const marker = /^\s{0,3}(`{3,}|~{3,})/.exec(line)?.[1];
+    if (fence) {
+      if (marker?.startsWith(fence)) fence = null;
+      return "";
+    }
+    if (marker) {
+      fence = marker;
+      return "";
+    }
+    return line;
+  });
+  return lines
+    .join("\n")
+    .replace(/(`+)[^`\n][\s\S]*?\1/g, (code) => code.replace(/[^\n]/g, " "));
+};
+
+const lineAt = (text: string, offset: number): number =>
+  text.slice(0, offset).split("\n").length;
+
+const validateContent = (
+  path: string,
+  source: string,
+  collectionRoot: string,
+): void => {
+  const { body, firstLine } = bodyOf(source);
+  const where = (bodyLine: number): string =>
+    `${path}:${firstLine + bodyLine - 1}`;
+
+  if (!body.trim()) {
+    fail(path, "body is empty; add the instructions after the front matter");
+    return;
+  }
+
+  const lineCount = source.trimEnd().split("\n").length;
+  if (lineCount > BODY_LINES_RECOMMENDED_MAX) {
+    warn(
+      path,
+      `${lineCount} lines (spec recommends under ${BODY_LINES_RECOMMENDED_MAX}); ` +
+        "move reference material into linked files",
+    );
+  }
+
+  for (const [index, line] of source.split("\n").entries()) {
+    const at = `${path}:${index + 1}`;
+    for (const [pattern, reason] of DANGEROUS_SHELL_PATTERNS) {
+      if (pattern.test(line)) fail(at, `shell command ${reason}`);
+    }
+    if (POLICY_BYPASS_PATTERNS.some((pattern) => pattern.test(line))) {
+      fail(at, "language that bypasses higher-priority instructions or safety");
+    }
+    const home = HOME_PATH_PATTERN.exec(line);
+    if (home) {
+      fail(at, `hard-coded home directory \`${home[0]}\`; use ~ or a variable`);
+    }
+  }
+
+  const prose = withoutCode(body);
+
+  for (const comment of prose.matchAll(/<!--[\s\S]*?-->/g)) {
+    if (TOOLING_COMMENT_PATTERN.test(comment[0])) continue;
+    fail(
+      where(lineAt(prose, comment.index)),
+      "HTML comment hides text from reviewers; make it visible or remove it",
+    );
+  }
+
+  const skillDirectory = dirname(path);
+  for (const link of prose.matchAll(MARKDOWN_LINK_PATTERN)) {
+    const target = link[1] ?? link[2];
+    if (
+      !target ||
+      target.startsWith("#") ||
+      /^[a-z][a-z0-9+.-]*:/i.test(target)
+    )
+      continue;
+
+    let file: string;
+    try {
+      file = decodeURIComponent(target.split(/[?#]/)[0] ?? "");
+    } catch {
+      file = target;
+    }
+    if (!file) continue;
+
+    const at = where(lineAt(prose, link.index));
+    const resolved = resolve(skillDirectory, file);
+    const fromCollection = relative(resolve(collectionRoot), resolved);
+    if (fromCollection.startsWith("..") || isAbsolute(fromCollection)) {
+      fail(at, `link \`${target}\` points outside the collection`);
+    } else if (!existsSync(resolved)) {
+      fail(at, `link \`${target}\` points to a missing file`);
+    }
+  }
 };
 
 const openAiMetadataOf = (
@@ -297,7 +458,8 @@ for (const slug of slugs) {
     continue;
   }
 
-  const frontmatter = frontmatterOf(readFileSync(path, "utf8"));
+  const source = readFileSync(path, "utf8");
+  const frontmatter = frontmatterOf(source);
   if (!frontmatter) {
     fail(path, "missing YAML front matter (--- name / description ---)");
     continue;
@@ -327,6 +489,8 @@ for (const slug of slugs) {
       `\`description\` is ${description.length} characters (max ${DESCRIPTION_MAX})`,
     );
   }
+
+  validateContent(path, source, collectionRoot);
 
   const openAiPath = join(
     collectionRoot,
@@ -459,6 +623,12 @@ if (claudeMarketplace) {
       validateListedSlugs(CLAUDE_MARKETPLACE, listed, "Claude marketplace");
     }
   }
+}
+
+if (warnings.length > 0) {
+  console.warn(`! ${collectionRoot}: ${warnings.length} warning(s):\n`);
+  for (const warning of warnings) console.warn(`  ${warning}`);
+  console.warn("");
 }
 
 if (errors.length > 0) {
