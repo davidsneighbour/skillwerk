@@ -146,3 +146,19 @@ test("Git comparison covers committed, staged, unstaged, and untracked skill cha
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+test("report indicators retain text labels for every review state", () => {
+  const config = validateRegister(register(), skills, "2026-01-31");
+  const report = markdownReport(
+    reviewRows(config, skills, "2026-01-31"),
+    "2026-01-31",
+  );
+  assert.match(report, /🔴 requires review/);
+  assert.match(report, /🔴 overdue/);
+  assert.match(report, /🟢 current/);
+  const soon = markdownReport(
+    reviewRows(config, ["apparatus/example"], "2026-02-23"),
+    "2026-02-23",
+  );
+  assert.match(soon, /🟡 due soon/);
+});

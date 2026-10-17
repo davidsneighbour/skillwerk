@@ -197,6 +197,13 @@ export function changedSinceReview(
       ),
   );
 }
+const statusIndicators: Record<ReviewRow["status"], string> = {
+  "requires review": "🔴",
+  overdue: "🔴",
+  "due soon": "🟡",
+  current: "🟢",
+};
+
 export function markdownReport(rows: ReviewRow[], today: string): string {
   const counts = ["requires review", "overdue", "due soon", "current"]
     .map(
@@ -213,7 +220,7 @@ export function markdownReport(rows: ReviewRow[], today: string): string {
     "| --- | --- | --- | --- |",
     ...rows.map(
       (row) =>
-        `| ${row.skill} | ${row.status} | ${row.due ?? "-"} | ${row.changed === null ? "-" : row.changed ? "yes" : "no"} |`,
+        `| ${row.skill} | ${statusIndicators[row.status]} ${row.status} | ${row.due ?? "-"} | ${row.changed === null ? "-" : row.changed ? "yes" : "no"} |`,
     ),
     "",
   ].join("\n");

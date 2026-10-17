@@ -15,6 +15,8 @@ The default interval is 60 calendar days, with a seven-day warning window. A rev
 
 The weekly [Skill reviews workflow](../.github/workflows/skill-reviews.yml) runs on Mondays at 03:17 UTC (10:17 in Thailand), and can also be started manually. It writes the report to the job summary and emits one grouped warning. Review age does not fail the command or block commits. Invalid records fail validation, including in `npm run check`. The workflow does not create issues or send messages; warnings are visible in GitHub Actions.
 
+The report uses 🔴 for **requires review** and **overdue**, 🟡 for **due soon**, and 🟢 for **current**. Text labels remain visible alongside the colours.
+
 ## Configure intervals
 
 Edit `default_interval_days` or `due_soon_days` in the register. Set an optional collection override in `collections`, or a skill override in `skills`. The skill override takes precedence over the collection override, which takes precedence over the default. Intervals must be integers from 1 to 36500 days; the warning window also allows zero.
