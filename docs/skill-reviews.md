@@ -80,7 +80,7 @@ npm run validate:set -- fettle/fettle-inspect --evidence "Reviewed the scenarios
 
 Running this command means that you accept the manual review. An assistant may run it only when you explicitly authorise acceptance of that reviewed skill; an instruction to implement or test this tooling is not acceptance of any skill review.
 
-`reviewed_commit` remains the latest existing commit. The optional `reviewed_content_hash` field records a SHA-256 fingerprint of Git's staged paths, file modes, and blob identities for the whole skill directory. This identifies the exact reviewed content before its commit exists, without a circular requirement to know the future commit SHA. Reports use this fingerprint when present, and use the commit comparison for older records. Fingerprints do not include ignored or scratch files.
+`reviewed_commit` remains the latest existing commit. The optional `reviewed_content_hash` field records a SHA-256 fingerprint of Git's staged paths, file modes, and blob identities for the whole skill directory. This identifies the exact reviewed content before its commit exists, without a circular requirement to know the future commit SHA. Reports use this fingerprint when present, and use the commit comparison for older records. Fingerprints include all staged files in the skill, including tracked files matched by ignore rules. Untracked ignored files and scratch files are excluded.
 
 ## Commit checks
 
