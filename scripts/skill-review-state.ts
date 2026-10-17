@@ -204,17 +204,20 @@ const statusIndicators: Record<ReviewRow["status"], string> = {
   current: "🟢",
 };
 
-export function markdownReport(rows: ReviewRow[], today: string): string {
-  const counts = ["requires review", "overdue", "due soon", "current"]
+function reviewSummary(rows: ReviewRow[]): string {
+  return ["requires review", "overdue", "due soon", "current"]
     .map(
       (status) =>
         `${rows.filter((row) => row.status === status).length} ${status}`,
     )
     .join(", ");
+}
+
+export function markdownReport(rows: ReviewRow[], today: string): string {
   return [
     `# Skill reviews: ${today}`,
     "",
-    `${counts}. Review age is advisory; human acceptance is required to renew a review.`,
+    `${reviewSummary(rows)}. Review age is advisory; human acceptance is required to renew a review.`,
     "",
     "| Skill | Review status | Due (UTC) | Changed since review |",
     "| --- | --- | --- | --- |",
@@ -222,6 +225,43 @@ export function markdownReport(rows: ReviewRow[], today: string): string {
       (row) =>
         `| ${row.skill} | ${statusIndicators[row.status]} ${row.status} | ${row.due ?? "-"} | ${row.changed === null ? "-" : row.changed ? "yes" : "no"} |`,
     ),
+    "",
+  ].join("\n");
+}
+
+export function terminalReport(rows: ReviewRow[], today: string): string {
+  const cells = [
+    ["Skill", "Review status", "Due (UTC)", "Changed"],
+    ...rows.map((row) => [
+      row.skill,
+      `${statusIndicators[row.status]} ${row.status}`,
+      row.due ?? "-",
+      row.changed === null ? "-" : row.changed ? "yes" : "no",
+    ]),
+  ];
+  // The report uses ASCII text and circle emoji. Each circle is two UTF-16
+  // code units and occupies two terminal columns, so padEnd keeps alignment.
+  const widths =
+    cells[0]?.map((_, column) =>
+      Math.max(...cells.map((row) => row[column]?.length ?? 0)),
+    ) ?? [];
+  const rule = (left: string, middle: string, right: string) =>
+    left + widths.map((width) => "─".repeat(width + 2)).join(middle) + right;
+  const line = (row: string[]) =>
+    `│ ${row.map((cell, column) => cell.padEnd(widths[column] ?? 0)).join(" │ ")} │`;
+  return [
+    `Skill reviews: ${today}`,
+    "",
+    reviewSummary(rows),
+    "",
+    rule("┌", "┬", "┐"),
+    line(cells[0] ?? []),
+    rule("├", "┼", "┤"),
+    ...cells.slice(1).map(line),
+    rule("└", "┴", "┘"),
+    "",
+    "Changed: skill directory changed since its reviewed commit; - means no review.",
+    "Review age is advisory; human acceptance is required to renew a review.",
     "",
   ].join("\n");
 }

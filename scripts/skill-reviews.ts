@@ -5,6 +5,7 @@ import {
   discoverSkills,
   markdownReport,
   reviewRows,
+  terminalReport,
   validateRegister,
 } from "./skill-review-state.ts";
 
@@ -12,12 +13,15 @@ try {
   const args = process.argv.slice(2);
   if (args.includes("--help")) {
     console.log(
-      "Usage: node scripts/skill-reviews.ts [--validate | --github]\nReport manual skill reviews due. Age warnings never fail; invalid records do.\n--validate  Validate records and Git baselines only\n--github    Add a workflow summary and grouped warning",
+      "Usage: node scripts/skill-reviews.ts [--markdown] [--github] | --validate\nReport manual skill reviews due. Age warnings never fail; invalid records do.\nDefault: formatted terminal table\n--markdown  Print Markdown instead\n--validate  Validate records and Git baselines only\n--github    Add a workflow summary and grouped warning",
     );
   } else {
     if (
-      args.length > 1 ||
-      args.some((arg) => !["--validate", "--github"].includes(arg))
+      new Set(args).size !== args.length ||
+      (args.includes("--validate") && args.length > 1) ||
+      args.some(
+        (arg) => !["--validate", "--github", "--markdown"].includes(arg),
+      )
     )
       throw new Error("Unknown arguments; use --help");
     const root = fileURLToPath(new URL("../", import.meta.url));
@@ -44,7 +48,9 @@ try {
       console.log(`Validated review register for ${skills.length} skills.`);
     else {
       const report = markdownReport(rows, today);
-      console.log(report);
+      console.log(
+        args.includes("--markdown") ? report : terminalReport(rows, today),
+      );
       if (args.includes("--github")) {
         if (process.env.GITHUB_STEP_SUMMARY)
           appendFileSync(process.env.GITHUB_STEP_SUMMARY, report);

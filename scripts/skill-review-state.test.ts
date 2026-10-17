@@ -1,15 +1,23 @@
 // cspell:words gpgsign
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import {
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
+import { fileURLToPath } from "node:url";
 import {
   changedSinceReview,
   discoverSkills,
   markdownReport,
   reviewRows,
+  terminalReport,
   validateRegister,
 } from "./skill-review-state.ts";
 
@@ -161,4 +169,49 @@ test("report indicators retain text labels for every review state", () => {
     "2026-02-23",
   );
   assert.match(soon, /🟡 due soon/);
+});
+
+test("terminal table aligns columns, retains indicators, and handles an empty queue", () => {
+  const config = validateRegister(register(), skills, "2026-01-31");
+  const report = terminalReport(
+    reviewRows(config, skills, "2026-01-31"),
+    "2026-01-31",
+  );
+  const lines = report.split("\n").filter((line) => /^[│┌├└]/u.test(line));
+  assert.equal(new Set(lines.map((line) => line.length)).size, 1);
+  assert.match(report, /🔴 requires review/);
+  assert.match(report, /🟢 current/);
+  assert.doesNotMatch(report, /\| ---/);
+  assert.match(terminalReport([], "2026-01-31"), /0 current/);
+});
+
+test("CLI selects terminal or Markdown output independently of GitHub summaries", () => {
+  const directory = mkdtempSync(join(tmpdir(), "skillwerk-review-output-"));
+  const summary = join(directory, "summary.md");
+  const run = (...args: string[]) =>
+    execFileSync(
+      process.execPath,
+      [fileURLToPath(new URL("./skill-reviews.ts", import.meta.url)), ...args],
+      {
+        encoding: "utf8",
+        env: { ...process.env, GITHUB_STEP_SUMMARY: summary },
+        stdio: ["ignore", "pipe", "pipe"],
+      },
+    );
+  try {
+    assert.match(run(), /┌─/);
+    const markdown = run("--markdown");
+    assert.match(markdown, /^# Skill reviews:/);
+    assert.doesNotMatch(markdown, /┌─/);
+    assert.match(run("--github"), /┌─/);
+    assert.equal(readFileSync(summary, "utf8"), markdown.slice(0, -1));
+    writeFileSync(summary, "");
+    assert.match(run("--github", "--markdown"), /^# Skill reviews:/);
+    assert.equal(readFileSync(summary, "utf8"), markdown.slice(0, -1));
+    assert.throws(() => run("--validate", "--markdown"));
+    assert.throws(() => run("--markdown", "--markdown"));
+    assert.throws(() => run("--unknown"));
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
 });

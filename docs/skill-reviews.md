@@ -6,8 +6,11 @@ The repository owns [the review register](../skill-reviews.json), reporting, and
 
 ```sh
 npm run reviews
+npm run reviews -- --markdown
 npm run validate:reviews
 ```
+
+The default output is a terminal table. Use `--markdown` for a Markdown table, or `npm run --silent reviews -- --markdown > reviews.md` to save it without the npm command banner. The `--github` option adds a Markdown workflow summary and grouped warning independently of the selected terminal output format. It can be combined with `--markdown`; `--validate` must be used alone.
 
 The report discovers every `collections/<collection>/skills/<skill>/SKILL.md` in the configured collections. A skill without a review record is shown as **requires review**. The initial register contains no accepted reviews, so all existing skills require review. Newly added skills enter this state automatically. Do not invent an initial review date from a file timestamp, commit date, or successful lint run.
 
