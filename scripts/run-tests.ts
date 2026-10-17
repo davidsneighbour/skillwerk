@@ -4,7 +4,7 @@ import { selectedCollection } from "./collections.ts";
 
 const collection = selectedCollection(process.argv.slice(2));
 const root = collection ? `collections/${collection}` : "collections";
-const files = await fg(`${root}/**/*.test.ts`, {
+const files = await fg([`${root}/**/*.test.ts`, "scripts/**/*.test.ts"], {
   ignore: ["**/scratch/**", "**/node_modules/**"],
 });
 if (files.length > 0) {

@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "default_interval_days": 60,
+  "due_soon_days": 7,
+  "collections": {},
+  "skills": {}
+}
