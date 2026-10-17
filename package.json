@@ -33,7 +33,11 @@
     "test:archive": "node scripts/test-archive.ts",
     "synchwork:meld": "node scripts/synchwork-meld.ts",
     "reviews": "node scripts/skill-reviews.ts",
-    "validate:reviews": "node scripts/skill-reviews.ts --validate"
+    "validate:reviews": "node scripts/skill-reviews.ts --validate",
+    "validate:set": "node scripts/set-skill-review.ts",
+    "validate:staged": "node scripts/check-staged-reviews.ts",
+    "lint:staged": "lint-staged",
+    "prepare": "simple-git-hooks"
   },
   "workspaces": [
     "collections/*"
@@ -51,9 +55,11 @@
     "@types/yargs": "17.0.35",
     "cspell": "10.3.6",
     "fast-glob": "3.3.3",
+    "lint-staged": "17.6.0",
     "playwright": "1.64.0",
     "release-it": "21.0.3",
     "sharp": "0.35.5",
+    "simple-git-hooks": "2.14.0",
     "skills": "1.7.2",
     "smol-toml": "1.9.1",
     "twitter-text": "3.1.0",
@@ -71,5 +77,9 @@
       "basic-ftp": "^6.2.1"
     },
     "katex": "0.18.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run --silent validate:staged && npm run --silent lint:staged",
+    "preserveUnused": true
   }
 }

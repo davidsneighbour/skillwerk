@@ -1,12 +1,17 @@
-import { execFileSync } from "node:child_process";
 import fg from "fast-glob";
 import { collections } from "./collections.ts";
+import {
+  hasUnstagedSkillChanges,
+  git as runGit,
+  stagedFingerprint,
+} from "./skill-review-git.ts";
 
 const day = 86_400_000;
 export type Review = {
   reviewed_on: string;
   reviewed_by: string;
   reviewed_commit: string;
+  reviewed_content_hash?: string;
   evidence: string;
 };
 export type Register = {
@@ -105,7 +110,19 @@ export function validateRegister(
     if (config.interval_days !== undefined) integer(config.interval_days, 1);
     if (config.review === undefined) continue;
     const review = object(config.review);
-    keys(review, ["reviewed_on", "reviewed_by", "reviewed_commit", "evidence"]);
+    keys(review, [
+      "reviewed_on",
+      "reviewed_by",
+      "reviewed_commit",
+      "reviewed_content_hash",
+      "evidence",
+    ]);
+    if (
+      review.reviewed_content_hash !== undefined &&
+      (typeof review.reviewed_content_hash !== "string" ||
+        !/^[a-f0-9]{64}$/.test(review.reviewed_content_hash))
+    )
+      throw new Error(`Invalid review content fingerprint: ${name}`);
     if (date(review.reviewed_on) > now)
       throw new Error(`Future review date: ${name}`);
     for (const key of ["reviewed_by", "evidence"])
@@ -172,15 +189,16 @@ export function changedSinceReview(
   root: string,
   skill: string,
   commit: string,
+  contentHash?: string,
 ): boolean {
-  const git = (...args: string[]): string =>
-    execFileSync("git", args, {
-      cwd: root,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"],
-    }).trim();
+  const git = (...args: string[]): string => runGit(root, ...args).trim();
   // An unavailable baseline is an error, never evidence of an unchanged skill.
   git("merge-base", "--is-ancestor", commit, "HEAD");
+  if (contentHash)
+    return (
+      stagedFingerprint(root, skill) !== contentHash ||
+      hasUnstagedSkillChanges(root, skill)
+    );
   const [collection, name] = skill.split("/");
   const path = `collections/${collection}/skills/${name}`;
   if (!git("ls-tree", commit, "--", `${path}/SKILL.md`))

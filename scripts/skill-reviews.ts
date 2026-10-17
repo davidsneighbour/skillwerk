@@ -42,6 +42,7 @@ try {
           root,
           row.skill,
           review.reviewed_commit,
+          review.reviewed_content_hash,
         );
     }
     if (args.includes("--validate"))
