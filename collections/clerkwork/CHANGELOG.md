@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.5.0...clerkwork%2Fv2.6.0) (2026-10-17)
+
+### Feat
+
+* **foreman:** add repository onboarding procedure ([fb88593](https://github.com/davidsneighbour/skillwerk/commit/fb88593aa86f2b8fa38015716a60f72bf4a64185)), closes [#57](https://github.com/davidsneighbour/skillwerk/issues/57)
+* **mcp-setup:** add curated server setup workflow ([ca4759f](https://github.com/davidsneighbour/skillwerk/commit/ca4759f1841612e9a1bf3afd00a69e668b139981)), closes [#58](https://github.com/davidsneighbour/skillwerk/issues/58)
+
 ## [2.5.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.4.0...clerkwork%2Fv2.5.0) (2026-10-16)
 
 ### Feat
