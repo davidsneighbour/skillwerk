@@ -1,0 +1,4 @@
+interface:
+  display_name: "MCP server setup"
+  short_description: "List, check, and configure curated MCP servers"
+  default_prompt: "Use $mcp-setup to list curated MCP servers and their detected setup status."

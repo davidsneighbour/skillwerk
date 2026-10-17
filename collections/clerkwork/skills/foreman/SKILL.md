@@ -3,7 +3,7 @@ id: foreman
 name: foreman
 title: Foreman
 description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman routes specialist jobs and applies bundled procedures for repository onboarding, CI diagnosis, pull request workflows, conflict resolution, verification, and maintainability review.
-argument-hint: "<overview|onboard|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume> [action|target]"
+argument-hint: "<overview|mcp|onboard|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume> [action|target]"
 metadata:
   version: "1.3.0"
 ---
@@ -25,6 +25,7 @@ If the user supplies a broad category or topic without a concrete action, show o
 ### Agent management
 
 * `agent-align` — create or repair repository agent entry-point files and alignment.
+* `mcp-setup` — list curated MCP servers, check configuration, or set up a selected server for a client and scope.
 * `agent-instructions-audit` — audit or optimise agent instruction architecture, scope, duplication, and context cost.
 
 ### Repository maintenance
@@ -72,7 +73,7 @@ These procedures rely on ordinary agent capabilities. They add decision rules an
 ## Routing
 
 1. If the user requests an overview, help, a list of skills, or asks what Clerkwork can do, show the catalogue instead of asking a clarifying question.
-2. Treat `foreman packages` as a concrete complete maintenance request and route it directly to `dependency-maintenance`. Otherwise, if the user gives only a category or topic, show that category and its available jobs, including relevant procedures.
+2. Route `foreman mcp` and its check or setup requests directly to `mcp-setup`; a bare MCP request lists servers without setup. Treat `foreman packages` as a concrete complete maintenance request and route it directly to `dependency-maintenance`. Otherwise, if the user gives only a category or topic, show that category and its available jobs, including relevant procedures.
 3. Route repository onboarding requests, including `foreman onboard` and `foreman onboard check`, to the onboarding procedure before specialist routing. If the request clearly matches one specialist skill, hand off directly to that skill. Prefer its established workflow over a generic procedure.
 4. If the category is known but multiple actions remain plausible, list the relevant skills and ask the user to choose only when their intended job cannot be inferred.
 5. If a concrete request matches a bundled procedure, read it and apply it within Foreman. For broad Git or GitHub topics, include CI, conflict resolution, pull request feedback, delivery, and pull request preparation; for verification or review topics, show the relevant procedure.
@@ -85,6 +86,7 @@ These procedures rely on ordinary agent capabilities. They add decision rules an
 * `foreman audit security` → `osv-scan`
 * `foreman audit node` → `manage-node-version-policy`
 * `foreman cspell`, `foreman spelling`, or `foreman spellcheck` → `cspell-inline`
+* `foreman mcp`, `foreman mcp check [server]`, or `foreman mcp setup <server>` → `mcp-setup` (catalogue, inspection, or selected-server setup, respectively)
 * `foreman agent align` → `agent-align`
 * `foreman agent instructions` → `agent-instructions-audit`
 * `foreman status` or `foreman report` → `project-state-report`

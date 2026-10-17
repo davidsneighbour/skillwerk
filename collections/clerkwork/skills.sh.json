@@ -10,7 +10,7 @@
     {
       "title": "Agent Management",
       "description": "Skills for aligning, auditing, and optimising repository agent instruction architecture.",
-      "skills": ["agent-align", "agent-instructions-audit"]
+      "skills": ["agent-align", "agent-instructions-audit", "mcp-setup"]
     },
     {
       "title": "Repository Maintenance",

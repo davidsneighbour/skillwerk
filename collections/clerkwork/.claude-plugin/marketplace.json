@@ -18,6 +18,7 @@
         "./skills/dnbhq-configs",
         "./skills/quality-gate-organisation",
         "./skills/agent-align",
+        "./skills/mcp-setup",
         "./skills/agent-instructions-audit",
         "./skills/commit",
         "./skills/cspell-inline",

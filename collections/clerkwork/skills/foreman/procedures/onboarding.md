@@ -18,6 +18,7 @@ Use existing specialist workflows rather than duplicating them. Read each availa
 
 * Use `agent-align` for canonical `AGENTS.md`, path-scoped instructions, and task-triggered references. An explicit onboarding request already supplies its alignment confirmation; do not ask again merely to repeat that authorisation. Use `agent-instructions-audit` for legacy instruction cleanup and context efficiency.
 * Use `project-task-triage` when the agreed workflow uses GitHub Issues with local task records. Preserve the established authority and tracking policy. Do not create empty records, rename a roadmap, or remove tracked files from the index merely to match a template.
+* Offer `mcp-setup` only when the user requests MCP integrations. Its catalogue and check modes are inspection-only; configure only explicitly selected servers. Do not recommend account-specific integrations during generic onboarding.
 * Use `quality-gate-organisation`, `dnbhq-configs`, or `manage-node-version-policy` only when the request includes the corresponding changes. Inspection does not authorise broad configuration maintenance.
 
 Skill storage and ignore rules are onboarding work outside `agent-align`'s instruction-only scope. Apply them only when included in the agreed setup:
