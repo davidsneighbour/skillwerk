@@ -9,6 +9,7 @@ Clerkwork is a collection of reusable AI skills reflecting Patrick's engineering
 * [AI skills for software engineering workflows](#ai-skills-for-software-engineering-workflows)
 * [Install](#install)
 * [Update](#update)
+* [Onboard a repository](#onboard-a-repository)
 * [Shared vocabulary](#shared-vocabulary)
 * [Skills](#skills)
 * [Procedures](#procedures)
@@ -31,6 +32,12 @@ npx skills add https://github.com/davidsneighbour/skillwerk/tree/main/collection
 ```
 
 Use `--global` when the skills should be available outside the current project.
+
+## Onboard a repository
+
+After installing, use `/foreman onboard check` to inspect repository readiness, or `/foreman onboard` to implement an agreed setup. Foreman checks existing instructions, skill storage, delivery rules, and task tracking before changing anything. It preserves existing work and reports unresolved choices.
+
+Onboarding is a bundled [Foreman procedure](skills/foreman/procedures/onboarding.md). `agent-align` owns instruction alignment, while other specialist skills own their respective jobs. Install those skills separately if needed; Foreman alone can inspect readiness and report missing capabilities. Onboarding does not impose branches, symlinks, ignored task files, or automatic publication on every repository.
 
 ## Shared vocabulary
 
@@ -82,6 +89,8 @@ Procedures live inside Foreman and are loaded only for the requested workflow. T
 
 | Request | Outcome |
 | --- | --- |
+| `foreman onboard` | Inspect and implement the agreed repository workflow. |
+| `foreman onboard check` | Report readiness and unresolved choices without changes. |
 | `foreman ci` | Inspect CI for the target pull request or branch. |
 | `foreman fix ci` | Diagnose and correct an actionable failure within the authorised scope. |
 | `foreman watch ci` | Monitor checks for the current head commit and report their result. |

@@ -10,6 +10,15 @@ Use this checklist to identify missing repository-specific guidance during align
 
 Keep `AGENTS.md` canonical. Do not introduce a competing repository-wide defaults file or a custom hierarchy that claims to override higher-level instructions.
 
+## Skill storage and tracking
+
+* Where do installed and local skills live, and which agent paths are directories or symlinks?
+* Does a skill lockfile exist, which installed directories does it describe, and which skills contain local changes?
+* Which skills can be restored from recorded sources, and which local skills need version control?
+* Do ignore rules preserve local skills and any intended symlinks without hiding shared agent instructions?
+
+Record the established policy. A lockfile entry alone does not prove that a directory is unmodified or reproducible. Do not prescribe installer commands without checking the installed tool's help. Skill installation, symlink replacement, and ignore-file changes are outside alignment's scope; report or route them through Foreman's onboarding procedure.
+
 ## Validation and completion
 
 * Which test, lint, type-check, build, and integration commands are actually defined?
@@ -28,6 +37,7 @@ Record verified commands and their scope. Do not invent missing commands, requir
 
 * Does the repository use direct commits or branches and pull requests, and what is the intended base?
 * What issue references, commit conventions, validation, and publication permissions apply?
+* Which existing issue labels, issue-per-topic rules, commit cadence, merge method, and unrelated-change rules are established?
 * Which deployment, migration, credential, and data-handling constraints change agent decisions?
 
 Distinguish delivery policy from authorisation for the current task. Do not require confirmation merely because an already authorised task touches a sensitive topic; identify the unresolved decision or additional action that needs approval.

@@ -2,8 +2,8 @@
 id: foreman
 name: foreman
 title: Foreman
-description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman routes specialist jobs and applies bundled procedures for CI diagnosis, pull request workflows, conflict resolution, verification, and maintainability review.
-argument-hint: "<overview|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume> [action|target]"
+description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman routes specialist jobs and applies bundled procedures for repository onboarding, CI diagnosis, pull request workflows, conflict resolution, verification, and maintainability review.
+argument-hint: "<overview|onboard|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume> [action|target]"
 metadata:
   version: "1.3.0"
 ---
@@ -58,6 +58,7 @@ Procedures are supporting workflows bundled with Foreman, not separate skills. R
 
 | Request | Procedure |
 | --- | --- |
+| `foreman onboard` or `foreman onboard check` | [Onboard a repository](procedures/onboarding.md); set up the agreed workflow or inspect readiness only |
 | `foreman ci`, `foreman fix ci`, or `foreman watch ci` | [Diagnose and monitor CI](procedures/ci.md); infer inspection, fixing, or monitoring from the wording |
 | `foreman conflicts` | [Resolve merge conflicts](procedures/merge-conflicts.md) |
 | `foreman pr comments` | [Summarise pull request feedback](procedures/pr-feedback.md) |
@@ -72,7 +73,7 @@ These procedures rely on ordinary agent capabilities. They add decision rules an
 
 1. If the user requests an overview, help, a list of skills, or asks what Clerkwork can do, show the catalogue instead of asking a clarifying question.
 2. Treat `foreman packages` as a concrete complete maintenance request and route it directly to `dependency-maintenance`. Otherwise, if the user gives only a category or topic, show that category and its available jobs, including relevant procedures.
-3. If the request clearly matches one specialist skill, hand off directly to that skill. Prefer its established workflow over a generic procedure.
+3. Route repository onboarding requests, including `foreman onboard` and `foreman onboard check`, to the onboarding procedure before specialist routing. If the request clearly matches one specialist skill, hand off directly to that skill. Prefer its established workflow over a generic procedure.
 4. If the category is known but multiple actions remain plausible, list the relevant skills and ask the user to choose only when their intended job cannot be inferred.
 5. If a concrete request matches a bundled procedure, read it and apply it within Foreman. For broad Git or GitHub topics, include CI, conflict resolution, pull request feedback, delivery, and pull request preparation; for verification or review topics, show the relevant procedure.
 6. Do not perform the target skill's underlying work inside Foreman, and do not bypass its confirmation or safety rules.
