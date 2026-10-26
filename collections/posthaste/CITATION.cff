@@ -5,12 +5,12 @@ authors:
     given-names: "Patrick"
     orcid: "https://orcid.org/0000-0001-6250-2135"
 title: "Posthaste"
-version: v2.1.2
-date-released: 2026-10-16
+version: v2.2.0
+date-released: 2026-10-26
 url: "https://github.com/davidsneighbour/posthaste"
 repository-code: "https://github.com/davidsneighbour/posthaste"
 license: "MIT"
-commit: 3ee283ff75bcebf0b83a1d3108adc40ceb09c8c9
+commit: e432a5b503609a084f0cf31a1b1bb265d82e0625
 keywords:
   - ai
   - skills

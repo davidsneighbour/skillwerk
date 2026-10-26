@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.1.2...posthaste%2Fv2.2.0) (2026-10-26)
+
+### Feat
+
+* **posthaste-structure:** add structured draft workflow ([dde1d22](https://github.com/davidsneighbour/skillwerk/commit/dde1d22e2b9806254d8f36dca3529e2e3bccaad2)), closes [#67](https://github.com/davidsneighbour/skillwerk/issues/67)
+
+### Refactor
+
+* **posthaste:** shorten subskill names ([717db95](https://github.com/davidsneighbour/skillwerk/commit/717db95424bb85e1492388f4e645d176a823dfda)), closes [#69](https://github.com/davidsneighbour/skillwerk/issues/69)
+
 ## [2.1.2](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.1.1...posthaste%2Fv2.1.2) (2026-10-16)
 
 ### Docs
