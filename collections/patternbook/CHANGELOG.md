@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/patternbook%2Fv2.1.0...patternbook%2Fv2.2.0) (2026-10-26)
+
+### Feat
+
+* **accessibility-review:** complete accessibility guidance ([3b826d5](https://github.com/davidsneighbour/skillwerk/commit/3b826d5037791e1198cb6350317684a57a820c9a)), closes [#74](https://github.com/davidsneighbour/skillwerk/issues/74)
+* **accessible-design:** extend verified accessibility guidance ([1b3b344](https://github.com/davidsneighbour/skillwerk/commit/1b3b344cda20c6fc183d3fc987234401fae01d58)), closes [#71](https://github.com/davidsneighbour/skillwerk/issues/71)
+* enforce semantic versions for individual skill commits ([9a98684](https://github.com/davidsneighbour/skillwerk/commit/9a9868491df41232d7ea6b010c3f3c39a8462c1e)), closes [#72](https://github.com/davidsneighbour/skillwerk/issues/72)
+
 ## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/patternbook%2Fv2.0.3...patternbook%2Fv2.1.0) (2026-10-16)
 
 ### Feat
