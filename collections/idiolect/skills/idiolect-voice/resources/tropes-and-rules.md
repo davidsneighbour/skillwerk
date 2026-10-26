@@ -1,6 +1,6 @@
 # Author voice tropes and rules
 
-This file is the companion checklist for the `posthaste-voice` skill. Use it during
+This file is the companion checklist for the `voice` skill. Use it during
 audit and self-audit passes. These patterns are warning signs, not absolute
 bans. One occurrence can be fine. A cluster usually means the prose has drifted
 away from the author's voice or has become weak, generic, or assistant-shaped.

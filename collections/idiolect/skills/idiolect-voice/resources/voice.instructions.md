@@ -11,7 +11,7 @@ references:
 These are mechanical, low-judgement copy rules. Apply them to any prose you
 write or edit, regardless of whether a dedicated writing task is in progress.
 For the deeper editorial work of matching the author's voice (tone, structure,
-first person, form-specific calibration), use the `posthaste-voice` skill
+first person, form-specific calibration), use the `voice` skill
 instead; these rules are the baseline it builds on.
 
 Use these rules as the final copy pass for every written file. They are stronger

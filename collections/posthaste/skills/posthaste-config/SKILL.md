@@ -106,7 +106,7 @@ For skill-specific settings that do not naturally belong to a shared section,
 use:
 
 ```toml
-[skills.posthaste-prepare-link]
+[skills.prepare-link]
 example_setting = "value"
 ```
 
@@ -141,7 +141,7 @@ the defaults object of the consuming skill. The runtime scripts do not yet accep
 an explicitly supplied config file; that layer applies only when an agent
 follows this skill's rules directly.
 
-`posthaste-prepare-link` treats a default network that is disabled by
+`prepare-link` treats a default network that is disabled by
 `[networks.<network>].enabled = false` as invalid configuration. This makes a
 contradictory configuration fail before publishing instead of silently narrowing
 the target set. The same rule applies to a network that is selected explicitly

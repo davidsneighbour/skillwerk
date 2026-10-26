@@ -17,9 +17,27 @@
       "review": {
         "reviewed_on": "2026-10-26",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "c4de8c108dc4608f818cc5d3d96a615f66183bfd",
-        "reviewed_content_hash": "f062ec68be15ed77ca967ad7f105b4f39887e4d02ffb0a7d1552b0dba90655ed",
-        "evidence": "User explicitly accepted the reviewed Posthaste router changes in this session on 2026-10-26. Adds draft-only routing to posthaste-structure. Repository checks and clean-room archive installation passed."
+        "reviewed_commit": "dde1d22e2b9806254d8f36dca3529e2e3bccaad2",
+        "reviewed_content_hash": "a12542e57069cf2a5b570652d793ac405d8da4c372b01bd6e849231b106b773f",
+        "evidence": "User explicitly approved the staged Posthaste skill renames and reference updates with \"commit and push\" on 2026-10-26. Full repository checks, 90 tests, and Posthaste archive installation passed."
+      }
+    },
+    "idiolect/idiolect-voice": {
+      "review": {
+        "reviewed_on": "2026-10-26",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "dde1d22e2b9806254d8f36dca3529e2e3bccaad2",
+        "reviewed_content_hash": "3654f802d80d4c591fb2f110c6b2d1b11be8c9f18d16c1187a4b862aef15f93e",
+        "evidence": "User explicitly approved the staged Posthaste skill renames and reference updates with \"commit and push\" on 2026-10-26. Full repository checks, 90 tests, and Posthaste archive installation passed."
+      }
+    },
+    "posthaste/posthaste-config": {
+      "review": {
+        "reviewed_on": "2026-10-26",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "dde1d22e2b9806254d8f36dca3529e2e3bccaad2",
+        "reviewed_content_hash": "6b777856ffe5a2f099cc501fa35a9ce888bbe5fb9c02e84ce46b18360314c632",
+        "evidence": "User explicitly approved the staged Posthaste skill renames and reference updates with \"commit and push\" on 2026-10-26. Full repository checks, 90 tests, and Posthaste archive installation passed."
       }
     }
   }

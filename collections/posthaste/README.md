@@ -48,7 +48,7 @@ Posthaste can use layered TOML configuration for persistent, non-secret defaults
 
 Configuration is applied over defaults owned by each skill. Project settings override global settings, explicitly supplied config files override project settings, environment-specific overrides such as `CROSSPOST_DOTENV` override those files where applicable, and explicit command, argument, or user-request values from the chat override configuration. The runtime scripts read the global and project files directly; an explicitly supplied config file is currently applied only by the agent, not by the scripts.
 
-Run `node skills/posthaste-prepare-link/resources/post-crosspost.ts --info` to see which files were found, the effective values, and where each value came from. The output shows environment variable names, never their values.
+Run `node skills/prepare-link/resources/post-crosspost.ts --info` to see which files were found, the effective values, and where each value came from. The output shows environment variable names, never their values.
 
 ```mermaid
 ---
@@ -104,7 +104,7 @@ Posthaste separates networks by how much setup and automation they can safely su
 
 ### Crosspost networks
 
-`posthaste-prepare-link` can publish confirmed posts through [`@humanwhocodes/crosspost`](https://github.com/humanwhocodes/crosspost) for these networks:
+`prepare-link` can publish confirmed posts through [`@humanwhocodes/crosspost`](https://github.com/humanwhocodes/crosspost) for these networks:
 
 * Mastodon: set `MASTODON_ACCESS_TOKEN` and `MASTODON_HOST`.
 * Bluesky: set `BLUESKY_HOST`, `BLUESKY_IDENTIFIER`, and `BLUESKY_PASSWORD`.
@@ -115,10 +115,10 @@ These are the easiest networks to enable because they use the shared Crosspost t
 
 ### X/Twitter manual posting
 
-X/Twitter is intentionally not part of automated posting. When the user asks to post to Twitter or X, use the prepared text and screenshot from `posthaste-prepare-link`, then run the manual intent helper:
+X/Twitter is intentionally not part of automated posting. When the user asks to post to Twitter or X, use the prepared text and screenshot from `prepare-link`, then run the manual intent helper:
 
 ```bash
-node skills/posthaste-prepare-link/resources/post-twitter-intent.ts \
+node skills/prepare-link/resources/post-twitter-intent.ts \
   --message-file ./message.txt \
   --url https://example.com/post \
   --open
@@ -130,28 +130,28 @@ Review the opened X/Twitter compose window, attach the screenshot manually if ne
 
 Reddit, Threads, and Tumblr use direct API integrations instead of Crosspost. Each one has a companion refresh-token skill with a small callback server or hosted callback page so OAuth tokens can be generated without printing secrets in chat.
 
-* Reddit uses `posthaste-reddit-refresh-token` to create a refresh token through a local loopback server. Posting needs either `REDDIT_ACCESS_TOKEN`, `REDDIT_USER_AGENT`, and `REDDIT_SUBREDDIT`, or `REDDIT_CLIENT_ID`, `REDDIT_CLIENT_SECRET`, `REDDIT_REFRESH_TOKEN`, `REDDIT_USER_AGENT`, and `REDDIT_SUBREDDIT`.
-* Threads uses `posthaste-threads-refresh-token` to create or refresh a long-lived access token. Posting needs `THREADS_ACCESS_TOKEN` and `THREADS_USER_ID`; app setup also uses `THREADS_APP_ID` and `THREADS_APP_SECRET`.
-* Tumblr uses `posthaste-tumblr-refresh-token` to create or refresh OAuth2 credentials. Posting needs `TUMBLR_ACCESS_TOKEN` and `TUMBLR_BLOG_IDENTIFIER`; app setup also uses `TUMBLR_CONSUMER_KEY`, `TUMBLR_CONSUMER_SECRET`, and often `TUMBLR_REFRESH_TOKEN`.
+* Reddit uses `reddit-refresh-token` to create a refresh token through a local loopback server. Posting needs either `REDDIT_ACCESS_TOKEN`, `REDDIT_USER_AGENT`, and `REDDIT_SUBREDDIT`, or `REDDIT_CLIENT_ID`, `REDDIT_CLIENT_SECRET`, `REDDIT_REFRESH_TOKEN`, `REDDIT_USER_AGENT`, and `REDDIT_SUBREDDIT`.
+* Threads uses `threads-refresh-token` to create or refresh a long-lived access token. Posting needs `THREADS_ACCESS_TOKEN` and `THREADS_USER_ID`; app setup also uses `THREADS_APP_ID` and `THREADS_APP_SECRET`.
+* Tumblr uses `tumblr-refresh-token` to create or refresh OAuth2 credentials. Posting needs `TUMBLR_ACCESS_TOKEN` and `TUMBLR_BLOG_IDENTIFIER`; app setup also uses `TUMBLR_CONSUMER_KEY`, `TUMBLR_CONSUMER_SECRET`, and often `TUMBLR_REFRESH_TOKEN`.
 
 After setting up any of these networks, verify what Posthaste can see:
 
 ```bash
-node skills/posthaste-prepare-link/resources/post-crosspost.ts --info
+node skills/prepare-link/resources/post-crosspost.ts --info
 ```
 
 ## Skills
 
 * `posthaste` routes the social publishing skill set.
-* `posthaste-structure` selects a post type, cleans up a supplied draft, and applies reusable layouts; experimental and draft-only.
+* `structure` selects a post type, cleans up a supplied draft, and applies reusable layouts; experimental and draft-only.
 * `posthaste-config` loads, validates, merges, and creates layered TOML configuration.
-* `posthaste-prepare-link` drafts and publishes confirmed social posts from URLs.
+* `prepare-link` drafts and publishes confirmed social posts from URLs.
 * `hashtags` generates hashtags from a URL or supplied text: 5 by default, a requested number, or all relevant tags in full mode, as plain tags or social-ready `#` hashtags. The `posthaste` router hands all hashtag requests to this skill.
-* `posthaste-unsplash` searches, previews, selects, and tracks Unsplash photos with required attribution.
-* `posthaste-voice` edits, rewrites, and reviews prose so it keeps the author's voice.
-* `posthaste-reddit-refresh-token` creates Reddit OAuth credentials for direct Reddit posting.
-* `posthaste-threads-refresh-token` creates or refreshes Threads API credentials.
-* `posthaste-tumblr-refresh-token` creates or refreshes Tumblr OAuth2 credentials.
+* `unsplash` searches, previews, selects, and tracks Unsplash photos with required attribution.
+* `voice` edits, rewrites, and reviews prose so it keeps the author's voice.
+* `reddit-refresh-token` creates Reddit OAuth credentials for direct Reddit posting.
+* `threads-refresh-token` creates or refreshes Threads API credentials.
+* `tumblr-refresh-token` creates or refreshes Tumblr OAuth2 credentials.
 
 ## The cabinet of @davidsneighbour's skills
 

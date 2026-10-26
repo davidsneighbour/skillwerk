@@ -8,20 +8,20 @@
       "skills": [
         "posthaste",
         "posthaste-config",
-        "posthaste-prepare-link",
-        "posthaste-structure",
+        "prepare-link",
+        "structure",
         "hashtags",
-        "posthaste-unsplash",
-        "posthaste-voice"
+        "unsplash",
+        "voice"
       ]
     },
     {
       "title": "Credential Helpers",
       "description": "OAuth setup skills for direct social network publishing.",
       "skills": [
-        "posthaste-reddit-refresh-token",
-        "posthaste-threads-refresh-token",
-        "posthaste-tumblr-refresh-token"
+        "reddit-refresh-token",
+        "threads-refresh-token",
+        "tumblr-refresh-token"
       ]
     }
   ]

@@ -16,16 +16,16 @@ skill. Explicit values in the current user request always take precedence over
 configuration. Do not turn this implicit lookup into a questionnaire merely
 because no config file exists; consuming-skill defaults remain valid.
 
-* Use `posthaste-structure` when the user supplies a draft or notes and wants help choosing a post type, cleaning up the material, or applying a structured layout. It produces drafts only and does not start publication.
+* Use `structure` when the user supplies a draft or notes and wants help choosing a post type, cleaning up the material, or applying a structured layout. It produces drafts only and does not start publication.
 * Use `posthaste-config` when the user wants to inspect, validate, initialise,
   or edit Posthaste configuration, or when another Posthaste skill needs
   persistent user or project defaults resolved.
-* Use `posthaste-prepare-link` when the user supplies a URL and wants a social
+* Use `prepare-link` when the user supplies a URL and wants a social
   post drafted, adapted for network limits, checked against the posted log, or
   published after explicit confirmation.
 * Hand every hashtag or tag request to `hashtags`. This includes requests for hashtags for a URL or supplied text, a specific number of tags, full mode, tag lists supplied for consistency, and the `extract` command.
-* Use `posthaste-reddit-refresh-token`,
-  `posthaste-threads-refresh-token`, or `posthaste-tumblr-refresh-token` when a
+* Use `reddit-refresh-token`,
+  `threads-refresh-token`, or `tumblr-refresh-token` when a
   direct network integration needs credentials refreshed or created.
 
 Never publish, write credentials, automate login, or click final publish

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Structure a draft"
-  short_description: "Choose a post type and reshape an existing draft"
-  default_prompt: "Use $posthaste-structure to choose a suitable post type for this draft, ask for essential missing facts, and return a cleaned-up structured version."
