@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.4](https://github.com/davidsneighbour/skillwerk/compare/idiolect%2Fv2.0.3...idiolect%2Fv2.0.4) (2026-10-26)
+
+### Refactor
+
+* **posthaste:** shorten subskill names ([717db95](https://github.com/davidsneighbour/skillwerk/commit/717db95424bb85e1492388f4e645d176a823dfda)), closes [#69](https://github.com/davidsneighbour/skillwerk/issues/69)
+
 ## [2.0.3](https://github.com/davidsneighbour/skillwerk/compare/idiolect%2Fv2.0.2...idiolect%2Fv2.0.3) (2026-10-11)
 
 ### Docs
