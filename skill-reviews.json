@@ -12,6 +12,15 @@
         "reviewed_content_hash": "489a7e81d1899f3e1edf76cceeed27cb4136d38bfef2653499fb980ef21081d7",
         "evidence": "User explicitly accepted the reviewed Foreman router changes in this session on 2026-10-26. Adds accessibility-review catalogue and routes, and updates the router version. Repository checks and clean-room archive installation passed."
       }
+    },
+    "posthaste/posthaste": {
+      "review": {
+        "reviewed_on": "2026-10-26",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "c4de8c108dc4608f818cc5d3d96a615f66183bfd",
+        "reviewed_content_hash": "f062ec68be15ed77ca967ad7f105b4f39887e4d02ffb0a7d1552b0dba90655ed",
+        "evidence": "User explicitly accepted the reviewed Posthaste router changes in this session on 2026-10-26. Adds draft-only routing to posthaste-structure. Repository checks and clean-room archive installation passed."
+      }
     }
   }
 }

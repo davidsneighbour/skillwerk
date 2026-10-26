@@ -16,6 +16,7 @@ skill. Explicit values in the current user request always take precedence over
 configuration. Do not turn this implicit lookup into a questionnaire merely
 because no config file exists; consuming-skill defaults remain valid.
 
+* Use `posthaste-structure` when the user supplies a draft or notes and wants help choosing a post type, cleaning up the material, or applying a structured layout. It produces drafts only and does not start publication.
 * Use `posthaste-config` when the user wants to inspect, validate, initialise,
   or edit Posthaste configuration, or when another Posthaste skill needs
   persistent user or project defaults resolved.

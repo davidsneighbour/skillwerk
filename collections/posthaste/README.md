@@ -143,6 +143,7 @@ node skills/posthaste-prepare-link/resources/post-crosspost.ts --info
 ## Skills
 
 * `posthaste` routes the social publishing skill set.
+* `posthaste-structure` selects a post type, cleans up a supplied draft, and applies reusable layouts; experimental and draft-only.
 * `posthaste-config` loads, validates, merges, and creates layered TOML configuration.
 * `posthaste-prepare-link` drafts and publishes confirmed social posts from URLs.
 * `hashtags` generates hashtags from a URL or supplied text: 5 by default, a requested number, or all relevant tags in full mode, as plain tags or social-ready `#` hashtags. The `posthaste` router hands all hashtag requests to this skill.
