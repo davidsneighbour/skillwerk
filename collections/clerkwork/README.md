@@ -76,6 +76,7 @@ Skill names are intentionally flat. Categories organise the collection without b
 
 ### Repository governance
 
+* `accessibility-review` guides accessible frontend implementation and systematic WCAG 2.2 AA reviews, with automated checks, manual verification, and evidence-based reporting. Use `/foreman accessibility` or invoke the skill directly. Its reusable baseline is bundled inside the skill.
 * `behaviour-spec` creates, reviews, and generates tests from behaviour specifications.
 * `dnbhq-configs` audits repository configuration and coordinates shared configuration maintenance.
 * `quality-gate-organisation` organises repository quality-check commands.

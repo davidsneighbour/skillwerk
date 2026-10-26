@@ -34,7 +34,12 @@
     {
       "title": "Repository Governance",
       "description": "Skills for specifications, shared configuration, and quality-gate conventions.",
-      "skills": ["behaviour-spec", "dnbhq-configs", "quality-gate-organisation"]
+      "skills": [
+        "accessibility-review",
+        "behaviour-spec",
+        "dnbhq-configs",
+        "quality-gate-organisation"
+      ]
     },
     {
       "title": "Git and GitHub",

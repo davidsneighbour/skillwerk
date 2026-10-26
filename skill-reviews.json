@@ -3,5 +3,15 @@
   "default_interval_days": 60,
   "due_soon_days": 7,
   "collections": {},
-  "skills": {}
+  "skills": {
+    "clerkwork/foreman": {
+      "review": {
+        "reviewed_on": "2026-10-26",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "1fd43b2713928baa75893982443b55138438116c",
+        "reviewed_content_hash": "489a7e81d1899f3e1edf76cceeed27cb4136d38bfef2653499fb980ef21081d7",
+        "evidence": "User explicitly accepted the reviewed Foreman router changes in this session on 2026-10-26. Adds accessibility-review catalogue and routes, and updates the router version. Repository checks and clean-room archive installation passed."
+      }
+    }
+  }
 }

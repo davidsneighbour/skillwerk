@@ -14,6 +14,7 @@
       "strict": false,
       "skills": [
         "./skills/foreman",
+        "./skills/accessibility-review",
         "./skills/behaviour-spec",
         "./skills/dnbhq-configs",
         "./skills/quality-gate-organisation",

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessibility review"
+  short_description: "Implement and review frontend accessibility."
+  default_prompt: "Use $accessibility-review to implement or review this interface against WCAG 2.2 AA, with automated checks, manual verification, and evidence of any gaps."

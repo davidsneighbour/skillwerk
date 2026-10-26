@@ -5,7 +5,7 @@ title: Foreman
 description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman routes specialist jobs and applies bundled procedures for repository onboarding, CI diagnosis, pull request workflows, conflict resolution, verification, and maintainability review.
 argument-hint: "<overview|mcp|onboard|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume> [action|target]"
 metadata:
-  version: "1.3.0"
+  version: "1.4.0"
 ---
 
 ## Shared vocabulary
@@ -43,6 +43,7 @@ If the user supplies a broad category or topic without a concrete action, show o
 
 ### Repository governance
 
+* `accessibility-review` - implement and review frontend accessibility against WCAG 2.2 AA, with automated checks, manual verification, and reporting.
 * `behaviour-spec` — create, review, and generate tests from behaviour specifications.
 * `dnbhq-configs` — audit repository configuration and coordinate shared configuration maintenance.
 * `quality-gate-organisation` — organise repository quality-check commands.
@@ -96,6 +97,7 @@ These procedures rely on ordinary agent capabilities. They add decision rules an
 * `foreman issues labels` → `labels`
 * `foreman issues sync` → `project-task-triage`
 * `foreman commit` → `commit`
+* `foreman accessibility`, `foreman a11y`, or `foreman audit accessibility` -> `accessibility-review`
 * `foreman spec` → `behaviour-spec`
 * `foreman configs` → `dnbhq-configs`
 * `foreman quality gates` → `quality-gate-organisation`
