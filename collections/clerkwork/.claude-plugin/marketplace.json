@@ -24,6 +24,7 @@
         "./skills/commit",
         "./skills/cspell-inline",
         "./skills/dependency-maintenance",
+        "./skills/janitor",
         "./skills/issues",
         "./skills/labels",
         "./skills/manage-node-version-policy",

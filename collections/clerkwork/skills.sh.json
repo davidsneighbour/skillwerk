@@ -14,10 +14,11 @@
     },
     {
       "title": "Repository Maintenance",
-      "description": "Skills for keeping dependencies, Node versions, and vulnerabilities current.",
+      "description": "Skills for simplifying codebases and keeping dependencies, Node versions, and vulnerabilities current.",
       "skills": [
         "cspell-inline",
         "dependency-maintenance",
+        "janitor",
         "manage-node-version-policy",
         "osv-scan"
       ]

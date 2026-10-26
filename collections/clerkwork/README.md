@@ -64,6 +64,7 @@ Skill names are intentionally flat. Categories organise the collection without b
 ### Repository maintenance
 
 * `cspell-inline` applies the narrowest supported CSpell in-document directive for file-local spelling exceptions, accepted words, disabled lines or sections, regex filtering, compound words, and per-file dictionaries.
+* `janitor` simplifies code, tests, documentation, and configuration through evidence-backed removal and focused refactoring. Use `/foreman janitor` for scoped cleanup or `/foreman janitor check` for findings only.
 * `dependency-maintenance` safely maintains npm dependencies in a single-package repository or npm monorepo.
 * `manage-node-version-policy` audits and updates Node.js and npm version declarations against actively supported releases.
 * `osv-scan` scans dependencies for known vulnerabilities, auto-applies safe fixes, and files issues for the rest.

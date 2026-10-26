@@ -1,0 +1,4 @@
+interface:
+  display_name: "Janitor"
+  short_description: "Simplify code through evidence-backed cleanup."
+  default_prompt: "Use $janitor to simplify this project while preserving required behaviour."
