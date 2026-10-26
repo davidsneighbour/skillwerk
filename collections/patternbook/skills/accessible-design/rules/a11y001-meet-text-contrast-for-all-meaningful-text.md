@@ -11,7 +11,7 @@ All meaningful text must meet the WCAG text contrast requirements. This includes
 ## Do
 
 * Give normal text a contrast ratio of at least 4.5:1 against its background.
-* Give large text a contrast ratio of at least 3:1. Large text is at least 18pt (about 24px), or at least 14pt bold (about 18.5px bold).
+* Give large text a contrast ratio of at least 3:1. Large text is at least 18pt (24 CSS px), or at least 14pt bold (18 2/3 CSS px).
 * Make muted text quieter with a lighter weight, a smaller size, or a colour that still passes, such as `#767676` on white (4.54:1).
 * Measure the colour that the user actually sees. When text uses `opacity`, a transparent colour, or sits on an image or gradient, measure against the composed colours at the lowest-contrast point.
 * Check text that shows only on hover or focus, such as tooltips.

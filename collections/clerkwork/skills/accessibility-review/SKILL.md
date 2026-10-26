@@ -28,6 +28,8 @@ This baseline is available here for reuse in consuming projects. Do not add it t
 
 Read [implementation guidance](references/implementation.md) when building or correcting the interface. Apply the four WCAG principles: information must be perceivable, controls operable, content and interactions understandable, and semantics robust across browsers and assistive technologies.
 
+Before coding, plan the affected semantics, keyboard path, focus transitions, labels, alternatives, and recovery states; after implementation, review and retest those states.
+
 Preserve existing accessible shared components and fix defects at their shared source where practical. Inspect actual rendered HTML and behaviour as well as source code. ARIA supplies semantics; it does not add keyboard handling or native behaviour. Use a documented WAI-ARIA Authoring Practices pattern when a custom widget is necessary, and verify the implementation in the project's supported environments.
 
 A review request authorises inspection and reporting. Make fixes when the user's request includes implementation or remediation; keep unrelated findings in the report.
@@ -79,6 +81,8 @@ State the scope, conformance target, routes and states covered, checks performed
 * Relevant WCAG criterion and level when established; identify best-practice advice separately from conformance failures.
 * Severity based on user impact, such as blocked completion or a recoverable obstacle, and the reason for that assessment.
 * A specific recommended fix, or the implemented fix and its retest result.
+
+Use plain, respectful language and honour stated identity preferences. Do not impose people-first terminology on everyone or assume needs from a disability label. Keep explanations concise but sufficient to reproduce findings and understand verification gaps.
 
 Separate confirmed violations, uncertain findings, resolved issues, and verification gaps. Record pre-existing issues separately from introduced regressions. Do not label the whole project compliant based on a scoped review, automated score, or partial manual pass.
 

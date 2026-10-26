@@ -39,6 +39,24 @@
         "reviewed_content_hash": "6b777856ffe5a2f099cc501fa35a9ce888bbe5fb9c02e84ce46b18360314c632",
         "evidence": "User explicitly approved the staged Posthaste skill renames and reference updates with \"commit and push\" on 2026-10-26. Full repository checks, 90 tests, and Posthaste archive installation passed."
       }
+    },
+    "patternbook/accessible-design": {
+      "review": {
+        "reviewed_on": "2026-10-26",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "b374edc45fd6512422546806f432b5aedcc2daa4",
+        "reviewed_content_hash": "ecd4de32765a9535739d559775d30fba7a238b6275cc6cd8210d7db0f31185f6",
+        "evidence": "User explicitly accepted the completed accessibility guidance changes in this conversation. Both collection checks, packaging, and archive installation passed. See https://github.com/davidsneighbour/skillwerk/issues/71."
+      }
+    },
+    "clerkwork/accessibility-review": {
+      "review": {
+        "reviewed_on": "2026-10-26",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "b374edc45fd6512422546806f432b5aedcc2daa4",
+        "reviewed_content_hash": "05ce6edba679ca4a18da4ed7eec9f4145a4f44ac670ab7db8c4c6ac27b5663db",
+        "evidence": "User explicitly accepted the completed accessibility guidance changes in this conversation. Both collection checks, packaging, and archive installation passed. See https://github.com/davidsneighbour/skillwerk/issues/71."
+      }
     }
   }
 }

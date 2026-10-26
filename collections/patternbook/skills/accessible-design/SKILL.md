@@ -2,7 +2,7 @@
 id: accessible-design
 name: accessible-design
 title: Patternbook Accessible Design Rules
-description: Apply Patternbook accessibility rules (A11Y001 and up) when designing, implementing, or reviewing user interfaces - text contrast, muted and placeholder text, non-text contrast of control boundaries, icons, focus and state indicators, disabled controls, and native disabled versus aria-disabled. Use when choosing text or control colours, styling interactive states, or disabling controls, and for accessibility reviews that need rule-based findings.
+description: Apply Patternbook accessibility rules (A11Y001 and up) when designing, implementing, or reviewing interfaces, including contrast, disabled controls, keyboard and focus, navigation, semantics, alternatives, forms, tables, and grids.
 metadata:
   version: "1.0.0"
 ---
@@ -17,6 +17,8 @@ Apply this skill when you design, implement, or review:
 * boundaries, icons, focus indicators, and state indicators of interactive controls
 * disabled, inactive, or unavailable controls
 * themes, including dark mode and forced colours mode
+* keyboard interaction, focus, site navigation, and bypass mechanisms
+* document structure, control names, image alternatives, forms, tables, and grids
 
 For visual design decisions, also apply the `visual-design` skill. For CSS authoring rules, also apply the `stylesheet` skill.
 
@@ -26,11 +28,12 @@ Accessibility rules take precedence over `DSG###` visual design rules and `CSS##
 
 ## Procedure
 
-1. Read the rule index below. Open the rule file for each rule whose trigger matches the current change.
+1. Establish the affected journeys and states, and plan their semantics, input methods, focus, and alternatives before coding. Read the rule index below. Open the rule file for each rule whose trigger matches the current change.
 2. Apply the matching rules to new work.
 3. In work that you change anyway, fix violations of matching rules. Do not change unrelated components only to satisfy a rule unless the user asks for it.
 4. Measure contrast with a calculation or a tool, not by eye. State the measured ratio in findings.
-5. If a rule conflicts with an explicit user instruction, follow the user, state the rule ID, and say which accessibility requirement is not met.
+5. Review the rendered result and affected states after implementation, using available automated checks and relevant keyboard and screen-reader tests. Report checks not performed. These rules are not a complete WCAG checklist, and a passing scan does not prove conformance.
+6. If a rule conflicts with an explicit user instruction, follow the user, state the rule ID, and say which accessibility requirement is not met.
 
 ## Review procedure
 
@@ -39,6 +42,8 @@ Use the rule index as the review checklist. Report only relevant findings, not c
 ```text
 A11Y001: Helper text #9ca3af on #ffffff is 2.54:1; use at least 4.5:1.
 ```
+
+Distinguish WCAG A/AA requirements from stronger design goals and recommended patterns. Do not claim that generated code is fully accessible; state the checks performed and any remaining manual verification. Use respectful, plain language, honour stated identity preferences, and avoid assumptions about ability or a universal requirement for people-first terminology.
 
 For detailed findings, add the file, the reason, and the suggested fix as sub-items.
 
@@ -52,6 +57,11 @@ When rules change an implementation decision, list their IDs in the final summar
 | [`A11Y002`](rules/a11y002-meet-non-text-contrast-for-controls-and-states.md) | Meet non-text contrast requirements for controls and states | Boundaries, icons, focus indicators, or state indicators of interactive controls |
 | [`A11Y003`](rules/a11y003-keep-disabled-controls-recognisable.md) | Keep disabled controls recognisable and explain why they are unavailable | Styling or designing a disabled, inactive, or unavailable control |
 | [`A11Y004`](rules/a11y004-prefer-native-disabled-over-aria-disabled.md) | Prefer native disabled over aria-disabled | Disabling a control, link, menu item, or custom widget |
+| [`A11Y005`](rules/a11y005-preserve-keyboard-operation-and-focus.md) | Preserve keyboard operation and focus | Building or reviewing controls, composite widgets, overlays, or focus management. |
+| [`A11Y006`](rules/a11y006-keep-site-navigation-predictable.md) | Keep site navigation predictable | Building or reviewing site navigation, disclosure links, or bypass mechanisms. |
+| [`A11Y007`](rules/a11y007-expose-structure-names-and-alternatives.md) | Expose structure, names, and alternatives | Creating or reviewing document structure, labels, graphics, or status information. |
+| [`A11Y008`](rules/a11y008-make-form-errors-recoverable.md) | Make form errors recoverable | Designing or reviewing form requirements, validation, or submission. |
+| [`A11Y009`](rules/a11y009-choose-table-or-grid-by-interaction.md) | Choose table or grid by interaction | Presenting tabular data, sortable tables, calendars, or interactive grids. |
 
 ## Rule file format
 
