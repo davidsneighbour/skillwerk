@@ -29,14 +29,18 @@ export function stagedSkills(root: string): string[] {
     .sort();
 }
 export function stagedFingerprint(root: string, skill: string): string {
-  const entries = git(
-    root,
-    "ls-files",
-    "--stage",
-    "-z",
-    "--",
-    ...skillPaths(skill),
-  );
+  const entries = git(root, "ls-files", "--stage", "-z", "--", skillPath(skill))
+    .split("\0")
+    .filter(
+      (entry) =>
+        entry &&
+        !entry
+          .slice(entry.indexOf("\t") + 1)
+          .split("/")
+          .includes("scratch"),
+    )
+    .map((entry) => `${entry}\0`)
+    .join("");
   if (!entries)
     throw new Error(`Stage the skill before recording its review: ${skill}`);
   if (
