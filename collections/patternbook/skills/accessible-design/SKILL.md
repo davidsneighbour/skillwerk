@@ -4,7 +4,7 @@ name: accessible-design
 title: Patternbook Accessible Design Rules
 description: Apply Patternbook accessibility rules (A11Y001 and up) when designing, implementing, or reviewing interfaces, including contrast, disabled controls, keyboard and focus, navigation, semantics, alternatives, forms, tables, and grids.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 Accessibility rules for interface work. Each rule is one file in `rules/` and has a stable `A11Y###` ID. The rules are based on WCAG 2.2 level AA.
@@ -43,7 +43,7 @@ Use the rule index as the review checklist. Report only relevant findings, not c
 A11Y001: Helper text #9ca3af on #ffffff is 2.54:1; use at least 4.5:1.
 ```
 
-Distinguish WCAG A/AA requirements from stronger design goals and recommended patterns. Do not claim that generated code is fully accessible; state the checks performed and any remaining manual verification. Use respectful, plain language, honour stated identity preferences, and avoid assumptions about ability or a universal requirement for people-first terminology.
+Distinguish WCAG A/AA requirements from stronger design goals and recommended patterns. Consider improvements beyond minimum conformance when they remove a concrete barrier, and keep implementation within the authorised scope. Do not claim that generated code is fully accessible; state the checks performed and any remaining manual verification. Use respectful, plain language, honour stated identity preferences, and avoid assumptions about ability or a universal requirement for people-first terminology.
 
 For detailed findings, add the file, the reason, and the suggested fix as sub-items.
 

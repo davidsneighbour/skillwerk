@@ -30,6 +30,8 @@ Native controls are the starting point. When custom interaction is necessary, im
 
 For ordinary site navigation, use links in lists and buttons for disclosures, with synchronised `aria-expanded` and visibility. Preserve normal Tab navigation. Arrow keys are optional additions for disclosure navigation, not a reason to remove links or top-level buttons from the tab sequence. Use `menu` and `menubar` only when implementing the complete application-style widget pattern.
 
+Expose the current page or step with an appropriate `aria-current` value where applicable, such as `page` in navigation or `step` in a process. Keep it synchronised with the current item. Do not use it as a substitute for `aria-selected` in widgets that require selection state.
+
 For composites, follow the specific APG focus strategy. Roving tabindex puts one participating child in the tab sequence and moves DOM focus as tabindex changes; do not also add a container tab stop by default. With `aria-activedescendant`, keep focus on a supported controlling element, satisfy the role's descendant/ownership requirements, and update the active item's visual indication and scroll position. Combobox focus may remain on an input. Distinguish selection from focus and choose initial or remembered focus according to the pattern.
 
 For modal dialogs, provide a name, an appropriate initial focus position, a keyboard close mechanism, focus containment, an inactive background, and focus restoration. Verify native dialog behaviour in supported browsers before adding custom code. Non-modal popovers and disclosures do not automatically need a focus trap. Apply Escape and arrow-key handling according to the widget's expected pattern.
@@ -48,13 +50,15 @@ Use an ARIA grid when managed directional navigation or cell interaction warrant
 
 Preserve sufficient text and non-text contrast in relevant states, including focus and error states. Do not communicate meaning through colour alone. Use the WCAG criteria for exact contrast thresholds and exceptions, rather than assuming all text and controls share one threshold.
 
+Reduce unnecessary distractions and cognitive load: keep instructions and task structure clear, and avoid competing prompts or decorative motion that obstructs the task. Distinguish these usability recommendations from established WCAG failures.
+
 Use flexible layouts and relative units where they support resizing and reflow. Fixed units are not universally forbidden; verify the resulting interface. Support text spacing, zoom, and small viewports without clipping content or controls. Retain clear focus indicators; do not remove outlines without a suitable replacement.
 
 Distinguish intentional hiding from accidental exclusion. Content hidden with `display: none` or `visibility: hidden` is generally unavailable to screen readers. Use an established visually hidden utility when content must remain available to assistive technology, and keep focusable controls visible when focused. Collapsed content should not leave hidden controls in the tab order.
 
 Provide alternatives to dragging, path-based gestures, and multi-point gestures where required. Check pointer target size and spacing against WCAG 2.2 exceptions. Keep keyboard focus from being entirely obscured by sticky elements or overlays.
 
-Allow users to extend or disable time limits where required and to pause relevant moving or updating content. Avoid harmful flashing. Respect reduced-motion preferences as implementation guidance, and do not equate that preference alone with complete WCAG AA coverage.
+Allow users to extend or disable time limits where required and to pause relevant moving or updating content. Avoid harmful flashing. Check [WCAG 2.3.1, Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html): content must stay within the frequency limit of three flashes in any one-second period, or below the defined general-flash and red-flash thresholds. Use the criterion's definitions and assessment guidance rather than treating frequency alone as the complete test. Respect reduced-motion preferences as implementation guidance, and do not equate that preference alone with complete WCAG AA coverage.
 
 ## Reference guidance
 

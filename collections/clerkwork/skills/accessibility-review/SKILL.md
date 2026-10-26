@@ -5,7 +5,7 @@ title: Clerkwork accessibility review
 type: skill
 description: Implement and review accessible frontend markup and interactions, or investigate keyboard, focus, screen-reader, contrast, and semantic issues. Use for accessibility reviews and frontend changes where accessibility materially affects implementation. Target WCAG 2.2 AA unless the project specifies another target.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 ## Shared vocabulary
@@ -21,6 +21,8 @@ Scale the review to the affected pages, components, and states. A component chan
 ## Reusable baseline
 
 Frontend work must target WCAG 2.2 AA unless the project specifies another conformance target. Prefer semantic HTML and native platform behaviour before ARIA and custom controls. Preserve keyboard operation, visible focus, useful accessible names, readable content, and perceivable states. For frontend changes that can affect rendered markup, interactions, navigation, forms, focus, or visual accessibility, run the project's available accessibility checks and relevant manual verification before declaring the work complete. Report any verification gaps.
+
+Consider improvements beyond minimum conformance when they remove a concrete barrier, including unnecessary distractions and cognitive load. Identify these as recommendations separately from WCAG failures, and keep implementation within the authorised scope.
 
 This baseline is available here for reuse in consuming projects. Do not add it to unrelated repository instructions or create a new rules convention as part of a review.
 
@@ -57,7 +59,7 @@ Run checks for frontend changes that can affect rendered markup, interactions, n
 * Scan affected routes after rendering has settled, then expose changed states such as open dialogs, validation errors, expanded menus, and completed async updates. An initial-page scan does not test hidden or unvisited states.
 * Record commands, versions, URLs, states, configuration, exit results, and relevant findings. Distinguish tool or environment failures from accessibility failures. Do not suppress a rule solely to obtain a passing result.
 
-If a tool, browser, running site, or authenticated fixture is unavailable, continue useful source inspection and available checks, report the gap, and give the next verification step. Do not silently install a new testing stack, alter CI, or claim a check passed without running it. Recommend a small integration when no suitable automation exists and implementation is outside the requested scope.
+If a tool, browser, running site, or authenticated fixture is unavailable, continue useful source inspection and available checks, report the gap, and give the next verification step. Do not silently install a new testing stack, alter CI, or claim a check passed without running it. Recommend adding suitable rendered-page accessibility checks to CI when they are absent. Implement CI integration only when authorised, and retain manual verification because CI cannot establish conformance.
 
 Automated scans detect only part of the problem. A clean scan establishes no detected violations within its coverage; it does not establish WCAG conformance.
 
@@ -66,7 +68,8 @@ Automated scans detect only part of the problem. A clean scan establishes no det
 Use the real rendered interface in a browser. Source review and an accessibility tree are useful evidence but do not replace keyboard or screen-reader testing.
 
 * Complete affected journeys with the keyboard alone. Use Tab, Shift+Tab, Enter, Space, Escape, and widget-specific arrow keys as appropriate. Check logical focus order, visible and unobscured focus, no traps, modal behaviour, and focus return.
-* Use a screen reader available in the supported test environment. Record its name, browser, and versions. Check names, roles, values, states, headings, landmarks, reading order, errors, and necessary announcements. Check announcement timing and duplication as well as their presence. If no screen reader is available, explicitly mark this verification as not performed.
+* Use a screen reader available in the supported test environment. Record its name, browser, and versions. Check names, roles, values, states, headings, landmarks, reading order, errors, and necessary announcements. Check announcement timing and duplication as well as their presence. For broader reviews, recommend and, where available, test multiple combinations from the supported browser/screen-reader matrix, such as NVDA, JAWS, and VoiceOver with their supported browsers. Record untested combinations; one successful combination does not verify the others. If no screen reader is available, explicitly mark this verification as not performed.
+* Test affected journeys with available voice-control software, including activating controls by their visible labels and distinguishing repeated controls. Record the software and browser, or report the gap and next test step if unavailable. Matching accessible names alone does not verify voice operation.
 * Check text resize to 200%, reflow at a 320 CSS-pixel width, and user text-spacing overrides without loss of content or functionality, applying WCAG exceptions where relevant. Test responsive variants and overlays, not only the default desktop state.
 * Measure contrast for actual foreground/background combinations and interaction states. Check that colour is not the only indication of status, errors, links, or selection.
 * Test pointer and touch operation where relevant, including alternatives to dragging and complex gestures, usable target spacing, and cancellation. Check time limits, pause controls, reduced motion, and flashing content where present.
@@ -74,7 +77,7 @@ Use the real rendered interface in a browser. Source review and an accessibility
 
 ## Reporting
 
-State the scope, conformance target, routes and states covered, checks performed, and checks not performed. For each finding, provide:
+State the scope, conformance target, routes and states covered, checks performed, and checks not performed. Present findings in descending priority based on severity and user impact, with blocked journeys first. For each finding, provide:
 
 * Affected component, route/state, and file with line reference where available.
 * Reproduction steps and observed evidence, with the effect on users.
