@@ -124,11 +124,13 @@ shortlog
 skillset
 skillwerk
 smol
+softprops
 sparkline
 strikethrough
 stylesheet
 subgrid
 subj
+subskill
 subresource
 synchwork
 tailwindplus
