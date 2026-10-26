@@ -46,6 +46,18 @@ Use plain Markdown and specific, actionable `SKILL.md` frontmatter, especially `
 
 Run TypeScript helpers with `node <path>.ts`; do not assume compiled JavaScript, `tsx`, or a build step. Resolve former standalone-repository paths against `collections/<collection>/`, while running shared npm commands from this repository root. Use `npm run validate:skills`, `npm run lint:markdown`, and `npm run lint:spelling` for targeted validation.
 
+### Individual skill versions
+
+From this change onwards, increment `metadata.version` in the owning `SKILL.md` once per coherent skill commit. This version is independent of the collection release version. Do not backfill versions for earlier commits. Start new skills at `1.0.0` and keep the version as a quoted, stable `MAJOR.MINOR.PATCH` string in a block-style `metadata` mapping.
+
+* Patch: corrections and clarifications that preserve intended behaviour.
+* Minor: new capabilities, rules, or supported workflows.
+* Major: incompatible changes to invocation, required inputs, outputs, or operating behaviour.
+
+Every commit that changes files inside an existing skill must include a higher version for that skill, including changes to bundled references, rules, scripts, and assets. Use a patch increase for changes with no behavioural effect. Removed skills need no increase. Root-only and collection-only changes do not require individual skill increases unless skill files also change. Collection releases must not rewrite individual skill versions merely to match the collection version.
+
+Run `npm run validate:versions` after staging. The pre-commit `validate:staged` gate compares staged skill versions with `HEAD`; an unstaged version increase does not count. The gate checks valid versions and monotonic increases; reviewers still decide whether patch, minor, or major is appropriate. Stage the final version before recording human review acceptance, because it changes the reviewed content fingerprint.
+
 No coverage threshold is defined. Validate changed scripts with targeted `--help`, dry-run, or non-writing modes. When a skill's behaviour changes, update its `SKILL.md` in the same change.
 
 ## Commit and pull request details

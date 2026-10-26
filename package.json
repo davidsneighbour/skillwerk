@@ -35,7 +35,8 @@
     "reviews": "node scripts/skill-reviews.ts",
     "validate:reviews": "node scripts/skill-reviews.ts --validate",
     "validate:set": "node scripts/set-skill-review.ts",
-    "validate:staged": "node scripts/check-staged-reviews.ts",
+    "validate:staged": "npm run --silent validate:versions && node scripts/check-staged-reviews.ts",
+    "validate:versions": "node scripts/check-staged-versions.ts",
     "lint:staged": "lint-staged",
     "prepare": "simple-git-hooks"
   },

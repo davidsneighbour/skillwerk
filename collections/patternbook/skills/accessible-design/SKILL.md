@@ -4,7 +4,7 @@ name: accessible-design
 title: Patternbook Accessible Design Rules
 description: Apply Patternbook accessibility rules (A11Y001 and up) when designing, implementing, or reviewing interfaces, including contrast, disabled controls, keyboard and focus, navigation, semantics, alternatives, forms, tables, and grids.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 Accessibility rules for interface work. Each rule is one file in `rules/` and has a stable `A11Y###` ID. The rules are based on WCAG 2.2 level AA.

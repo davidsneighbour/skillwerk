@@ -44,18 +44,18 @@
       "review": {
         "reviewed_on": "2026-10-26",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "b374edc45fd6512422546806f432b5aedcc2daa4",
-        "reviewed_content_hash": "ecd4de32765a9535739d559775d30fba7a238b6275cc6cd8210d7db0f31185f6",
-        "evidence": "User explicitly accepted the completed accessibility guidance changes in this conversation. Both collection checks, packaging, and archive installation passed. See https://github.com/davidsneighbour/skillwerk/issues/71."
+        "reviewed_commit": "1b3b344cda20c6fc183d3fc987234401fae01d58",
+        "reviewed_content_hash": "7ad498a88f5e11cfba6ce492997a0340b9e675c304064877ed3290b8cddf914e",
+        "evidence": "User explicitly requested version 1.1.0 for the accepted accessibility capability changes and instructed implementation of individual skill versioning. See https://github.com/davidsneighbour/skillwerk/issues/72."
       }
     },
     "clerkwork/accessibility-review": {
       "review": {
         "reviewed_on": "2026-10-26",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "b374edc45fd6512422546806f432b5aedcc2daa4",
-        "reviewed_content_hash": "05ce6edba679ca4a18da4ed7eec9f4145a4f44ac670ab7db8c4c6ac27b5663db",
-        "evidence": "User explicitly accepted the completed accessibility guidance changes in this conversation. Both collection checks, packaging, and archive installation passed. See https://github.com/davidsneighbour/skillwerk/issues/71."
+        "reviewed_commit": "1b3b344cda20c6fc183d3fc987234401fae01d58",
+        "reviewed_content_hash": "9b1722fb5ebfd54fbb1fb590e31a75f512d24303a9b9e6b98b1ffdcb54b151ef",
+        "evidence": "User explicitly requested version 1.1.0 for the accepted accessibility capability changes and instructed implementation of individual skill versioning. See https://github.com/davidsneighbour/skillwerk/issues/72."
       }
     }
   }
