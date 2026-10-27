@@ -34,6 +34,8 @@ Use `--global` when the skills should be available outside the current project.
 
 ## Skills
 
+* [astro](skills/astro/SKILL.md) builds and reviews Astro components and architecture, and guides parity-first website migrations. It loads task-specific references and supports optional delegation for independent work.
+
 * `distil` extracts the useful core from social-media, promotional, and other rhetorically presented material, puts it into context, and turns what survives into a reusable framework or prompt where justified.
 * `dnb-reference` adds or updates strict references frontmatter on AI asset
   files from supplied HTTP or HTTPS URLs.

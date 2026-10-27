@@ -1,0 +1,4 @@
+interface:
+  display_name: "Astro development and migration"
+  short_description: "Build Astro components, architecture, and migrations"
+  default_prompt: "Use $astro to inspect this project and follow the component, architecture, or migration workflow needed for my task."
