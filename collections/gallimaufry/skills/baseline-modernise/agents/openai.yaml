@@ -1,0 +1,4 @@
+interface:
+  display_name: "Baseline modernisation audit"
+  short_description: "Find frontend modernisation candidates with evidence"
+  default_prompt: "Use $baseline-modernise to inspect this project's browser policy and produce a static candidate report without modifying source."

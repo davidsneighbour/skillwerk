@@ -34,6 +34,8 @@ Use `--global` when the skills should be available outside the current project.
 
 ## Skills
 
+* [baseline-modernise](skills/baseline-modernise/SKILL.md) scans frontend source for modernisation candidates, records Baseline data provenance, and supports separate manual runtime verification.
+
 * [astro](skills/astro/SKILL.md) builds and reviews Astro components and architecture, and guides parity-first website migrations. It loads task-specific references and supports optional delegation for independent work.
 
 * `distil` extracts the useful core from social-media, promotional, and other rhetorically presented material, puts it into context, and turns what survives into a reusable framework or prompt where justified.

@@ -1,0 +1,11 @@
+{
+  "name": "baseline-modernise-skill",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=25"
+  },
+  "dependencies": {
+    "web-features": "^3.44.0"
+  }
+}

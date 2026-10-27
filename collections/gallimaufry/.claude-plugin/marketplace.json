@@ -14,6 +14,7 @@
       "strict": false,
       "skills": [
         "./skills/astro",
+        "./skills/baseline-modernise",
         "./skills/distil",
         "./skills/dnb-reference",
         "./skills/interrogate-source",

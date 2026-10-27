@@ -165,6 +165,15 @@
         "reviewed_content_hash": "5bcb7918dbfce151ad9900ec3a75c52c2aefe1ad49a0b3de6b3e80f9936652d1",
         "evidence": "User explicitly accepted the final staged visual-design consolidation and requested commit and cleanup. Principle mapping and validation limits: docs/visual-design-rams-review.md."
       }
+    },
+    "gallimaufry/baseline-modernise": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "ae2b67d2dd9b84c8dab3c612bf44dfc191b9fdce",
+        "reviewed_content_hash": "8fda20b0b5364bfa247ade2d701cd60fd718b4d68890b221c2d2a94e1252bfea",
+        "evidence": "User explicitly accepted the final staged Baseline skill and requested commit. Scope, checks, and limits: docs/baseline-modernise-review.md."
+      }
     }
   }
 }
