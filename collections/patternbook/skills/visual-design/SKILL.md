@@ -2,16 +2,16 @@
 id: visual-design
 name: visual-design
 title: Patternbook Visual Design Rules
-description: Apply Patternbook visual design rules (DSG001 and up) when designing, implementing, or reviewing user interfaces - colour, contrast, neutrals, spacing, alignment, grids, typography, line length, buttons, corner radii, borders, shadows, depth, and icons. Use when building or changing UI components, pages, themes, or design tokens, and for design or implementation reviews that need rule-based findings.
+description: Apply Patternbook visual design rules (DSG001 and up) when designing, implementing, or reviewing user interfaces - colour, contrast, neutrals, spacing, alignment, grids, typography, line length, buttons, corner radii, borders, shadows, depth, icons, task clarity, honest presentation, durable patterns, and resource-aware visual choices. Use when building or changing UI components, pages, themes, or design tokens, and for design or implementation reviews that need rule-based findings.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 Visual design rules for interface work. Each rule is one file in `rules/` and has a stable `DSG###` ID.
 
 The rules are defaults, not absolutes. Break a rule only for a deliberate design reason, and state that reason.
 
-Source basis: [Anthony Hobday, Visual design rules you can safely follow every time](https://anthonyhobday.com/sideprojects/saferules/).
+Source basis: [Anthony Hobday, Visual design rules you can safely follow every time](https://anthonyhobday.com/sideprojects/saferules/), and interface adaptations of [Dieter Rams' design principles](https://rams-foundation.org/foundation/design-comprehension/theses/). These adaptations are practical review guidance, not a claim that the source prescribed specific web techniques.
 
 ## When to apply
 
@@ -23,6 +23,7 @@ Apply this skill when you design, implement, or review visual properties of an i
 * buttons, containers, borders, corner radii, shadows, and depth
 * icons next to text
 * design tokens and design system values
+* task clarity, truthful state and capability presentation, restrained visual treatment, durable patterns, and resource costs of visual choices
 
 For CSS authoring rules, such as which units to use, also apply the `stylesheet` skill. For contrast, disabled controls, and other accessibility requirements, also apply the `accessible-design` skill. Its `A11Y###` rules take precedence over `DSG###` rules.
 
@@ -108,6 +109,12 @@ DSG027: depth treatment
 | [`DSG026`](rules/dsg026-avoid-shadows-in-dark-interfaces.md) | Avoid shadows in dark interfaces | Adding depth to elements in a dark theme. |
 | [`DSG027`](rules/dsg027-use-one-depth-technique-consistently.md) | Use one depth technique consistently | Choosing how elements show elevation or depth. |
 | [`DSG028`](rules/dsg028-reduce-icon-contrast-when-paired-with-text.md) | Reduce icon contrast when paired with text | Placing an icon next to a text label. |
+| [`DSG029`](rules/dsg029-choose-innovation-for-user-benefit.md) | Choose innovation for user benefit | Introducing a new visual pattern, technology, or interaction instead of an established one. |
+| [`DSG030`](rules/dsg030-make-structure-and-actions-understandable.md) | Make structure and actions understandable | Designing navigation, grouping, controls, labels, or feedback about interface state. |
+| [`DSG031`](rules/dsg031-keep-visual-treatment-focused-on-the-task.md) | Keep visual treatment focused on the task | Adding decoration, motion, branding, information, or controls around a primary user task. |
+| [`DSG032`](rules/dsg032-represent-capabilities-and-state-honestly.md) | Represent capabilities and state honestly | Presenting product capabilities, availability, progress, results, choices, or promotional emphasis. |
+| [`DSG033`](rules/dsg033-prefer-durable-and-coherent-patterns.md) | Prefer durable and coherent patterns | Replacing established patterns or choosing a visual direction intended for ongoing use. |
+| [`DSG034`](rules/dsg034-consider-resource-costs-of-visual-choices.md) | Consider resource costs of visual choices | Choosing media, fonts, effects, animation, or other resource-intensive visual treatments. |
 
 ## Rule file format
 
