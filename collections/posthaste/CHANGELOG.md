@@ -1,5 +1,7 @@
 # Changelog
 
+## [2.2.1](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.2.0...posthaste%2Fv2.2.1) (2026-10-27)
+
 ## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.1.2...posthaste%2Fv2.2.0) (2026-10-26)
 
 ### Feat
