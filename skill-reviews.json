@@ -57,6 +57,96 @@
         "reviewed_content_hash": "67dafeceb081de78c0e83a34acd83a4a73e8b955322a0a7e11f67c2b6fc6e407",
         "evidence": "Human acceptance explicitly provided in chat for the final staged accessibility guidance on 2026-10-26; scope and validation: https://github.com/davidsneighbour/skillwerk/issues/74"
       }
+    },
+    "gazetteer/blog-draft-materialise": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "31309d7130f2c714c755aa974c27ee27dfe53d140b8824cb6a5f3746d1062953",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+      }
+    },
+    "gazetteer/blog-draft-meta-matter": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "debd8f089f1baad25833bc1d4adec04dfea8f5cc529be3315dca738eb27d89a5",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+      }
+    },
+    "gazetteer/gazetteer": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "616ed8fc2f15d662ab2d6a215c62fa4c7ce64e7381d1f65f5d681a23a077e980",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+      }
+    },
+    "gazetteer/gazetteer-llm-visibility": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "61c55f56fd0b4b916c885a9c6003f322ea9c510907bb3c4fab8b88201fd90e5d",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+      }
+    },
+    "gazetteer/gazetteer-voice": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "5309b1f94b0f6ea28e147ee31f7dfe09d0a5a0fe6a4ca4213298465a469e1923",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+      }
+    },
+    "gazetteer/interface-design": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "d2187988849fa42fcd872c27c5f1ffcbb868d64a106cb9ace224c30e2b90789e",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Final reference files include four British English spelling corrections required by the commit hook. Review: docs/gazetteer-release-review.md."
+      }
+    },
+    "gazetteer/interface-engineering": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "ff6327dfae8ab9cb5238e1c0eb75fa2638afb97ce5a3012a400d016ebdb15275",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+      }
+    },
+    "gazetteer/markdown-formatting": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "da537ff855c5360e36cb6821aea57dbe62c01dd54b3accac742d4f951203647c",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+      }
+    },
+    "gazetteer/post-into-void": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "a6a2ac4e0f456213fdbc222c155dc7c53ca12ebece5397727e2ac4aa968d2c6c",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+      }
+    },
+    "gazetteer/post-session-into-void": {
+      "review": {
+        "reviewed_on": "2026-10-27",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
+        "reviewed_content_hash": "d6cf208473214c4a4e1a628d780633982520406165a272bc0ce2fd54bbe44526",
+        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+      }
     }
   }
 }

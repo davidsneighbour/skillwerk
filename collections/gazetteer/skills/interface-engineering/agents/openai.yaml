@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interface Engineering"
+  short_description: "Apply design engineering details to polish UI"
+  default_prompt: "Use $interface-engineering to review or polish the visual and interaction details of this interface."

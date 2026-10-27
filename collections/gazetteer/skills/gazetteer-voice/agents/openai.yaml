@@ -1,0 +1,4 @@
+interface:
+  display_name: "Voice"
+  short_description: "Edit prose so it reads in Patrick's own voice"
+  default_prompt: "Use $gazetteer-voice to edit or review this prose so it reads in Patrick's own voice."

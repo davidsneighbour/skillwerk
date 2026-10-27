@@ -1,0 +1,4 @@
+interface:
+  display_name: "Post Into Void"
+  short_description: "Prepare and publish a casual Mastodon post"
+  default_prompt: "Use $post-into-void to prepare a casual Mastodon post from the text I supply."

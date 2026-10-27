@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Visibility"
+  short_description: "Make websites readable and visible to LLMs and agents"
+  default_prompt: "Use $gazetteer-llm-visibility to make this website readable and discoverable for LLMs and AI agents."

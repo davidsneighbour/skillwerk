@@ -15,7 +15,16 @@
       "skills": [
         "./skills/gazetteer",
         "./skills/gazetteer-audit",
-        "./skills/gazetteer-lighthouse-audit"
+        "./skills/gazetteer-lighthouse-audit",
+        "./skills/gazetteer-llm-visibility",
+        "./skills/blog-draft-meta-matter",
+        "./skills/blog-draft-materialise",
+        "./skills/markdown-formatting",
+        "./skills/gazetteer-voice",
+        "./skills/interface-design",
+        "./skills/interface-engineering",
+        "./skills/post-into-void",
+        "./skills/post-session-into-void"
       ]
     }
   ]

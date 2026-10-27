@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prepare Blog Draft Metadata"
+  short_description: "Prepare SEO-aware metadata options for blog drafts"
+  default_prompt: "Use $blog-draft-meta-matter to prepare title, slug, description, and summary options for this blog draft."

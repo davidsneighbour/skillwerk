@@ -11,6 +11,27 @@
       "title": "Audit",
       "description": "Evidence-backed website and Lighthouse audit skills.",
       "skills": ["gazetteer-audit", "gazetteer-lighthouse-audit"]
+    },
+    {
+      "title": "AI visibility",
+      "skills": ["gazetteer-llm-visibility"]
+    },
+    {
+      "title": "Content",
+      "skills": [
+        "blog-draft-meta-matter",
+        "blog-draft-materialise",
+        "markdown-formatting",
+        "gazetteer-voice"
+      ]
+    },
+    {
+      "title": "Interface",
+      "skills": ["interface-design", "interface-engineering"]
+    },
+    {
+      "title": "Mastodon",
+      "skills": ["post-into-void", "post-session-into-void"]
     }
   ]
 }

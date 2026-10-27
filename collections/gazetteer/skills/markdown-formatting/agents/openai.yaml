@@ -1,0 +1,4 @@
+interface:
+  display_name: "Markdown Formatting"
+  short_description: "Apply CommonMark or GFM rules to Markdown files"
+  default_prompt: "Use $markdown-formatting to decide which Markdown flavour applies to this file and format it accordingly."

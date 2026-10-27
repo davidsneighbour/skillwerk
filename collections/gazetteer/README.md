@@ -27,9 +27,18 @@ Use `--global` when the skills should be available outside the current project.
 
 ## Skills
 
-* `gazetteer` is a placeholder. No behaviour is defined yet.
-* `gazetteer-audit` audits a live website, staging deployment, or web project against an evidence-backed checklist.
-* `gazetteer-lighthouse-audit` runs reproducible Lighthouse audits and returns reusable report artifacts.
+* [gazetteer](skills/gazetteer/SKILL.md) routes requests to the matching skill.
+* [gazetteer-audit](skills/gazetteer-audit/SKILL.md): Website audits covering launch readiness, technical SEO, accessibility, security, privacy, and resilience.
+* [gazetteer-lighthouse-audit](skills/gazetteer-lighthouse-audit/SKILL.md): Reproducible Lighthouse measurements for a live HTTP or HTTPS URL.
+* [gazetteer-llm-visibility](skills/gazetteer-llm-visibility/SKILL.md): Readable website content, Markdown alternatives, and measured AI discovery experiments.
+* [blog-draft-meta-matter](skills/blog-draft-meta-matter/SKILL.md): Title, slug, description, and summary options before saving a blog draft.
+* [blog-draft-materialise](skills/blog-draft-materialise/SKILL.md): Create or move a draft with selected metadata using repository publishing configuration.
+* [markdown-formatting](skills/markdown-formatting/SKILL.md): Choose the Markdown flavour and follow the target renderer and project style.
+* [gazetteer-voice](skills/gazetteer-voice/SKILL.md): Edit or review prose in Patrick's voice while preserving meaning and evidence.
+* [interface-design](skills/interface-design/SKILL.md): Product interface direction, hierarchy, tokens, states, and design reviews.
+* [interface-engineering](skills/interface-engineering/SKILL.md): Focused UI implementation and polish for typography, surfaces, motion, and performance.
+* [post-into-void](skills/post-into-void/SKILL.md): Draft a Mastodon post from explicitly supplied text; publish only after confirmation.
+* [post-session-into-void](skills/post-session-into-void/SKILL.md): Draft a Mastodon post from the current session; publish only after confirmation.
 
 ## The cabinet of @davidsneighbour's skills
 

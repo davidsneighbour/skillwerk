@@ -1,0 +1,4 @@
+interface:
+  display_name: "Post Session Into Void"
+  short_description: "Post a Mastodon update about the current session"
+  default_prompt: "Use $post-session-into-void to draft a Mastodon post from this session and publish it after confirmation."

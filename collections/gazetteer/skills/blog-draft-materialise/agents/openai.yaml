@@ -1,0 +1,4 @@
+interface:
+  display_name: "Materialise Blog Draft"
+  short_description: "Create or move a blog draft into the content path"
+  default_prompt: "Use $blog-draft-materialise to create or move this blog draft into the configured content path."
