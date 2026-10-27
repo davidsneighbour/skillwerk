@@ -2,7 +2,7 @@
   // Extends the shared configuration passed with --config in package.json.
   "config": {
     // Proper nouns that the sentence-case rule must not lower-case.
-    "title-case-style": {
+    "dnb-title-case-style": {
       "case": "sentence",
       "ignore": [
         "Actions",
