@@ -5,8 +5,8 @@ authors:
     given-names: "Patrick"
     orcid: "https://orcid.org/0000-0001-6250-2135"
 title: "Patternbook"
-version: v2.2.0
-date-released: 2026-10-26
+version: v2.2.1
+date-released: 2026-10-27
 url: "https://github.com/davidsneighbour/patternbook"
 repository-code: "https://github.com/davidsneighbour/patternbook"
 license: "MIT"
