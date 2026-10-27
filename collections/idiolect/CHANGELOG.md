@@ -1,5 +1,7 @@
 # Changelog
 
+## [2.0.5](https://github.com/davidsneighbour/skillwerk/compare/idiolect%2Fv2.0.4...idiolect%2Fv2.0.5) (2026-10-27)
+
 ## [2.0.4](https://github.com/davidsneighbour/skillwerk/compare/idiolect%2Fv2.0.3...idiolect%2Fv2.0.4) (2026-10-26)
 
 ### Refactor
