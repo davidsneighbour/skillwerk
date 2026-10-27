@@ -1,5 +1,7 @@
 # Changelog
 
+## [2.7.1](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.7.0...clerkwork%2Fv2.7.1) (2026-10-27)
+
 ## [2.7.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.6.0...clerkwork%2Fv2.7.0) (2026-10-26)
 
 ### Feat
