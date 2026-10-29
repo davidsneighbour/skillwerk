@@ -13,6 +13,11 @@
       "skills": ["gazetteer-audit", "gazetteer-lighthouse-audit"]
     },
     {
+      "title": "Search implementation",
+      "description": "Implement machine-readable search and entity signals.",
+      "skills": ["gazetteer-structured-data"]
+    },
+    {
       "title": "AI visibility",
       "skills": ["gazetteer-llm-visibility"]
     },

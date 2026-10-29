@@ -31,6 +31,7 @@ Use `--global` when the skills should be available outside the current project.
 * [gazetteer-audit](skills/gazetteer-audit/SKILL.md): Website audits covering launch readiness, technical SEO, accessibility, security, privacy, and resilience.
 * [gazetteer-lighthouse-audit](skills/gazetteer-lighthouse-audit/SKILL.md): Reproducible Lighthouse measurements for a live HTTP or HTTPS URL.
 * [gazetteer-llm-visibility](skills/gazetteer-llm-visibility/SKILL.md): Readable website content, Markdown alternatives, and measured AI discovery experiments.
+* [gazetteer-structured-data](skills/gazetteer-structured-data/SKILL.md): Discover Schema.org opportunities in content and implement accurate JSON-LD, including common and domain-specific entity types.
 * [blog-draft-meta-matter](skills/blog-draft-meta-matter/SKILL.md): Title, slug, description, and summary options before saving a blog draft.
 * [blog-draft-materialise](skills/blog-draft-materialise/SKILL.md): Create or move a draft with selected metadata using repository publishing configuration.
 * [markdown-formatting](skills/markdown-formatting/SKILL.md): Choose the Markdown flavour and follow the target renderer and project style.
