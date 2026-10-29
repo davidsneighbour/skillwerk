@@ -16,6 +16,7 @@ Route search visibility, content preparation, interface work, and confirmed Mast
 * [gazetteer-audit](../gazetteer-audit/SKILL.md): Website audits covering launch readiness, technical SEO, accessibility, security, privacy, and resilience.
 * [gazetteer-lighthouse-audit](../gazetteer-lighthouse-audit/SKILL.md): Reproducible Lighthouse measurements for a live HTTP or HTTPS URL.
 * [gazetteer-llm-visibility](../gazetteer-llm-visibility/SKILL.md): Readable website content, Markdown alternatives, and measured AI discovery experiments.
+* [gazetteer-structured-data](../gazetteer-structured-data/SKILL.md): Discover Schema.org opportunities in content and implement accurate JSON-LD, including common and domain-specific entity types.
 * [blog-draft-meta-matter](../blog-draft-meta-matter/SKILL.md): Title, slug, description, and summary options before saving a blog draft.
 * [blog-draft-materialise](../blog-draft-materialise/SKILL.md): Create or move a draft with selected metadata using repository publishing configuration.
 * [markdown-formatting](../markdown-formatting/SKILL.md): Choose the Markdown flavour and follow the target renderer and project style.
@@ -25,6 +26,6 @@ Route search visibility, content preparation, interface work, and confirmed Mast
 * [post-into-void](../post-into-void/SKILL.md): Draft a Mastodon post from explicitly supplied text; publish only after confirmation.
 * [post-session-into-void](../post-session-into-void/SKILL.md): Draft a Mastodon post from the current session; publish only after confirmation.
 
-For `audit`, use `gazetteer-audit`; for `lighthouse`, use `gazetteer-lighthouse-audit`. For multi-step work, load each needed skill at its step, for example metadata selection before draft materialisation. Distinguish supplied-text posts from session-based posts by the user's chosen source.
+For `audit`, use `gazetteer-audit`; for `lighthouse`, use `gazetteer-lighthouse-audit`; for Schema.org or JSON-LD implementation and opportunity discovery, use `gazetteer-structured-data`. For multi-step work, load each needed skill at its step, for example metadata selection before draft materialisation. Distinguish supplied-text posts from session-based posts by the user's chosen source.
 
 If no route fits, state the coverage gap and ask for clarification only when needed to select a workflow.
