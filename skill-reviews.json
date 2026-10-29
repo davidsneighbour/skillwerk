@@ -6,11 +6,11 @@
   "skills": {
     "clerkwork/foreman": {
       "review": {
-        "reviewed_on": "2026-10-26",
+        "reviewed_on": "2026-10-29",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "717db95424bb85e1492388f4e645d176a823dfda",
-        "reviewed_content_hash": "8b84f9fb249d26275ec96d30f151f5c0fa8533a55ec132a798350833545f71a0",
-        "evidence": "User explicitly accepted the reviewed Foreman routing update for Janitor in this conversation. See https://github.com/davidsneighbour/skillwerk/issues/70. Clerkwork checks and packaging passed; automated checks do not prove general agent behaviour."
+        "reviewed_commit": "ee3765256c53c1f0cae7bd00e3067e9aa2fef321",
+        "reviewed_content_hash": "79fb76233dd463252a56bff1c48ff0e87c568c012af767c79bf090fa7f857cab",
+        "evidence": "User instructed: commit the whatsapp skill when it is checked and fixed. Reviewed the scoped WhatsApp catalogue and routing addition; collection checks, 17 tests, packaging, and clean archive installation passed."
       }
     },
     "posthaste/posthaste": {

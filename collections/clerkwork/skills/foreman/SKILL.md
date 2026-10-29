@@ -3,9 +3,9 @@ id: foreman
 name: foreman
 title: Foreman
 description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman routes specialist jobs and applies bundled procedures for repository onboarding, CI diagnosis, pull request workflows, conflict resolution, verification, and maintainability review.
-argument-hint: "<overview|mcp|onboard|janitor|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume> [action|target]"
+argument-hint: "<overview|mcp|onboard|janitor|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume|whatsapp> [action|target]"
 metadata:
-  version: "1.4.0"
+  version: "1.5.0"
 ---
 
 ## Shared vocabulary
@@ -55,6 +55,10 @@ If the user supplies a broad category or topic without a concrete action, show o
 * `issues` — inspect, select, or work through project issues using Patrick's GitHub-first workflow.
 * `labels` — classify issues with Patrick's category:value label taxonomy.
 
+### Customer communication
+
+* `whatsapp` - read scoped customer chats in the dedicated WhatsApp Web browser app, extract work context, and draft replies.
+
 ## Procedures
 
 Procedures are supporting workflows bundled with Foreman, not separate skills. Read only the procedure that matches a concrete request. For a broad topic request, show the matching skills and procedures without starting work.
@@ -82,6 +86,8 @@ These procedures rely on ordinary agent capabilities. They add decision rules an
 6. Do not perform the target skill's underlying work inside Foreman, and do not bypass its confirmation or safety rules.
 
 ## Common command routes
+
+* `foreman whatsapp` -> `whatsapp` (scoped customer communication and reply drafts)
 
 * `foreman packages`, `foreman packages latest`, or `foreman packages check` → `dependency-maintenance` (complete run, majors authorised, or inspection only, respectively)
 * `foreman audit packages` → `dependency-maintenance`

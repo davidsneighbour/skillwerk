@@ -46,6 +46,11 @@
       "title": "Git and GitHub",
       "description": "Skills for commits and Patrick's GitHub-first issue workflow.",
       "skills": ["commit", "issues", "labels"]
+    },
+    {
+      "title": "Customer communication",
+      "description": "Scoped customer communication as project work context.",
+      "skills": ["whatsapp"]
     }
   ]
 }

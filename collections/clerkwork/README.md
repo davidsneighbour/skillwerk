@@ -88,6 +88,10 @@ Skill names are intentionally flat. Categories organise the collection without b
 * `issues` inspects, selects, and works through project issues using Patrick's GitHub-first workflow, while preserving the same principles on other issue systems where practical.
 * `labels` analyses issue text and selects or applies labels from Patrick's category:value label taxonomy.
 
+### Customer communication
+
+* `whatsapp` reads scoped customer communication through the dedicated WhatsApp Web browser app, extracts work context, and drafts replies. Use `/foreman whatsapp` or invoke it directly. Sending and other message changes require explicit user instruction.
+
 ## Procedures
 
 Procedures live inside Foreman and are loaded only for the requested workflow. They install with Foreman and have no separate manifest entries or sibling-skill dependencies.

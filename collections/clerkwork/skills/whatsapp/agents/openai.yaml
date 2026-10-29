@@ -1,0 +1,4 @@
+interface:
+  display_name: "WhatsApp"
+  short_description: "Read customer chats and draft scoped replies"
+  default_prompt: "Use $whatsapp to review the named customer chat and summarise actions without sending messages."
