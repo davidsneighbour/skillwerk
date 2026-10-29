@@ -7,6 +7,33 @@ The repository owns development tooling, validation, maintenance automation, and
 * [Architecture](ARCHITECTURE.md)
 * [Manual skill reviews](docs/skill-reviews.md)
 
+## Collections
+
+* **[Posthaste](collections/posthaste/README.md)**
+  * **Tagline:** Prepare it. Adapt it. Send it forth.
+  * **Scope:** Communication through social networks, including drafting and adapting posts, platform-specific formatting, cross-posting, hashtags, media selection, attribution, review, scheduling, and publishing workflows.
+* **[Clerkwork](collections/clerkwork/README.md)**
+  * **Tagline:** Keeping repositories in good order.
+  * **Scope:** Repository engineering and project management, including setup, configuration, issues, branches, pull requests, releases, dependencies, CI, security, maintenance, documentation, and administrative workflows.
+* **[Idiolect](collections/idiolect/README.md)**
+  * **Tagline:** Your meaning, in your voice.
+  * **Scope:** Written-output transformation, including personal voice, tone, phrasing, register, terminology, audience adaptation, and stylistic consistency. It acts as a finishing layer without changing facts or externally imposed requirements.
+* **[Patternbook](collections/patternbook/README.md)**
+  * **Tagline:** Patterns for better digital work.
+  * **Scope:** Digital design and presentation, including design systems, branding, typography, colour, composition, interface patterns, responsive design, usability, accessibility, visual audits, consistency checks, and design recommendations.
+* **[Gazetteer](collections/gazetteer/README.md)**
+  * **Tagline:** Describe it. Place it. Make it findable.
+  * **Scope:** Search visibility and content discovery, including technical SEO, local SEO, content optimisation, metadata, structured data, entities, locations, service areas, internal linking, crawlability, indexing, and search-result presentation.
+* **[Gallimaufry](collections/gallimaufry/README.md)**
+  * **Tagline:** Useful things of every sort.
+  * **Scope:** Small, specialised, and miscellaneous skills that do not naturally belong to one of the established collections. It serves as an incubator for independent utilities, experiments, and emerging groups of related skills that may later justify their own repository.
+* **[Apparatus](collections/apparatus/README.md)**
+  * **Tagline:** AI skills for operating browsers and other technical machinery.
+  * **Scope:** Practical, tool-driven skills for operating browsers, diagnostics, media utilities, and other reusable technical machinery, including deterministic web screenshots and reusable machine-local runtimes.
+* **[Fettle](collections/fettle/README.md)**
+  * **Tagline:** A plugin-first engineering system for agent skills.
+  * **Scope:** Agent-skill engineering, including lightweight execution evidence, deduplicated findings, inspection, observation, engineering, proof, and collection stewardship through five portable workflows: Inspector, Observer, Engineer, Prover, and Steward.
+
 ## Install a collection
 
 Replace `<collection>` with `apparatus`, `clerkwork`, `fettle`, `gallimaufry`, `gazetteer`, `idiolect`, `patternbook`, or `posthaste`:
