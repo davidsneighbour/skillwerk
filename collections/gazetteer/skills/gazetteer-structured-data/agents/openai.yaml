@@ -1,0 +1,4 @@
+interface:
+  display_name: "Structured data"
+  short_description: "Find and implement Schema.org JSON-LD opportunities"
+  default_prompt: "Use $gazetteer-structured-data to inspect this content for Schema.org opportunities and implement accurate JSON-LD without inventing facts."
