@@ -17,6 +17,7 @@
         "./skills/gazetteer-audit",
         "./skills/gazetteer-lighthouse-audit",
         "./skills/gazetteer-llm-visibility",
+        "./skills/gazetteer-structured-data",
         "./skills/blog-draft-meta-matter",
         "./skills/blog-draft-materialise",
         "./skills/markdown-formatting",
