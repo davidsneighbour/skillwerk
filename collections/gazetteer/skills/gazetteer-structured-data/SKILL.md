@@ -4,7 +4,7 @@ name: gazetteer-structured-data
 title: Structured data
 description: Find Schema.org opportunities in website content and implement accurate JSON-LD. Use for schema markup, structured data, rich-result markup, LocalBusiness, Organisation, ContactPoint, Product, Service, Article, Event, Person, Place, breadcrumbs, and unusual content that may map to a Schema.org type.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Find meaningful Schema.org opportunities in real page content, model them as linked entities, and add accurate JSON-LD without inventing facts.
@@ -27,12 +27,12 @@ Inspect the content, page template, route data, existing structured data, and an
 
 Identify:
 
-- the page's primary subject;
-- named people, organisations, businesses, brands, products, services, places, events, articles, media and other entities;
-- contact information, addresses, opening hours, prices, offers, dates, authorship and relationships;
-- navigation hierarchy and breadcrumbs;
-- reusable site-wide entities already represented elsewhere;
-- existing JSON-LD, Microdata or RDFa that could conflict or duplicate facts.
+* the page's primary subject;
+* named people, organisations, businesses, brands, products, services, places, events, articles, media and other entities;
+* contact information, addresses, opening hours, prices, offers, dates, authorship and relationships;
+* navigation hierarchy and breadcrumbs;
+* reusable site-wide entities already represented elsewhere;
+* existing JSON-LD, Microdata or RDFa that could conflict or duplicate facts.
 
 Do not start from a desired rich result and work backwards. Start from facts actually present in the source or authoritative project data.
 
@@ -40,13 +40,13 @@ Do not start from a desired rich result and work backwards. Start from facts act
 
 For every plausible entity or relationship, record:
 
-- source fact(s);
-- candidate Schema.org type;
-- more specific subtype if one exists;
-- useful properties supported by the content;
-- stable canonical URL or `@id` where available;
-- confidence: `high`, `medium`, or `low`;
-- whether implementation is safe now or requires missing/ambiguous data.
+* source fact(s);
+* candidate Schema.org type;
+* more specific subtype if one exists;
+* useful properties supported by the content;
+* stable canonical URL or `@id` where available;
+* confidence: `high`, `medium`, or `low`;
+* whether implementation is safe now or requires missing/ambiguous data.
 
 Implement high-confidence opportunities. Resolve medium-confidence cases from project data or authoritative sources when available. Do not emit low-confidence claims merely to increase schema coverage.
 
@@ -64,10 +64,10 @@ Prefer one coherent JSON-LD block with `@context: "https://schema.org"` and `@gr
 
 Use stable absolute `@id` values so entities can be referenced rather than duplicated. A useful convention is the canonical entity URL plus a fragment, for example:
 
-- `https://example.com/#organization`
-- `https://example.com/locations/phuket/#localbusiness`
-- `https://example.com/products/widget/#product`
-- `https://example.com/articles/example/#article`
+* `https://example.com/#organization`
+* `https://example.com/locations/phuket/#localbusiness`
+* `https://example.com/products/widget/#product`
+* `https://example.com/articles/example/#article`
 
 Link entities using properties such as `publisher`, `author`, `brand`, `provider`, `seller`, `location`, `areaServed`, `mainEntity`, `about`, `isPartOf`, `breadcrumb`, `offers` and `contactPoint` when the relationship is supported by the content.
 
@@ -79,13 +79,13 @@ Add JSON-LD where the project's architecture can generate it reliably from sourc
 
 Requirements:
 
-- output valid JSON-LD in `<script type="application/ld+json">`;
-- use absolute canonical URLs for public identifiers and linked pages;
-- escape/serialise data safely rather than concatenating JSON strings;
-- keep generated values synchronised with the visible page and canonical project data;
-- keep implementation idempotent: do not add duplicate graphs on repeated runs;
-- preserve existing valid structured data unless consolidation improves correctness;
-- do not expose private or non-public data simply because it exists in the repository.
+* output valid JSON-LD in `<script type="application/ld+json">`;
+* use absolute canonical URLs for public identifiers and linked pages;
+* escape/serialise data safely rather than concatenating JSON strings;
+* keep generated values synchronised with the visible page and canonical project data;
+* keep implementation idempotent: do not add duplicate graphs on repeated runs;
+* preserve existing valid structured data unless consolidation improves correctness;
+* do not expose private or non-public data simply because it exists in the repository.
 
 Follow the framework's established head/layout/component conventions. For static-site generators, prefer build-time generation from the same data used to render the visible content.
 
@@ -126,16 +126,16 @@ This table is intentionally incomplete. Schema.org contains many domain-specific
 
 ## Guardrails
 
-- Never fabricate ratings, reviews, prices, stock status, addresses, dates, credentials, relationships or identifiers.
-- Do not mark hidden or absent content solely for search engines.
-- Do not add `FAQPage`, `HowTo`, review or other markup merely because it once produced a rich result.
-- Do not confuse Schema.org vocabulary support with Google Search feature support.
-- Do not use a generic type when a more specific type is clearly established.
-- Do not over-model incidental words. Model meaningful entities and relationships, not every noun on the page.
-- Do not create disconnected duplicate entities with conflicting facts.
-- Do not rely on examples as a substitute for checking the current vocabulary.
-- Treat `pending.schema.org` terms as non-final and use them only deliberately.
-- Preserve provenance: every material claim in JSON-LD must be traceable to visible content or authoritative project data.
+* Never fabricate ratings, reviews, prices, stock status, addresses, dates, credentials, relationships or identifiers.
+* Do not mark hidden or absent content solely for search engines.
+* Do not add `FAQPage`, `HowTo`, review or other markup merely because it once produced a rich result.
+* Do not confuse Schema.org vocabulary support with Google Search feature support.
+* Do not use a generic type when a more specific type is clearly established.
+* Do not over-model incidental words. Model meaningful entities and relationships, not every noun on the page.
+* Do not create disconnected duplicate entities with conflicting facts.
+* Do not rely on examples as a substitute for checking the current vocabulary.
+* Treat `pending.schema.org` terms as non-final and use them only deliberately.
+* Preserve provenance: every material claim in JSON-LD must be traceable to visible content or authoritative project data.
 
 ## Output expectations
 

@@ -79,6 +79,7 @@ llmstxt
 lockfiles
 markdownlintrc
 metas
+microdata
 mkfifo
 mockups
 ncurc
@@ -130,8 +131,8 @@ strikethrough
 stylesheet
 subgrid
 subj
-subskill
 subresource
+subskill
 synchwork
 tailwindplus
 taskable

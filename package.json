@@ -38,14 +38,15 @@
     "validate:staged": "npm run --silent validate:versions && node scripts/check-staged-reviews.ts",
     "validate:versions": "node scripts/check-staged-versions.ts",
     "lint:staged": "lint-staged",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "postinstall": "biome migrate --write"
   },
   "workspaces": [
     "collections/*"
   ],
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
-    "@dnbhq/biome-config": "0.3.1",
+    "@dnbhq/biome-config": "1.1.0",
     "@dnbhq/markdownlint-config": "2.0.0",
     "@dnbhq/release-config": "2.0.1",
     "@dnbhq/secretlint-config": "0.1.1",

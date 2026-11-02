@@ -1,4 +1,4 @@
-# Common Schema.org patterns
+# Common schema.org patterns
 
 These are modelling patterns, not mandatory property checklists. Use only facts supported by visible content or authoritative project data, and verify version-sensitive terms against the current Schema.org release.
 
@@ -14,13 +14,13 @@ Do not turn a generic contact page into a standalone `ContactPoint` entity witho
 
 For a customer-facing physical business, prefer the most specific `LocalBusiness` subtype supported by the business's actual activity. Useful related types and properties can include:
 
-- `PostalAddress` via `address`;
-- `GeoCoordinates` via `geo` when authoritative coordinates exist;
-- `OpeningHoursSpecification` via `openingHoursSpecification`;
-- `telephone`, `email`, `url` and `image`;
-- `priceRange` only when the source provides a meaningful range;
-- `areaServed` where the business explicitly serves a wider region;
-- `parentOrganization` or `branchOf` relationships when the organisational structure is known.
+* `PostalAddress` via `address`;
+* `GeoCoordinates` via `geo` when authoritative coordinates exist;
+* `OpeningHoursSpecification` via `openingHoursSpecification`;
+* `telephone`, `email`, `url` and `image`;
+* `priceRange` only when the source provides a meaningful range;
+* `areaServed` where the business explicitly serves a wider region;
+* `parentOrganization` or `branchOf` relationships when the organisational structure is known.
 
 For multi-location organisations, model the organisation once and each real location separately with its own stable `@id`, address and location-specific facts.
 
@@ -56,9 +56,9 @@ Do not expose private contact details or infer employment, credentials, honorifi
 
 Choose the most specific supported type that matches the publication:
 
-- `Article` for generic editorial articles;
-- `NewsArticle` for journalistic/news content;
-- `BlogPosting` for blog posts.
+* `Article` for generic editorial articles;
+* `NewsArticle` for journalistic/news content;
+* `BlogPosting` for blog posts.
 
 Common relationships include `author`, `publisher`, `image`, `datePublished`, `dateModified`, `headline`, `description`, `about`, `mainEntityOfPage` and `isPartOf` where supported and accurate.
 
