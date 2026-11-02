@@ -24,5 +24,9 @@
     }
   },
   // Local, untracked project-management files.
-  "ignores": ["**/scratch/**", "PROJECT.md", "TODO.md"]
+  "ignores": [
+    "**/scratch/**",
+    "PROJECT.md",
+    "TODO.md"
+  ]
 }

@@ -1,7 +1,9 @@
 {
   "version": "0.2",
   "language": "en-GB",
-  "files": ["**/*"],
+  "files": [
+    "**/*"
+  ],
   "ignorePaths": [
     ".git",
     ".migration",
@@ -23,7 +25,10 @@
       "pattern": "/\\b[0-9A-Fa-f]{6}\\b/g"
     }
   ],
-  "ignoreRegExpList": ["hashtags", "hex-colours"],
+  "ignoreRegExpList": [
+    "hashtags",
+    "hex-colours"
+  ],
   "dictionaryDefinitions": [
     {
       "name": "workspace-words",
@@ -31,5 +36,7 @@
       "addWords": true
     }
   ],
-  "dictionaries": ["workspace-words"]
+  "dictionaries": [
+    "workspace-words"
+  ]
 }

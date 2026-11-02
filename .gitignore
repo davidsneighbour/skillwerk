@@ -1,10 +1,6 @@
-.migration/mirrors/
-.migration/backups/
 node_modules/
 dist/
 scratch/
-*.tgz
-
 
 # Local project-management working files
 /PROJECT.md
