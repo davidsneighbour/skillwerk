@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.2.0...gallimaufry%2Fv2.3.0) (2026-11-04)
+
+### Feat
+
+* **astro:** unify development and migration workflows ([f2dfa2b](https://github.com/davidsneighbour/skillwerk/commit/f2dfa2b5ba8ffabcad4e3cffa6c1616b3eea6977)), closes [#78](https://github.com/davidsneighbour/skillwerk/issues/78)
+* **baseline-modernise:** add static candidate audits ([052160e](https://github.com/davidsneighbour/skillwerk/commit/052160eb0d88c84e0e10b7d08c49d4efafd208f3)), closes [#80](https://github.com/davidsneighbour/skillwerk/issues/80)
+
 ## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.1.0...gallimaufry%2Fv2.2.0) (2026-10-11)
 
 ### Feat
