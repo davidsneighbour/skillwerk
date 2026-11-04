@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/gazetteer%2Fv2.0.3...gazetteer%2Fv2.1.0) (2026-11-04)
+
+### Feat
+
+* **gazetteer:** add Schema.org structured data skill ([496e81e](https://github.com/davidsneighbour/skillwerk/commit/496e81e277c708896b124a24f24632de78ac56ef))
+* **gazetteer:** prepare restored skills for release ([435c4a1](https://github.com/davidsneighbour/skillwerk/commit/435c4a1c81a6e773dba51141d8e2c10bc6a79e57)), closes [#77](https://github.com/davidsneighbour/skillwerk/issues/77)
+
+### Fix
+
+* **config:** repair Biome and Markdown checks ([d2b7c81](https://github.com/davidsneighbour/skillwerk/commit/d2b7c816e25ab96984340f68b9db1f37bb4321d4)), closes [#88](https://github.com/davidsneighbour/skillwerk/issues/88)
+
 ## [2.0.3](https://github.com/davidsneighbour/skillwerk/compare/gazetteer%2Fv2.0.2...gazetteer%2Fv2.0.3) (2026-10-11)
 
 ### Fix
