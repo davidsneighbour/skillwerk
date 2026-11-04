@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.7.1...clerkwork%2Fv2.8.0) (2026-11-04)
+
+### Feat
+
+* **scratchpad:** add cross-repository scratch notes ([1feb055](https://github.com/davidsneighbour/skillwerk/commit/1feb055281182e5cd69e026dc08bd5b85c497ab5)), closes [#89](https://github.com/davidsneighbour/skillwerk/issues/89)
+* **whatsapp:** add scoped customer communication ([8558676](https://github.com/davidsneighbour/skillwerk/commit/855867619007ea544476c6ecd67ddf7250ecd00b)), closes [#82](https://github.com/davidsneighbour/skillwerk/issues/82)
+
 ## [2.7.1](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.7.0...clerkwork%2Fv2.7.1) (2026-10-27)
 
 ## [2.7.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.6.0...clerkwork%2Fv2.7.0) (2026-10-26)
