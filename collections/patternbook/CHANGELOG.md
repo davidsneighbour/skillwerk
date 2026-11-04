@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.0](https://github.com/davidsneighbour/skillwerk/compare/patternbook%2Fv2.2.1...patternbook%2Fv2.3.0) (2026-11-04)
+
+### Feat
+
+* **visual-design:** consolidate Rams design principles ([ae2b67d](https://github.com/davidsneighbour/skillwerk/commit/ae2b67d2dd9b84c8dab3c612bf44dfc191b9fdce)), closes [#79](https://github.com/davidsneighbour/skillwerk/issues/79)
+
 ## [2.2.1](https://github.com/davidsneighbour/skillwerk/compare/patternbook%2Fv2.2.0...patternbook%2Fv2.2.1) (2026-10-27)
 
 ## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/patternbook%2Fv2.1.0...patternbook%2Fv2.2.0) (2026-10-26)
