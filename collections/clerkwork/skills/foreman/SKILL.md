@@ -3,9 +3,9 @@ id: foreman
 name: foreman
 title: Foreman
 description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman routes specialist jobs and applies bundled procedures for repository onboarding, CI diagnosis, pull request workflows, conflict resolution, verification, and maintainability review.
-argument-hint: "<overview|mcp|onboard|janitor|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume|whatsapp> [action|target]"
+argument-hint: "<overview|mcp|onboard|janitor|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume|scratchpad|whatsapp> [action|target]"
 metadata:
-  version: "1.5.0"
+  version: "1.6.0"
 ---
 
 ## Shared vocabulary
@@ -38,6 +38,7 @@ If the user supplies a broad category or topic without a concrete action, show o
 
 ### Project management
 
+* `scratchpad` - save a finding in another repository as a local scratch note.
 * `project-state-report` — refresh and report repository state and recent GitHub activity.
 * `project-task-triage` — sync TODO.md, GitHub Issues, and PROJECT.md.
 * `resume-interrupted-work` — resume or resolve work recorded in RESUME.md before unrelated work starts.
@@ -87,8 +88,8 @@ These procedures rely on ordinary agent capabilities. They add decision rules an
 
 ## Common command routes
 
+* `foreman scratchpad [into|to|for] <repository>` -> `scratchpad` (local cross-repository finding)
 * `foreman whatsapp` -> `whatsapp` (scoped customer communication and reply drafts)
-
 * `foreman packages`, `foreman packages latest`, or `foreman packages check` → `dependency-maintenance` (complete run, majors authorised, or inspection only, respectively)
 * `foreman audit packages` → `dependency-maintenance`
 * `foreman audit security` → `osv-scan`

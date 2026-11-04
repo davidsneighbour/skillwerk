@@ -6,11 +6,11 @@
   "skills": {
     "clerkwork/foreman": {
       "review": {
-        "reviewed_on": "2026-10-29",
+        "reviewed_on": "2026-11-04",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "ee3765256c53c1f0cae7bd00e3067e9aa2fef321",
-        "reviewed_content_hash": "79fb76233dd463252a56bff1c48ff0e87c568c012af767c79bf090fa7f857cab",
-        "evidence": "User instructed: commit the whatsapp skill when it is checked and fixed. Reviewed the scoped WhatsApp catalogue and routing addition; collection checks, 17 tests, packaging, and clean archive installation passed."
+        "reviewed_commit": "d2b7c816e25ab96984340f68b9db1f37bb4321d4",
+        "reviewed_content_hash": "09795e94120d3b7a6effdbbae82fafaff4be7c859c341296a5593879453ce5f1",
+        "evidence": "User approved the final scratchpad skill and Foreman routing update in this conversation and requested commit."
       }
     },
     "posthaste/posthaste": {

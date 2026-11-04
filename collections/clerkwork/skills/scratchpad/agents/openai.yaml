@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scratchpad"
+  short_description: "Save cross-repository findings as local scratch notes"
+  default_prompt: "Use $scratchpad to save the current finding in the named target repository."

@@ -71,6 +71,8 @@ Skill names are intentionally flat. Categories organise the collection without b
 
 ### Project management
 
+* `scratchpad` saves cross-repository findings in local `scratch/` notes. Use "scratch this to markdownlint-config", `/scratchpad into markdownlint-config`, or `/foreman scratchpad into markdownlint-config`. Slash command availability depends on the agent client.
+
 * `project-state-report` reports what changed in a repository since a given time, including GitHub PR and issue activity.
 * `project-task-triage` syncs the local TODO.md scratch pad with GitHub Issues and regenerates the local PROJECT.md dashboard.
 * `resume-interrupted-work` manages a project-root RESUME.md handoff file that blocks new work until interrupted work is resolved.
