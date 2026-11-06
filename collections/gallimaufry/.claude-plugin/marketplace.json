@@ -17,6 +17,8 @@
         "./skills/baseline-modernise",
         "./skills/distil",
         "./skills/dnb-reference",
+        "./skills/explain",
+        "./skills/gallimaufry",
         "./skills/interrogate-source",
         "./skills/scqa-rewrite"
       ]

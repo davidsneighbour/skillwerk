@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gallimaufry"
+  short_description: "Route miscellaneous tasks to Gallimaufry skills"
+  default_prompt: "Use $gallimaufry to select the right skill for this task."

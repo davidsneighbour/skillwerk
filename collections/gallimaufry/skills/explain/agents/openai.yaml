@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explain"
+  short_description: "Explain topics at the right level for an audience"
+  default_prompt: "Use $explain to explain this topic, code, concept, or error for the audience I name."

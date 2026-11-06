@@ -10,6 +10,8 @@
         "baseline-modernise",
         "distil",
         "dnb-reference",
+        "explain",
+        "gallimaufry",
         "interrogate-source",
         "scqa-rewrite"
       ]

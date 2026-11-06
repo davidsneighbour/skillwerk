@@ -34,6 +34,9 @@ Use `--global` when the skills should be available outside the current project.
 
 ## Skills
 
+* [gallimaufry](skills/gallimaufry/SKILL.md) routes requests to the matching collection skill.
+* [explain](skills/explain/SKILL.md) explains topics, code, documents, and errors for a stated age, knowledge level, or audience.
+
 * [baseline-modernise](skills/baseline-modernise/SKILL.md) scans frontend source for modernisation candidates, records Baseline data provenance, and supports separate manual runtime verification.
 
 * [astro](skills/astro/SKILL.md) builds and reviews Astro components and architecture, and guides parity-first website migrations. It loads task-specific references and supports optional delegation for independent work.
