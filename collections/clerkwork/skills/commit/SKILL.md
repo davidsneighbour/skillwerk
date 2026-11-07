@@ -5,7 +5,7 @@ title: Clerkwork Commit Messages
 type: skill
 description: Write Git commit messages that follow the Conventional Commits specification (v1.0.0) — types, scopes, description, body, and footers — with examples and best practices. Use when creating a commit, drafting or reviewing a commit message, or checking commit history for consistency.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 ## Shared vocabulary
@@ -83,10 +83,10 @@ perf: add database index for user lookups
 test: add specs for user authentication
 ```
 
-**chore** — build process, dependency, or maintenance changes
+**chore** — repository housekeeping or maintenance with no more specific type
 
 ```text
-chore: update dependencies
+chore: remove obsolete repository metadata
 ```
 
 **build** — changes to the build system or dependencies
@@ -109,11 +109,15 @@ revert: revert "feat: add export feature"
 This reverts commit abc123.
 ```
 
-Use `type:chore` only when no more specific type applies.
+Use `chore` only when no more specific type applies.
 
 ## Scope (optional)
 
+Follow the project's commit and release conventions before choosing types or scopes. Do not copy scopes from another repository.
+
 Scope names the part of the codebase that changed. Choose scopes that match the project's own architecture and domain areas, for example `auth`, `api`, `ui`, `database`, `deps`, `config`, `docs`.
+
+Prefer a short, consistent scope when it identifies the affected area; omit it when no single scope is accurate. Avoid vague scopes such as `misc` or `changes`.
 
 ```text
 feat(auth): add two-factor authentication
@@ -125,7 +129,7 @@ fix(api): handle rate limit errors
 **Rules:**
 
 * use imperative, present tense: "add", not "added" or "adds";
-* don't capitalise the first letter;
+* start in lower case unless a proper noun requires capitals;
 * no period at the end;
 * keep under 72 characters, ideally under 50.
 
@@ -168,12 +172,14 @@ BREAKING CHANGE: The /auth endpoint now requires a client_id parameter.
 
 **Issue references:**
 
+Follow the project's issue policy. Use `Closes`, `Fixes`, or `Resolves` only when the commit completes the issue. Use `Refs` or `Related to` for partial work. Put references in footers when the project requires them; do not impose an issue requirement on projects that have none.
+
 ```text
 fix(auth): resolve session timeout bug
 
 Fixes #123
 Closes #456
-Related to #789
+Refs #789
 ```
 
 **Co-authors:**
@@ -186,11 +192,12 @@ Co-authored-by: Jane Doe <jane@example.com>
 
 ## Workflow
 
-1. Run `git status` to review changed files.
-2. Run `git diff` or `git diff --cached` to inspect the actual changes — never guess the message from the file list alone.
-3. Stage the relevant files with `git add <file>`.
-4. Construct the commit message using the structure above.
-5. Run `git commit -m "type(scope): description"`, adding `-m` body/footer paragraphs as needed.
+1. Read the project's commit, issue, branch, validation, and publication rules. Drafting or reviewing a message does not authorise a commit or push.
+2. Run `git status --short`, inspect the relevant diff, and distinguish intended additions from incidental untracked files. Preserve unrelated changes and saved work.
+3. Run the documented validation for the intended change. Fix failures caused by it; report unrelated failures with the command and error summary rather than silently expanding scope.
+4. Stage only intended paths with `git add <file>`, then inspect `git diff --cached`. Construct the message from that staged diff, not from the file list alone.
+5. Commit when authorised and required checks and hooks pass. Use a message file for a multiline body when it avoids quoting or newline errors.
+6. When reporting a GitHub commit, link the exact hash returned by Git using the verified repository remote. If it is not pushed, state that the link will resolve after pushing. Never invent or complete a hash. For other hosts, use their commit URL format, or report the hash and explain that no link is available.
 
 ## Best practices
 
@@ -206,7 +213,7 @@ Don't:
 
 * use vague descriptions ("fix stuff", "updates");
 * combine multiple unrelated changes in one commit;
-* capitalise the first letter or end the description with a period;
+* capitalise the opening word unless it is a proper noun, or end the description with a period;
 * use past tense;
 * commit broken code.
 

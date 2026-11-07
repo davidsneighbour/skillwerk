@@ -219,25 +219,10 @@ Increases coverage from 67% to 95%.
 
 ## Chores (chore)
 
-### Dependency update
-
-```text
-chore(deps): bump rails from 7.1.0 to 7.2.0
-```
-
-### Build configuration
-
-```text
-chore: update Docker configuration for production
-```
-
 ### Maintenance work
 
 ```text
-chore(ci): add security scanning to GitHub Actions
-
-Add Brakeman security scanning and bundler-audit to
-the CI pipeline. Scans run on every PR and main branch push.
+chore: remove obsolete repository metadata
 ```
 
 ## Style (style)

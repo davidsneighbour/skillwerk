@@ -183,6 +183,24 @@
         "reviewed_content_hash": "12a8de83f74d35b21c12ddb89298f9d2b73a98e179522763055a3ddb8fbe305b",
         "evidence": "User instructed commit all changes after reviewing the Markdown fixes in this conversation."
       }
+    },
+    "clerkwork/commit": {
+      "review": {
+        "reviewed_on": "2026-11-07",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "39ff04f6c29c8f6945e1f414469ca544ea6bf23a",
+        "reviewed_content_hash": "404f2cb1e8e4e8ca91f6149132d2b209fc7215ffc76521140c174914f0a79216",
+        "evidence": "User explicitly approved the staged skill changes in chat and requested the commit; issue #94."
+      }
+    },
+    "clerkwork/issues": {
+      "review": {
+        "reviewed_on": "2026-11-07",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "39ff04f6c29c8f6945e1f414469ca544ea6bf23a",
+        "reviewed_content_hash": "c236b6e5f9a66a515e98c191eb031c470308b23aa6c2e18a50c4b89e77b97cdc",
+        "evidence": "User explicitly approved the staged skill changes in chat and requested the commit; issue #94."
+      }
     }
   }
 }

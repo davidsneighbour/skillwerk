@@ -5,7 +5,7 @@ title: Clerkwork Issues
 type: skill
 description: Work with project issues using Patrick's GitHub-first issue workflow. Use when inspecting open issues, selecting what to work on next, working on a specific issue, continuing with the next issue, or working through multiple issues. Recognise natural requests such as "check open issues", "work on issue #123", "work on the next issue", and "continue working on issues".
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 ## Shared vocabulary
@@ -118,6 +118,16 @@ git status --short
 
 Do not create a branch merely because issue work has started. Follow the repository's own branch policy.
 
+## Issue creation and change scope
+
+Follow the project's issue requirement and its exceptions. When commits require an issue, identify a suitable existing issue for the intended change, or create one before committing. Read its full description and discussion before implementation; assess feedback against the current code and requirements rather than accepting it automatically.
+
+Create an issue for intended work, not merely because changed or untracked files are visible. Distinguish staged and unstaged changes, deletions, renames, intended additions, and incidental untracked files. Include a new file only when the request or implementation establishes that it belongs to the work. Leave unrelated or uncertain files untouched; their presence does not authorise staging or deletion.
+
+A new issue should describe the current problem, expected result, acceptance criteria, and material options or trade-offs. Use existing repository labels; creating a missing label requires explicit user confirmation. If the tracker is unavailable and an issue is required, prepare the change and report the missing reference rather than inventing an issue number.
+
+Keep unrelated discoveries outside the current change. Create a follow-up issue only when it is actionable, belongs in repository tracking, and issue creation is authorised. Do not track temporary clutter as project work or silently add unrelated fixes to make validation green.
+
 ## Inspecting issues
 
 For GitHub, list enough metadata to understand the queue:
@@ -180,7 +190,7 @@ If nothing suitable exists, report that no safe actionable issue was found and s
 
 For each issue being implemented:
 
-1. Fetch and read the full issue before changing code.
+1. Fetch and read the full issue and all comments before changing code.
 2. Confirm that it is open, actionable, and belongs to the current repository.
 3. Read relevant project documentation and inspect the affected code before editing.
 4. Use `labels` when issue classification or lifecycle state needs to be corrected or advanced.
@@ -212,6 +222,8 @@ npx astro check
 
 Only run checks that make sense for the repository.
 
+Run the documented project gate before committing and allow configured commit hooks to run. Do not assume every project uses lint-staged.
+
 Do not silently ignore failures. If a pre-existing unrelated failure prevents full validation, document it clearly and do not expand the issue scope merely to repair unrelated work.
 
 ## Commits and issue references
@@ -236,6 +248,8 @@ fix(scope): concise summary
 
 Closes #123
 ```
+
+Use a closing footer only when the commit completes the issue; use `Refs #123` for partial work. A local commit does not prove that GitHub has closed the issue. After the required push or merge, verify the issue state before reporting closure. Report partial work with what remains, and add a tracker comment only when authorised or required by the project workflow.
 
 Do not push unless the user requested it or repository instructions require it.
 
@@ -312,5 +326,7 @@ REASON
 Remaining follow-up:
 FOLLOW_UP_OR_NONE
 ```
+
+Link reported issues and commits to their verified host URLs. Use the actual Git hash and remote; identify unpushed commits as local and explain that their links become available after pushing. Mention intentionally added or removed files and unrelated work left untouched when relevant, without listing every incidental file.
 
 Keep reporting factual and concise.
