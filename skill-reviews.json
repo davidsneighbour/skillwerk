@@ -123,11 +123,11 @@
     },
     "gazetteer/markdown-formatting": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-07",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "da537ff855c5360e36cb6821aea57dbe62c01dd54b3accac742d4f951203647c",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0e21276f765f5063070d9eec9ec5cdeb4e13cde2",
+        "reviewed_content_hash": "4db1ae4babc7b99a1b1299d730db65ce74d1bae8fc4dfa6259ba89083d407de6",
+        "evidence": "User explicitly accepted the staged Markdown skill review in chat and requested the commit; issue #95."
       }
     },
     "gazetteer/post-into-void": {

@@ -2,53 +2,35 @@
 id: markdown-formatting
 name: markdown-formatting
 title: Markdown Formatting
-description: Decide whether strict CommonMark or GitHub Flavored Markdown (GFM) rules apply to a Markdown file, then apply the matching instruction set. Use when writing or reviewing Markdown and the target renderer is not obvious from the file name or path alone, or when a user names a specific Markdown flavour or target renderer.
+description: Choose the Markdown flavour for the target renderer, apply project formatting conventions, and review Markdown accessibility beyond lint checks. Use when writing or reviewing Markdown for a named or uncertain renderer, or checking image alternatives, headings, links, lists, and emoji in Markdown documents.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
-A file's `.md` extension does not say which Markdown flavour applies. A
-strict CommonMark parser, GitHub, a static site generator's own renderer
-(Hugo/Goldmark, MDX, etc.), and an IDE preview can all disagree on whether
-tables, task lists, strikethrough, or bare-URL autolinking are valid. This
-skill decides which rule set to apply before writing or reviewing a Markdown
-file, instead of guessing from the file extension.
+A file's extension does not establish its Markdown flavour. Check the target renderer and project conventions before using extensions or changing style.
 
-## 1. Determine the target
+## Determine the target
 
-Ask, or infer from context, what will render the file:
+* For GitHub documents, issue bodies, and pull request bodies, use GFM and account for GitHub's additional HTML sanitisation.
+* For static site generators, documentation tools, MDX, and editor previews, inspect the actual parser, plugins, configuration, and relevant documentation. Do not assume GFM support from the tool category or file extension. Frontmatter, shortcodes, directives, and embedded components are renderer-specific features.
+* For an explicit CommonMark-only renderer or a specification fixture, use the declared syntax without GFM-only extensions.
+* If the target is unknown, use portable CommonMark constructs where practical. Ask only when a feature needed for the task depends on the unresolved renderer. State any remaining assumption.
 
-* **GitHub** (README, issue, PR body, this registry's own docs): GFM.
-* **A static site generator or docs tool the user names** (Hugo, Jekyll,
-  Docusaurus, MkDocs, etc.): check whether it documents itself as
-  GFM-compatible; most are. If unsure, ask.
-* **A test fixture, spec-compliance check, or a renderer the user explicitly
-  says is CommonMark-only**: strict CommonMark, no extensions.
-* **Unspecified, and no signal either way**: default to GFM. In practice
-  almost everything that renders Markdown today, including GitHub, most
-  static site generators, and IDE previews, is GFM-compatible or a superset
-  of it, and GFM is a strict superset of CommonMark, so defaulting to it is
-  the safer guess.
+## Separate syntax from house style
 
-Only ask the user when the choice changes what is valid syntax for the task
-at hand, for example when the draft would use a table, task list, or bare
-autolink and a strict CommonMark target would reject it.
+Use the [CommonMark specification](https://spec.commonmark.org/) for base parsing questions and the [GFM specification](https://github.github.com/gfm/) for its extensions, including tables, task lists, strikethrough, and bare-URL autolinks. Consult the relevant section rather than copying the specifications into project instructions.
 
-## 2. Apply the matching instructions
+Follow project instructions and the configured linter for style choices such as list markers, table alignment, fence characters, and frontmatter format. Language labels on fences are useful style guidance, not a CommonMark syntax requirement. Use a fence long enough to enclose its contents safely; do not impose exactly three backticks when the example contains a closing fence of that length.
 
-* Use the [CommonMark specification](https://spec.commonmark.org/) for base syntax and parsing questions.
-* For a GFM target, also use the [GFM specification](https://github.github.com/gfm/) for tables, task lists, strikethrough, and autolinks.
-* Check the actual project's renderer configuration before using extensions. For a strict CommonMark target, use no GFM-only constructs.
+Preserve existing compliant style. Do not introduce another rule-ID system or override project conventions with preferences copied from another repository. If requested syntax is unsupported by the target renderer, explain the conflict and use a supported equivalent where possible.
 
-## 3. Prefer the project's linter for style, not spec compliance
+## Review and validate
 
-Spec files describe what is valid syntax and how ambiguous constructs
-resolve; they are not a style guide. If the repository has a Markdown linter
-configured (for example `markdownlint` with a `.markdownlint.jsonc` or
-`.markdownlint.yml`), run it for house style, formatting, and accessibility
-mechanics. Use the spec instructions to resolve genuine parsing questions the
-linter cannot answer, such as whether a construct is valid at all, not to
-re-derive style rules the linter already enforces.
+When checking Markdown accessibility, read [the Markdown accessibility reference](references/accessibility.md). It covers content judgement that syntax and style checks cannot establish, without requiring a browser audit for every document edit.
+
+Inspect the project's installed Markdown lint command and configuration before relying on its coverage. Run the relevant checks for changed files, and inspect the target rendering when extension support, heading structure, HTML handling, or image alternatives are uncertain. A passing linter does not establish correct rendering or accessibility. Report existing unrelated failures and checks that could not be performed.
+
+A review request authorises inspection and recommendations. Apply edits when remediation is requested; preserve supplied meaning and flag missing information rather than inventing it.
 
 ## Markdown and prose formatting
 
