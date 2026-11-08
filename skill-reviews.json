@@ -6,11 +6,11 @@
   "skills": {
     "clerkwork/foreman": {
       "review": {
-        "reviewed_on": "2026-11-04",
+        "reviewed_on": "2026-11-08",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "d2b7c816e25ab96984340f68b9db1f37bb4321d4",
-        "reviewed_content_hash": "09795e94120d3b7a6effdbbae82fafaff4be7c859c341296a5593879453ce5f1",
-        "evidence": "User approved the final scratchpad skill and Foreman routing update in this conversation and requested commit."
+        "reviewed_commit": "f7761f09cac8cc5efd57c95e3b502e69e853d354",
+        "reviewed_content_hash": "760dbf41eeec95f6d6d9bcb99e95ebcb01e38b1dd994bb2e66d097fd908a9ade",
+        "evidence": "User approved committing the new repo skill, including its Foreman routing integration, in chat on 8 November 2026."
       }
     },
     "posthaste/posthaste": {
@@ -200,6 +200,15 @@
         "reviewed_commit": "39ff04f6c29c8f6945e1f414469ca544ea6bf23a",
         "reviewed_content_hash": "c236b6e5f9a66a515e98c191eb031c470308b23aa6c2e18a50c4b89e77b97cdc",
         "evidence": "User explicitly approved the staged skill changes in chat and requested the commit; issue #94."
+      }
+    },
+    "clerkwork/repo": {
+      "review": {
+        "reviewed_on": "2026-11-08",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "f7761f09cac8cc5efd57c95e3b502e69e853d354",
+        "reviewed_content_hash": "16cc149a3aee9bc5f2efb310a7200240f4aa7694a78169d41635a5224a4a8de7",
+        "evidence": "User approved the new repo skill and dnb- taxonomy in chat on 8 November 2026 and requested the commit."
       }
     }
   }

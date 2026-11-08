@@ -3,9 +3,9 @@ id: foreman
 name: foreman
 title: Foreman
 description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman routes specialist jobs and applies bundled procedures for repository onboarding, CI diagnosis, pull request workflows, conflict resolution, verification, and maintainability review.
-argument-hint: "<overview|mcp|onboard|janitor|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume|scratchpad|whatsapp> [action|target]"
+argument-hint: "<overview|repo|mcp|onboard|janitor|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume|scratchpad|whatsapp> [action|target]"
 metadata:
-  version: "1.6.0"
+  version: "1.7.0"
 ---
 
 ## Shared vocabulary
@@ -52,6 +52,8 @@ If the user supplies a broad category or topic without a concrete action, show o
 
 ### Git and GitHub
 
+* `repo` - inspect GitHub repositories, list topic cohorts, and preview or explicitly apply topic changes.
+
 * `commit` — write a Git commit message that follows the Conventional Commits specification.
 * `issues` — inspect, select, or work through project issues using Patrick's GitHub-first workflow.
 * `labels` — classify issues with Patrick's category:value label taxonomy.
@@ -87,6 +89,8 @@ These procedures rely on ordinary agent capabilities. They add decision rules an
 6. Do not perform the target skill's underlying work inside Foreman, and do not bypass its confirmation or safety rules.
 
 ## Common command routes
+
+* `foreman repo [info|topics|list] [target]` -> `repo` (GitHub repository information and safe topic administration)
 
 * `foreman scratchpad [into|to|for] <repository>` -> `scratchpad` (local cross-repository finding)
 * `foreman whatsapp` -> `whatsapp` (scoped customer communication and reply drafts)

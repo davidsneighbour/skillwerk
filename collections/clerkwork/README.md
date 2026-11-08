@@ -86,6 +86,8 @@ Skill names are intentionally flat. Categories organise the collection without b
 
 ### Git and GitHub
 
+* [`repo`](skills/repo/SKILL.md) inspects GitHub repository information, lists repositories by topics, and previews or explicitly applies topic changes. Use `/repo [info] [owner/repo|repo]`, `/repo topics`, or `/foreman repo`. Without a target it resolves the current local Git repository. See the bundled [topics taxonomy](skills/repo/references/topics.md) for optional administration groups and listing examples.
+
 * `commit` writes Git commit messages that follow the Conventional Commits specification.
 * `issues` inspects, selects, and works through project issues using Patrick's GitHub-first workflow, while preserving the same principles on other issue systems where practical.
 * `labels` analyses issue text and selects or applies labels from Patrick's category:value label taxonomy.

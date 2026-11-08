@@ -46,7 +46,7 @@
     {
       "title": "Git and GitHub",
       "description": "Skills for commits and Patrick's GitHub-first issue workflow.",
-      "skills": ["commit", "issues", "labels"]
+      "skills": ["commit", "issues", "labels", "repo"]
     },
     {
       "title": "Customer communication",

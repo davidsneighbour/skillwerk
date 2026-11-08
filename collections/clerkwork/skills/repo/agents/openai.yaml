@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repo"
+  short_description: "Inspect GitHub repositories and safely manage topics"
+  default_prompt: "Use $repo to inspect the target GitHub repository or preview its topic changes."

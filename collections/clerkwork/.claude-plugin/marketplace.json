@@ -33,7 +33,8 @@
         "./skills/project-task-triage",
         "./skills/resume-interrupted-work",
         "./skills/scratchpad",
-        "./skills/whatsapp"
+        "./skills/whatsapp",
+        "./skills/repo"
       ]
     }
   ]
