@@ -1,0 +1,47 @@
+################################################################################
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+################################################################################
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: friday
+      time: "22:00"
+      timezone: Asia/Bangkok
+    assignees:
+      - davidsneighbour
+    target-branch: main
+    open-pull-requests-limit: 999
+    pull-request-branch-name:
+      separator: /
+    labels:
+      - type:dependencies
+    ignore:
+      # do not update @davidsneighbour packages, that is done via renovate
+      - dependency-name: "@davidsneighbour/*"
+    cooldown:
+      default-days: 7
+      exclude:
+        - "@davidsneighbour/*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      day: friday
+      time: "22:00"
+      timezone: Asia/Bangkok
+    assignees:
+      - davidsneighbour
+    target-branch: main
+    open-pull-requests-limit: 999
+    pull-request-branch-name:
+      separator: /
+    labels:
+      - type:dependencies
+    cooldown:
+      default-days: 7
+      exclude:
+        - "@davidsneighbour/*"

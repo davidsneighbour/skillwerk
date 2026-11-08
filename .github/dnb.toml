@@ -1,0 +1,4 @@
+[flags]
+extensions = true # 2026-06-08
+
+# TODO schema with these config options
