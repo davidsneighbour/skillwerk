@@ -1,0 +1,4 @@
+interface:
+  display_name: "Simple English"
+  short_description: "Write and check plain English technical prose"
+  default_prompt: "Use $simple-english to rewrite this text in plain English while preserving its facts and uncertainty."

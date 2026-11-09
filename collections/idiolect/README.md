@@ -1,10 +1,10 @@
-# AI skills for a person's own writing voice
+# AI skills for writing voice and plain language
 
 ![Idiolect](../../.github/assets/images/skillwerk/idiolect.png)
 
-Idiolect is a collection of reusable AI skills for capturing, checking, and applying a person's idiolect - their own distinctive vocabulary, rhythm, and habits in writing. The goal is to keep AI-assisted writing sounding like the person who owns the voice, not like a generic assistant.
+Idiolect is a collection of reusable AI skills for personal writing voice, plain language, and controlled writing styles. Capture, check, and apply a person's distinctive vocabulary, rhythm, and habits, or select a plain-language style for factual text and instructions.
 
-* [AI skills for a person's own writing voice](#ai-skills-for-a-persons-own-writing-voice)
+* [AI skills for writing voice and plain language](#ai-skills-for-writing-voice-and-plain-language)
 * [Install](#install)
 * [Update](#update)
 * [Skills](#skills)
@@ -31,6 +31,10 @@ Use `--global` when the skills should be available outside the current project.
 ## Skills
 
 * `idiolect` builds a voice profile from writing samples, checks a draft against that profile, and rewrites drafts so they read in the author's own voice.
+
+* [`simple-english`](skills/simple-english/SKILL.md) writes, rewrites, and checks factual text and instructions in plain English, with a Strict mode for ASD-STE100 requests. It includes guidance for documentation, runbooks, error messages, and other technical prose.
+
+Select `simple-english` explicitly through a named invocation or a request for plain English or Simplified Technical English. It does not automatically apply to personal-voice rewrites. For the requested text, its style rules take priority over conflicting voice habits, while facts, uncertainty, quoted material, and externally imposed requirements remain intact.
 
 ## The cabinet of @davidsneighbour's skills
 

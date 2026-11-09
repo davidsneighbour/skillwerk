@@ -33,3 +33,7 @@ Do not use Idiolect for code, structured data, verbatim material, or content
 whose wording must remain exact.
 
 ```
+
+## Plain-language handoff
+
+Use `simple-english` when the user selects plain English or Simplified Technical English for factual text and instructions. Do not add it to every personal-voice handoff. If the user requests both a personal voice and this controlled style, apply the voice first, then apply `simple-english` to the requested text. Its vocabulary and sentence rules take priority over conflicting voice habits. Preserve facts, uncertainty, quoted material, and externally imposed requirements.

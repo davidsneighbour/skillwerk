@@ -17,7 +17,7 @@ The repository owns development tooling, validation, maintenance automation, and
   * **Scope:** Repository engineering and project management, including setup, configuration, issues, branches, pull requests, releases, dependencies, CI, security, maintenance, documentation, and administrative workflows.
 * **[Idiolect](collections/idiolect/README.md)**
   * **Tagline:** Your meaning, in your voice.
-  * **Scope:** Written-output transformation, including personal voice, tone, phrasing, register, terminology, audience adaptation, and stylistic consistency. It acts as a finishing layer without changing facts or externally imposed requirements.
+  * **Scope:** Written-output transformation, including personal voice, plain language, controlled writing styles, tone, phrasing, register, terminology, audience adaptation, and stylistic consistency. It acts as a finishing layer without changing facts or externally imposed requirements.
 * **[Patternbook](collections/patternbook/README.md)**
   * **Tagline:** Patterns for better digital work.
   * **Scope:** Digital design and presentation, including design systems, branding, typography, colour, composition, interface patterns, responsive design, usability, accessibility, visual audits, consistency checks, and design recommendations.

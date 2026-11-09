@@ -4,8 +4,13 @@
   "groupings": [
     {
       "title": "Idiolect",
-      "description": "Skills for capturing, checking, and applying a person's distinctive writing voice.",
-      "skills": ["idiolect-process", "idiolect-voice", "idiolect"]
+      "description": "Skills for personal writing voice, plain language, and controlled writing styles.",
+      "skills": [
+        "idiolect-process",
+        "idiolect-voice",
+        "idiolect",
+        "simple-english"
+      ]
     }
   ]
 }

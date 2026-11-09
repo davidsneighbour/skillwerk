@@ -2,20 +2,21 @@
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "version": "2.0.5",
   "name": "idiolect",
-  "description": "Idiolect skills for capturing, checking, and applying a person's distinctive writing voice.",
+  "description": "Reusable AI skills for personal writing voice, plain language, and controlled writing styles.",
   "owner": {
     "name": "David's Neighbour"
   },
   "plugins": [
     {
       "name": "idiolect",
-      "description": "Collection of Idiolect skills for building and applying a personal writing-voice profile.",
+      "description": "Reusable AI skills for personal writing voice, plain language, and controlled writing styles.",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/idiolect-process",
         "./skills/idiolect-voice",
-        "./skills/idiolect"
+        "./skills/idiolect",
+        "./skills/simple-english"
       ]
     }
   ]
