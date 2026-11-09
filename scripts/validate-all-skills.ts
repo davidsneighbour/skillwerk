@@ -7,7 +7,7 @@ import { collections, selectedCollection } from "./collections.ts";
 const selected = selectedCollection(process.argv.slice(2));
 const targets = selected ? [selected] : collections;
 const skillNames = new Map<string, string>();
-for (const collection of collections) {
+for (const collection of targets) {
   const root = join("collections", collection, "skills");
   for (const entry of readdirSync(root, { withFileTypes: true })) {
     if (!entry.isDirectory() || entry.name === "scratch") continue;
