@@ -34,6 +34,10 @@ The repository owns development tooling, validation, maintenance automation, and
   * **Tagline:** A plugin-first engineering system for agent skills.
   * **Scope:** Agent-skill engineering, including lightweight execution evidence, deduplicated findings, inspection, observation, engineering, proof, and collection stewardship through five portable workflows: Inspector, Observer, Engineer, Prover, and Steward.
 
+## Find a skill
+
+Use [`coadjutor`](collections/clerkwork/skills/coadjutor/SKILL.md), included in Clerkwork, to discover skills across all collections. `/coadjutor accessibility` lists matching skills and asks which to use; a single match is described with an offer to run it. The selected skill must be installed before handoff.
+
 ## Install a collection
 
 Replace `<collection>` with `apparatus`, `clerkwork`, `fettle`, `gallimaufry`, `gazetteer`, `idiolect`, `patternbook`, or `posthaste`:

@@ -96,6 +96,14 @@ const steps: Step[] = collection
   ? scopedSteps(collection)
   : [npmRun("lint"), npmRun("typecheck"), npmRun("validate"), npmRun("test")];
 
+if (!collection || collection === "clerkwork") {
+  steps.push({
+    name: "validate:catalogue",
+    command: process.execPath,
+    args: ["scripts/sync-coadjutor-catalogue.ts", "--check"],
+  });
+}
+
 const failed: string[] = [];
 try {
   for (const step of steps) {

@@ -42,6 +42,8 @@ Keep edits scoped to the requested skill or document. Preserve existing user cha
 
 Each `collections/<collection>/skills/<skill-name>/` directory is independently loadable and uses `SKILL.md` as its entry point. Keep supporting resources, references, scripts, agents, and auth sites inside the owning skill where applicable. Shared README assets live in `.github/assets/`.
 
+When adding a skill, always register it in the owning collection's local router and in Coadjutor, as well as the collection manifests and README. If the collection has no implemented router, update its capability inventory and record that limitation in Coadjutor instead of inventing a router. For additions, renames, removals, and capability changes, stage the skill and manifest entries, then run `node scripts/sync-coadjutor-catalogue.ts` and verify `node scripts/sync-coadjutor-catalogue.ts --check`. Changes to Coadjutor's bundled catalogue require its own version increase and review acceptance under the normal existing-skill rules.
+
 Use plain Markdown and specific, actionable `SKILL.md` frontmatter, especially `id`, `name`, `title`, and `description`. Use lowercase hyphenated skill directories and action-oriented script names. Prefer ASCII punctuation unless quoting existing text.
 
 Run TypeScript helpers with `node <path>.ts`; do not assume compiled JavaScript, `tsx`, or a build step. Resolve former standalone-repository paths against `collections/<collection>/`, while running shared npm commands from this repository root. Use `npm run validate:skills`, `npm run lint:markdown`, and `npm run lint:spelling` for targeted validation.

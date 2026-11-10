@@ -6,11 +6,11 @@
   "skills": {
     "clerkwork/foreman": {
       "review": {
-        "reviewed_on": "2026-11-08",
+        "reviewed_on": "2026-11-10",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f7761f09cac8cc5efd57c95e3b502e69e853d354",
-        "reviewed_content_hash": "760dbf41eeec95f6d6d9bcb99e95ebcb01e38b1dd994bb2e66d097fd908a9ade",
-        "evidence": "User approved committing the new repo skill, including its Foreman routing integration, in chat on 8 November 2026."
+        "reviewed_commit": "d81ad3e697f6eeb6ded1cd930cba77040897221a",
+        "reviewed_content_hash": "afb70826818b5c480e6d37533ae8a0ac724b9ade4270c9320df9151228551625",
+        "evidence": "Patrick explicitly approved the completed Foreman registration change and requested a commit. Clerkwork checks, catalogue freshness, version checks, and clean archive installation passed. Full repository validation is blocked by existing incomplete Posthaste entry points for instagram and linkedin."
       }
     },
     "posthaste/posthaste": {

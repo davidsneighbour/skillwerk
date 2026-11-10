@@ -57,6 +57,8 @@ Skill names are intentionally flat. Categories organise the collection without b
 
 ### Agent management
 
+* [`coadjutor`](skills/coadjutor/SKILL.md) finds skills across all eight Skillwerk collections. Use `/coadjutor accessibility` to compare matching skills and choose one, or `/coadjutor overview` to browse collections. Its bundled catalogue works without installing the other collections; execution requires the selected skill to be available.
+
 * `mcp-setup` lists curated MCP servers, checks client configuration, and sets up a selected server. Use `/foreman mcp`, `/foreman mcp check`, or `/foreman mcp setup mdn`. The default catalogue contains MDN, Chrome DevTools, and shadcn. Planable and SE Ranking are available only through explicit named requests; their companion skills are optional.
 * `agent-align` creates or repairs the repository agent entry-point setup.
 * `agent-instructions-audit` audits and optimises agent instruction architecture and context cost.

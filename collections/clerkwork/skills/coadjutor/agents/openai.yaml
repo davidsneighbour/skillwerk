@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coadjutor"
+  short_description: "Find and route skills across all Skillwerk collections"
+  default_prompt: "Use $coadjutor to find the Skillwerk skills for my topic and help me choose which to run."
