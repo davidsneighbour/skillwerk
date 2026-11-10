@@ -210,6 +210,15 @@
         "reviewed_content_hash": "16cc149a3aee9bc5f2efb310a7200240f4aa7694a78169d41635a5224a4a8de7",
         "evidence": "User approved the new repo skill and dnb- taxonomy in chat on 8 November 2026 and requested the commit."
       }
+    },
+    "clerkwork/coadjutor": {
+      "review": {
+        "reviewed_on": "2026-11-10",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "b81c44a9519dc69b7c22be5d4dc166c0f30340e6",
+        "reviewed_content_hash": "939eed76b3cf78b2a75fd9f04723b18aafadeeb46aeaf59fc0246d4b20b345d1",
+        "evidence": "Patrick explicitly accepted the Coadjutor catalogue removal after LinkedIn and Instagram drafts were preserved in named stashes. The only skill changes are removal of the unavailable Instagram catalogue entry and the required patch version increase to 1.0.1. Full repository checks passed."
+      }
     }
   }
 }

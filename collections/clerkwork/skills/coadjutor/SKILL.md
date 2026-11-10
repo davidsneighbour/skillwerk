@@ -5,7 +5,7 @@ title: Coadjutor
 description: Find and compare skills across all eight Skillwerk collections, then route an authorised request to the selected skill or collection router. Use for coadjutor, cross-collection capability discovery, or choosing which Skillwerk skill handles a topic.
 argument-hint: "<overview|topic|skill> [request]"
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Shared vocabulary
