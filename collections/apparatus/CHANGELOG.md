@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.4](https://github.com/davidsneighbour/skillwerk/compare/apparatus%2Fv2.0.3...apparatus%2Fv2.0.4) (2026-11-11)
+
+### Refactor
+
+* **skills:** remove legacy frontmatter fields ([800e6d0](https://github.com/davidsneighbour/skillwerk/commit/800e6d0e33de319e41c5cfb6af0d319a177d9717)), closes [#105](https://github.com/davidsneighbour/skillwerk/issues/105)
+
 ## [2.0.3](https://github.com/davidsneighbour/skillwerk/compare/apparatus%2Fv2.0.2...apparatus%2Fv2.0.3) (2026-10-11)
 
 ### Docs
