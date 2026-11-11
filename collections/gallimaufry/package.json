@@ -1,6 +1,6 @@
 {
   "name": "@davidsneighbour/gallimaufry",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "private": true,
   "description": "Reusable AI skills for miscellaneous AI asset maintenance and small specialised workflows.",
   "type": "module",

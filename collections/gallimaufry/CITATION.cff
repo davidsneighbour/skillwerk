@@ -5,12 +5,12 @@ authors:
     given-names: "Patrick"
     orcid: "https://orcid.org/0000-0001-6250-2135"
 title: "Gallimaufry"
-version: v2.3.0
-date-released: 2026-11-05
+version: v2.4.0
+date-released: 2026-11-11
 url: "https://github.com/davidsneighbour/gallimaufry"
 repository-code: "https://github.com/davidsneighbour/gallimaufry"
 license: "MIT"
-commit: 29a4002932e5691b40b4637d9fe49a4987b6d952
+commit: 4375018b45f0619c0103526ade417e1f11cf73d9
 keywords:
   - ai
   - skills

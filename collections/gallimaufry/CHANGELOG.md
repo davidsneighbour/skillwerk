@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.4.0](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.3.0...gallimaufry%2Fv2.4.0) (2026-11-11)
+
+### Feat
+
+* **explain:** add audience-aware explanations and routing ([5b1fa61](https://github.com/davidsneighbour/skillwerk/commit/5b1fa610d6112ffc4361508db159ee0395493edd)), closes [#92](https://github.com/davidsneighbour/skillwerk/issues/92)
+
+### Refactor
+
+* **skills:** remove legacy frontmatter fields ([800e6d0](https://github.com/davidsneighbour/skillwerk/commit/800e6d0e33de319e41c5cfb6af0d319a177d9717)), closes [#105](https://github.com/davidsneighbour/skillwerk/issues/105)
+
 ## [2.3.0](https://github.com/davidsneighbour/skillwerk/compare/gallimaufry%2Fv2.2.0...gallimaufry%2Fv2.3.0) (2026-11-04)
 
 ### Feat
