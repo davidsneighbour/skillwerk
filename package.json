@@ -59,7 +59,7 @@
     "fast-glob": "3.3.3",
     "lint-staged": "17.6.0",
     "playwright": "1.65.0",
-    "release-it": "21.1.1",
+    "release-it": "21.1.2",
     "sharp": "0.35.5",
     "simple-git-hooks": "2.14.0",
     "skills": "1.8.0",
