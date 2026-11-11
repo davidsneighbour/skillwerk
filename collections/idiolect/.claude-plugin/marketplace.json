@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "version": "2.0.5",
+  "version": "2.1.0",
   "name": "idiolect",
   "description": "Reusable AI skills for personal writing voice, plain language, and controlled writing styles.",
   "owner": {

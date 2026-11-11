@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/idiolect%2Fv2.0.5...idiolect%2Fv2.1.0) (2026-11-11)
+
+### Feat
+
+* **simple-english:** add plain-language writing to Idiolect ([d81ad3e](https://github.com/davidsneighbour/skillwerk/commit/d81ad3e697f6eeb6ded1cd930cba77040897221a)), closes [#102](https://github.com/davidsneighbour/skillwerk/issues/102)
+
+### Refactor
+
+* **skills:** remove legacy frontmatter fields ([800e6d0](https://github.com/davidsneighbour/skillwerk/commit/800e6d0e33de319e41c5cfb6af0d319a177d9717)), closes [#105](https://github.com/davidsneighbour/skillwerk/issues/105)
+
 ## [2.0.5](https://github.com/davidsneighbour/skillwerk/compare/idiolect%2Fv2.0.4...idiolect%2Fv2.0.5) (2026-10-27)
 
 ## [2.0.4](https://github.com/davidsneighbour/skillwerk/compare/idiolect%2Fv2.0.3...idiolect%2Fv2.0.4) (2026-10-26)

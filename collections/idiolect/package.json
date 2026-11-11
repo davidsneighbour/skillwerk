@@ -1,7 +1,7 @@
 {
   "name": "@davidsneighbour/idiolect",
   "description": "Reusable AI skills for personal writing voice, plain language, and controlled writing styles.",
-  "version": "2.0.5",
+  "version": "2.1.0",
   "license": "MIT",
   "private": true,
   "repository": {
