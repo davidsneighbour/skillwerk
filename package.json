@@ -62,7 +62,7 @@
     "release-it": "21.1.1",
     "sharp": "0.35.5",
     "simple-git-hooks": "2.14.0",
-    "skills": "1.7.6",
+    "skills": "1.8.0",
     "smol-toml": "1.9.1",
     "twitter-text": "3.1.0",
     "typescript": "7.0.2",
@@ -83,5 +83,8 @@
   "simple-git-hooks": {
     "pre-commit": "npm run --silent validate:staged && npm run --silent lint:staged",
     "preserveUnused": true
+  },
+  "allowScripts": {
+    "@dnbhq/biome-config@1.1.0": true
   }
 }
