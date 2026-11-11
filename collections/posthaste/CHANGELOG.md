@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.2.2](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.2.1...posthaste%2Fv2.2.2) (2026-11-11)
+
+### Refactor
+
+* **skills:** remove legacy frontmatter fields ([800e6d0](https://github.com/davidsneighbour/skillwerk/commit/800e6d0e33de319e41c5cfb6af0d319a177d9717)), closes [#105](https://github.com/davidsneighbour/skillwerk/issues/105)
+
+### Build
+
+* **deps:** update dependencies ([5ef14e4](https://github.com/davidsneighbour/skillwerk/commit/5ef14e4073ae9f8b5ab834198ebcce6c3171380f))
+
+### Chore
+
+* **posthaste:** park unfinished skill drafts ([0c8bfd6](https://github.com/davidsneighbour/skillwerk/commit/0c8bfd66ef0bec62b5a323b27524c431dabf6b49)), closes [#104](https://github.com/davidsneighbour/skillwerk/issues/104)
+
 ## [2.2.1](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.2.0...posthaste%2Fv2.2.1) (2026-10-27)
 
 ## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.1.2...posthaste%2Fv2.2.0) (2026-10-26)
