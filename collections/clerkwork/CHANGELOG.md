@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.9.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.8.0...clerkwork%2Fv2.9.0) (2026-11-11)
+
+### Feat
+
+* **clerkwork:** consolidate commit and issue guidance ([0e21276](https://github.com/davidsneighbour/skillwerk/commit/0e21276f765f5063070d9eec9ec5cdeb4e13cde2)), closes [#94](https://github.com/davidsneighbour/skillwerk/issues/94)
+* **coadjutor:** route across all collections ([b81c44a](https://github.com/davidsneighbour/skillwerk/commit/b81c44a9519dc69b7c22be5d4dc166c0f30340e6)), closes [#103](https://github.com/davidsneighbour/skillwerk/issues/103)
+* **repo:** add GitHub repository management ([ea638f9](https://github.com/davidsneighbour/skillwerk/commit/ea638f9a1501fd8ba051680e95f865b51645cbc8)), closes [#98](https://github.com/davidsneighbour/skillwerk/issues/98)
+
+### Refactor
+
+* **skills:** remove legacy frontmatter fields ([800e6d0](https://github.com/davidsneighbour/skillwerk/commit/800e6d0e33de319e41c5cfb6af0d319a177d9717)), closes [#105](https://github.com/davidsneighbour/skillwerk/issues/105)
+
+### Chore
+
+* **posthaste:** park unfinished skill drafts ([0c8bfd6](https://github.com/davidsneighbour/skillwerk/commit/0c8bfd66ef0bec62b5a323b27524c431dabf6b49)), closes [#104](https://github.com/davidsneighbour/skillwerk/issues/104)
+
 ## [2.8.0](https://github.com/davidsneighbour/skillwerk/compare/clerkwork%2Fv2.7.1...clerkwork%2Fv2.8.0) (2026-11-04)
 
 ### Feat
