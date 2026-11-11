@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.1](https://github.com/davidsneighbour/skillwerk/compare/patternbook%2Fv2.3.0...patternbook%2Fv2.3.1) (2026-11-11)
+
+### Refactor
+
+* **skills:** remove legacy frontmatter fields ([800e6d0](https://github.com/davidsneighbour/skillwerk/commit/800e6d0e33de319e41c5cfb6af0d319a177d9717)), closes [#105](https://github.com/davidsneighbour/skillwerk/issues/105)
+
 ## [2.3.0](https://github.com/davidsneighbour/skillwerk/compare/patternbook%2Fv2.2.1...patternbook%2Fv2.3.0) (2026-11-04)
 
 ### Feat
