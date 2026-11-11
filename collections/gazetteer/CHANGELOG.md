@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.0](https://github.com/davidsneighbour/skillwerk/compare/gazetteer%2Fv2.1.0...gazetteer%2Fv2.2.0) (2026-11-11)
+
+### Feat
+
+* **markdown-formatting:** consolidate Markdown guidance ([f7761f0](https://github.com/davidsneighbour/skillwerk/commit/f7761f09cac8cc5efd57c95e3b502e69e853d354)), closes [#95](https://github.com/davidsneighbour/skillwerk/issues/95)
+
+### Refactor
+
+* **skills:** remove legacy frontmatter fields ([800e6d0](https://github.com/davidsneighbour/skillwerk/commit/800e6d0e33de319e41c5cfb6af0d319a177d9717)), closes [#105](https://github.com/davidsneighbour/skillwerk/issues/105)
+
 ## [2.1.0](https://github.com/davidsneighbour/skillwerk/compare/gazetteer%2Fv2.0.3...gazetteer%2Fv2.1.0) (2026-11-04)
 
 ### Feat
