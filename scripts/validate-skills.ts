@@ -465,6 +465,15 @@ for (const slug of slugs) {
     continue;
   }
 
+  for (const field of ["id", "type", "title"]) {
+    if (Object.hasOwn(frontmatter, field)) {
+      fail(
+        path,
+        `Legacy skill frontmatter field \`${field}\` is not allowed; use name for identity and agents/openai.yaml for display metadata`,
+      );
+    }
+  }
+
   const { name = "", description = "" } = frontmatter;
 
   if (name !== slug) {

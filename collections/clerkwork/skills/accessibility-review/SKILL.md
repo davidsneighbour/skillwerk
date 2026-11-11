@@ -1,11 +1,8 @@
 ---
-id: accessibility-review
 name: accessibility-review
-title: Clerkwork accessibility review
-type: skill
 description: Implement and review accessible frontend markup and interactions, or investigate keyboard, focus, screen-reader, contrast, and semantic issues. Use for accessibility reviews and frontend changes where accessibility materially affects implementation. Target WCAG 2.2 AA unless the project specifies another target.
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
 ---
 
 ## Shared vocabulary

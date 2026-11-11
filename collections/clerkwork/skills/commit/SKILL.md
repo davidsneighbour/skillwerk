@@ -1,11 +1,8 @@
 ---
-id: commit
 name: commit
-title: Clerkwork Commit Messages
-type: skill
 description: Write Git commit messages that follow the Conventional Commits specification (v1.0.0) — types, scopes, description, body, and footers — with examples and best practices. Use when creating a commit, drafting or reviewing a commit message, or checking commit history for consistency.
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 ## Shared vocabulary

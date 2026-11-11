@@ -1,10 +1,8 @@
 ---
-id: visual-design
 name: visual-design
-title: Patternbook Visual Design Rules
 description: Apply Patternbook visual design rules (DSG001 and up) when designing, implementing, or reviewing user interfaces - colour, contrast, neutrals, spacing, alignment, grids, typography, line length, buttons, corner radii, borders, shadows, depth, icons, task clarity, honest presentation, durable patterns, and resource-aware visual choices. Use when building or changing UI components, pages, themes, or design tokens, and for design or implementation reviews that need rule-based findings.
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
 ---
 
 Visual design rules for interface work. Each rule is one file in `rules/` and has a stable `DSG###` ID.

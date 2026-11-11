@@ -1,10 +1,8 @@
 ---
-id: gallimaufry
 name: gallimaufry
-title: Gallimaufry
 description: Route Gallimaufry requests to skills for audience-aware explanations, Astro development, frontend modernisation, source analysis, reference frontmatter, and SCQA message rewrites.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Route the request to the most specific skill below. Read only the selected entry point. These links require the selected skill to be installed; if it is missing, identify it and ask the user to install it. Do not claim to have followed an unavailable skill. Routing does not authorise sending, publishing, or other external changes.

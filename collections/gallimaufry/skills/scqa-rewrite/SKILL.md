@@ -1,10 +1,8 @@
 ---
-id: scqa-rewrite
-title: SCQA rewrite
 name: scqa-rewrite
 description: Rewrite a text using Situation, Complication, Question, and Answer (SCQA). Use when the user wants clearer context, reasoning, and a request or conclusion while preserving the original meaning and tone.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Turn an existing email or message into a clear communication organised around the recipient's question and the sender's answer. Produce a usable rewrite, not a business analysis or an invented recommendation.

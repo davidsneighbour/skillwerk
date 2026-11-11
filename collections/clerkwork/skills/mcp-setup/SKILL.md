@@ -1,10 +1,8 @@
 ---
-id: mcp-setup
 name: mcp-setup
-title: MCP server setup
 description: List curated MCP servers, inspect client configuration and connection status, or set up a named server for a selected client and scope. Use for Foreman MCP requests and explicit MCP configuration work.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 <!-- cspell:words planable seranking -->

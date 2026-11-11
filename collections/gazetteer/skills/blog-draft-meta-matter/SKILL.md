@@ -1,8 +1,5 @@
 ---
-id: blog-draft-meta-matter
 name: blog-draft-meta-matter
-title: Prepare Blog Draft Metadata
-type: skill
 description: Prepare SEO-aware titles, slugs, descriptions, and summaries from a blog draft or topic, then return comparable metadata options.
 tags:
   - blog
@@ -14,7 +11,7 @@ inputs:
   - topic
   - config.toml
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Use this skill to prepare reusable blog metadata from either a supplied draft or a topic idea.

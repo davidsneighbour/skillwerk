@@ -1,10 +1,8 @@
 ---
-id: gazetteer
 name: gazetteer
-title: Gazetteer
 description: Route Gazetteer search visibility and content discovery requests to the matching skill, including content preparation, interface design, confirmed Mastodon publishing, technical SEO, local SEO, content optimisation, website audits, Lighthouse audits, metadata, structured data, entities, locations, service areas, internal linking, crawlability, indexing, and search-result presentation.
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 Gazetteer: describe it. Place it. Make it findable.

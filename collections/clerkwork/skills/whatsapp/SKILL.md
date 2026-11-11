@@ -1,10 +1,8 @@
 ---
-id: whatsapp
 name: whatsapp
-title: WhatsApp customer communication
 description: Read scoped customer conversations and relevant attachments in the dedicated WhatsApp Web browser app, extract actionable work context, and draft replies. Use when WhatsApp customer communication is relevant to a named task or the user requests an inbox check.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Shared vocabulary

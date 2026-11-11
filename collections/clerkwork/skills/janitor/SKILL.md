@@ -1,12 +1,9 @@
 ---
-id: janitor
 name: janitor
-title: Janitor
-type: skill
 description: Simplify the current project's code, tests, documentation, and configuration through evidence-backed removal and focused refactoring. Use for codebase cleanup, dead-code removal, or reducing unnecessary complexity; use check mode for findings without edits.
 argument-hint: "[check] [path or concern]"
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Shared vocabulary

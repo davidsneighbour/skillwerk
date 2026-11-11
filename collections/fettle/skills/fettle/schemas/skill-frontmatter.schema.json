@@ -1,10 +1,24 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Fettle skill frontmatter",
-  "description": "Validates the parsed YAML frontmatter of a SKILL.md file.",
+  "description": "Validates parsed skill frontmatter, including canonical identity, description, version, and removal of legacy asset fields.",
   "type": "object",
-  "required": ["metadata"],
+  "required": ["name", "description", "metadata"],
   "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "id": false,
+    "type": false,
+    "title": false,
     "metadata": {
       "type": "object",
       "required": ["version"],

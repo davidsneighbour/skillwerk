@@ -1,10 +1,8 @@
 ---
-id: astro
 name: astro
-title: Astro development and migration
 description: Build, review, and refactor Astro components and project architecture, or migrate an existing website to Astro with explicit parity checks. Use for Astro-specific rendering, content collections, routing, component APIs, scripts, and migration planning. Confirm an existing Astro project or an explicit migration target before applying.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Use one Astro workflow at a time. Load only the references needed for the requested task; a component edit does not require migration planning or a full architecture review.

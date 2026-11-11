@@ -1,6 +1,12 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import {
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -110,3 +116,36 @@ test("full validation rejects cross-collection duplicate names while scoped vali
     setup.cleanup();
   }
 });
+
+for (const field of ["id", "type", "title"]) {
+  test(`reject legacy skill frontmatter field ${field} without rejecting resource metadata in the body`, () => {
+    const setup = fixture();
+    try {
+      setup.collection("idiolect", ["example"]);
+      const path = join(
+        setup.root,
+        "collections/idiolect/skills/example/SKILL.md",
+      );
+      const source = readFileSync(path, "utf8");
+      writeFileSync(
+        path,
+        source +
+          "\nResource example:\n\n```yaml\nid: RULE001\ntype: rule\ntitle: Resource title\n```\n",
+      );
+      const baseline = setup.run("--collection", "idiolect");
+      assert.equal(baseline.status, 0, baseline.stderr);
+      writeFileSync(
+        path,
+        readFileSync(path, "utf8").replace("---\n", `---\n${field}: legacy\n`),
+      );
+      const result = setup.run("--collection", "idiolect");
+      assert.notEqual(result.status, 0);
+      assert.match(
+        result.stderr,
+        new RegExp(`Legacy skill frontmatter field .*${field}`),
+      );
+    } finally {
+      setup.cleanup();
+    }
+  });
+}

@@ -1,10 +1,8 @@
 ---
-id: idiolect
 name: idiolect
-title: Idiolect
 description: Capture, check, and apply a person's idiolect - their own distinctive vocabulary, rhythm, and habits in writing. Use when the user wants to build a voice profile from writing samples, check whether a draft sounds like them, or rewrite a draft so it reads in their voice.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Work with a single person's idiolect: the specific, recognisable way they write,

@@ -1,11 +1,8 @@
 ---
-id: web-screenshot
 name: web-screenshot
-title: Web screenshot
-type: skill
 description: Capture screenshots of web pages with requested viewport, colour scheme, full-page or fixed-height behaviour, output format, and browser state. Use when asked to take, make, save, or capture a screenshot of a URL or running web application.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Capture screenshots of web pages according to the user's requested visual and browser configuration.

@@ -1,10 +1,8 @@
 ---
-id: explain
 name: explain
-title: Explain
 description: Explain a topic, code, document, or error at a requested age, knowledge level, or audience perspective. Use for ELI5, "explain like a 6-year-old", beginner explanations, and explanations for a named audience. A request merely to message someone does not trigger this skill.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Turn the user's question into an explanation they can understand and use. Answer the topic directly; do not describe the audience calibration or announce this workflow.

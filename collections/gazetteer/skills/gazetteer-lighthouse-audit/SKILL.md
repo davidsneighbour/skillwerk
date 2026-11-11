@@ -1,11 +1,9 @@
 ---
-id: gazetteer-lighthouse-audit
 name: gazetteer-lighthouse-audit
-title: Gazetteer Lighthouse Audit
 description: Run reproducible Lighthouse audits against a live website and prepare reusable audit artifacts for another skill or agent. Use when a workflow needs Lighthouse performance, accessibility, best-practices, or SEO data for a live URL. Prefer delegation to a parallel/background subagent when the calling environment supports it.
 argument-hint: "<url>"
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 <!-- cspell:words devtoolslog -->

@@ -3,7 +3,7 @@ name: fettle
 description: Interface to the Fettle skill collection. Use `fettle overview` to list the Fettle workflows, route a concrete request such as `fettle inspect <skill>` or `fettle observe` to the matching Fettle skill, or use `fettle release <skill>` to prepare the release of an individual skill with a validated Semantic Versioning proposal. Fettle identifies the job and hands it off; it does not duplicate the target skill's work.
 argument-hint: "<overview|inspect|observe|engineer|prove|steward|release|version> [skill|collection|finding-id]"
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Fettle

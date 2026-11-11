@@ -1,11 +1,9 @@
 ---
-id: foreman
 name: foreman
-title: Foreman
 description: Interface to the Clerkwork skill collection. Use `foreman overview` to list all available skills by category, use category or topic requests such as `foreman git` or `foreman project` to narrow the catalogue, or route a concrete request such as `foreman packages` or `foreman cspell` to the matching Clerkwork skill. Foreman routes specialist jobs and applies bundled procedures for repository onboarding, CI diagnosis, pull request workflows, conflict resolution, verification, and maintainability review.
 argument-hint: "<overview|repo|mcp|onboard|janitor|packages|agent|repository|project|git|ci|conflicts|pr|deliver|verify|review|cspell|spelling|audit|issues|status|resume|scratchpad|whatsapp> [action|target]"
 metadata:
-  version: "1.8.0"
+  version: "1.8.1"
 ---
 
 ## Shared vocabulary

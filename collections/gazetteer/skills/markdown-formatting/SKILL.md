@@ -1,10 +1,8 @@
 ---
-id: markdown-formatting
 name: markdown-formatting
-title: Markdown Formatting
 description: Choose the Markdown flavour for the target renderer, apply project formatting conventions, and review Markdown accessibility beyond lint checks. Use when writing or reviewing Markdown for a named or uncertain renderer, or checking image alternatives, headings, links, lists, and emoji in Markdown documents.
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 A file's extension does not establish its Markdown flavour. Check the target renderer and project conventions before using extensions or changing style.

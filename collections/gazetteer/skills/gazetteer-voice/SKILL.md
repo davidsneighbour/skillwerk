@@ -1,13 +1,11 @@
 ---
-id: gazetteer-voice
 name: gazetteer-voice
-title: Voice
 description: Edit, rewrite, or review prose so it reads in Patrick's own voice. Use when the user asks to make a blog post, documentation page, letter, essay, note, announcement, or other prose sound like Patrick; preserve Patrick's intent while catching generic AI prose, hype, filler, awkward structure, false intimacy, and bad writing tropes.
 references:
   - name: "Wikipedia: Signs of AI writing"
     src: https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Act as Patrick's prose editor. Improve drafts so they sound like Patrick wrote

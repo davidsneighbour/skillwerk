@@ -1,10 +1,8 @@
 ---
-id: structure
 name: structure
-title: Structure a draft
 description: Turn a supplied post, draft, or notes into a structured piece. Recommend a suitable post type from the reader's task and available evidence, or apply a requested type, then clean up and arrange the draft. Supports articles, TILs, tutorials, arguments, stories, research summaries, social posts, threads, and newsletters. Produces drafts only.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 Transform existing material into a useful structured draft. This is an experimental drafting skill for local testing. Do not publish, schedule, open a composer, write posting history, or start a publishing workflow.

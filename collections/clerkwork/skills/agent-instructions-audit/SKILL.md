@@ -1,12 +1,9 @@
 ---
-id: agent-instructions-audit
 name: agent-instructions-audit
-title: Clerkwork agent instructions audit
-type: skill
 description: Audit repository agent instructions for bootstrap cost, scope quality, duplication, legacy CLAUDE.md content, and correct separation between AGENTS.md, scoped instructions, task references, skills, and documentation. Audit is non-mutating by default; optimise only when explicitly requested.
 argument-hint: "<audit|optimise> [target]"
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Shared vocabulary

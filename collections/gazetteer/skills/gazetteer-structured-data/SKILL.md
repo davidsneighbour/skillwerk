@@ -1,10 +1,8 @@
 ---
-id: gazetteer-structured-data
 name: gazetteer-structured-data
-title: Structured data
 description: Find Schema.org opportunities in website content and implement accurate JSON-LD. Use for schema markup, structured data, rich-result markup, LocalBusiness, Organisation, ContactPoint, Product, Service, Article, Event, Person, Place, breadcrumbs, and unusual content that may map to a Schema.org type.
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 Find meaningful Schema.org opportunities in real page content, model them as linked entities, and add accurate JSON-LD without inventing facts.

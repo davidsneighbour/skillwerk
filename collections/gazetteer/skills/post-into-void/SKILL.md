@@ -1,10 +1,8 @@
 ---
-id: post-into-void
 name: post-into-void
-title: Post Into Void
 description: Prepare and publish a casual Mastodon post from text supplied with the request or collected through questions, without using the current AI session as source material. Use for `/post-into-void`, short status updates, spontaneous thoughts, and other posts that may need optional rewriting, hashtags, or an image before explicit publishing confirmation.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Prepare a casual Mastodon post from information the user supplies specifically for

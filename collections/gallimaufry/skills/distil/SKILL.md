@@ -1,10 +1,8 @@
 ---
-id: distil
 name: distil
-title: Distil
 description: Extract the useful core from social-media posts, infographics, carousels, screenshots, articles, slides, diagrams, documents, and other rhetorically presented material. Use when the user asks to distil, extract, or analyse a source, asks what it is actually saying, whether popular advice holds up, or whether anything useful sits underneath marketing or engagement bait. For requests to create a framework or to dive deep into a source, use interrogate-source instead. Not a summarisation skill.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Turn source material into structured, critical, reusable knowledge.

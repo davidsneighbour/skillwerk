@@ -1,10 +1,8 @@
 ---
-id: baseline-modernise
 name: baseline-modernise
-title: Baseline modernisation audit
 description: Scan frontend source for candidates where modern Web Platform features might simplify compatibility workarounds. Use for Baseline-aware HTML, CSS, and browser-script modernisation audits. Produces static candidate reports, records compatibility data provenance, and supports separate manual runtime verification; never automatically removes fallbacks or modifies source.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Audit first, and distinguish a lexical candidate from a justified change. This skill supports static scanning and an optional manual verification procedure. It is framework-independent and has no dependency on another skill or collection.

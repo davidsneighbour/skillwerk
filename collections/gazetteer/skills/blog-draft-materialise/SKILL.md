@@ -1,8 +1,5 @@
 ---
-id: blog-draft-materialise
 name: blog-draft-materialise
-title: Materialise Blog Draft
-type: skill
 description: Create or move a blog draft into the configured blog content path using a selected metadata option.
 tags:
   - blog
@@ -16,7 +13,7 @@ inputs:
   - metadataOptions
   - config.toml
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Use this skill after `blog-draft-meta-matter` has produced metadata options and the user has selected one option.

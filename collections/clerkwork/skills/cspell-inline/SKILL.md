@@ -1,12 +1,9 @@
 ---
-id: cspell-inline
 name: cspell-inline
-title: CSpell Inline Document Settings
-type: skill
 description: Apply CSpell in-document directives to source and documentation files. Use automatically when the user asks to ignore or accept a word in CSpell, disable or enable CSpell/spell checking for a line, next line, section, or file-local pattern, change compound-word checking, select a dictionary for one file, or otherwise requests an inline CSpell setting. Prefer the narrowest supported directive and never invent unsupported CSpell rule-ID suppression.
 argument-hint: "<ignore|accept|disable|enable|regex|compound|dictionary> [word|scope|pattern|dictionary]"
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Shared vocabulary

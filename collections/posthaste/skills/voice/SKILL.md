@@ -1,13 +1,11 @@
 ---
-id: voice
 name: voice
-title: Author Voice
 description: Edit, rewrite, or review prose so it reads in the author's own voice. Use when the user asks to make a blog post, documentation page, letter, essay, note, announcement, or other prose sound like the author; preserve the author's intent while catching generic AI prose, hype, filler, awkward structure, false intimacy, and bad writing tropes.
 references:
   - name: "Wikipedia: Signs of AI writing"
     src: https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Act as the author's prose editor. Improve drafts so they sound like the author wrote

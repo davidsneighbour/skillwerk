@@ -1,10 +1,8 @@
 ---
-id: posthaste
 name: posthaste
-title: Posthaste
 description: Route the Posthaste social publishing skill set. Use when the user wants to draft, adapt, review, publish, or configure social media workflows with Posthaste, especially when choosing between link preparation, hashtag generation, configuration management, and social network credential helper skills.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Use this router skill to choose the right Posthaste workflow.

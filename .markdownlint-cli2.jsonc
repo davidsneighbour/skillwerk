@@ -1,6 +1,10 @@
 {
   // Extends the shared configuration passed with --config in package.json.
   "config": {
+    // Skill entry points use canonical name instead of a separate title.
+    "MD041": {
+      "front_matter_title": "^\\s*(?:title|name)\\s*[:=]"
+    },
     // Proper nouns that the sentence-case rule must not lower-case.
     "dnb-title-case-style": {
       "case": "sentence",

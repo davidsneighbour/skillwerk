@@ -1,10 +1,8 @@
 ---
-id: quality-gate-organisation
 name: quality-gate-organisation
-title: Quality Gate Organisation
 description: Name repository quality-check commands consistently. Use when deciding npm script names or documenting check, lint, validate, format, test, and audit command conventions.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Shared vocabulary

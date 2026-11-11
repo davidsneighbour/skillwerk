@@ -1,10 +1,8 @@
 ---
-id: gazetteer-llm-visibility
 name: gazetteer-llm-visibility
-title: LLM visibility
 description: Audit and improve how agents retrieve public website content, including server-rendered HTML, llms.txt, Markdown alternatives, HTTP content negotiation, and crawler policy. Use for AI-readable content and measured discovery experiments; do not promise search rankings or citations.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Improve access to useful public content. Separate verified retrieval improvements from unverified effects on AI answers, citations, or rankings. Optional discovery files are experiments, not a requirement for appearing in AI answers.

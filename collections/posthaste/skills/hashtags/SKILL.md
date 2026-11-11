@@ -1,10 +1,8 @@
 ---
-id: hashtags
 name: hashtags
-title: Posthaste Hashtags
 description: Generate consistent hashtags from any input, either a URL or a block of text. Return 5 tags by default, a user-requested number, or all relevant tags in full mode, as plain tags or as social-ready `#` hashtags. Use when the user asks for hashtags or tags for a link or passage, or when another Posthaste skill needs hashtag candidates for social posts. Analyse each input independently, classify the resource type, extract relevant technologies, concepts, domains, and project names, and maintain session tags for extraction.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 <!-- cspell:words webdev -->

@@ -1,8 +1,5 @@
 ---
-id: dnb-reference
 name: dnb-reference
-title: Add AI File Reference
-type: skill
 description: Add or update a strict references front matter entry on an AI asset file from a supplied HTTP or HTTPS URL. Use when the user provides a URL and a prompt, skill, instruction, workflow, template, or doc file that should cite that resource in YAML front matter.
 inputs:
   url:
@@ -14,7 +11,7 @@ inputs:
     type: string
     description: Path to the AI Markdown file that should receive the reference.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Add AI file reference

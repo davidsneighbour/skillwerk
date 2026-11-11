@@ -1,10 +1,8 @@
 ---
-id: stylesheet
 name: stylesheet
-title: Patternbook Stylesheet Rules
 description: Apply Patternbook authoring rules (CSS001 and up) when writing, editing, refactoring, or reviewing stylesheets - CSS, SCSS, PostCSS, CSS modules, Tailwind classes, or inline styles. Use before choosing units, layout techniques, or property values so that project-wide CSS rules, such as full viewport height handling, are followed consistently.
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
 ---
 
 Authoring rules for stylesheet work. Each rule is one file in `rules/` and has a stable `CSS###` ID. The rules describe how to write new styles and how to correct existing styles that you touch.

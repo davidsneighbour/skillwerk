@@ -1,10 +1,8 @@
 ---
-id: patternbook
 name: patternbook
-title: Patternbook
 description: Placeholder entry point for Patternbook, a collection of skills for digital design and presentation - design systems, branding, typography, colour, composition, interface patterns, responsive design, usability, accessibility, visual audits, consistency checks, and design recommendations. No operating instructions are defined yet.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 This skill is an empty scaffold. Patternbook's scope is digital design and

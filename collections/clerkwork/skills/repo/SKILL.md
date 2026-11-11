@@ -1,11 +1,9 @@
 ---
-id: repo
 name: repo
-title: GitHub repository management
 description: Inspect GitHub repository details, list repositories by topics, and plan or explicitly apply repository topic changes. Use for repo information and repository classification; GitHub.com only, with early rejection of other hosts.
 argument-hint: "[info|topics|list] [owner/repo|repo] [options]"
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Shared vocabulary

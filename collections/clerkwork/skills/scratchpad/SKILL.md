@@ -1,11 +1,9 @@
 ---
-id: scratchpad
 name: scratchpad
-title: Cross-repository scratch notes
 description: Persist a finding from the current conversation as a local scratch note in another repository. Use for requests such as "scratch this to markdownlint-config", "scratch this for markdownlint-config", "/scratchpad into markdownlint-config", "write a scratch file about this in the markdownlint-config repo", or "track this upstream in @dnbhq/markdownlint-config". Applies when scratch, track, or note explicitly means saving a local cross-repository finding for later work.
 argument-hint: "[into|to|for] <repository-or-package> [finding]"
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Shared vocabulary

@@ -17,6 +17,7 @@ metadata:
 
 * `metadata.version` MUST be a string in Semantic Versioning 2.0.0 format: `MAJOR.MINOR.PATCH`, with optional valid prerelease and build identifiers.
 * The YAML value MUST be explicitly quoted with single or double quotes. JSON Schema validates its type and value; Fettle MUST separately lint the source text for quotation marks.
+* Use `name` as the canonical skill identifier and require a non-empty `description`. Do not use the legacy skill fields `id`, `type`, or `title`; human-facing display names belong in `agents/openai.yaml`. Rule files and other resource formats have separate contracts.
 * Validate the parsed frontmatter against `schemas/skill-frontmatter.schema.json`. Unknown metadata keys are permitted so the schema can be extended without invalidating existing skills.
 * Keep each skill's version independent of the collection's version and of other skills' versions.
 

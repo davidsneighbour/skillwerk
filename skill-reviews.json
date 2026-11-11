@@ -6,218 +6,551 @@
   "skills": {
     "clerkwork/foreman": {
       "review": {
-        "reviewed_on": "2026-11-10",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "d81ad3e697f6eeb6ded1cd930cba77040897221a",
-        "reviewed_content_hash": "afb70826818b5c480e6d37533ae8a0ac724b9ade4270c9320df9151228551625",
-        "evidence": "Patrick explicitly approved the completed Foreman registration change and requested a commit. Clerkwork checks, catalogue freshness, version checks, and clean archive installation passed. Full repository validation is blocked by existing incomplete Posthaste entry points for instagram and linkedin."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "9e984400e0de28d85fdbc088f8e52aacac63e7b53f680fcfe5173ccdabc9dd8c",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "posthaste/posthaste": {
       "review": {
-        "reviewed_on": "2026-10-26",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "dde1d22e2b9806254d8f36dca3529e2e3bccaad2",
-        "reviewed_content_hash": "a12542e57069cf2a5b570652d793ac405d8da4c372b01bd6e849231b106b773f",
-        "evidence": "User explicitly approved the staged Posthaste skill renames and reference updates with \"commit and push\" on 2026-10-26. Full repository checks, 90 tests, and Posthaste archive installation passed."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "46ae4a9e05286b7611a05d75ecbe52690313fab5a5d44ed0c26000c813c4cd32",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "idiolect/idiolect-voice": {
       "review": {
-        "reviewed_on": "2026-10-26",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "dde1d22e2b9806254d8f36dca3529e2e3bccaad2",
-        "reviewed_content_hash": "3654f802d80d4c591fb2f110c6b2d1b11be8c9f18d16c1187a4b862aef15f93e",
-        "evidence": "User explicitly approved the staged Posthaste skill renames and reference updates with \"commit and push\" on 2026-10-26. Full repository checks, 90 tests, and Posthaste archive installation passed."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "44437fd8e6b6ac2eca1184184b179f760373881fac486b3600aaffb49b019921",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "posthaste/posthaste-config": {
       "review": {
-        "reviewed_on": "2026-10-26",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "dde1d22e2b9806254d8f36dca3529e2e3bccaad2",
-        "reviewed_content_hash": "6b777856ffe5a2f099cc501fa35a9ce888bbe5fb9c02e84ce46b18360314c632",
-        "evidence": "User explicitly approved the staged Posthaste skill renames and reference updates with \"commit and push\" on 2026-10-26. Full repository checks, 90 tests, and Posthaste archive installation passed."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "3cbb89f42a7d8e47a314cfc1b7a6e3c580d58d1f62b25a854db58a8f428ffcb1",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "patternbook/accessible-design": {
       "review": {
-        "reviewed_on": "2026-10-26",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "9a9868491df41232d7ea6b010c3f3c39a8462c1e",
-        "reviewed_content_hash": "d76f342f864dfc1b24c81afbf672ecabdd0d99786406816912479113f7f00e8c",
-        "evidence": "Human acceptance explicitly provided in chat for the final staged accessibility guidance on 2026-10-26; scope and validation: https://github.com/davidsneighbour/skillwerk/issues/74"
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "4abc2cc82f18e727606a0e6368175bfada47750c94716635c3aeac3a43b4579c",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "clerkwork/accessibility-review": {
       "review": {
-        "reviewed_on": "2026-10-26",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "9a9868491df41232d7ea6b010c3f3c39a8462c1e",
-        "reviewed_content_hash": "67dafeceb081de78c0e83a34acd83a4a73e8b955322a0a7e11f67c2b6fc6e407",
-        "evidence": "Human acceptance explicitly provided in chat for the final staged accessibility guidance on 2026-10-26; scope and validation: https://github.com/davidsneighbour/skillwerk/issues/74"
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "cf9e0601f4400a82fb5bb82e2a9c08375a8e5feeff7f7e388fcab8e609c02834",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/blog-draft-materialise": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "31309d7130f2c714c755aa974c27ee27dfe53d140b8824cb6a5f3746d1062953",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "254beb9b6cad171146e71c1cf383d3a5993bf8f0ca3b3d63bcfe2085ca4cbf49",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/blog-draft-meta-matter": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "debd8f089f1baad25833bc1d4adec04dfea8f5cc529be3315dca738eb27d89a5",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "34b0130041b5f1cbcf4cd7f27c085a1b632e0c8fad9db3733845f179dd8114b4",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/gazetteer": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "616ed8fc2f15d662ab2d6a215c62fa4c7ce64e7381d1f65f5d681a23a077e980",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "82f306832cf5ee5d26c6145ec195836c60135271b350c5a3c9836d9ef468c305",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/gazetteer-llm-visibility": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "61c55f56fd0b4b916c885a9c6003f322ea9c510907bb3c4fab8b88201fd90e5d",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "4c962bbf03076ddd3936e2bdd0f3bdddbe495aebc066410a15a9e715b4dbcfc3",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/gazetteer-voice": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "5309b1f94b0f6ea28e147ee31f7dfe09d0a5a0fe6a4ca4213298465a469e1923",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "33268586f73624d7f6882e263de9b6832916cae80bc049258b2b04e46b9dd775",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/interface-design": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "d2187988849fa42fcd872c27c5f1ffcbb868d64a106cb9ace224c30e2b90789e",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Final reference files include four British English spelling corrections required by the commit hook. Review: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "8d31bed15773caa2db7fcd7d6577ca91bdac77fd7e1e2eaae7ef9f9a978585c7",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/interface-engineering": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "ff6327dfae8ab9cb5238e1c0eb75fa2638afb97ce5a3012a400d016ebdb15275",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "67c436075a090e9d2a7e90504376079f91793a9da00b9563876bb659917cc9b0",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/markdown-formatting": {
       "review": {
-        "reviewed_on": "2026-11-07",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "0e21276f765f5063070d9eec9ec5cdeb4e13cde2",
-        "reviewed_content_hash": "4db1ae4babc7b99a1b1299d730db65ce74d1bae8fc4dfa6259ba89083d407de6",
-        "evidence": "User explicitly accepted the staged Markdown skill review in chat and requested the commit; issue #95."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "0c90bf15b78b05cf362aeaeb7fc0470ecc36f6f14e933fe50740735d513f13c0",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/post-into-void": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "a6a2ac4e0f456213fdbc222c155dc7c53ca12ebece5397727e2ac4aa968d2c6c",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "dad947e2dac9cbacdebdb0ad2271f427f5e780e5b400f320e5342ad52b969f88",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/post-session-into-void": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f4331470d6eec3a7b4c8e12138f27a469be2ff89",
-        "reviewed_content_hash": "d6cf208473214c4a4e1a628d780633982520406165a272bc0ce2fd54bbe44526",
-        "evidence": "User explicitly accepted all prepared Gazetteer skills in this session. Review scope, validation, and limits: docs/gazetteer-release-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "7e8958ff5b5eb9831a6dfef58dcc2b13cc0c81554cd2022846f48c1936d04364",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gallimaufry/astro": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "435c4a1c81a6e773dba51141d8e2c10bc6a79e57",
-        "reviewed_content_hash": "2f6777f94cb32e06f97ee93b2076c220ffc33b078058a1a6e82877d1c67a4fb1",
-        "evidence": "User explicitly accepted the final staged Astro skill in chat and requested its commit. Consolidation decisions and verification limits: docs/astro-skill-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "92e65f28fdd267cb6709126e2883aa13f44092210d65d6e1e8e4e068760e5e42",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "patternbook/visual-design": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f2dfa2b5ba8ffabcad4e3cffa6c1616b3eea6977",
-        "reviewed_content_hash": "5bcb7918dbfce151ad9900ec3a75c52c2aefe1ad49a0b3de6b3e80f9936652d1",
-        "evidence": "User explicitly accepted the final staged visual-design consolidation and requested commit and cleanup. Principle mapping and validation limits: docs/visual-design-rams-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "cfe3c14912fc073688bc055190f2c776701720411814f1811fbf870d679136fa",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gallimaufry/baseline-modernise": {
       "review": {
-        "reviewed_on": "2026-10-27",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "ae2b67d2dd9b84c8dab3c612bf44dfc191b9fdce",
-        "reviewed_content_hash": "8fda20b0b5364bfa247ade2d701cd60fd718b4d68890b221c2d2a94e1252bfea",
-        "evidence": "User explicitly accepted the final staged Baseline skill and requested commit. Scope, checks, and limits: docs/baseline-modernise-review.md."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "3298257d0048dacbbad28b52219fb9d4219ac06ecc86443b89d77b3a612fb3e7",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "gazetteer/gazetteer-structured-data": {
       "review": {
-        "reviewed_on": "2026-11-02",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "1afc3bd910e7ec586bd0371040d508418c4cb3d2",
-        "reviewed_content_hash": "12a8de83f74d35b21c12ddb89298f9d2b73a98e179522763055a3ddb8fbe305b",
-        "evidence": "User instructed commit all changes after reviewing the Markdown fixes in this conversation."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "fe45cbe3305b301d85b1f80b81c3896538a74c25bf4d33f896a52415c5cc6333",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "clerkwork/commit": {
       "review": {
-        "reviewed_on": "2026-11-07",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "39ff04f6c29c8f6945e1f414469ca544ea6bf23a",
-        "reviewed_content_hash": "404f2cb1e8e4e8ca91f6149132d2b209fc7215ffc76521140c174914f0a79216",
-        "evidence": "User explicitly approved the staged skill changes in chat and requested the commit; issue #94."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "cebe6dda3ecc1d2902becf423dde339fc0251f30ad6c3a615a35c43b29c035cb",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "clerkwork/issues": {
       "review": {
-        "reviewed_on": "2026-11-07",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "39ff04f6c29c8f6945e1f414469ca544ea6bf23a",
-        "reviewed_content_hash": "c236b6e5f9a66a515e98c191eb031c470308b23aa6c2e18a50c4b89e77b97cdc",
-        "evidence": "User explicitly approved the staged skill changes in chat and requested the commit; issue #94."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "beaee0e306e1ddd6dd4a76eaa49002a9616a46d4b20c3d782edf69f1a7d12348",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "clerkwork/repo": {
       "review": {
-        "reviewed_on": "2026-11-08",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "f7761f09cac8cc5efd57c95e3b502e69e853d354",
-        "reviewed_content_hash": "16cc149a3aee9bc5f2efb310a7200240f4aa7694a78169d41635a5224a4a8de7",
-        "evidence": "User approved the new repo skill and dnb- taxonomy in chat on 8 November 2026 and requested the commit."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "b84a44f6d16329253f0554218f8bcc8197b785172f9ce2d6230bccf9ba056b17",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     },
     "clerkwork/coadjutor": {
       "review": {
-        "reviewed_on": "2026-11-10",
+        "reviewed_on": "2026-11-11",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "b81c44a9519dc69b7c22be5d4dc166c0f30340e6",
-        "reviewed_content_hash": "939eed76b3cf78b2a75fd9f04723b18aafadeeb46aeaf59fc0246d4b20b345d1",
-        "evidence": "Patrick explicitly accepted the Coadjutor catalogue removal after LinkedIn and Instagram drafts were preserved in named stashes. The only skill changes are removal of the unavailable Instagram catalogue entry and the required patch version increase to 1.0.1. Full repository checks passed."
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "9e877b6d5ab83f2816a504395967db6a3e7497122cc29cb51a3805538a38b438",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "apparatus/web-screenshot": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "2a52afb271483be1024ed89536165267e00de541a5e025aeb2f1bd584b0239d3",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/agent-align": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "85bd6cdfa9c847ff262cd87410146f32b509a2d8333499c1ea322af2e2e429eb",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/agent-instructions-audit": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "0cf059422c03874d058731190af3dca511b650850d61c3e5549aa010c0d2b26b",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/behaviour-spec": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "5b990e0c49259d2e48b781de8f8200b59e767224f224796bcdea49eb8e308f60",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/cspell-inline": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "b29640cf8d27e718fd8f3b518c633dc86298825f989010b57c3fcab6c00bf8e8",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/dependency-maintenance": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "85d33bcb2c3e717bc0cc3a19fdea9b48d688fe16bbf3c3ebeb919530b6693f6c",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/dnbhq-configs": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "12be817847f7ea48eb74cc526171135182c6cf39031e3d28c384df3ae1122cb2",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/janitor": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "10797608f5f22c3035e03072941f210e3f8161b8994702c0cd6c1d656caad953",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/labels": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "28e492864897a1ba37ca055dd7cd021fb8d387785e14025ff656bd795ce6d966",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/manage-node-version-policy": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "e2fd83d6408d672427dc61c775bea6a27fb8ff1c2c95681374f0fa592d9c81b3",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/mcp-setup": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "109bc6dbdc5ce1628f8d57491e6be47a8876e1b7e893800ce5d36452d8682273",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/osv-scan": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "12da3bb0919708d9048edc6141a70608aa818096e6b111959f5e6db20c6dfd89",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/project-state-report": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "a32d765397ae370a996c0ba5eaaf9ca14f09e042d0d144ccce672a513effd4a1",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/project-task-triage": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "a3d42d8cf6e732764d2e4c1abd0edef0f54f7e04680c624214e3316ec6ccb61f",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/quality-gate-organisation": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "fc72a132f085aabc2c7e6c0c3942243428ba3cc4a909056ad1a0953e1cc5671c",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/resume-interrupted-work": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "c57908a77a69a1d55f963838fa3533376cf8c2675615266583b913a4e4e1f58f",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/scratchpad": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "941e21a2fa7a40988a427768ac1cf58b1e5872c60a028672ca0868fdcb46a378",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "clerkwork/whatsapp": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "d374b4d91c99dbff15bcf2882ac152e94a4b0c5299c18842c021d8f70b794009",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "fettle/fettle": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "a432322913f74e53a14c8c18a307a2b10762c73edc05d7f6765e373349496323",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "gallimaufry/distil": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "ab69ed4b83b285918c58d6b6fc3e51bf779be58c38219651739565aa5070c440",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "gallimaufry/dnb-reference": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "d2980f9c32a24cf40d8396b62fbf9fe6b7c09b0644d958cc0bc27bfc3fa1d7c0",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "gallimaufry/explain": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "6fef305095dc88c3100be91ef15ed994069c3201177cef527293187b0a740a7e",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "gallimaufry/gallimaufry": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "067d964c8505efecea3544853bfc69e73715d482c6bb138a2c4128815b29044b",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "gallimaufry/scqa-rewrite": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "d669303c501f0572c28db5ef1c1c92e2b0abd3d607c95b6ae6b681bde9c84729",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "gazetteer/gazetteer-audit": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "b78845d5d268b977a8a01efb107867960bd747236cf2e2feb0b2bb0f7a2180f0",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "gazetteer/gazetteer-lighthouse-audit": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "0a24ac9dc45592c862b82576d8cc7e1c5ba152c35a954d6f735d34b14cbb553f",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "idiolect/idiolect": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "a76cf6d8c820bd1eab3ab3c629a4e1d6d8d2c2a6386239b367763da9d859c030",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "idiolect/simple-english": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "505db67417432528f666d0eb29314f1fbaa9d6e21b57de9f01624da6a5a0ca53",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "patternbook/patternbook": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "5903ba7ee036c492e28ffd5780bb254718db2ae036562552964d877aa66fff99",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "patternbook/stylesheet": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "fee80f766cb61eff365c3da8f962751990ff0ee2dc50f138e648bb8149256da2",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "posthaste/hashtags": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "af7b01e6cff76ccbd70ce4bcf7d30d57e8340cfa09788f4a382a08ec2d9127f4",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "posthaste/prepare-link": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "26890c81e72dc01f747f8f61d1d9f046023e2cc6f272127be38ee7abb08ea930",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "posthaste/reddit-refresh-token": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "60820b5f71a04eaf0e25ebbbf51b9a6eab3fa4d32ba1882fc0547a8b481f9687",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "posthaste/structure": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "60a1415b2ed8d0ff7d26e3c48abcdd192ca0f6d7eacf267eaaacaf8e9dbfd2bc",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "posthaste/threads-refresh-token": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "15a377b5155db7022dca51d863e3a0c00b2850971e2288f97016fc4b877c5800",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "posthaste/tumblr-refresh-token": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "f3845739731f803d8f8c6e6f045f8423abfab4d84fe500b98162864e305ecf4d",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+      }
+    },
+    "posthaste/voice": {
+      "review": {
+        "reviewed_on": "2026-11-11",
+        "reviewed_by": "Patrick Kollitsch",
+        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
+        "reviewed_content_hash": "2406ee468c5551ecb520cb07da42d2e39e9eecd428743ddb2b1e2205d3c13ab2",
+        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
       }
     }
   }

@@ -1,11 +1,8 @@
 ---
-id: issues
 name: issues
-title: Clerkwork Issues
-type: skill
 description: Work with project issues using Patrick's GitHub-first issue workflow. Use when inspecting open issues, selecting what to work on next, working on a specific issue, continuing with the next issue, or working through multiple issues. Recognise natural requests such as "check open issues", "work on issue #123", "work on the next issue", and "continue working on issues".
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 ## Shared vocabulary

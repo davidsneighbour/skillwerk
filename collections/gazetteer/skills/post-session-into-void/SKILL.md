@@ -1,10 +1,8 @@
 ---
-id: post-session-into-void
 name: post-session-into-void
-title: Post Session Into Void
 description: Draft and publish a confirmed Mastodon post from the current AI session context using @humanwhocodes/crosspost.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 Use this skill when the user wants to turn the current AI session context into a Mastodon post and publish it only after explicit confirmation.

@@ -1,10 +1,8 @@
 ---
-id: project-task-triage
 name: project-task-triage
-title: Clerkwork Project Task Triage
 description: "Maintains the repository task-tracking system by syncing the local TODO.md scratch pad with GitHub Issues and regenerating the local PROJECT.md dashboard. Use when asked to check project status, update task tracking, sync todos with GitHub, regenerate the project dashboard, or recommend next steps. Triggers on: 'check status', 'project status', 'sync todos', 'update project', 'update roadmap', 'triage tasks', 'what's next', 'next steps'."
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 ## Shared vocabulary
