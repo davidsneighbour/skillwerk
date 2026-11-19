@@ -80,6 +80,16 @@ npm run validate:set -- fettle/fettle-inspect --evidence "Reviewed the scenarios
 
 Running this command means that you accept the manual review. An assistant may run it only when you explicitly authorise acceptance of that reviewed skill; an instruction to implement or test this tooling is not acceptance of any skill review.
 
+## Accept a review in chat
+
+When an assistant prepares the commit, you can accept the review in chat instead of running the command. This is the default workflow for assistants.
+
+1. The assistant stages the final skill content, including the version increase.
+2. For each skill that needs review, the assistant shows what changed, the old and new version, and the validation results. It then asks one explicit question, for example: "Accept the review for `posthaste/prepare-link`?"
+3. Only a clear "yes" to that question accepts the review. General instructions such as "commit the changes" or "approved" for a different proposal do not accept a skill review.
+4. The assistant runs `npm run validate:set -- <collection/skill> --evidence "Accepted in chat by <name> on <date>; see #<issue>."` and stages `skill-reviews.json`. The record uses your `git config user.name`, so the assistant never records itself as the reviewer.
+5. If the assistant edits the skill after acceptance, the fingerprint no longer matches. The assistant must ask again.
+
 `reviewed_commit` remains the latest existing commit. The optional `reviewed_content_hash` field records a SHA-256 fingerprint of Git's staged paths, file modes, and blob identities for the whole skill directory. This identifies the exact reviewed content before its commit exists, without a circular requirement to know the future commit SHA. Reports use this fingerprint when present, and use the commit comparison for older records. Fingerprints include all staged files in the skill, including tracked files matched by ignore rules. Untracked ignored files and scratch files are excluded.
 
 ## Commit checks

@@ -60,6 +60,8 @@ Every commit that changes files inside an existing skill must include a higher v
 
 Run `npm run validate:versions` after staging. The pre-commit `validate:staged` gate compares staged skill versions with `HEAD`; an unstaged version increase does not count. The gate checks valid versions and monotonic increases; reviewers still decide whether patch, minor, or major is appropriate. Stage the final version before recording human review acceptance, because it changes the reviewed content fingerprint.
 
+Get review acceptance in chat; do not ask the user to run `validate:set`. Before committing changes to existing skills, show each skill's changes, versions, and validation results, then ask one explicit acceptance question per skill. Only a clear "yes" to that question counts; "commit the changes" does not. Then run `npm run validate:set -- <collection/skill> --evidence "Accepted in chat by <name> on <date>; see #<issue>."` and stage `skill-reviews.json`. Ask again after any later edit to that skill. See `docs/skill-reviews.md`.
+
 No coverage threshold is defined. Validate changed scripts with targeted `--help`, dry-run, or non-writing modes. When a skill's behaviour changes, update its `SKILL.md` in the same change.
 
 ## Commit and pull request details

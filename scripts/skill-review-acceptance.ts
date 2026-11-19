@@ -103,7 +103,7 @@ export function checkStagedReviews(root: string): string[] {
       review.reviewed_content_hash !== stagedFingerprint(root, row.skill)
     )
       throw new Error(
-        `Review required for ${row.skill}. Review the staged skill, run npm run validate:set -- ${row.skill}, then git add skill-reviews.json.`,
+        `Review required for ${row.skill}. Review the staged skill, run npm run validate:set -- ${row.skill}, then git add skill-reviews.json. When working with an assistant, accept the review in chat and the assistant records it.`,
       );
     git(root, "merge-base", "--is-ancestor", review.reviewed_commit, "HEAD");
   }
