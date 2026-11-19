@@ -2,7 +2,7 @@
 name: posthaste-config
 description: Load, merge, validate, explain, or create Posthaste TOML configuration. Use when another Posthaste skill needs user or project defaults, when the user asks what Posthaste configuration is active, or when the user wants to initialise or change global or project Posthaste settings.
 metadata:
-  version: "1.0.1"
+  version: "1.1.0"
 ---
 
 Manage persistent, non-secret configuration shared by Posthaste skills.
@@ -55,6 +55,7 @@ Each consuming skill owns:
 * the config keys it understands
 * validation rules specific to those keys
 * environment variable names used when no override is configured
+* the storage paths it reads, such as logs or caches, and their system-wide defaults
 
 `posthaste-config` owns:
 
@@ -139,6 +140,10 @@ the defaults object of the consuming skill. The runtime scripts do not yet accep
 an explicitly supplied config file; that layer applies only when an agent
 follows this skill's rules directly.
 
+The loader exports `DEFAULT_POSTED_LOG_PATH`, the system-wide posted-log default, and `SUGGESTED_PROJECT_POSTED_LOG_PATH`, the project-local suggestion. Use these values in setup instead of copying the paths.
+
+Consuming scripts resolve a relative `[paths]` value against the current working directory. Posthaste reads project configuration from that directory, so a relative path in project configuration is project-local. Global configuration applies to every project, so the loader adds a warning when the effective value of a relative path comes from global configuration.
+
 `prepare-link` treats a default network that is disabled by
 `[networks.<network>].enabled = false` as invalid configuration. This makes a
 contradictory configuration fail before publishing instead of silently narrowing
@@ -207,7 +212,10 @@ Load all available layers and report:
 * configuration version
 * effective shared configuration
 * provenance for each effective value when practical
+* for each storage path, whether it is project-local (relative, or inside the project root) or system-wide
 * warnings from generic validation
+
+`info` never asks questions and never writes files.
 
 Never print credential values from environment variables or dotenv files.
 Environment variable names may be printed.
@@ -229,6 +237,9 @@ Check at least:
 6. `[networks.<name>.env]` values are plausible environment variable names.
 7. no obvious secret values appear to be stored directly in config.
 8. consuming-skill validation is applied for keys owned by the caller.
+9. relative `[paths]` values from global configuration are reported as warnings.
+
+`check` never asks questions and never writes files.
 
 Distinguish errors from warnings. Unknown keys are warnings by default, not
 errors, because the schema is intentionally extensible.
@@ -254,7 +265,7 @@ Question order should normally be:
 
 1. Which networks should `post` target by default when none are named?
 2. Should the default dotenv path differ from `~/.env`?
-3. Should the posted-log path differ from the consuming skill's default?
+3. Where should posting logs and caches be stored? Follow the storage location step below.
 4. For configured networks, are any default environment variable names
    overridden?
 5. Are there network- or skill-specific non-secret settings to add?
@@ -279,6 +290,38 @@ Load the selected config file and ask what the user wants to change. Preserve
 unrelated keys and comments where the available editing mechanism permits it.
 Apply the same secret-safety rules and require confirmation before writing.
 Run `check` after the change.
+
+Run the storage location step when the user asks to change where logs or caches are stored, or when the selected file does not set a storage path and the user did not limit the edit to other settings. Do not ask again about storage paths that the file already sets, unless the user asks to change them.
+
+## Storage location step
+
+Use this step in `init` and `edit`. It applies to every storage path that a consuming skill reads. At present, only `prepare-link` reads one: `[paths].posted_log`, the duplicate-tracking log. No Posthaste skill reads a cache path, so do not ask for or write cache keys. When a consuming skill adds a cache path, apply this step to that path too.
+
+If the selected file already sets a storage path, show the current value and whether it is project-local or system-wide. Keep it unless the user asks to change it.
+
+### Project configuration
+
+Ask where to store posting logs and caches:
+
+```text
+Where should Posthaste store posting logs and caches for this project?
+- project (default): inside <project-root>
+- system-wide: under your home directory, shared by all projects
+```
+
+If the user selects project storage, ask for each path immediately. Do not wait for the user to ask. Suggest `SUGGESTED_PROJECT_POSTED_LOG_PATH` (`scratch/posthaste/posted.jsonl`) for the posted log, and tell the user:
+
+```text
+The posted log is the duplicate-tracking history. prepare-link uses it to skip networks that already have a link. If you delete scratch/, you also delete this history, and Posthaste can post the same link again. Choose a path outside scratch/ if you want to keep the history.
+```
+
+Write project-local paths relative to the project root. Check whether Git ignores the chosen path. If it does not, tell the user that the log can be committed, and ask whether to keep the path.
+
+If the user selects system-wide storage, suggest the consuming skill's system-wide default, `DEFAULT_POSTED_LOG_PATH` for the posted log, and accept another absolute or `~/` path. Write a path only when it differs from the value that the project inherits from defaults and global configuration, or when the user asks to pin it.
+
+### Global configuration
+
+Do not offer project storage. Show the system-wide default for each storage path, for the posted log `DEFAULT_POSTED_LOG_PATH`, and ask whether to keep it or use another path. Accept only absolute or `~/` paths. A relative path in global configuration resolves against the working directory of each run, so `check` warns about it. If the user wants storage inside one project, recommend project configuration for that path.
 
 ## Questionnaire behaviour
 

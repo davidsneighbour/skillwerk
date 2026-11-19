@@ -33,11 +33,11 @@
     },
     "posthaste/posthaste-config": {
       "review": {
-        "reviewed_on": "2026-11-11",
+        "reviewed_on": "2026-11-19",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
-        "reviewed_content_hash": "3cbb89f42a7d8e47a314cfc1b7a6e3c580d58d1f62b25a854db58a8f428ffcb1",
-        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+        "reviewed_commit": "b678c5a31a55afd9bb63ecbdd95cf00449c55d0e",
+        "reviewed_content_hash": "033ef3c28d342dbfc9b9030cbedfe05b93dc6b1b0ad32ca8836a063c328e9587",
+        "evidence": "Manual review accepted by Patrick Kollitsch via validate:set for the staged skill content."
       }
     },
     "patternbook/accessible-design": {
@@ -501,11 +501,11 @@
     },
     "posthaste/prepare-link": {
       "review": {
-        "reviewed_on": "2026-11-11",
+        "reviewed_on": "2026-11-19",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "0c8bfd66ef0bec62b5a323b27524c431dabf6b49",
-        "reviewed_content_hash": "26890c81e72dc01f747f8f61d1d9f046023e2cc6f272127be38ee7abb08ea930",
-        "evidence": "Patrick explicitly approved the completed frontmatter migration for all 61 changed skills and requested the commit. Scope: remove legacy skill id, type, and title; preserve canonical name, descriptions, operating instruction bodies, and resource metadata; update the Fettle schema and versioning guidance. Full repository checks, regression tests, schema checks, and staged version checks passed. Archive checks passed with the existing Fettle exception. See https://github.com/davidsneighbour/skillwerk/issues/105."
+        "reviewed_commit": "b678c5a31a55afd9bb63ecbdd95cf00449c55d0e",
+        "reviewed_content_hash": "e33d9f7cc1a284839191f76b9c6894a04ee7ffda9b6d5f606c929aa04ffcf5f8",
+        "evidence": "Manual review accepted by Patrick Kollitsch via validate:set for the staged skill content."
       }
     },
     "posthaste/reddit-refresh-token": {

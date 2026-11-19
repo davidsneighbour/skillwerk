@@ -1,7 +1,7 @@
 import { constants as fsConstants } from "node:fs";
 import { access, readFile } from "node:fs/promises";
 import { homedir } from "node:os";
-import { join, resolve } from "node:path";
+import { isAbsolute, join, resolve } from "node:path";
 import { parse, TomlError, type TomlValue } from "smol-toml";
 
 export type ConfigSource =
@@ -80,7 +80,19 @@ interface LoadedLayer {
   values: PlainRecord;
 }
 
+/** System-wide posted-log path used when no layer configures one. */
+export const DEFAULT_POSTED_LOG_PATH =
+  "~/.local/share/posthaste-prepare-link/posted.jsonl";
+
+/**
+ * Project-local posted-log path that interactive setup suggests for project
+ * configuration. Relative paths resolve against the project root.
+ */
+export const SUGGESTED_PROJECT_POSTED_LOG_PATH =
+  "scratch/posthaste/posted.jsonl";
+
 const SUPPORTED_CONFIG_VERSION = 1;
+const PATH_KEYS = ["dotenv", "posted_log"] as const;
 const ENV_NAME_PATTERN = /^[A-Z_][A-Z0-9_]*$/u;
 const SUSPICIOUS_SECRET_KEYS = [
   "access_token",
@@ -177,7 +189,10 @@ export async function loadPosthasteConfig(
     mergeLayer(merged, layer.values, layer.source, provenance);
   }
 
-  const warnings = validateRawConfig(merged, options.knownNetworks);
+  const warnings = [
+    ...validateRawConfig(merged, options.knownNetworks),
+    ...warnRelativeGlobalPaths(merged, provenance),
+  ];
   const resolved = rawToResolvedConfig(merged);
 
   validateResolvedConfig(resolved, provenance, options.knownNetworks);
@@ -369,7 +384,7 @@ function validatePaths(value: unknown): void {
     throw new Error("Invalid Posthaste config key paths: expected a table.");
   }
 
-  for (const key of ["dotenv", "posted_log"] as const) {
+  for (const key of PATH_KEYS) {
     const path = value[key];
 
     if (path !== undefined && (typeof path !== "string" || !path.trim())) {
@@ -378,6 +393,35 @@ function validatePaths(value: unknown): void {
       );
     }
   }
+}
+
+/**
+ * Relative paths resolve against the working directory of each run. That is
+ * the project root for project configuration, but global configuration applies
+ * to every project, so a relative global path silently changes per project.
+ */
+function warnRelativeGlobalPaths(
+  raw: PlainRecord,
+  provenance: Record<string, ConfigSource>,
+): string[] {
+  const paths = asPlainRecord(raw.paths);
+  const warnings: string[] = [];
+
+  for (const key of PATH_KEYS) {
+    const path = paths[key];
+
+    if (
+      typeof path === "string" &&
+      provenance[`paths.${key}`] === "global" &&
+      !isAbsolute(expandHomePath(path))
+    ) {
+      warnings.push(
+        `Global config key paths.${key} is relative and resolves against each project's working directory; use an absolute or ~/ path, or set it in project config.`,
+      );
+    }
+  }
+
+  return warnings;
 }
 
 function validateNetworks(
@@ -498,7 +542,7 @@ function rawToResolvedConfig(
       postedLog:
         typeof paths.posted_log === "string"
           ? paths.posted_log
-          : "~/.local/share/posthaste-prepare-link/posted.jsonl",
+          : DEFAULT_POSTED_LOG_PATH,
     },
     networks: Object.fromEntries(
       Object.entries(networks).map(([network, config]) => {

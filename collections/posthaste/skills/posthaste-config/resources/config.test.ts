@@ -3,7 +3,12 @@ import { mkdir, mkdtemp, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
-import { loadPosthasteConfig, type PosthasteConfigDefaults } from "./config.ts";
+import {
+  DEFAULT_POSTED_LOG_PATH,
+  loadPosthasteConfig,
+  type PosthasteConfigDefaults,
+  SUGGESTED_PROJECT_POSTED_LOG_PATH,
+} from "./config.ts";
 
 const DEFAULTS: PosthasteConfigDefaults = {
   posting: {
@@ -11,7 +16,7 @@ const DEFAULTS: PosthasteConfigDefaults = {
   },
   paths: {
     dotenv: "~/.env",
-    postedLog: "~/.local/share/posthaste-prepare-link/posted.jsonl",
+    postedLog: DEFAULT_POSTED_LOG_PATH,
   },
   networks: {
     mastodon: {
@@ -297,4 +302,75 @@ access_token = "POSTHASTE_MASTODON_TOKEN"
   assert.match(diagnostic, /POSTHASTE_MASTODON_TOKEN/u);
   assert.doesNotMatch(diagnostic, /super-secret-token-value/u);
   delete process.env.POSTHASTE_MASTODON_TOKEN;
+});
+
+test("project config can store the posted log inside the project", async () => {
+  const config = await loadWithTempConfig(
+    undefined,
+    `
+[paths]
+posted_log = "${SUGGESTED_PROJECT_POSTED_LOG_PATH}"
+`,
+  );
+
+  assert.equal(config.paths.postedLog, SUGGESTED_PROJECT_POSTED_LOG_PATH);
+  assert.equal(config.provenance["paths.posted_log"], "project");
+  assert.deepEqual(config.warnings, []);
+});
+
+test("project config can keep a system-wide posted log", async () => {
+  const config = await loadWithTempConfig(
+    `
+[paths]
+posted_log = "~/.local/share/posthaste/global.jsonl"
+`,
+    `
+[paths]
+posted_log = "~/.local/share/posthaste/project-choice.jsonl"
+`,
+  );
+
+  assert.equal(
+    config.paths.postedLog,
+    "~/.local/share/posthaste/project-choice.jsonl",
+  );
+  assert.equal(config.provenance["paths.posted_log"], "project");
+  assert.deepEqual(config.warnings, []);
+});
+
+test("posted log falls back to the system-wide default", async () => {
+  const config = await loadPosthasteConfig({
+    ...(await tempConfigPaths()),
+  });
+
+  assert.equal(config.paths.postedLog, DEFAULT_POSTED_LOG_PATH);
+  assert.equal(config.provenance["paths.posted_log"], undefined);
+});
+
+test("relative paths in global config produce a warning", async () => {
+  const config = await loadWithTempConfig(`
+[paths]
+posted_log = "scratch/posthaste/posted.jsonl"
+`);
+
+  assert.equal(config.warnings.length, 1);
+  assert.match(
+    config.warnings[0] ?? "",
+    /Global config key paths\.posted_log is relative/u,
+  );
+});
+
+test("a project path overriding a relative global path clears the warning", async () => {
+  const config = await loadWithTempConfig(
+    `
+[paths]
+posted_log = "scratch/posthaste/posted.jsonl"
+`,
+    `
+[paths]
+posted_log = "scratch/posthaste/posted.jsonl"
+`,
+  );
+
+  assert.deepEqual(config.warnings, []);
 });

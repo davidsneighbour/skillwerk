@@ -2,7 +2,7 @@
 name: prepare-link
 description: Take a URL, pull its title/description/tags, screenshot the page, and draft a social post in Patrick's voice with topic hashtags derived from the linked page. Publishes through @humanwhocodes/crosspost or direct platform APIs only after explicit confirmation, attaches the screenshot on networks that support images, and keeps a durable per-network log of what has already been posted so the same link is never reposted to the same network by accident. Use for `/prepare-link`, "post this link", "share this article", or "make a post about this page".
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 Turn a single URL into one confirmed social post: fetch the
@@ -556,6 +556,8 @@ one JSON object per line. New records include a `networks` object keyed by
 network name; older Mastodon-only records with `mastodonUrl` are still treated
 as Mastodon posts. Pass `--log-path` to both the check and publish scripts
 together if the user wants a non-default log location.
+
+To change the log location permanently, set `[paths].posted_log` with `posthaste-config`. Project setup can store the log in the project, for example in `scratch/posthaste/posted.jsonl`. A relative path resolves against the current working directory, which is the project root when you run from there. Deleting the log deletes the duplicate-tracking history.
 
 ### LinkedIn token renewal
 

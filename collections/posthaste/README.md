@@ -96,6 +96,8 @@ refresh_token = "REDDIT_REFRESH_TOKEN"
 
 Use `posthaste-config` to inspect, validate, initialise, or edit these files. The setup workflow can ask for values such as default posting networks, custom paths, and environment-variable name overrides.
 
+Setup also asks where posting logs are stored. Project configuration defaults to project-local storage and suggests `scratch/posthaste/posted.jsonl` for the posted log. Deleting `scratch/` also deletes the duplicate-tracking history. Global configuration defaults to the system-wide path `~/.local/share/posthaste-prepare-link/posted.jsonl`. Both scopes accept other paths. Relative paths resolve against the project root, so `check` warns about relative paths in global configuration. The `info` and `check` commands never ask questions.
+
 Do not store passwords, access tokens, refresh tokens, client secrets, private keys, or other credentials in the TOML files. Configuration may contain the names of environment variables that hold those values; credentials themselves remain in environment-backed secret storage such as the configured `~/.env` file.
 
 ## Networks
