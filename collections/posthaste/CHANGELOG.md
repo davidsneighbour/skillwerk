@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.0](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.2.2...posthaste%2Fv2.3.0) (2026-11-19)
+
+### Feat
+
+* **posthaste-config:** ask where posting logs are stored ([fd2513c](https://github.com/davidsneighbour/skillwerk/commit/fd2513c0aa52ac57b00f94d7f81a3842b6d7ec5b)), closes [#114](https://github.com/davidsneighbour/skillwerk/issues/114)
+
 ## [2.2.2](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.2.1...posthaste%2Fv2.2.2) (2026-11-11)
 
 ### Refactor
