@@ -15,10 +15,7 @@
     "activityBarBadge.background": "#80ffae",
     "activityBarBadge.foreground": "#15202b",
     "activityBarTop.activeBackground": "#ff7d33",
-    "activityBarTop.activeBorder": "#15202b",
     "activityBarTop.background": "#ff7d33",
-    "activityBarTop.foreground": "#15202b",
-    "activityBarTop.inactiveForeground": "#15202b99",
     "commandCenter.border": "#15202b99",
     "commandCenter.foreground": "#15202b",
     "commandCenter.activeForeground": "#15202b",
@@ -35,7 +32,10 @@
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveBackground": "#ff5c0099",
     "titleBar.inactiveForeground": "#15202b99",
-    "statusBar.inactiveBackground": "#ff5c00"
+    "statusBar.inactiveBackground": "#ff5c00",
+    "activityBarTop.activeBorder": "#e7e7e7",
+    "activityBarTop.foreground": "#e7e7e7",
+    "activityBarTop.inactiveForeground": "#e7e7e799",
   },
   "peacock.color": "#ff5c00"
 }
