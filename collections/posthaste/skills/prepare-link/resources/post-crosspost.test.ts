@@ -388,3 +388,33 @@ test("--check needs no message and aggregates authentication failures", async ()
   assert.match(result.stderr, /bluesky:.*Session authentication failed/);
   assert.ok(!result.stderr.includes(SECRET));
 });
+
+test("Mastodon accepts 500 characters and rejects 501 before publishing", async () => {
+  const box = await sandbox();
+  const env = {
+    MASTODON_ACCESS_TOKEN: SECRET,
+    MASTODON_HOST: "mastodon.example",
+  };
+  // Include a URL, hashtags, and a non-BMP character in the complete message.
+  const suffix = " https://example.com #test 🐘";
+  const message = "a".repeat(500 - [...suffix].length) + suffix;
+  const accepted = run(
+    POST_CROSSPOST,
+    box,
+    ["--dry-run", "--message", message, "--to", "mastodon"],
+    env,
+  );
+  assert.equal(accepted.status, 0, accepted.stderr);
+  assert.match(accepted.stdout, /Dry run for mastodon\./u);
+  assert.match(accepted.stdout, /Characters: 500/u);
+
+  const rejected = run(
+    POST_CROSSPOST,
+    box,
+    ["--dry-run", "--message", `${message}a`, "--to", "mastodon"],
+    env,
+  );
+  assert.equal(rejected.status, 1);
+  assert.match(rejected.stderr, /mastodon: 501\/500 characters/u);
+  assert.doesNotMatch(rejected.stdout, /Dry run for mastodon/u);
+});

@@ -109,7 +109,7 @@ const SUPPORTED_NETWORKS: Record<Network, NetworkConfig> = {
     transport: "crosspost",
     flag: "--mastodon",
     requiredEnv: ["access_token", "host"],
-    maxChars: 1000,
+    maxChars: 500,
     supportsImages: true,
     description: "Crosspost Mastodon status with optional image attachment.",
   },

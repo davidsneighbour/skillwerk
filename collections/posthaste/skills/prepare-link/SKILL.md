@@ -2,7 +2,7 @@
 name: prepare-link
 description: Take a URL, pull its title/description/tags, screenshot the page, and draft a social post in Patrick's voice with topic hashtags derived from the linked page. Publishes through @humanwhocodes/crosspost or direct platform APIs only after explicit confirmation, attaches the screenshot on networks that support images, and keeps a durable per-network log of what has already been posted so the same link is never reposted to the same network by accident. Use for `/prepare-link`, "post this link", "share this article", or "make a post about this page".
 metadata:
-  version: "1.0.2"
+  version: "1.0.3"
 ---
 
 Turn a single URL into one confirmed social post: fetch the
@@ -272,20 +272,11 @@ Reject non-`http(s)` URLs and ask for a corrected one.
    Default length target:
 
    ```text
-   min: 600 characters
-   target: 850-950 characters on the first draft
-   hard ceiling: 1000 characters (Mastodon)
+   target: 400-450 characters on the first draft
+   hard ceiling: 500 characters (Mastodon)
    ```
 
-   Mastodon's 1000-character limit for this account is a hard ceiling, not a
-   target — aim for the first draft to land around 850-950 characters so
-   there is headroom for "actually let me add one more clause" without
-   forcing a trim-and-recount rewrite cycle. LinkedIn allows more than
-   Mastodon, but Mastodon is always the binding constraint since the same
-   default draft targets both. This is intentionally long-form — use at
-   least 600 characters when there is enough substance. Do not pad a thin
-   link just to hit the target. Use shorter network-specific variants for
-   networks with tighter limits.
+   Keep the complete Mastodon draft, including the URL and hashtags, within 500 characters. Aim for 400-450 characters on the first draft to leave room for edits. The same default draft targets Mastodon and LinkedIn, so use the Mastodon ceiling even though LinkedIn allows more. Do not pad a thin link just to hit the target. Use shorter network-specific variants for networks with tighter limits.
 
    Write the exact draft, including URL and hashtags, to:
 
@@ -585,7 +576,7 @@ Use these default limits when preparing and checking drafts:
 
 | Network | Limit | Draft file |
 | --- | ---: | --- |
-| `mastodon` | 1000 | `<slug>.md` |
+| `mastodon` | 500 | `<slug>.md` |
 | `bluesky` | 300 | `<slug>.bluesky.md` when needed |
 | `linkedin` | 3000 | `<slug>.md` |
 | `nostr` | 280 | `<slug>.nostr.md` when needed |
