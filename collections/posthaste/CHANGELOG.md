@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.1](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.3.0...posthaste%2Fv2.3.1) (2026-11-21)
+
+### Fix
+
+* **prepare-link:** cap Mastodon posts at 500 characters ([9f8f2dc](https://github.com/davidsneighbour/skillwerk/commit/9f8f2dc22196896182475e9a40540400d20c08ee)), closes [#119](https://github.com/davidsneighbour/skillwerk/issues/119)
+
 ## [2.3.0](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.2.2...posthaste%2Fv2.3.0) (2026-11-19)
 
 ### Feat
