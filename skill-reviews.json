@@ -501,11 +501,11 @@
     },
     "posthaste/prepare-link": {
       "review": {
-        "reviewed_on": "2026-11-21",
+        "reviewed_on": "2026-11-24",
         "reviewed_by": "Patrick Kollitsch",
-        "reviewed_commit": "50d895649954324c60daec20fb09e68743bb224e",
-        "reviewed_content_hash": "173c38eca1d636f63c6f89154ca46b66843588030d2bf08751b77c8c23cd32a8",
-        "evidence": "Accepted in chat by Patrick Kollitsch on 2026-11-21; see #119."
+        "reviewed_commit": "f507819fb2b2d49c5a6c4120c9afbf1c4085ef06",
+        "reviewed_content_hash": "0d8b00aa4b167e605ea163300d3581ec2827e8a50ff7181b6ebd5c91168bc50e",
+        "evidence": "Accepted in chat by Patrick Kollitsch on 2026-11-25; see #120."
       }
     },
     "posthaste/reddit-refresh-token": {

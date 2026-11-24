@@ -2,7 +2,7 @@
 name: prepare-link
 description: Take a URL, pull its title/description/tags, screenshot the page, and draft a social post in Patrick's voice with topic hashtags derived from the linked page. Publishes through @humanwhocodes/crosspost or direct platform APIs only after explicit confirmation, attaches the screenshot on networks that support images, and keeps a durable per-network log of what has already been posted so the same link is never reposted to the same network by accident. Use for `/prepare-link`, "post this link", "share this article", or "make a post about this page".
 metadata:
-  version: "1.0.3"
+  version: "1.1.0"
 ---
 
 Turn a single URL into one confirmed social post: fetch the
@@ -66,15 +66,14 @@ Nostr support uses short text notes only. Crosspost requires Node.js v22 or
 newer, `NOSTR_PRIVATE_KEY`, and `NOSTR_RELAYS`; this repository already targets
 a newer Node version. Do not attach images to Nostr posts.
 
-The direct API integrations for Reddit, Threads, and Tumblr do not attach local
-screenshots. Reddit defaults to a link post that points at the source URL;
+The direct API integrations for Reddit and Threads do not attach images.
+Tumblr attaches the image as an uploaded local file. Reddit defaults to a link post that points at the source URL;
 after the link post is created, it adds the long post text as a top-level
 comment. Pass `--reddit-no-comment` only when the Reddit post should be just
 the link card, and pass `--reddit-post-type self` only when a Reddit self/text
 post is desired.
-Threads image posts require publicly hosted image URLs, so local screenshots
-are not attached there. Tumblr image posting is deliberately deferred until the
-text workflow is stable.
+Threads image posts require publicly hosted image URLs, so images are not
+attached there.
 
 X (Twitter) is not a supported network above and is never included in the
 default `post` command or the multi-network confirmation table. The X API
@@ -353,14 +352,14 @@ Reject non-`http(s)` URLs and ask for a corrected one.
 
 ## Image handling
 
-The screenshot from step 3 is the default image attachment. When metadata contains `ogImage`, offer it as a separate option in the review table, with a preview, source URL, and suitable alt text. Label the screenshot as the default and the `ogImage` as the alternative. A page image can show the article more clearly than a screenshot that contains only navigation and a cover image. If selected, download the `ogImage` to a local file before publishing, and update the review table and attachment path. Write concise, accurate
+The screenshot from step 3 is the default image attachment. When metadata contains `ogImage`, offer it as a separate option in the review table, with a preview, source URL, and suitable alt text. Label the screenshot as the default and the `ogImage` as the alternative. A page image can show the article more clearly than a screenshot that contains only navigation and a cover image. If selected, pass the `ogImage` URL to the publishing helper with `--image-url` in place of `--image`, and update the review table. Do not download it by hand. Crosspost 1.1.0 or newer downloads the URL for Mastodon, Bluesky, and LinkedIn. Before anything is published, the helper downloads the URL once to check it and uploads that temporary file to Tumblr. Crosspost accepts only PNG, JPEG, and GIF images up to 20 MB from `http:` or `https:` URLs. Tumblr also accepts WebP. If the `ogImage` uses another format or is larger than 20 MB, the helper stops before it publishes anything. Tell the user this in the review table and offer the screenshot instead. Write concise, accurate
 alt text describing what the screenshot actually shows (page title/section,
 not a guess at content off-screen). Do not invent alt text unrelated to the
 captured image.
 
 If the user wants a different image instead of the auto-captured screenshot,
-collect a local image path and alt text for it in place of the screenshot
-step.
+collect a local image path or a public image URL, and alt text for it, in place of the screenshot
+step. Use `--image` for a local path and `--image-url` for a URL. Never pass both.
 
 ## Confirmation protocol
 
@@ -528,8 +527,9 @@ explicit network-specific files:
 --message-file-tumblr scratch/prepare-link/<slug>.tumblr.md
 ```
 
-The helper skips `--image` and `--image-alt` for Nostr, Reddit, Threads, and
-Tumblr. Reddit uses a link post by default rather than uploading the local
+For a selected `ogImage` or other public image URL, replace the `--image` line with `--image-url "<ogImage>"`. The helper rejects `--image` together with `--image-url`, requires `--image-alt` for both, and pins `@humanwhocodes/crosspost@^1.1.0` so that npx does not reuse an older cached release without `--image-url`.
+
+The helper skips `--image`, `--image-url`, and `--image-alt` for Nostr, Reddit, and Threads. Reddit uses a link post by default rather than uploading the local
 screenshot as media, then adds the long post text as a comment.
 
 Pass `--force` only when the user explicitly wants to repost to a network that

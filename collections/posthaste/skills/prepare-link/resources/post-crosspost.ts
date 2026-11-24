@@ -61,6 +61,7 @@ interface CliConfig {
   redditLinkUrl?: string;
   redditNoComment: boolean;
   image?: string;
+  imageUrl?: string;
   imageAlt?: string;
   dotenvPath: string;
   explicitDotenvPath: boolean;
@@ -175,6 +176,14 @@ const SUPPORTED_NETWORKS: Record<Network, NetworkConfig> = {
   },
 };
 const DEFAULT_DOTENV_PATH = "~/.env";
+// Crosspost 1.1.0 added --image-url. Pin the major version so npx does not
+// reuse an older cached release that rejects the option.
+const CROSSPOST_PACKAGE = "@humanwhocodes/crosspost@^1.1.0";
+// Mirror the download limits of Crosspost's --image-url for direct networks.
+const IMAGE_URL_MAX_BYTES = 20 * 1024 * 1024;
+const IMAGE_URL_TIMEOUT_MS = 30_000;
+// Crosspost accepts PNG, JPEG, and GIF. Tumblr also accepts WebP.
+const CROSSPOST_IMAGE_FORMATS = new Set([".png", ".jpg", ".gif"]);
 const DEFAULT_LOG_PATH = "~/.local/share/posthaste-prepare-link/posted.jsonl";
 const LOGGED_MESSAGE_PREVIEW_LENGTH = 200;
 const RESOURCE_DIR = dirname(fileURLToPath(import.meta.url));
@@ -267,8 +276,9 @@ Options:
   --to <networks>                    Comma-separated networks. Overrides posting.default_networks.
                                      Default: posting.default_networks from Posthaste TOML,
                                      otherwise all enabled networks with credentials.
-  --image <path>                     Optional image path.
-  --image-alt <text>                 Required when --image is used.
+  --image <path>                     Optional local image path.
+  --image-url <url>                  Optional public http(s) image URL. Cannot be combined with --image.
+  --image-alt <text>                 Required when --image or --image-url is used.
   --dotenv <path>                    Dotenv path for posting credentials. Default: paths.dotenv, else ${DEFAULT_DOTENV_PATH}.
   --source-url <url>                 Original link this post is about. Enables log tracking.
   --canonical-url <url>              Canonical form of the source URL, if different.
@@ -307,6 +317,12 @@ Notes:
     to create a self/text post instead. Link posts add the message as a comment
     unless --reddit-no-comment is used.
   - Nostr and Threads posts are text-only in this helper.
+  - Crosspost networks receive --image-url unchanged, and Crosspost downloads
+    the image itself. Crosspost accepts only PNG, JPEG, and GIF images up to
+    20 MB, so a WebP image URL fails before anything is published.
+  - Before the first network is published, this helper downloads --image-url
+    once. Tumblr uploads that temporary file. A WebP image is accepted for
+    Tumblr but stops the run when a Crosspost network is selected.
   - Threads image posts require publicly hosted image URLs and are not wired here.
   - Threads does not reliably auto-detect a URL inside the message text via
     the API, so --canonical-url (falling back to --source-url) is passed
@@ -586,6 +602,10 @@ function parseArgs(argv: string[]): CliConfig {
 
       case "--image":
         config.image = nextValue(arg);
+        break;
+
+      case "--image-url":
+        config.imageUrl = nextValue(arg);
         break;
 
       case "--image-alt":
@@ -991,16 +1011,168 @@ async function resolveRedditTitleFromSidecar(
 }
 
 async function validateImage(config: CliConfig): Promise<void> {
-  if (!config.image) {
+  if (config.image && config.imageUrl) {
+    throw new Error("--image and --image-url cannot be used together.");
+  }
+
+  if (!config.image && !config.imageUrl) {
     return;
   }
 
+  const imageFlag = config.image ? "--image" : "--image-url";
+
   if (!config.imageAlt || config.imageAlt.trim().length === 0) {
-    throw new Error("--image-alt is required when --image is used.");
+    throw new Error(`--image-alt is required when ${imageFlag} is used.`);
   }
 
-  const imagePath = resolve(expandHomePath(config.image));
+  if (config.imageUrl) {
+    config.imageUrl = parseImageUrl(config.imageUrl).href;
+    return;
+  }
+
+  const imagePath = resolve(expandHomePath(config.image as string));
   await assertReadableFile(imagePath, "Image file");
+}
+
+function parseImageUrl(value: string): URL {
+  let url: URL;
+
+  try {
+    url = new URL(value);
+  } catch {
+    throw new Error(`--image-url is not a valid URL: ${value}`);
+  }
+
+  if (url.protocol !== "http:" && url.protocol !== "https:") {
+    throw new Error(
+      `--image-url must use http: or https:, not ${url.protocol}`,
+    );
+  }
+
+  return url;
+}
+
+async function readLimitedBody(
+  response: Response,
+  maxBytes: number,
+): Promise<Uint8Array> {
+  if (!response.body) {
+    return new Uint8Array(0);
+  }
+
+  const reader = response.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+
+  while (true) {
+    const { done, value } = await reader.read();
+
+    if (done) {
+      break;
+    }
+
+    size += value.length;
+
+    if (size > maxBytes) {
+      await reader.cancel();
+      throw new Error(`The image is larger than ${maxBytes} bytes.`);
+    }
+
+    chunks.push(value);
+  }
+
+  const data = new Uint8Array(size);
+  let offset = 0;
+
+  for (const chunk of chunks) {
+    data.set(chunk, offset);
+    offset += chunk.length;
+  }
+
+  return data;
+}
+
+function imageExtension(data: Uint8Array): string | undefined {
+  const startsWith = (bytes: number[], offset = 0) =>
+    bytes.every((byte, index) => data[offset + index] === byte);
+
+  if (startsWith([0x89, 0x50, 0x4e, 0x47])) return ".png";
+  if (startsWith([0xff, 0xd8, 0xff])) return ".jpg";
+  if (startsWith([0x47, 0x49, 0x46, 0x38])) return ".gif";
+  if (
+    startsWith([0x52, 0x49, 0x46, 0x46]) &&
+    startsWith([0x57, 0x45, 0x42, 0x50], 8)
+  ) {
+    return ".webp";
+  }
+
+  return undefined;
+}
+
+/**
+ * Downloads --image-url once before anything is published. Tumblr uploads the
+ * downloaded file. Crosspost networks still receive the URL and download it
+ * again, but a format that Crosspost rejects is caught here first.
+ */
+async function downloadImageUrl(imageUrl: string): Promise<{
+  path: string;
+  extension: string;
+  cleanup: () => Promise<void>;
+}> {
+  let response: Response;
+
+  try {
+    response = await fetch(parseImageUrl(imageUrl), {
+      signal: AbortSignal.timeout(IMAGE_URL_TIMEOUT_MS),
+    });
+  } catch (cause) {
+    const reason =
+      cause instanceof Error && cause.name === "TimeoutError"
+        ? `timed out after ${IMAGE_URL_TIMEOUT_MS} ms`
+        : "request failed";
+    throw new Error(`Could not download --image-url: ${reason}.`, { cause });
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `Could not download --image-url: the server responded with ${response.status}.`,
+    );
+  }
+
+  // Like Crosspost, reject only an explicit non-image type and check the bytes.
+  const contentType = response.headers.get("content-type");
+
+  if (contentType && !contentType.toLowerCase().startsWith("image/")) {
+    throw new Error(
+      `Could not download --image-url: the URL did not return an image (content-type: ${contentType}).`,
+    );
+  }
+
+  const data = await readLimitedBody(response, IMAGE_URL_MAX_BYTES);
+
+  if (data.length === 0) {
+    throw new Error("Could not download --image-url: empty response.");
+  }
+
+  const extension = imageExtension(data);
+
+  if (!extension) {
+    throw new Error(
+      "Could not download --image-url: unsupported image format. Supported: PNG, JPEG, GIF, and WebP (Tumblr only).",
+    );
+  }
+
+  const directory = await mkdtemp(join(tmpdir(), "posthaste-image-url-"));
+  const filePath = join(directory, `image${extension}`);
+  await writeFile(filePath, data);
+
+  return {
+    path: filePath,
+    extension,
+    cleanup: async () => {
+      await rm(directory, { recursive: true, force: true });
+    },
+  };
 }
 
 function runCommand(
@@ -1165,15 +1337,20 @@ function commandForNetwork(
 
   const args = [
     "--yes",
-    "@humanwhocodes/crosspost",
+    CROSSPOST_PACKAGE,
     networkConfig.flag,
     "--file",
     prepared.filePath,
   ];
 
-  if (config.image && SUPPORTED_NETWORKS[prepared.network].supportsImages) {
-    args.push("--image", resolve(expandHomePath(config.image)));
-    args.push("--image-alt", config.imageAlt ?? "");
+  if (SUPPORTED_NETWORKS[prepared.network].supportsImages) {
+    if (config.image) {
+      args.push("--image", resolve(expandHomePath(config.image)));
+      args.push("--image-alt", config.imageAlt ?? "");
+    } else if (config.imageUrl) {
+      args.push("--image-url", config.imageUrl);
+      args.push("--image-alt", config.imageAlt ?? "");
+    }
   }
 
   return args;
@@ -1211,6 +1388,7 @@ function commandForDirectNetwork(
   prepared: PreparedMessage,
   config: CliConfig,
   effectiveDotenvPath: string,
+  localImagePath?: string,
 ): string[] {
   const args = [
     directScriptPath(prepared.network),
@@ -1249,8 +1427,8 @@ function commandForDirectNetwork(
       break;
 
     case "tumblr":
-      if (config.image) {
-        addOptionalArg(args, "--image", resolve(expandHomePath(config.image)));
+      if (localImagePath) {
+        addOptionalArg(args, "--image", localImagePath);
         addOptionalArg(args, "--image-alt", config.imageAlt);
       }
       break;
@@ -1446,8 +1624,39 @@ async function main(): Promise<void> {
   );
   const published: string[] = [];
   const attempted: Network[] = [];
+  let localImagePath = config.image
+    ? resolve(expandHomePath(config.image))
+    : undefined;
+  let imageCleanup: (() => Promise<void>) | undefined;
 
   try {
+    // Download before any publish so a bad --image-url publishes nothing.
+    const imageNetworks = networksToPost.filter(
+      (network) => SUPPORTED_NETWORKS[network].supportsImages,
+    );
+
+    if (config.imageUrl && imageNetworks.length > 0) {
+      if (config.dryRun) {
+        localImagePath = `<download of ${config.imageUrl}>`;
+      } else {
+        const downloaded = await downloadImageUrl(config.imageUrl);
+        localImagePath = downloaded.path;
+        imageCleanup = downloaded.cleanup;
+        const crosspostImageNetworks = imageNetworks.filter(
+          (network) => SUPPORTED_NETWORKS[network].transport === "crosspost",
+        );
+
+        if (
+          crosspostImageNetworks.length > 0 &&
+          !CROSSPOST_IMAGE_FORMATS.has(downloaded.extension)
+        ) {
+          throw new Error(
+            `--image-url is a ${downloaded.extension.slice(1).toUpperCase()} image. Crosspost accepts only PNG, JPEG, and GIF, so nothing was published to: ${networksToPost.join(", ")}. Use --image with a converted file, or remove ${crosspostImageNetworks.join(", ")}.`,
+          );
+        }
+      }
+    }
+
     if (loggedNetworks.length > 0) {
       console.log(
         `Skipping already-posted networks: ${loggedNetworks.join(", ")}`,
@@ -1478,6 +1687,7 @@ async function main(): Promise<void> {
             prepared,
             config,
             effectiveDotenvPath,
+            localImagePath,
           );
           console.log(
             `Command: node ${args.map((arg) => JSON.stringify(arg)).join(" ")}`,
@@ -1512,6 +1722,7 @@ async function main(): Promise<void> {
           prepared,
           config,
           effectiveDotenvPath,
+          localImagePath,
         );
         const result = await runCommand("node", args, env);
         const combinedOutput = [result.stdout, result.stderr]
@@ -1545,6 +1756,7 @@ async function main(): Promise<void> {
     throw error;
   } finally {
     await Promise.all(preparedMessages.map((prepared) => prepared.cleanup?.()));
+    await imageCleanup?.();
   }
 
   if (config.dryRun) {

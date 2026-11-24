@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdir, mkdtemp, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
@@ -417,4 +418,191 @@ test("Mastodon accepts 500 characters and rejects 501 before publishing", async 
   assert.equal(rejected.status, 1);
   assert.match(rejected.stderr, /mastodon: 501\/500 characters/u);
   assert.doesNotMatch(rejected.stdout, /Dry run for mastodon/u);
+});
+
+test("--image-url passes the URL to pinned Crosspost and needs alt text", async () => {
+  const box = await sandbox();
+  const env = {
+    MASTODON_ACCESS_TOKEN: SECRET,
+    MASTODON_HOST: "mastodon.example",
+  };
+  const base = ["--dry-run", "--message", "fixture", "--to", "mastodon"];
+
+  const accepted = run(
+    POST_CROSSPOST,
+    box,
+    [
+      ...base,
+      "--image-url",
+      "https://example.com/cover.jpg",
+      "--image-alt",
+      "Cover image",
+    ],
+    env,
+  );
+  assert.equal(accepted.status, 0, accepted.stderr);
+  assert.match(accepted.stdout, /"@humanwhocodes\/crosspost@\^1\.1\.0"/u);
+  assert.match(
+    accepted.stdout,
+    /"--image-url" "https:\/\/example\.com\/cover\.jpg" "--image-alt" "Cover image"/u,
+  );
+  assert.doesNotMatch(accepted.stdout, /"--image" /u);
+
+  const noAlt = run(
+    POST_CROSSPOST,
+    box,
+    [...base, "--image-url", "https://example.com/cover.jpg"],
+    env,
+  );
+  assert.equal(noAlt.status, 1);
+  assert.match(noAlt.stderr, /--image-alt is required when --image-url/u);
+
+  const badProtocol = run(
+    POST_CROSSPOST,
+    box,
+    [...base, "--image-url", "file:///tmp/cover.jpg", "--image-alt", "x"],
+    env,
+  );
+  assert.equal(badProtocol.status, 1);
+  assert.match(badProtocol.stderr, /must use http: or https:/u);
+
+  await writeFile(join(box.cwd, "shot.png"), "fixture");
+  const both = run(
+    POST_CROSSPOST,
+    box,
+    [
+      ...base,
+      "--image",
+      "shot.png",
+      "--image-url",
+      "https://example.com/cover.jpg",
+      "--image-alt",
+      "x",
+    ],
+    env,
+  );
+  assert.equal(both.status, 1);
+  assert.match(both.stderr, /cannot be used together/u);
+});
+
+const PNG_BYTES = "0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a";
+const WEBP_BYTES =
+  "0x52, 0x49, 0x46, 0x46, 0x00, 0x00, 0x00, 0x00, 0x57, 0x45, 0x42, 0x50";
+
+test("--image-url is downloaded to a local file for Tumblr before publishing", async () => {
+  const box = await sandbox();
+  const mock = join(box.cwd, "mock.mjs");
+  const stubLog = join(box.cwd, "stub.log");
+  // The stub stands in for the direct Tumblr script and records whether the
+  // downloaded image file exists while it runs.
+  const stub = join(box.cwd, "node");
+  await writeFile(
+    stub,
+    `#!/bin/sh
+while [ $# -gt 0 ]; do
+  if [ "$1" = "--image" ]; then
+    [ "\${2%.png}" != "$2" ] || { echo "bad extension $2" >> "${stubLog}"; exit 2; }
+    [ -s "$2" ] && printf "downloaded" >> "${stubLog}"
+  fi
+  shift
+done
+echo '{"url":"https://fixture.tumblr.com/post/1"}'
+`,
+    { mode: 0o700 },
+  );
+  const env = {
+    HOME: box.home,
+    PATH: box.cwd,
+    TUMBLR_ACCESS_TOKEN: SECRET,
+    TUMBLR_BLOG_IDENTIFIER: "fixture.tumblr.com",
+  };
+  const args = [
+    "--import",
+    mock,
+    POST_CROSSPOST,
+    "--message",
+    "fixture",
+    "--to",
+    "tumblr",
+    "--image-url",
+    "https://example.com/cover",
+    "--image-alt",
+    "Cover image",
+    "--no-log",
+  ];
+
+  await writeFile(
+    mock,
+    `globalThis.fetch = async () => new Response(new Uint8Array([${PNG_BYTES}]), { status: 200 });`,
+  );
+  const accepted = spawnSync(process.execPath, args, {
+    cwd: box.cwd,
+    encoding: "utf8",
+    env,
+  });
+  assert.equal(accepted.status, 0, accepted.stderr);
+  assert.match(accepted.stdout, /tumblr: https:\/\/fixture\.tumblr\.com/u);
+  assert.equal(await readFile(stubLog, "utf8"), "downloaded");
+
+  await writeFile(
+    mock,
+    `globalThis.fetch = async () => new Response("<html></html>", { status: 200, headers: { "content-type": "text/html" } });`,
+  );
+  await rm(stubLog, { force: true });
+  const rejected = spawnSync(process.execPath, args, {
+    cwd: box.cwd,
+    encoding: "utf8",
+    env,
+  });
+  assert.equal(rejected.status, 1);
+  assert.match(rejected.stderr, /did not return an image/u);
+  assert.match(rejected.stderr, /Published before failure: none/u);
+  assert.ok(!existsSync(stubLog));
+  assert.ok(!`${rejected.stdout}${rejected.stderr}`.includes(SECRET));
+});
+
+test("--image-url in WebP format stops Crosspost networks before publishing", async () => {
+  const box = await sandbox();
+  const mock = join(box.cwd, "mock.mjs");
+  await writeFile(
+    mock,
+    `globalThis.fetch = async () => new Response(new Uint8Array([${WEBP_BYTES}]), { status: 200, headers: { "content-type": "image/webp" } });`,
+  );
+  // An isolated PATH stub ensures a regression cannot invoke the real publisher.
+  await writeFile(
+    join(box.cwd, "npx"),
+    "#!/bin/sh\necho PUBLISH_ATTEMPT >&2\nexit 99\n",
+    { mode: 0o700 },
+  );
+  const result = spawnSync(
+    process.execPath,
+    [
+      "--import",
+      mock,
+      POST_CROSSPOST,
+      "--message",
+      "fixture",
+      "--to",
+      "mastodon",
+      "--image-url",
+      "https://example.com/cover.webp",
+      "--image-alt",
+      "Cover image",
+      "--no-log",
+    ],
+    {
+      cwd: box.cwd,
+      encoding: "utf8",
+      env: {
+        HOME: box.home,
+        PATH: box.cwd,
+        MASTODON_ACCESS_TOKEN: SECRET,
+        MASTODON_HOST: "mastodon.example",
+      },
+    },
+  );
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /WEBP image\. Crosspost accepts only PNG/u);
+  assert.ok(!result.stderr.includes("PUBLISH_ATTEMPT"));
+  assert.ok(!result.stderr.includes(SECRET));
 });

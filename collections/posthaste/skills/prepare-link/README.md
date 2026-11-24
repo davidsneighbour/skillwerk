@@ -49,7 +49,9 @@ Threads text posts do not reliably auto-attach a link preview via the API,
 so `post-crosspost.ts` passes `--canonical-url`/`--source-url` through as
 `--link-attachment` for Threads automatically. Tumblr posts support an
 optional `--image`/`--image-alt` local file attachment via NPF multipart
-upload (not a hosted image URL).
+upload. When `post-crosspost.ts` receives `--image-url`, it downloads the image once before anything is published, checks its format, and uploads that temporary file to Tumblr.
+
+Crosspost networks accept `--image` for a local file or `--image-url` for a public `http:` or `https:` image URL, for example the page's `og:image`. The helper pins `@humanwhocodes/crosspost@^1.1.0`, the first release with `--image-url`. Crosspost accepts only PNG, JPEG, and GIF images up to 20 MB. A WebP image works for Tumblr alone, but the helper stops before publishing when a Crosspost network is also selected.
 
 ## Browser-Assisted networks (not an API integration)
 
