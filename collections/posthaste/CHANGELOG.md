@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.4.0](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.3.1...posthaste%2Fv2.4.0) (2026-11-24)
+
+### Feat
+
+* **prepare-link:** support Crosspost 1.1.0 --image-url ([5d3595d](https://github.com/davidsneighbour/skillwerk/commit/5d3595dfc60aa6ec4736dd8c7ae0cf28c3e46b32)), closes [#120](https://github.com/davidsneighbour/skillwerk/issues/120), references [humanwhocodes/crosspost#173](https://github.com/humanwhocodes/crosspost/issues/173)
+
 ## [2.3.1](https://github.com/davidsneighbour/skillwerk/compare/posthaste%2Fv2.3.0...posthaste%2Fv2.3.1) (2026-11-21)
 
 ### Fix
