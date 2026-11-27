@@ -45,7 +45,7 @@
     "collections/*"
   ],
   "devDependencies": {
-    "@biomejs/biome": "2.6.6",
+    "@biomejs/biome": "2.6.8",
     "@dnbhq/biome-config": "1.1.0",
     "@dnbhq/markdownlint-config": "2.0.0",
     "@dnbhq/release-config": "2.0.1",
